@@ -1,8 +1,7 @@
 package com.legacy.aether.items.food;
 
-import net.minecraft.item.ItemFood;
-
 import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import net.minecraft.item.ItemFood;
 
 public class ItemAetherFood extends ItemFood
 {

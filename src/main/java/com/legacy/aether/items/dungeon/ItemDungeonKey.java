@@ -1,14 +1,13 @@
 package com.legacy.aether.items.dungeon;
 
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.items.util.EnumDungeonKeyType;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.util.EnumDungeonKeyType;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemDungeonKey extends Item
 {

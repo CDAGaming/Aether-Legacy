@@ -1,15 +1,14 @@
 package com.legacy.aether.world.biome.decoration;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.natural.BlockAercloud;
+import com.legacy.aether.blocks.util.EnumCloudType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.natural.BlockAercloud;
-import com.legacy.aether.blocks.util.EnumCloudType;
+import java.util.Random;
 
 public class AetherGenClouds extends WorldGenerator
 {

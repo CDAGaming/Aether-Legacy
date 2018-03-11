@@ -1,11 +1,10 @@
 package com.legacy.aether.entities.ai.aechorplant;
 
+import com.legacy.aether.entities.hostile.EntityAechorPlant;
+import com.legacy.aether.entities.projectile.EntityPoisonNeedle;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.world.EnumDifficulty;
-
-import com.legacy.aether.entities.hostile.EntityAechorPlant;
-import com.legacy.aether.entities.projectile.EntityPoisonNeedle;
 
 public class AechorPlantAIShootPlayer extends EntityAIBase
 {

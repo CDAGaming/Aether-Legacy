@@ -1,14 +1,13 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.client.models.entities.MimicModel;
+import com.legacy.aether.entities.hostile.EntityMimic;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Calendar;
-
-import com.legacy.aether.client.models.entities.MimicModel;
-import com.legacy.aether.entities.hostile.EntityMimic;
 
 public class MimicRenderer extends RenderLiving<EntityMimic>
 {

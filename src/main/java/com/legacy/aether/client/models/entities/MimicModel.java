@@ -1,10 +1,9 @@
 package com.legacy.aether.client.models.entities;
 
+import com.legacy.aether.entities.hostile.EntityMimic;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-
-import com.legacy.aether.entities.hostile.EntityMimic;
 
 public class MimicModel extends ModelBase
 {

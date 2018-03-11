@@ -1,16 +1,20 @@
 package com.legacy.aether.entities.bosses.slider;
 
-import java.util.List;
-
+import com.legacy.aether.Aether;
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.dungeon.BlockDungeonBase;
+import com.legacy.aether.blocks.util.EnumStoneType;
+import com.legacy.aether.entities.util.AetherNameGen;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.items.tools.ItemAetherTool;
+import com.legacy.aether.items.util.EnumAetherToolType;
+import com.legacy.aether.player.PlayerAether;
+import com.legacy.aether.registry.sounds.SoundsAether;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityFlying;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.MoverType;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -22,11 +26,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -34,16 +34,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.legacy.aether.Aether;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.dungeon.BlockDungeonBase;
-import com.legacy.aether.blocks.util.EnumStoneType;
-import com.legacy.aether.entities.util.AetherNameGen;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.tools.ItemAetherTool;
-import com.legacy.aether.items.util.EnumAetherToolType;
-import com.legacy.aether.player.PlayerAether;
-import com.legacy.aether.registry.sounds.SoundsAether;
+import java.util.List;
 
 public class EntitySlider extends EntityFlying 
 {

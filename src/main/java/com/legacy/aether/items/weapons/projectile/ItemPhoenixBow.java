@@ -1,5 +1,8 @@
 package com.legacy.aether.items.weapons.projectile;
 
+import com.legacy.aether.entities.projectile.EntityPhoenixArrow;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,25 +11,12 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemArrow;
-import net.minecraft.item.ItemBow;
-import net.minecraft.item.ItemSpectralArrow;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.stats.StatList;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.entities.projectile.EntityPhoenixArrow;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemPhoenixBow extends ItemBow
 {

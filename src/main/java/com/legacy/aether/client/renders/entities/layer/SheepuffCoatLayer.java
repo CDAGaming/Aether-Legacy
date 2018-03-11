@@ -1,16 +1,15 @@
 package com.legacy.aether.client.renders.entities.layer;
 
+import com.legacy.aether.client.models.entities.SheepuffModel;
+import com.legacy.aether.client.models.entities.SheepuffedModel;
+import com.legacy.aether.client.renders.entities.SheepuffRenderer;
+import com.legacy.aether.entities.passive.EntitySheepuff;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.client.models.entities.SheepuffModel;
-import com.legacy.aether.client.models.entities.SheepuffedModel;
-import com.legacy.aether.client.renders.entities.SheepuffRenderer;
-import com.legacy.aether.entities.passive.EntitySheepuff;
 
 public class SheepuffCoatLayer implements LayerRenderer<EntitySheepuff>
 {

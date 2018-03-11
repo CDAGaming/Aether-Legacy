@@ -1,27 +1,13 @@
 package com.legacy.aether.world;
 
+import com.legacy.aether.AetherConfig;
+import com.legacy.aether.world.biome.AetherBiome;
+import com.legacy.aether.world.gen.*;
+import com.legacy.aether.world.gen.components.*;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.DimensionManager;
-
-import com.legacy.aether.AetherConfig;
-import com.legacy.aether.world.biome.AetherBiome;
-import com.legacy.aether.world.gen.MapGenBlueAercloud;
-import com.legacy.aether.world.gen.MapGenBronzeDungeon;
-import com.legacy.aether.world.gen.MapGenColdAercloud;
-import com.legacy.aether.world.gen.MapGenGoldenAercloud;
-import com.legacy.aether.world.gen.MapGenGoldenDungeon;
-import com.legacy.aether.world.gen.MapGenSilverDungeon;
-import com.legacy.aether.world.gen.components.ComponentBlueAercloud;
-import com.legacy.aether.world.gen.components.ComponentBronzeDungeon;
-import com.legacy.aether.world.gen.components.ComponentBronzeDungeonRoom;
-import com.legacy.aether.world.gen.components.ComponentColdAercloud;
-import com.legacy.aether.world.gen.components.ComponentGoldenAercloud;
-import com.legacy.aether.world.gen.components.ComponentGoldenDungeon;
-import com.legacy.aether.world.gen.components.ComponentGoldenIsland;
-import com.legacy.aether.world.gen.components.ComponentGoldenIslandStub;
-import com.legacy.aether.world.gen.components.ComponentSilverDungeon;
 
 public class AetherWorld
 {

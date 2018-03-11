@@ -1,5 +1,8 @@
 package com.legacy.aether.items.tools;
 
+import com.legacy.aether.entities.passive.mountable.EntityParachute;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -7,10 +10,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.passive.mountable.EntityParachute;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemAetherParachute extends Item
 {

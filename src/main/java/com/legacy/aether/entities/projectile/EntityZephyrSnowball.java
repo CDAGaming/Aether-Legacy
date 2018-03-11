@@ -1,7 +1,6 @@
 package com.legacy.aether.entities.projectile;
 
 import com.legacy.aether.items.ItemsAether;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,5 +1,9 @@
 package com.legacy.aether.items.armor;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.client.models.ModelColoredArmor;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -12,11 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.client.models.ModelColoredArmor;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemAetherArmor extends ItemArmor
 {

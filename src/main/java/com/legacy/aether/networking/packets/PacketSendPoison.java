@@ -1,9 +1,8 @@
 package com.legacy.aether.networking.packets;
 
+import com.legacy.aether.player.PlayerAether;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
-
-import com.legacy.aether.player.PlayerAether;
 
 public class PacketSendPoison extends AetherPacket<PacketSendPoison>
 {

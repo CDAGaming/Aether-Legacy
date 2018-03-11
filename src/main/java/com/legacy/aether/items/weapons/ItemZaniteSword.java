@@ -1,5 +1,9 @@
 package com.legacy.aether.items.weapons;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -8,11 +12,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.NonNullList;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemZaniteSword extends ItemSword
 {

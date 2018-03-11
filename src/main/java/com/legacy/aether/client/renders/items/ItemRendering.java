@@ -1,5 +1,11 @@
 package com.legacy.aether.client.renders.items;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.client.renders.items.definitions.NotchHammerDefinition;
+import com.legacy.aether.client.renders.items.definitions.PhoenixBowDefinition;
+import com.legacy.aether.client.renders.items.util.AetherColor;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.items.util.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -8,17 +14,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.client.renders.items.definitions.NotchHammerDefinition;
-import com.legacy.aether.client.renders.items.definitions.PhoenixBowDefinition;
-import com.legacy.aether.client.renders.items.util.AetherColor;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.util.EnumDartShooterType;
-import com.legacy.aether.items.util.EnumDartType;
-import com.legacy.aether.items.util.EnumDungeonKeyType;
-import com.legacy.aether.items.util.EnumGummySwetType;
-import com.legacy.aether.items.util.EnumSkyrootBucketType;
 
 public class ItemRendering
 {

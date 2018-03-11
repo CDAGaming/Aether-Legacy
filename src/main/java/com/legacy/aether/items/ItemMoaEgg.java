@@ -1,5 +1,9 @@
 package com.legacy.aether.items;
 
+import com.legacy.aether.api.AetherAPI;
+import com.legacy.aether.api.moa.AetherMoaType;
+import com.legacy.aether.entities.passive.mountable.EntityMoa;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -11,11 +15,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.legacy.aether.api.AetherAPI;
-import com.legacy.aether.api.moa.AetherMoaType;
-import com.legacy.aether.entities.passive.mountable.EntityMoa;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemMoaEgg extends Item
 {

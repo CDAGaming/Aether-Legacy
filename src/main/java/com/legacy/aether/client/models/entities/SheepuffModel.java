@@ -1,11 +1,10 @@
 package com.legacy.aether.client.models.entities;
 
+import com.legacy.aether.entities.passive.EntitySheepuff;
 import net.minecraft.client.model.ModelQuadruped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-
-import com.legacy.aether.entities.passive.EntitySheepuff;
 
 public class SheepuffModel extends ModelQuadruped
 {

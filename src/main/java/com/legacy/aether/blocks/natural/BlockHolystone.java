@@ -1,5 +1,8 @@
 package com.legacy.aether.blocks.natural;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.items.util.DoubleDropHelper;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -13,10 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.items.util.DoubleDropHelper;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class BlockHolystone extends Block
 {

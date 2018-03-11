@@ -1,7 +1,7 @@
 package com.legacy.aether.blocks.natural.enchanted;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.natural.BlockAetherDirt;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -10,8 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.natural.BlockAetherDirt;
+import java.util.Random;
 
 public class BlockEnchantedAetherGrass extends Block
 {

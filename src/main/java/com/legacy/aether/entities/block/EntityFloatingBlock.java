@@ -1,7 +1,6 @@
 package com.legacy.aether.entities.block;
 
-import java.util.List;
-
+import com.legacy.aether.blocks.util.BlockFloating;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -11,7 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.legacy.aether.blocks.util.BlockFloating;
+import java.util.List;
 
 public class EntityFloatingBlock extends Entity
 {

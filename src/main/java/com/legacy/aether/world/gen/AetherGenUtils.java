@@ -1,8 +1,5 @@
 package com.legacy.aether.world.gen;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-
 import com.legacy.aether.blocks.BlocksAether;
 import com.legacy.aether.blocks.natural.BlockAercloud;
 import com.legacy.aether.blocks.natural.BlockAetherLeaves;
@@ -10,6 +7,8 @@ import com.legacy.aether.blocks.natural.BlockAetherLog;
 import com.legacy.aether.blocks.util.EnumCloudType;
 import com.legacy.aether.blocks.util.EnumLeafType;
 import com.legacy.aether.blocks.util.EnumLogType;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 
 public class AetherGenUtils 
 {

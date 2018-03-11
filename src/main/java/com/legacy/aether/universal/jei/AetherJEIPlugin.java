@@ -1,16 +1,5 @@
 package com.legacy.aether.universal.jei;
 
-import mezz.jei.api.IJeiRuntime;
-import mezz.jei.api.IModPlugin;
-import mezz.jei.api.IModRegistry;
-import mezz.jei.api.ISubtypeRegistry;
-import mezz.jei.api.JEIPlugin;
-import mezz.jei.api.ingredients.IModIngredientRegistration;
-import mezz.jei.api.recipe.IRecipeCategoryRegistration;
-import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.api.recipe.IRecipeWrapperFactory;
-import net.minecraft.item.ItemStack;
-
 import com.legacy.aether.api.AetherAPI;
 import com.legacy.aether.api.enchantments.AetherEnchantment;
 import com.legacy.aether.api.freezables.AetherFreezable;
@@ -19,6 +8,12 @@ import com.legacy.aether.universal.jei.category.EnchanterRecipeCategory;
 import com.legacy.aether.universal.jei.category.FreezerRecipeCategory;
 import com.legacy.aether.universal.jei.wrapper.EnchanterRecipeWrapper;
 import com.legacy.aether.universal.jei.wrapper.FreezerRecipeWrapper;
+import mezz.jei.api.*;
+import mezz.jei.api.ingredients.IModIngredientRegistration;
+import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import mezz.jei.api.recipe.IRecipeWrapper;
+import mezz.jei.api.recipe.IRecipeWrapperFactory;
+import net.minecraft.item.ItemStack;
 
 @JEIPlugin
 public class AetherJEIPlugin implements IModPlugin

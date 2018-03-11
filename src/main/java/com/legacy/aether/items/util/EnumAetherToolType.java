@@ -1,7 +1,7 @@
 package com.legacy.aether.items.util;
 
-import java.util.Set;
-
+import com.google.common.collect.Sets;
+import com.legacy.aether.blocks.BlocksAether;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -9,8 +9,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 
-import com.google.common.collect.Sets;
-import com.legacy.aether.blocks.BlocksAether;
+import java.util.Set;
 
 public enum EnumAetherToolType
 {

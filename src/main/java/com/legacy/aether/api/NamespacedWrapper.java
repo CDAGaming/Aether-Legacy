@@ -1,23 +1,16 @@
 package com.legacy.aether.api;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.RegistryNamespaced;
+import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.registries.*;
+import org.apache.commons.lang3.Validate;
+
+import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.RegistryNamespaced;
-import net.minecraftforge.fml.common.FMLLog;
-import net.minecraftforge.registries.ForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
-import net.minecraftforge.registries.IForgeRegistryInternal;
-import net.minecraftforge.registries.ILockableRegistry;
-import net.minecraftforge.registries.RegistryManager;
-
-import org.apache.commons.lang3.Validate;
 
 class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamespaced<ResourceLocation, V> implements ILockableRegistry
 {

@@ -1,15 +1,14 @@
 package com.legacy.aether.client.gui;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.containers.ContainerIncubator;
+import com.legacy.aether.tile_entities.TileEntityIncubator;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.containers.ContainerIncubator;
-import com.legacy.aether.tile_entities.TileEntityIncubator;
 
 public class GuiIncubator extends GuiContainer
 {

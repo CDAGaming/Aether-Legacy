@@ -1,5 +1,14 @@
 package com.legacy.aether;
 
+import com.legacy.aether.advancements.AetherAdvancements;
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.portal.BlockAetherPortal;
+import com.legacy.aether.entities.bosses.EntityValkyrie;
+import com.legacy.aether.entities.passive.mountable.EntityFlyingCow;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.items.dungeon.ItemDungeonKey;
+import com.legacy.aether.items.util.EnumSkyrootBucketType;
+import com.legacy.aether.items.weapons.ItemSkyrootSword;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.item.EntityItem;
@@ -23,16 +32,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBloc
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
-
-import com.legacy.aether.advancements.AetherAdvancements;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.portal.BlockAetherPortal;
-import com.legacy.aether.entities.bosses.EntityValkyrie;
-import com.legacy.aether.entities.passive.mountable.EntityFlyingCow;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.dungeon.ItemDungeonKey;
-import com.legacy.aether.items.util.EnumSkyrootBucketType;
-import com.legacy.aether.items.weapons.ItemSkyrootSword;
 
 public class AetherEventHandler 
 {

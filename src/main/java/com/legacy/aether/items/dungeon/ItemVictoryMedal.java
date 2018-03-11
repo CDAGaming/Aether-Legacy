@@ -2,7 +2,6 @@ package com.legacy.aether.items.dungeon;
 
 import com.legacy.aether.items.ItemsAether;
 import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
-
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

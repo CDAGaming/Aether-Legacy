@@ -1,11 +1,11 @@
 package com.legacy.aether.client.gui.dialogue;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.text.TextComponentString;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class GuiDialogue extends GuiScreen
 {

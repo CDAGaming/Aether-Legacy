@@ -1,5 +1,10 @@
 package com.legacy.aether.world.gen.components;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.dungeon.BlockDungeonBase;
+import com.legacy.aether.blocks.util.EnumStoneType;
+import com.legacy.aether.world.gen.AetherGenUtils;
+import com.legacy.aether.world.gen.AetherStructure;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower.EnumFlowerType;
 import net.minecraft.block.state.IBlockState;
@@ -7,12 +12,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.dungeon.BlockDungeonBase;
-import com.legacy.aether.blocks.util.EnumStoneType;
-import com.legacy.aether.world.gen.AetherGenUtils;
-import com.legacy.aether.world.gen.AetherStructure;
 
 public class ComponentGoldenIsland extends AetherStructure
 {

@@ -1,5 +1,8 @@
 package com.legacy.aether.client.audio;
 
+import com.legacy.aether.AetherConfig;
+import com.legacy.aether.client.audio.music.AetherMusicTicker;
+import com.legacy.aether.registry.sounds.SoundsAether;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -10,10 +13,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.AetherConfig;
-import com.legacy.aether.client.audio.music.AetherMusicTicker;
-import com.legacy.aether.registry.sounds.SoundsAether;
 
 public class AetherMusicHandler 
 {

@@ -4,7 +4,6 @@ import com.legacy.aether.CommonProxy;
 import com.legacy.aether.player.PlayerAether;
 import com.legacy.aether.player.PlayerAetherEvents;
 import com.legacy.aether.player.perks.AetherRankings;
-
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;

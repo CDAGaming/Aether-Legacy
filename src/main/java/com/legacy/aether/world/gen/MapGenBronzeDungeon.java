@@ -1,8 +1,8 @@
 package com.legacy.aether.world.gen;
 
-import java.util.Random;
-import java.util.Set;
-
+import com.google.common.collect.Sets;
+import com.legacy.aether.world.gen.components.ComponentBronzeDungeon;
+import com.legacy.aether.world.gen.components.ComponentBronzeDungeonRoom;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.math.BlockPos;
@@ -12,9 +12,8 @@ import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureStart;
 
-import com.google.common.collect.Sets;
-import com.legacy.aether.world.gen.components.ComponentBronzeDungeon;
-import com.legacy.aether.world.gen.components.ComponentBronzeDungeonRoom;
+import java.util.Random;
+import java.util.Set;
 
 public class MapGenBronzeDungeon extends MapGenStructure
 {

@@ -1,9 +1,8 @@
 package com.legacy.aether.entities.projectile;
 
+import com.legacy.aether.entities.projectile.darts.EntityDartPoison;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.projectile.darts.EntityDartPoison;
 
 public class EntityPoisonNeedle extends EntityDartPoison
 {

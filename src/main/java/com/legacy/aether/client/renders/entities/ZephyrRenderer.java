@@ -1,12 +1,11 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.client.models.entities.ZephyrModel;
+import com.legacy.aether.entities.hostile.EntityZephyr;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.client.models.entities.ZephyrModel;
-import com.legacy.aether.entities.hostile.EntityZephyr;
 
 public class ZephyrRenderer extends RenderLiving<EntityZephyr> 
 {

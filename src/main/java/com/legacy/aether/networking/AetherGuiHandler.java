@@ -1,5 +1,13 @@
 package com.legacy.aether.networking;
 
+import com.legacy.aether.client.gui.*;
+import com.legacy.aether.client.gui.inventory.GuiAccessories;
+import com.legacy.aether.containers.*;
+import com.legacy.aether.player.PlayerAether;
+import com.legacy.aether.tile_entities.TileEntityEnchanter;
+import com.legacy.aether.tile_entities.TileEntityFreezer;
+import com.legacy.aether.tile_entities.TileEntityIncubator;
+import com.legacy.aether.tile_entities.TileEntityTreasureChest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
@@ -8,23 +16,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.client.gui.GuiEnchanter;
-import com.legacy.aether.client.gui.GuiFreezer;
-import com.legacy.aether.client.gui.GuiIncubator;
-import com.legacy.aether.client.gui.GuiLore;
-import com.legacy.aether.client.gui.GuiTreasureChest;
-import com.legacy.aether.client.gui.inventory.GuiAccessories;
-import com.legacy.aether.containers.ContainerAccessories;
-import com.legacy.aether.containers.ContainerEnchanter;
-import com.legacy.aether.containers.ContainerFreezer;
-import com.legacy.aether.containers.ContainerIncubator;
-import com.legacy.aether.containers.ContainerLore;
-import com.legacy.aether.player.PlayerAether;
-import com.legacy.aether.tile_entities.TileEntityEnchanter;
-import com.legacy.aether.tile_entities.TileEntityFreezer;
-import com.legacy.aether.tile_entities.TileEntityIncubator;
-import com.legacy.aether.tile_entities.TileEntityTreasureChest;
 
 public class AetherGuiHandler implements IGuiHandler
 {

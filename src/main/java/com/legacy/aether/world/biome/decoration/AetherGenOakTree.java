@@ -1,17 +1,16 @@
 package com.legacy.aether.world.biome.decoration;
 
-import java.util.Random;
-
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-
 import com.legacy.aether.blocks.BlocksAether;
 import com.legacy.aether.blocks.natural.BlockAetherLeaves;
 import com.legacy.aether.blocks.natural.BlockAetherLog;
 import com.legacy.aether.blocks.util.EnumLeafType;
 import com.legacy.aether.blocks.util.EnumLogType;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+
+import java.util.Random;
 
 public class AetherGenOakTree extends WorldGenAbstractTree
 {

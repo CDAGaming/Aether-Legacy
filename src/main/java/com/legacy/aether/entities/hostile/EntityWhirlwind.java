@@ -1,8 +1,10 @@
 package com.legacy.aether.entities.hostile;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.entities.particles.AetherParticle;
+import com.legacy.aether.entities.particles.ParticleEvilWhirly;
+import com.legacy.aether.entities.particles.ParticlePassiveWhirly;
+import com.legacy.aether.player.perks.AetherRankings;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -29,11 +31,8 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.entities.particles.AetherParticle;
-import com.legacy.aether.entities.particles.ParticleEvilWhirly;
-import com.legacy.aether.entities.particles.ParticlePassiveWhirly;
-import com.legacy.aether.player.perks.AetherRankings;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EntityWhirlwind extends EntityMob 
 {

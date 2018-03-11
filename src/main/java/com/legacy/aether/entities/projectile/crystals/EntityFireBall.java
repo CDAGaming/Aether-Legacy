@@ -1,5 +1,7 @@
 package com.legacy.aether.entities.projectile.crystals;
 
+import com.legacy.aether.entities.bosses.EntityFireMinion;
+import com.legacy.aether.entities.bosses.sun_spirit.EntitySunSpirit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,9 +17,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.bosses.EntityFireMinion;
-import com.legacy.aether.entities.bosses.sun_spirit.EntitySunSpirit;
 
 public class EntityFireBall extends EntityFlying
 {

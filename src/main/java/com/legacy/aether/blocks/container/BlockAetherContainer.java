@@ -1,7 +1,6 @@
 package com.legacy.aether.blocks.container;
 
 import com.legacy.aether.tile_entities.util.AetherTileEntity;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;

@@ -1,5 +1,8 @@
 package com.legacy.aether.items;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.networking.AetherGuiHandler;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -8,10 +11,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.networking.AetherGuiHandler;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemLoreBook extends Item 
 {

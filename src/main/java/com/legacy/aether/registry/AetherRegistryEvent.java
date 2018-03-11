@@ -1,13 +1,5 @@
 package com.legacy.aether.registry;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
 import com.legacy.aether.Aether;
 import com.legacy.aether.api.accessories.AetherAccessory;
 import com.legacy.aether.api.enchantments.AetherEnchantment;
@@ -22,6 +14,13 @@ import com.legacy.aether.items.ItemsAether;
 import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import com.legacy.aether.registry.sounds.SoundsAether;
 import com.legacy.aether.world.AetherWorld;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class AetherRegistryEvent 
 {

@@ -1,10 +1,9 @@
 package com.legacy.aether.items.block;
 
+import com.legacy.aether.blocks.util.IAetherMeta;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-
-import com.legacy.aether.blocks.util.IAetherMeta;
 
 public class ItemSubtype extends ItemBlock
 {

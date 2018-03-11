@@ -1,7 +1,6 @@
 package com.legacy.aether.items;
 
 import com.legacy.aether.blocks.BlocksAether;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;

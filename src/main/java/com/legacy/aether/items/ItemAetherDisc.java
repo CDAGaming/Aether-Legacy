@@ -1,9 +1,8 @@
 package com.legacy.aether.items;
 
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.util.SoundEvent;
-
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemAetherDisc extends ItemRecord
 {

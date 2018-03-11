@@ -1,12 +1,11 @@
 package com.legacy.aether.containers.slots;
 
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.tile_entities.TileEntityIncubator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.tile_entities.TileEntityIncubator;
 
 public class SlotIncubator extends Slot
 {

@@ -1,8 +1,8 @@
 package com.legacy.aether.universal.jei.category;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.legacy.aether.Aether;
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.universal.jei.wrapper.FreezerRecipeWrapper;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableAnimated;
@@ -14,9 +14,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import com.legacy.aether.Aether;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.universal.jei.wrapper.FreezerRecipeWrapper;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FreezerRecipeCategory implements IRecipeCategory<FreezerRecipeWrapper>
 {

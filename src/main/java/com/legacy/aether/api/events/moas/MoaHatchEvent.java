@@ -1,8 +1,7 @@
 package com.legacy.aether.api.events.moas;
 
-import net.minecraft.tileentity.TileEntity;
-
 import com.legacy.aether.api.moa.AetherMoaType;
+import net.minecraft.tileentity.TileEntity;
 
 public class MoaHatchEvent extends MoaEvent
 {

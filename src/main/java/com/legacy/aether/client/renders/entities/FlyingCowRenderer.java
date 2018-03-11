@@ -1,13 +1,12 @@
 package com.legacy.aether.client.renders.entities;
 
-import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.util.ResourceLocation;
-
 import com.legacy.aether.client.models.entities.FlyingCowModel;
 import com.legacy.aether.client.renders.entities.layer.FlyingCowWingLayer;
 import com.legacy.aether.client.renders.entities.layer.LayerFlyingCowSaddle;
 import com.legacy.aether.entities.passive.mountable.EntityFlyingCow;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.util.ResourceLocation;
 
 public class FlyingCowRenderer extends RenderLiving<EntityFlyingCow>
 {

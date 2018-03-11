@@ -1,5 +1,7 @@
 package com.legacy.aether.entities.passive;
 
+import com.legacy.aether.entities.projectile.crystals.EntityIceyBall;
+import com.legacy.aether.registry.sounds.SoundsAether;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -7,9 +9,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.projectile.crystals.EntityIceyBall;
-import com.legacy.aether.registry.sounds.SoundsAether;
 
 public class EntityMiniCloud extends EntityFlying
 {

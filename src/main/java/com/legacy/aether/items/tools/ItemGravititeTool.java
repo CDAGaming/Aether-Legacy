@@ -1,5 +1,8 @@
 package com.legacy.aether.items.tools;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.entities.block.EntityFloatingBlock;
+import com.legacy.aether.items.util.EnumAetherToolType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -9,10 +12,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.entities.block.EntityFloatingBlock;
-import com.legacy.aether.items.util.EnumAetherToolType;
 
 public class ItemGravititeTool extends ItemAetherTool
 {

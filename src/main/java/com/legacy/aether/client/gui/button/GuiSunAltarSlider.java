@@ -1,13 +1,11 @@
 package com.legacy.aether.client.gui.button;
 
+import com.legacy.aether.networking.AetherNetworkingManager;
+import com.legacy.aether.networking.packets.PacketSetTime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.world.World;
-
 import org.lwjgl.opengl.GL11;
-
-import com.legacy.aether.networking.AetherNetworkingManager;
-import com.legacy.aether.networking.packets.PacketSetTime;
 
 public class GuiSunAltarSlider extends GuiButton
 {

@@ -1,7 +1,8 @@
 package com.legacy.aether.world.biome.decoration;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.natural.BlockHolidayLeaves;
+import com.legacy.aether.blocks.util.EnumHolidayType;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -10,9 +11,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.natural.BlockHolidayLeaves;
-import com.legacy.aether.blocks.util.EnumHolidayType;
+import java.util.Random;
 
 public class AetherGenHolidayTree extends WorldGenerator
 {

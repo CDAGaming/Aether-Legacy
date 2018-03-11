@@ -1,5 +1,6 @@
 package com.legacy.aether.blocks.natural;
 
+import com.legacy.aether.blocks.BlocksAether;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
@@ -10,8 +11,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.blocks.BlocksAether;
 
 public class BlockAetherFlower extends BlockBush
 {

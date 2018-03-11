@@ -1,5 +1,12 @@
 package com.legacy.aether.client.renders.entities.layer;
 
+import com.legacy.aether.client.models.attachments.ModelAetherWings;
+import com.legacy.aether.client.models.attachments.ModelHalo;
+import com.legacy.aether.containers.inventory.InventoryAccessories;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.items.accessories.ItemAccessory;
+import com.legacy.aether.player.PlayerAether;
+import com.legacy.aether.player.perks.AetherRankings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
@@ -10,14 +17,6 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-
-import com.legacy.aether.client.models.attachments.ModelAetherWings;
-import com.legacy.aether.client.models.attachments.ModelHalo;
-import com.legacy.aether.containers.inventory.InventoryAccessories;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.accessories.ItemAccessory;
-import com.legacy.aether.player.PlayerAether;
-import com.legacy.aether.player.perks.AetherRankings;
 
 public class AccessoriesLayer implements LayerRenderer<AbstractClientPlayer>
 {

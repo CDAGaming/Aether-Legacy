@@ -1,5 +1,6 @@
 package com.legacy.aether.entities.ai.aerwhale;
 
+import com.legacy.aether.entities.passive.EntityAerwhale;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.init.Blocks;
@@ -7,8 +8,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.passive.EntityAerwhale;
 
 public class AerwhaleAITravelCourse extends EntityAIBase
 {

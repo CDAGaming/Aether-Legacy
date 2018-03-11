@@ -1,8 +1,7 @@
 package com.legacy.aether.api.events.accessories;
 
-import net.minecraftforge.fml.common.eventhandler.Event;
-
 import com.legacy.aether.api.accessories.AetherAccessory;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class AetherAccessoryEvent extends Event
 {

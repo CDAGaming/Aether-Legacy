@@ -1,12 +1,11 @@
 package com.legacy.aether.client.renders.items.definitions;
 
+import com.legacy.aether.Aether;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-
-import com.legacy.aether.Aether;
 
 public class PhoenixBowDefinition implements ItemMeshDefinition
 {

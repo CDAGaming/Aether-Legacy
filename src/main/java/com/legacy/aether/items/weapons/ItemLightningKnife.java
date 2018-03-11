@@ -1,5 +1,9 @@
 package com.legacy.aether.items.weapons;
 
+import com.legacy.aether.entities.projectile.EntityLightningKnife;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import com.legacy.aether.registry.sounds.SoundsAether;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -9,11 +13,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.projectile.EntityLightningKnife;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
-import com.legacy.aether.registry.sounds.SoundsAether;
 
 public class ItemLightningKnife extends Item
 {

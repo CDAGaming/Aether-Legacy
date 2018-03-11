@@ -1,9 +1,8 @@
 package com.legacy.aether.api.events.freezables;
 
+import com.legacy.aether.api.freezables.AetherFreezable;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.eventhandler.Event;
-
-import com.legacy.aether.api.freezables.AetherFreezable;
 
 public class AetherFreezableEvent extends Event
 {

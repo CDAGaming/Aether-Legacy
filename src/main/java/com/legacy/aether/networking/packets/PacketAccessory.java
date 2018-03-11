@@ -1,10 +1,9 @@
 package com.legacy.aether.networking.packets;
 
-import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.player.EntityPlayer;
-
 import com.legacy.aether.containers.inventory.InventoryAccessories;
 import com.legacy.aether.player.PlayerAether;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class PacketAccessory extends AetherPacket<PacketAccessory>
 {

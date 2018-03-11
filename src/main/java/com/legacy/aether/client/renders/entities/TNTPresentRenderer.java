@@ -1,5 +1,7 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.entities.block.EntityTNTPresent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.GlStateManager;
@@ -8,9 +10,6 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.entities.block.EntityTNTPresent;
 
 public class TNTPresentRenderer extends Render<EntityTNTPresent>
 {

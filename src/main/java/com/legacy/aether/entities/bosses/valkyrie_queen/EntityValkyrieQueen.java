@@ -1,5 +1,15 @@
 package com.legacy.aether.entities.bosses.valkyrie_queen;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.dungeon.BlockDungeonBase;
+import com.legacy.aether.blocks.util.EnumStoneType;
+import com.legacy.aether.entities.ai.EntityAIAttackContinuously;
+import com.legacy.aether.entities.ai.valkyrie_queen.ValkyrieQueenAIWander;
+import com.legacy.aether.entities.projectile.crystals.EntityThunderBall;
+import com.legacy.aether.entities.util.AetherNameGen;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.player.PlayerAether;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -32,17 +42,6 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.dungeon.BlockDungeonBase;
-import com.legacy.aether.blocks.util.EnumStoneType;
-import com.legacy.aether.entities.ai.EntityAIAttackContinuously;
-import com.legacy.aether.entities.ai.valkyrie_queen.ValkyrieQueenAIWander;
-import com.legacy.aether.entities.projectile.crystals.EntityThunderBall;
-import com.legacy.aether.entities.util.AetherNameGen;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.player.PlayerAether;
 
 public class EntityValkyrieQueen extends EntityMob 
 {

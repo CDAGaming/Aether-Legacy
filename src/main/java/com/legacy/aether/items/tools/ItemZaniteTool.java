@@ -1,10 +1,9 @@
 package com.legacy.aether.items.tools;
 
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemStack;
-
 import com.legacy.aether.items.ItemsAether;
 import com.legacy.aether.items.util.EnumAetherToolType;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
 
 public class ItemZaniteTool extends ItemAetherTool
 {

@@ -1,8 +1,5 @@
 package com.legacy.aether.entities;
 
-import net.minecraft.entity.Entity;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
-
 import com.legacy.aether.Aether;
 import com.legacy.aether.entities.block.EntityFloatingBlock;
 import com.legacy.aether.entities.block.EntityTNTPresent;
@@ -11,32 +8,20 @@ import com.legacy.aether.entities.bosses.EntityValkyrie;
 import com.legacy.aether.entities.bosses.slider.EntitySlider;
 import com.legacy.aether.entities.bosses.sun_spirit.EntitySunSpirit;
 import com.legacy.aether.entities.bosses.valkyrie_queen.EntityValkyrieQueen;
-import com.legacy.aether.entities.hostile.EntityAechorPlant;
-import com.legacy.aether.entities.hostile.EntityCockatrice;
-import com.legacy.aether.entities.hostile.EntityMimic;
-import com.legacy.aether.entities.hostile.EntitySentry;
-import com.legacy.aether.entities.hostile.EntityWhirlwind;
-import com.legacy.aether.entities.hostile.EntityZephyr;
+import com.legacy.aether.entities.hostile.*;
 import com.legacy.aether.entities.passive.EntityAerwhale;
 import com.legacy.aether.entities.passive.EntityMiniCloud;
 import com.legacy.aether.entities.passive.EntitySheepuff;
-import com.legacy.aether.entities.passive.mountable.EntityAerbunny;
-import com.legacy.aether.entities.passive.mountable.EntityFlyingCow;
-import com.legacy.aether.entities.passive.mountable.EntityMoa;
-import com.legacy.aether.entities.passive.mountable.EntityParachute;
-import com.legacy.aether.entities.passive.mountable.EntityPhyg;
-import com.legacy.aether.entities.passive.mountable.EntitySwet;
-import com.legacy.aether.entities.projectile.EntityHammerProjectile;
-import com.legacy.aether.entities.projectile.EntityLightningKnife;
-import com.legacy.aether.entities.projectile.EntityPhoenixArrow;
-import com.legacy.aether.entities.projectile.EntityPoisonNeedle;
-import com.legacy.aether.entities.projectile.EntityZephyrSnowball;
+import com.legacy.aether.entities.passive.mountable.*;
+import com.legacy.aether.entities.projectile.*;
 import com.legacy.aether.entities.projectile.crystals.EntityFireBall;
 import com.legacy.aether.entities.projectile.crystals.EntityIceyBall;
 import com.legacy.aether.entities.projectile.crystals.EntityThunderBall;
 import com.legacy.aether.entities.projectile.darts.EntityDartEnchanted;
 import com.legacy.aether.entities.projectile.darts.EntityDartGolden;
 import com.legacy.aether.entities.projectile.darts.EntityDartPoison;
+import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class AetherEntities 
 {

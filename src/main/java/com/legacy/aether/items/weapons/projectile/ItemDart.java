@@ -1,13 +1,12 @@
 package com.legacy.aether.items.weapons.projectile;
 
+import com.legacy.aether.items.util.EnumDartType;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-
-import com.legacy.aether.items.util.EnumDartType;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemDart extends Item
 {

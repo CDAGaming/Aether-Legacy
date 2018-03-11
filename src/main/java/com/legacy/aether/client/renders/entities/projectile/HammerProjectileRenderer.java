@@ -1,5 +1,6 @@
 package com.legacy.aether.client.renders.entities.projectile;
 
+import com.legacy.aether.entities.projectile.EntityHammerProjectile;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -7,8 +8,6 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.entities.projectile.EntityHammerProjectile;
 
 public class HammerProjectileRenderer extends Render<EntityHammerProjectile>
 {

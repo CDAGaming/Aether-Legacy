@@ -1,12 +1,11 @@
 package com.legacy.aether.networking.packets;
 
-import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.player.EntityPlayer;
-
 import com.legacy.aether.networking.AetherNetworkingManager;
 import com.legacy.aether.player.PlayerAether;
 import com.legacy.aether.player.perks.util.DonatorMoaSkin;
 import com.legacy.aether.player.perks.util.EnumAetherPerkType;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class PacketPerkChanged extends AetherPacket<PacketPerkChanged>
 {

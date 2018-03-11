@@ -1,14 +1,13 @@
 package com.legacy.aether.containers.inventory;
 
-import javax.annotation.Nullable;
-
+import com.legacy.aether.advancements.AetherAdvancements;
+import com.legacy.aether.items.ItemsAether;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
 
-import com.legacy.aether.advancements.AetherAdvancements;
-import com.legacy.aether.items.ItemsAether;
+import javax.annotation.Nullable;
 
 public class InventoryLore extends InventoryBasic
 {

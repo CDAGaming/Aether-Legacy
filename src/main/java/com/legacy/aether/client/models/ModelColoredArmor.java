@@ -1,5 +1,6 @@
 package com.legacy.aether.client.models;
 
+import com.legacy.aether.items.armor.ItemAetherArmor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -8,8 +9,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import com.legacy.aether.items.armor.ItemAetherArmor;
 
 public class ModelColoredArmor extends ModelBiped
 {

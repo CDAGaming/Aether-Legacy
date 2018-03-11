@@ -1,9 +1,5 @@
 package com.legacy.aether.api.events;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.MinecraftForge;
-
 import com.legacy.aether.api.accessories.AetherAccessory;
 import com.legacy.aether.api.enchantments.AetherEnchantment;
 import com.legacy.aether.api.events.accessories.ValidAccessoryEvent;
@@ -12,6 +8,9 @@ import com.legacy.aether.api.events.freezables.AetherFreezableEvent;
 import com.legacy.aether.api.events.moas.MoaHatchEvent;
 import com.legacy.aether.api.freezables.AetherFreezable;
 import com.legacy.aether.api.moa.AetherMoaType;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.MinecraftForge;
 
 public class AetherHooks
 {

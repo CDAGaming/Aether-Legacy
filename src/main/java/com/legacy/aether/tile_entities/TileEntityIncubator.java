@@ -1,13 +1,5 @@
 package com.legacy.aether.tile_entities;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.NonNullList;
-
 import com.legacy.aether.api.events.AetherHooks;
 import com.legacy.aether.blocks.BlocksAether;
 import com.legacy.aether.blocks.container.BlockAetherContainer;
@@ -15,6 +7,13 @@ import com.legacy.aether.entities.passive.mountable.EntityMoa;
 import com.legacy.aether.items.ItemMoaEgg;
 import com.legacy.aether.items.ItemsAether;
 import com.legacy.aether.tile_entities.util.AetherTileEntity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 
 public class TileEntityIncubator extends AetherTileEntity
 {

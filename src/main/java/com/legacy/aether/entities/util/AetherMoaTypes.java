@@ -1,11 +1,10 @@
 package com.legacy.aether.entities.util;
 
-import net.minecraftforge.registries.IForgeRegistry;
-
 import com.legacy.aether.Aether;
 import com.legacy.aether.api.moa.AetherMoaType;
 import com.legacy.aether.api.moa.MoaProperties;
 import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class AetherMoaTypes
 {

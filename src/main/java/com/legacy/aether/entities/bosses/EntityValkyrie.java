@@ -1,5 +1,7 @@
 package com.legacy.aether.entities.bosses;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.items.ItemsAether;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -18,9 +20,6 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.items.ItemsAether;
 
 public class EntityValkyrie extends EntityMob
 {

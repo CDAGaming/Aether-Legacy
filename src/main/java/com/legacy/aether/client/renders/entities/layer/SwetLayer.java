@@ -1,14 +1,13 @@
 package com.legacy.aether.client.renders.entities.layer;
 
+import com.legacy.aether.client.renders.entities.SwetRenderer;
+import com.legacy.aether.entities.passive.mountable.EntitySwet;
 import net.minecraft.client.model.ModelSlime;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.GlStateManager.DestFactor;
 import net.minecraft.client.renderer.GlStateManager.SourceFactor;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-
-import com.legacy.aether.client.renders.entities.SwetRenderer;
-import com.legacy.aether.entities.passive.mountable.EntitySwet;
 
 public class SwetLayer implements LayerRenderer<EntitySwet> 
 {

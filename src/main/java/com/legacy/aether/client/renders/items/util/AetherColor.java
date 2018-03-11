@@ -1,5 +1,10 @@
 package com.legacy.aether.client.renders.items.util;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.natural.BlockAercloud;
+import com.legacy.aether.items.ItemMoaEgg;
+import com.legacy.aether.items.accessories.ItemAccessory;
+import com.legacy.aether.items.armor.ItemAetherArmor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -7,12 +12,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.natural.BlockAercloud;
-import com.legacy.aether.items.ItemMoaEgg;
-import com.legacy.aether.items.accessories.ItemAccessory;
-import com.legacy.aether.items.armor.ItemAetherArmor;
 
 public class AetherColor implements IItemColor, IBlockColor
 {

@@ -1,9 +1,8 @@
 package com.legacy.aether.networking.packets;
 
+import com.legacy.aether.Aether;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
-
-import com.legacy.aether.Aether;
 
 public class PacketOpenContainer extends AetherPacket<PacketOpenContainer>
 {

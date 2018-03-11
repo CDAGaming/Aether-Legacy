@@ -1,7 +1,11 @@
 package com.legacy.aether.items.accessories;
 
-import java.util.List;
-
+import com.google.common.base.Predicates;
+import com.legacy.aether.Aether;
+import com.legacy.aether.api.accessories.AccessoryType;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.player.PlayerAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -11,24 +15,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EntitySelectors;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.google.common.base.Predicates;
-import com.legacy.aether.Aether;
-import com.legacy.aether.api.accessories.AccessoryType;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.player.PlayerAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import java.util.List;
 
 public class ItemAccessory extends Item
 {

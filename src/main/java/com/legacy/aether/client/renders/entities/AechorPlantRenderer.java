@@ -1,13 +1,11 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.client.models.entities.AechorPlantModel;
+import com.legacy.aether.entities.hostile.EntityAechorPlant;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
-import com.legacy.aether.client.models.entities.AechorPlantModel;
-import com.legacy.aether.entities.hostile.EntityAechorPlant;
 
 public class AechorPlantRenderer extends RenderLiving<EntityAechorPlant>
 {

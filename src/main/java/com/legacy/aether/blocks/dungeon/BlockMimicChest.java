@@ -1,5 +1,7 @@
 package com.legacy.aether.blocks.dungeon;
 
+import com.legacy.aether.entities.hostile.EntityMimic;
+import com.legacy.aether.tile_entities.TileEntityChestMimic;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,9 +15,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.hostile.EntityMimic;
-import com.legacy.aether.tile_entities.TileEntityChestMimic;
 
 public class BlockMimicChest extends BlockChest
 {

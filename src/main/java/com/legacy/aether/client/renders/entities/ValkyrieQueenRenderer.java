@@ -1,11 +1,10 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.client.models.entities.ValkyrieModel;
+import com.legacy.aether.entities.bosses.valkyrie_queen.EntityValkyrieQueen;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.client.models.entities.ValkyrieModel;
-import com.legacy.aether.entities.bosses.valkyrie_queen.EntityValkyrieQueen;
 
 public class ValkyrieQueenRenderer extends RenderLiving<EntityValkyrieQueen> 
 {

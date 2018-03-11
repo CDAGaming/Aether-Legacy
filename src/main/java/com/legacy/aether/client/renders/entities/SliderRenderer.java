@@ -1,12 +1,11 @@
 package com.legacy.aether.client.renders.entities;
 
-import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.util.ResourceLocation;
-
 import com.legacy.aether.client.models.entities.SliderModel;
 import com.legacy.aether.client.renders.entities.layer.SliderLayer;
 import com.legacy.aether.entities.bosses.slider.EntitySlider;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.util.ResourceLocation;
 
 public class SliderRenderer extends RenderLiving<EntitySlider>
 {

@@ -1,19 +1,5 @@
 package com.legacy.aether.items.weapons.projectile;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.world.World;
-
 import com.legacy.aether.entities.projectile.darts.EntityDartBase;
 import com.legacy.aether.entities.projectile.darts.EntityDartEnchanted;
 import com.legacy.aether.entities.projectile.darts.EntityDartGolden;
@@ -22,6 +8,15 @@ import com.legacy.aether.items.ItemsAether;
 import com.legacy.aether.items.util.EnumDartShooterType;
 import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import com.legacy.aether.registry.sounds.SoundsAether;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.*;
+import net.minecraft.world.World;
 
 public class ItemDartShooter extends Item
 {

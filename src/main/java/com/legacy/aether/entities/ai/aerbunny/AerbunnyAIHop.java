@@ -1,8 +1,7 @@
 package com.legacy.aether.entities.ai.aerbunny;
 
-import net.minecraft.entity.ai.EntityAIBase;
-
 import com.legacy.aether.entities.passive.mountable.EntityAerbunny;
+import net.minecraft.entity.ai.EntityAIBase;
 
 public class AerbunnyAIHop extends EntityAIBase
 {

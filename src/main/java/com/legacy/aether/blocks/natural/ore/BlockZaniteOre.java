@@ -1,7 +1,6 @@
 package com.legacy.aether.blocks.natural.ore;
 
-import java.util.Random;
-
+import com.legacy.aether.items.ItemsAether;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -10,7 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 
-import com.legacy.aether.items.ItemsAether;
+import java.util.Random;
 
 public class BlockZaniteOre extends Block
 {

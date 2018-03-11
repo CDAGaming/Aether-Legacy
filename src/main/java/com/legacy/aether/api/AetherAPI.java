@@ -1,8 +1,11 @@
 package com.legacy.aether.api;
 
-import java.util.List;
-import java.util.Random;
-
+import com.legacy.aether.api.accessories.AetherAccessory;
+import com.legacy.aether.api.enchantments.AetherEnchantment;
+import com.legacy.aether.api.enchantments.AetherEnchantmentFuel;
+import com.legacy.aether.api.freezables.AetherFreezable;
+import com.legacy.aether.api.freezables.AetherFreezableFuel;
+import com.legacy.aether.api.moa.AetherMoaType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -12,12 +15,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
 
-import com.legacy.aether.api.accessories.AetherAccessory;
-import com.legacy.aether.api.enchantments.AetherEnchantment;
-import com.legacy.aether.api.enchantments.AetherEnchantmentFuel;
-import com.legacy.aether.api.freezables.AetherFreezable;
-import com.legacy.aether.api.freezables.AetherFreezableFuel;
-import com.legacy.aether.api.moa.AetherMoaType;
+import java.util.List;
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = "aether_legacy")
 public class AetherAPI

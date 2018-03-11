@@ -1,10 +1,9 @@
 package com.legacy.aether.entities.projectile.darts;
 
+import com.legacy.aether.items.ItemsAether;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import com.legacy.aether.items.ItemsAether;
 
 public class EntityDartEnchanted extends EntityDartBase
 {

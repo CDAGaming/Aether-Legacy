@@ -1,7 +1,6 @@
 package com.legacy.aether.blocks.decorative;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.SoundType;
@@ -16,7 +15,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.legacy.aether.blocks.BlocksAether;
+import java.util.Random;
 
 public class BlockAetherSlab extends BlockSlab 
 {

@@ -1,17 +1,16 @@
 package com.legacy.aether.registry;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.IResource;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import org.apache.commons.io.IOUtils;
+
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-
-import org.apache.commons.io.IOUtils;
 
 public class AetherLore 
 {

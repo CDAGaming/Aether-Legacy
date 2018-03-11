@@ -1,9 +1,8 @@
 package com.legacy.aether.blocks.decorative;
 
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.SoundType;
-
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class BlockAmbrosiumTorch extends BlockTorch
 {

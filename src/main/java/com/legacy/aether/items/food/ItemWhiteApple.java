@@ -1,10 +1,9 @@
 package com.legacy.aether.items.food;
 
+import com.legacy.aether.player.PlayerAether;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import com.legacy.aether.player.PlayerAether;
 
 public class ItemWhiteApple extends ItemAetherFood
 {

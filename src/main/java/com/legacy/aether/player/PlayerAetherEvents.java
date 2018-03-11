@@ -4,7 +4,6 @@ import com.legacy.aether.Aether;
 import com.legacy.aether.advancements.AetherAdvancements;
 import com.legacy.aether.items.ItemsAether;
 import com.legacy.aether.player.capability.PlayerAetherProvider;
-
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandClearInventory;
 import net.minecraft.entity.Entity;

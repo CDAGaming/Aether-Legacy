@@ -1,5 +1,6 @@
 package com.legacy.aether.blocks;
 
+import com.legacy.aether.Aether;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -12,8 +13,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-
-import com.legacy.aether.Aether;
 
 public class BlockSunAltar extends Block
 {

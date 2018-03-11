@@ -1,13 +1,12 @@
 package com.legacy.aether.entities.ai.zephyr;
 
+import com.legacy.aether.entities.hostile.EntityZephyr;
+import com.legacy.aether.entities.projectile.EntityZephyrSnowball;
+import com.legacy.aether.registry.sounds.SoundsAether;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.hostile.EntityZephyr;
-import com.legacy.aether.entities.projectile.EntityZephyrSnowball;
-import com.legacy.aether.registry.sounds.SoundsAether;
 
 public class ZephyrAIShootTarget extends EntityAIBase
 {

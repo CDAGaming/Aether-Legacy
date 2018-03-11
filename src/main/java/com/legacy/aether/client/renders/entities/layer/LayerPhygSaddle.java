@@ -2,7 +2,6 @@ package com.legacy.aether.client.renders.entities.layer;
 
 import com.legacy.aether.client.renders.entities.PhygRenderer;
 import com.legacy.aether.entities.passive.mountable.EntityPhyg;
-
 import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;

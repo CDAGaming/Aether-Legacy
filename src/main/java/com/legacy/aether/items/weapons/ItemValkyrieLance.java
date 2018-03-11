@@ -1,7 +1,7 @@
 package com.legacy.aether.items.weapons;
 
-import java.util.List;
-
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,8 +11,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import java.util.List;
 
 public class ItemValkyrieLance extends ItemSword
 {

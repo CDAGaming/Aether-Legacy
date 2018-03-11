@@ -1,14 +1,5 @@
 package com.legacy.aether;
 
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
 import com.legacy.aether.advancements.AetherAdvancements;
 import com.legacy.aether.entities.AetherEntities;
 import com.legacy.aether.networking.AetherNetworkingManager;
@@ -17,6 +8,14 @@ import com.legacy.aether.registry.AetherRegistryEvent;
 import com.legacy.aether.registry.sounds.SoundsAether;
 import com.legacy.aether.tile_entities.AetherTileEntities;
 import com.legacy.aether.world.AetherWorld;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(name = "Aether Legacy", modid = Aether.modid, version = Aether.version, acceptedMinecraftVersions = "1.12.2")
 public class Aether 

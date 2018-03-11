@@ -1,5 +1,6 @@
 package com.legacy.aether.client.renders.entities.projectile;
 
+import com.legacy.aether.entities.projectile.EntityZephyrSnowball;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.entity.Render;
@@ -7,11 +8,8 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-
-import com.legacy.aether.entities.projectile.EntityZephyrSnowball;
 
 public class ZephyrSnowballRenderer extends Render<EntityZephyrSnowball>
 {

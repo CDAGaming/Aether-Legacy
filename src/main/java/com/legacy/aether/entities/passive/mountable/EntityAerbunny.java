@@ -1,31 +1,21 @@
 package com.legacy.aether.entities.passive.mountable;
 
+import com.legacy.aether.entities.ai.aerbunny.AerbunnyAIHop;
+import com.legacy.aether.entities.passive.EntityAetherAnimal;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.player.PlayerAether;
+import com.legacy.aether.registry.sounds.SoundsAether;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.ai.aerbunny.AerbunnyAIHop;
-import com.legacy.aether.entities.passive.EntityAetherAnimal;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.player.PlayerAether;
-import com.legacy.aether.registry.sounds.SoundsAether;
 
 public class EntityAerbunny extends EntityAetherAnimal
 {

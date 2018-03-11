@@ -1,9 +1,8 @@
 package com.legacy.aether.api.events.accessories;
 
+import com.legacy.aether.api.accessories.AetherAccessory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
-
-import com.legacy.aether.api.accessories.AetherAccessory;
 
 @Cancelable
 public class ValidAccessoryEvent extends AetherAccessoryEvent

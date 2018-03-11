@@ -1,15 +1,5 @@
 package com.legacy.aether.client.gui.inventory;
 
-import java.io.IOException;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.gui.inventory.GuiInventory;
-
-import org.lwjgl.input.Keyboard;
-
 import com.legacy.aether.entities.passive.mountable.EntityMoa;
 import com.legacy.aether.entities.util.AetherMoaTypes;
 import com.legacy.aether.networking.AetherNetworkingManager;
@@ -18,6 +8,14 @@ import com.legacy.aether.player.PlayerAether;
 import com.legacy.aether.player.perks.AetherRankings;
 import com.legacy.aether.player.perks.util.DonatorMoaSkin;
 import com.legacy.aether.player.perks.util.EnumAetherPerkType;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import org.lwjgl.input.Keyboard;
+
+import java.io.IOException;
 
 public class GuiAetherPerks extends GuiScreen 
 {

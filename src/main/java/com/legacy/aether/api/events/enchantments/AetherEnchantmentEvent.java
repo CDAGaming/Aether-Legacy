@@ -1,9 +1,8 @@
 package com.legacy.aether.api.events.enchantments;
 
+import com.legacy.aether.api.enchantments.AetherEnchantment;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.eventhandler.Event;
-
-import com.legacy.aether.api.enchantments.AetherEnchantment;
 
 public class AetherEnchantmentEvent extends Event
 {

@@ -1,7 +1,7 @@
 package com.legacy.aether.blocks.natural;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.items.ItemsAether;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
@@ -18,8 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.items.ItemsAether;
+import java.util.Random;
 
 public class BlockBerryBush extends BlockAetherFlower
 {

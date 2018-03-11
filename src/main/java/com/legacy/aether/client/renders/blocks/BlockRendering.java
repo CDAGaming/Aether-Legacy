@@ -1,12 +1,20 @@
 package com.legacy.aether.client.renders.blocks;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.container.BlockAetherContainer;
+import com.legacy.aether.blocks.decorative.BlockAetherFenceGate;
+import com.legacy.aether.blocks.natural.*;
+import com.legacy.aether.blocks.natural.ore.BlockAmbrosiumOre;
+import com.legacy.aether.blocks.util.EnumCloudType;
+import com.legacy.aether.blocks.util.EnumStoneType;
+import com.legacy.aether.client.renders.AetherEntityRenderingRegistry;
+import com.legacy.aether.client.renders.items.util.AetherColor;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.IStateMapper;
-import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,24 +22,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.container.BlockAetherContainer;
-import com.legacy.aether.blocks.decorative.BlockAetherFenceGate;
-import com.legacy.aether.blocks.natural.BlockAetherDirt;
-import com.legacy.aether.blocks.natural.BlockAetherGrass;
-import com.legacy.aether.blocks.natural.BlockAetherLeaves;
-import com.legacy.aether.blocks.natural.BlockAetherLog;
-import com.legacy.aether.blocks.natural.BlockCrystalLeaves;
-import com.legacy.aether.blocks.natural.BlockHolidayLeaves;
-import com.legacy.aether.blocks.natural.BlockHolystone;
-import com.legacy.aether.blocks.natural.BlockQuicksoil;
-import com.legacy.aether.blocks.natural.ore.BlockAmbrosiumOre;
-import com.legacy.aether.blocks.util.EnumCloudType;
-import com.legacy.aether.blocks.util.EnumStoneType;
-import com.legacy.aether.client.renders.AetherEntityRenderingRegistry;
-import com.legacy.aether.client.renders.items.util.AetherColor;
 
 public class BlockRendering 
 {

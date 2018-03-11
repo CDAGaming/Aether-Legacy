@@ -1,15 +1,14 @@
 package com.legacy.aether.client.renders.entities.layer;
 
+import com.legacy.aether.client.models.entities.MoaModel;
+import com.legacy.aether.entities.passive.mountable.EntityMoa;
+import com.legacy.aether.player.PlayerAether;
+import com.legacy.aether.player.perks.util.DonatorMoaSkin;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.client.models.entities.MoaModel;
-import com.legacy.aether.entities.passive.mountable.EntityMoa;
-import com.legacy.aether.player.PlayerAether;
-import com.legacy.aether.player.perks.util.DonatorMoaSkin;
 
 public class MoaDonatorLayer implements LayerRenderer<EntityMoa>
 {

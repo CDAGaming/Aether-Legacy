@@ -1,5 +1,6 @@
 package com.legacy.aether.client.gui;
 
+import com.legacy.aether.tile_entities.TileEntityTreasureChest;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -8,8 +9,6 @@ import net.minecraft.inventory.ContainerChest;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.tile_entities.TileEntityTreasureChest;
 
 @SideOnly(Side.CLIENT)
 public class GuiTreasureChest extends GuiContainer

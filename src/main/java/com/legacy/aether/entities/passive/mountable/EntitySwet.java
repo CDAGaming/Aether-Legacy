@@ -1,7 +1,9 @@
 package com.legacy.aether.entities.passive.mountable;
 
-import java.util.List;
-
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.entities.util.EntityMountable;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.player.PlayerAether;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,18 +17,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.entities.util.EntityMountable;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.player.PlayerAether;
+import java.util.List;
 
 public class EntitySwet extends EntityMountable
 {

@@ -1,7 +1,11 @@
 package com.legacy.aether.tile_entities;
 
-import java.util.Map;
-
+import com.legacy.aether.api.AetherAPI;
+import com.legacy.aether.api.enchantments.AetherEnchantment;
+import com.legacy.aether.api.events.AetherHooks;
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.container.BlockAetherContainer;
+import com.legacy.aether.tile_entities.util.AetherTileEntity;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
@@ -11,12 +15,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.legacy.aether.api.AetherAPI;
-import com.legacy.aether.api.enchantments.AetherEnchantment;
-import com.legacy.aether.api.events.AetherHooks;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.container.BlockAetherContainer;
-import com.legacy.aether.tile_entities.util.AetherTileEntity;
+import java.util.Map;
 
 public class TileEntityEnchanter extends AetherTileEntity
 {

@@ -1,14 +1,13 @@
 package com.legacy.aether.entities.passive;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.items.ItemsAether;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.items.ItemsAether;
+import java.util.Random;
 
 public abstract class EntityAetherAnimal extends EntityAnimal
 {

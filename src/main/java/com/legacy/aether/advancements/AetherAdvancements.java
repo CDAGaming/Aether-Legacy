@@ -1,12 +1,11 @@
 package com.legacy.aether.advancements;
 
-import java.lang.reflect.Method;
-
+import com.legacy.aether.Aether;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.ICriterionTrigger;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-import com.legacy.aether.Aether;
+import java.lang.reflect.Method;
 
 public class AetherAdvancements 
 {

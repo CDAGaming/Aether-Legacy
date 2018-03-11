@@ -1,7 +1,9 @@
 package com.legacy.aether.blocks.dungeon;
 
-import java.util.Random;
-
+import com.legacy.aether.Aether;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.networking.AetherGuiHandler;
+import com.legacy.aether.tile_entities.TileEntityTreasureChest;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
@@ -17,21 +19,14 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.legacy.aether.Aether;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.networking.AetherGuiHandler;
-import com.legacy.aether.tile_entities.TileEntityTreasureChest;
+import java.util.Random;
 
 public class BlockTreasureChest extends BlockContainer
 {

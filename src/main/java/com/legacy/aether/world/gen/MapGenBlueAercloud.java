@@ -1,7 +1,6 @@
 package com.legacy.aether.world.gen;
 
-import java.util.Random;
-
+import com.legacy.aether.world.gen.components.ComponentBlueAercloud;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -9,7 +8,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.StructureStart;
 
-import com.legacy.aether.world.gen.components.ComponentBlueAercloud;
+import java.util.Random;
 
 public class MapGenBlueAercloud extends MapGenStructure
 {

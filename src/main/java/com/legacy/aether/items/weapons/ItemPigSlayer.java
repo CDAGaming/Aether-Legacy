@@ -1,7 +1,7 @@
 package com.legacy.aether.items.weapons;
 
-import java.util.Random;
-
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,8 +11,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import java.util.Random;
 
 public class ItemPigSlayer extends ItemSword
 {

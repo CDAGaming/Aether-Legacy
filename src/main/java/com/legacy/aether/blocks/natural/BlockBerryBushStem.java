@@ -1,7 +1,6 @@
 package com.legacy.aether.blocks.natural;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
@@ -14,7 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.legacy.aether.blocks.BlocksAether;
+import java.util.Random;
 
 public class BlockBerryBushStem extends BlockAetherFlower implements IGrowable
 {

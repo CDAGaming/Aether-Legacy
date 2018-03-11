@@ -1,14 +1,12 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.client.renders.entities.layer.SentryLayer;
+import com.legacy.aether.entities.hostile.EntitySentry;
 import net.minecraft.client.model.ModelSlime;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
-import com.legacy.aether.client.renders.entities.layer.SentryLayer;
-import com.legacy.aether.entities.hostile.EntitySentry;
 
 public class SentryRenderer extends RenderLiving<EntitySentry>
 {

@@ -1,5 +1,9 @@
 package com.legacy.aether.items.weapons;
 
+import com.legacy.aether.entities.projectile.EntityHammerProjectile;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.player.PlayerAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
@@ -10,11 +14,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.projectile.EntityHammerProjectile;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.player.PlayerAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemNotchHammer extends ItemSword
 {

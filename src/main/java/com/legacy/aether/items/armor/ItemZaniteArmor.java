@@ -1,7 +1,7 @@
 package com.legacy.aether.items.armor;
 
-import java.util.UUID;
-
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -12,8 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
+import java.util.UUID;
 
 public class ItemZaniteArmor extends ItemAetherArmor implements ISpecialArmor
 {

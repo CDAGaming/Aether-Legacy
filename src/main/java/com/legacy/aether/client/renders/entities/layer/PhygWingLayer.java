@@ -1,11 +1,10 @@
 package com.legacy.aether.client.renders.entities.layer;
 
+import com.legacy.aether.client.models.entities.PhygWingModel;
+import com.legacy.aether.entities.passive.mountable.EntityPhyg;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.client.models.entities.PhygWingModel;
-import com.legacy.aether.entities.passive.mountable.EntityPhyg;
 
 public class PhygWingLayer implements LayerRenderer<EntityPhyg> 
 {

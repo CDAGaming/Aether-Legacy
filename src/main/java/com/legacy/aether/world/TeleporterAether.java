@@ -1,10 +1,10 @@
 package com.legacy.aether.world;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.portal.BlockAetherPortal;
+import com.legacy.aether.world.util.AetherPortalPosition;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-
-import java.util.Random;
-
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockPattern;
@@ -19,9 +19,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.portal.BlockAetherPortal;
-import com.legacy.aether.world.util.AetherPortalPosition;
+import java.util.Random;
 
 public class TeleporterAether extends Teleporter
 {

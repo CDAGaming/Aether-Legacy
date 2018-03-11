@@ -1,16 +1,15 @@
 package com.legacy.aether.player.abilities;
 
-import java.util.Random;
-
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.player.PlayerAether;
+import com.legacy.aether.player.movement.AetherLiquidMovement;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.fml.client.FMLClientHandler;
 
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.player.PlayerAether;
-import com.legacy.aether.player.movement.AetherLiquidMovement;
+import java.util.Random;
 
 public class AbilityArmor extends Ability
 {

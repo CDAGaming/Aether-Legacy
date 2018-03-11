@@ -1,9 +1,8 @@
 package com.legacy.aether.player.abilities;
 
+import com.legacy.aether.player.PlayerAether;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
-
-import com.legacy.aether.player.PlayerAether;
 
 public abstract class Ability 
 {

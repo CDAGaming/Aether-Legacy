@@ -1,11 +1,10 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.client.models.entities.MiniCloudModel;
+import com.legacy.aether.entities.passive.EntityMiniCloud;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.client.models.entities.MiniCloudModel;
-import com.legacy.aether.entities.passive.EntityMiniCloud;
 
 public class MiniCloudRenderer extends RenderLiving<EntityMiniCloud>
 {

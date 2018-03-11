@@ -1,5 +1,8 @@
 package com.legacy.aether.items.tools;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.items.util.EnumAetherToolType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -7,10 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.util.EnumAetherToolType;
 
 public class ItemHolystoneTool extends ItemAetherTool
 {

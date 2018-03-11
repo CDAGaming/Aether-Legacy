@@ -1,5 +1,9 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.natural.BlockAercloud;
+import com.legacy.aether.blocks.util.EnumCloudType;
+import com.legacy.aether.entities.passive.mountable.EntityParachute;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -7,11 +11,6 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.natural.BlockAercloud;
-import com.legacy.aether.blocks.util.EnumCloudType;
-import com.legacy.aether.entities.passive.mountable.EntityParachute;
 
 public class ParachuteRenderer extends Render<EntityParachute>
 {

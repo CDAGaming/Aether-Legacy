@@ -1,10 +1,9 @@
 package com.legacy.aether.entities.ai.zephyr;
 
+import com.legacy.aether.entities.hostile.EntityZephyr;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
-
-import com.legacy.aether.entities.hostile.EntityZephyr;
 
 public class ZephyrAITravelCourse extends EntityAIBase
 {

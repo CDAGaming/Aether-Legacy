@@ -1,9 +1,9 @@
 package com.legacy.aether;
 
+import net.minecraftforge.common.config.Configuration;
+
 import java.io.File;
 import java.io.IOException;
-
-import net.minecraftforge.common.config.Configuration;
 
 public class AetherConfig 
 {

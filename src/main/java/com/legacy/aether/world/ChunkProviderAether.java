@@ -1,8 +1,10 @@
 package com.legacy.aether.world;
 
-import java.util.List;
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.world.biome.decoration.AetherGenGoldenIsland;
+import com.legacy.aether.world.dungeon.BronzeDungeon;
+import com.legacy.aether.world.dungeon.util.AetherDungeon;
+import com.legacy.aether.world.gen.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureType;
@@ -19,17 +21,8 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.world.biome.decoration.AetherGenGoldenIsland;
-import com.legacy.aether.world.dungeon.BronzeDungeon;
-import com.legacy.aether.world.dungeon.util.AetherDungeon;
-import com.legacy.aether.world.gen.MapGenQuicksoil;
-import com.legacy.aether.world.gen.MapGenBlueAercloud;
-import com.legacy.aether.world.gen.MapGenBronzeDungeon;
-import com.legacy.aether.world.gen.MapGenColdAercloud;
-import com.legacy.aether.world.gen.MapGenGoldenAercloud;
-import com.legacy.aether.world.gen.MapGenGoldenDungeon;
-import com.legacy.aether.world.gen.MapGenSilverDungeon;
+import java.util.List;
+import java.util.Random;
 
 public class ChunkProviderAether implements  IChunkGenerator
 {

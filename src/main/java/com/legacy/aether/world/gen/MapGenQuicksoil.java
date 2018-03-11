@@ -1,11 +1,10 @@
 package com.legacy.aether.world.gen;
 
+import com.legacy.aether.blocks.BlocksAether;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.MapGenBase;
-
-import com.legacy.aether.blocks.BlocksAether;
 
 public class MapGenQuicksoil extends MapGenBase
 {

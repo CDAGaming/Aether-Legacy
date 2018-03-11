@@ -1,12 +1,5 @@
 package com.legacy.aether.registry;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.registries.IForgeRegistry;
-
 import com.legacy.aether.api.accessories.AccessoryType;
 import com.legacy.aether.api.accessories.AetherAccessory;
 import com.legacy.aether.api.enchantments.AetherEnchantment;
@@ -15,6 +8,12 @@ import com.legacy.aether.api.freezables.AetherFreezable;
 import com.legacy.aether.api.freezables.AetherFreezableFuel;
 import com.legacy.aether.blocks.BlocksAether;
 import com.legacy.aether.items.ItemsAether;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class AetherRegistries 
 {

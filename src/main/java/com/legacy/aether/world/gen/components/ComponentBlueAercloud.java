@@ -1,11 +1,10 @@
 package com.legacy.aether.world.gen.components;
 
-import net.minecraft.util.EnumFacing;
-import net.minecraft.world.gen.structure.StructureBoundingBox;
-
 import com.legacy.aether.blocks.util.EnumCloudType;
 import com.legacy.aether.world.gen.AetherGenUtils;
 import com.legacy.aether.world.gen.AetherStructure;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
 
 public class ComponentBlueAercloud extends AetherStructure
 {

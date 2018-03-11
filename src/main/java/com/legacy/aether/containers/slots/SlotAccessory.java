@@ -1,17 +1,16 @@
 package com.legacy.aether.containers.slots;
 
+import com.legacy.aether.api.AetherAPI;
+import com.legacy.aether.api.accessories.AccessoryType;
+import com.legacy.aether.api.accessories.AetherAccessory;
+import com.legacy.aether.api.events.AetherHooks;
+import com.legacy.aether.containers.inventory.InventoryAccessories;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.api.AetherAPI;
-import com.legacy.aether.api.accessories.AccessoryType;
-import com.legacy.aether.api.accessories.AetherAccessory;
-import com.legacy.aether.api.events.AetherHooks;
-import com.legacy.aether.containers.inventory.InventoryAccessories;
 
 public class SlotAccessory extends Slot
 {

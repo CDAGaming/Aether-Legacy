@@ -1,7 +1,8 @@
 package com.legacy.aether.blocks.portal;
 
-import java.util.Random;
-
+import com.google.common.cache.LoadingCache;
+import com.legacy.aether.entities.particles.ParticleAetherPortal;
+import com.legacy.aether.player.PlayerAether;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
@@ -20,9 +21,7 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.google.common.cache.LoadingCache;
-import com.legacy.aether.entities.particles.ParticleAetherPortal;
-import com.legacy.aether.player.PlayerAether;
+import java.util.Random;
 
 public class BlockAetherPortal extends BlockPortal
 {

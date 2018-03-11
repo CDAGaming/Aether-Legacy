@@ -1,5 +1,11 @@
 package com.legacy.aether.client.gui.trivia;
 
+import com.google.common.collect.Lists;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.IResource;
+import net.minecraft.util.ResourceLocation;
+import org.apache.commons.io.IOUtils;
+
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.IOException;
@@ -7,14 +13,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Random;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.util.ResourceLocation;
-
-import org.apache.commons.io.IOUtils;
-
-import com.google.common.collect.Lists;
 
 public class AetherTrivia
 {

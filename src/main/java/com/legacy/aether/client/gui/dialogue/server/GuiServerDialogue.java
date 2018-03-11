@@ -1,12 +1,12 @@
 package com.legacy.aether.client.gui.dialogue.server;
 
-import java.util.ArrayList;
-
 import com.google.common.collect.Lists;
 import com.legacy.aether.client.gui.dialogue.DialogueOption;
 import com.legacy.aether.client.gui.dialogue.GuiDialogue;
 import com.legacy.aether.networking.AetherNetworkingManager;
 import com.legacy.aether.networking.packets.PacketDialogueClicked;
+
+import java.util.ArrayList;
 
 public class GuiServerDialogue extends GuiDialogue
 {

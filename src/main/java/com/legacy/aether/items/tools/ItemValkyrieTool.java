@@ -1,7 +1,7 @@
 package com.legacy.aether.items.tools;
 
-import java.util.List;
-
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.items.util.EnumAetherToolType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,8 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.util.EnumAetherToolType;
+import java.util.List;
 
 public class ItemValkyrieTool extends ItemAetherTool 
 {

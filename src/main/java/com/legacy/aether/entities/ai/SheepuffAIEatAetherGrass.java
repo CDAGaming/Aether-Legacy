@@ -1,12 +1,11 @@
 package com.legacy.aether.entities.ai;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.entities.passive.EntitySheepuff;
 import net.minecraft.block.Block;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.entities.passive.EntitySheepuff;
 
 public class SheepuffAIEatAetherGrass extends EntityAIBase
 {

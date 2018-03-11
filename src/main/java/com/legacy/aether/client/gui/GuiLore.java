@@ -1,19 +1,17 @@
 package com.legacy.aether.client.gui;
 
-import java.io.IOException;
-
+import com.legacy.aether.client.gui.button.GuiLoreButton;
+import com.legacy.aether.containers.ContainerLore;
+import com.legacy.aether.registry.AetherLore;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
-import com.legacy.aether.client.gui.button.GuiLoreButton;
-import com.legacy.aether.containers.ContainerLore;
-import com.legacy.aether.registry.AetherLore;
+import java.io.IOException;
 
 public class GuiLore extends GuiContainer
 {

@@ -1,13 +1,5 @@
 package com.legacy.aether.items;
 
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.registries.IForgeRegistry;
-
 import com.legacy.aether.Aether;
 import com.legacy.aether.api.accessories.AccessoryType;
 import com.legacy.aether.blocks.BlocksAether;
@@ -16,39 +8,25 @@ import com.legacy.aether.items.armor.ItemAetherArmor;
 import com.legacy.aether.items.armor.ItemZaniteArmor;
 import com.legacy.aether.items.dungeon.ItemDungeonKey;
 import com.legacy.aether.items.dungeon.ItemVictoryMedal;
-import com.legacy.aether.items.food.ItemAetherFood;
-import com.legacy.aether.items.food.ItemAmbrosiumShard;
-import com.legacy.aether.items.food.ItemGummySwet;
-import com.legacy.aether.items.food.ItemHealingStone;
-import com.legacy.aether.items.food.ItemLifeShard;
-import com.legacy.aether.items.food.ItemWhiteApple;
+import com.legacy.aether.items.food.*;
 import com.legacy.aether.items.staffs.ItemCloudStaff;
 import com.legacy.aether.items.staffs.ItemNatureStaff;
-import com.legacy.aether.items.tools.ItemAetherParachute;
-import com.legacy.aether.items.tools.ItemGravititeTool;
-import com.legacy.aether.items.tools.ItemHolystoneTool;
-import com.legacy.aether.items.tools.ItemSkyrootBucket;
-import com.legacy.aether.items.tools.ItemSkyrootTool;
-import com.legacy.aether.items.tools.ItemValkyrieTool;
-import com.legacy.aether.items.tools.ItemZaniteTool;
+import com.legacy.aether.items.tools.*;
 import com.legacy.aether.items.util.EnumAetherToolType;
 import com.legacy.aether.items.util.ItemAether;
-import com.legacy.aether.items.weapons.ItemCandyCaneSword;
-import com.legacy.aether.items.weapons.ItemElementalSword;
-import com.legacy.aether.items.weapons.ItemGravititeSword;
-import com.legacy.aether.items.weapons.ItemHolystoneSword;
-import com.legacy.aether.items.weapons.ItemLightningKnife;
-import com.legacy.aether.items.weapons.ItemNotchHammer;
-import com.legacy.aether.items.weapons.ItemPigSlayer;
-import com.legacy.aether.items.weapons.ItemSkyrootSword;
-import com.legacy.aether.items.weapons.ItemValkyrieLance;
-import com.legacy.aether.items.weapons.ItemVampireBlade;
-import com.legacy.aether.items.weapons.ItemZaniteSword;
+import com.legacy.aether.items.weapons.*;
 import com.legacy.aether.items.weapons.projectile.ItemDart;
 import com.legacy.aether.items.weapons.projectile.ItemDartShooter;
 import com.legacy.aether.items.weapons.projectile.ItemPhoenixBow;
 import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import com.legacy.aether.registry.sounds.SoundsAether;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class ItemsAether 
 {

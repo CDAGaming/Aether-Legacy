@@ -1,9 +1,10 @@
 package com.legacy.aether.blocks.natural;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+import com.legacy.aether.blocks.util.EnumHolidayType;
+import com.legacy.aether.blocks.util.EnumLeafType;
+import com.legacy.aether.blocks.util.IAetherMeta;
+import com.legacy.aether.entities.particles.ParticleHolidayLeaves;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
@@ -24,11 +25,9 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.legacy.aether.blocks.util.EnumHolidayType;
-import com.legacy.aether.blocks.util.EnumLeafType;
-import com.legacy.aether.blocks.util.IAetherMeta;
-import com.legacy.aether.entities.particles.ParticleHolidayLeaves;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class BlockHolidayLeaves extends BlockLeaves implements IAetherMeta
 {

@@ -1,5 +1,6 @@
 package com.legacy.aether.items.util;
 
+import com.legacy.aether.items.tools.ItemSkyrootTool;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.IBlockState;
@@ -9,8 +10,6 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.math.BlockPos;
-
-import com.legacy.aether.items.tools.ItemSkyrootTool;
 
 public class DoubleDropHelper 
 {

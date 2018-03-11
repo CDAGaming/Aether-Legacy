@@ -1,10 +1,9 @@
 package com.legacy.aether.registry.sounds;
 
+import com.legacy.aether.Aether;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-
-import com.legacy.aether.Aether;
 
 public class SoundsAether
 {

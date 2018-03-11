@@ -1,14 +1,12 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.client.models.entities.AerbunnyModel;
+import com.legacy.aether.entities.passive.mountable.EntityAerbunny;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
-import com.legacy.aether.client.models.entities.AerbunnyModel;
-import com.legacy.aether.entities.passive.mountable.EntityAerbunny;
 
 public class AerbunnyRenderer extends RenderLiving<EntityAerbunny> 
 {

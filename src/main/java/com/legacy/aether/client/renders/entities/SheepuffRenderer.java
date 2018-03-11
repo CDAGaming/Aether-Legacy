@@ -1,12 +1,11 @@
 package com.legacy.aether.client.renders.entities;
 
-import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.util.ResourceLocation;
-
 import com.legacy.aether.client.models.entities.SheepuffWoolModel;
 import com.legacy.aether.client.renders.entities.layer.SheepuffCoatLayer;
 import com.legacy.aether.entities.passive.EntitySheepuff;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.util.ResourceLocation;
 
 public class SheepuffRenderer extends RenderLiving<EntitySheepuff>
 {

@@ -1,8 +1,7 @@
 package com.legacy.aether.player.movement;
 
-import net.minecraft.entity.player.EntityPlayer;
-
 import com.legacy.aether.player.PlayerAether;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class AetherLiquidMovement
 {

@@ -1,7 +1,7 @@
 package com.legacy.aether.client.audio.music;
 
-import java.util.Random;
-
+import com.legacy.aether.AetherConfig;
+import com.legacy.aether.registry.sounds.SoundsAether;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -11,8 +11,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.legacy.aether.AetherConfig;
-import com.legacy.aether.registry.sounds.SoundsAether;
+import java.util.Random;
 
 @SideOnly(Side.CLIENT)
 public class AetherMusicTicker implements ITickable

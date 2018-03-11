@@ -1,7 +1,6 @@
 package com.legacy.aether.items.util;
 
-import javax.annotation.Nullable;
-
+import com.legacy.aether.items.ItemsAether;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -9,7 +8,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
 
-import com.legacy.aether.items.ItemsAether;
+import javax.annotation.Nullable;
 
 public class FluidSkyrootBucketWrapper extends FluidBucketWrapper
 {

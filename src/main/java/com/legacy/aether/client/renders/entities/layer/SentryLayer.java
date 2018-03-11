@@ -1,5 +1,6 @@
 package com.legacy.aether.client.renders.entities.layer;
 
+import com.legacy.aether.entities.hostile.EntitySentry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelSlime;
 import net.minecraft.client.renderer.GlStateManager;
@@ -7,8 +8,6 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.entities.hostile.EntitySentry;
 
 public class SentryLayer implements LayerRenderer<EntitySentry>
 {

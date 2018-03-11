@@ -1,5 +1,7 @@
 package com.legacy.aether.items.food;
 
+import com.legacy.aether.items.util.EnumGummySwetType;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -8,9 +10,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-
-import com.legacy.aether.items.util.EnumGummySwetType;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemGummySwet extends ItemAetherFood
 {

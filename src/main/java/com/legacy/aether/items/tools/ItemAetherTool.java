@@ -1,10 +1,7 @@
 package com.legacy.aether.items.tools;
 
-import java.util.Random;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
+import com.legacy.aether.items.util.EnumAetherToolType;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,8 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.NonNullList;
 
-import com.legacy.aether.items.util.EnumAetherToolType;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import javax.annotation.Nullable;
+import java.util.Random;
+import java.util.Set;
 
 public abstract class ItemAetherTool extends ItemTool
 {

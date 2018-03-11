@@ -1,5 +1,6 @@
 package com.legacy.aether.client.gui;
 
+import com.legacy.aether.client.gui.trivia.AetherTrivia;
 import net.minecraft.client.LoadingScreenRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -10,8 +11,6 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.shader.Framebuffer;
-
-import com.legacy.aether.client.gui.trivia.AetherTrivia;
 
 public class AetherLoadingScreen extends LoadingScreenRenderer
 {

@@ -1,17 +1,12 @@
 package com.legacy.aether.entities.passive;
 
-import java.util.Random;
-
+import com.legacy.aether.entities.ai.SheepuffAIEatAetherGrass;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.registry.sounds.SoundsAether;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIPanic;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -33,9 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.legacy.aether.entities.ai.SheepuffAIEatAetherGrass;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.registry.sounds.SoundsAether;
+import java.util.Random;
 
 public class EntitySheepuff extends EntityAetherAnimal
 {

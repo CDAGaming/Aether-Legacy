@@ -1,7 +1,6 @@
 package com.legacy.aether.client.renders.entities;
 
 import com.legacy.aether.entities.hostile.EntityWhirlwind;
-
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

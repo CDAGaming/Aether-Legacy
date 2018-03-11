@@ -1,12 +1,11 @@
 package com.legacy.aether.client.gui;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.client.gui.button.GuiSunAltarSlider;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.client.gui.button.GuiSunAltarSlider;
 
 public class GuiSunAltar extends GuiScreen
 {

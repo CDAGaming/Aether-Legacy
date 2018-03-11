@@ -1,14 +1,14 @@
 package com.legacy.aether.networking.packets;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PacketDisplayDialogue extends AetherPacket<PacketDisplayDialogue>
 {

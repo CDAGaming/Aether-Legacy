@@ -1,12 +1,11 @@
 package com.legacy.aether.networking.packets;
 
+import com.legacy.aether.Aether;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
-
-import com.legacy.aether.Aether;
 
 public abstract class AetherPacket<Packet extends IMessage> implements IMessage, IMessageHandler<Packet, Packet>
 {

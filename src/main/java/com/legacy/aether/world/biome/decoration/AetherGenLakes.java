@@ -1,7 +1,6 @@
 package com.legacy.aether.world.biome.decoration;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -9,7 +8,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import com.legacy.aether.blocks.BlocksAether;
+import java.util.Random;
 
 public class AetherGenLakes extends WorldGenerator
 {

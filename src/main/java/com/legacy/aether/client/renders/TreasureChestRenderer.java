@@ -1,17 +1,15 @@
 package com.legacy.aether.client.renders;
 
+import com.legacy.aether.blocks.dungeon.BlockTreasureChest;
+import com.legacy.aether.tile_entities.TileEntityTreasureChest;
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-
-import com.legacy.aether.blocks.dungeon.BlockTreasureChest;
-import com.legacy.aether.tile_entities.TileEntityTreasureChest;
 
 public class TreasureChestRenderer extends TileEntitySpecialRenderer<TileEntityTreasureChest>
 {

@@ -1,14 +1,13 @@
 package com.legacy.aether.world.biome.decoration;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import com.legacy.aether.blocks.BlocksAether;
+import java.util.Random;
 
 public class AetherGenCave extends WorldGenerator
 {

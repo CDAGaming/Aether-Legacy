@@ -1,5 +1,6 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.entities.block.EntityFloatingBlock;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -13,8 +14,6 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.legacy.aether.entities.block.EntityFloatingBlock;
 
 public class FloatingBlockRenderer extends Render<EntityFloatingBlock>
 {

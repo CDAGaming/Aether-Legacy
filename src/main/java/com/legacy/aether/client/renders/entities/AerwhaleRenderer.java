@@ -1,13 +1,12 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.client.models.entities.AerwhaleModel;
+import com.legacy.aether.entities.passive.EntityAerwhale;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-
-import com.legacy.aether.client.models.entities.AerwhaleModel;
-import com.legacy.aether.entities.passive.EntityAerwhale;
 
 public class AerwhaleRenderer extends Render<EntityAerwhale>
 {

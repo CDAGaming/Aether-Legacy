@@ -1,7 +1,6 @@
 package com.legacy.aether.networking.packets;
 
 import com.legacy.aether.events.DialogueClickedEvent;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;

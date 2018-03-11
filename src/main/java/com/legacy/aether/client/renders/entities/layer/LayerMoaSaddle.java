@@ -1,14 +1,13 @@
 package com.legacy.aether.client.renders.entities.layer;
 
-import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import com.legacy.aether.client.models.entities.MoaModel;
 import com.legacy.aether.client.renders.entities.MoaRenderer;
 import com.legacy.aether.entities.passive.mountable.EntityMoa;
 import com.legacy.aether.entities.util.AetherMoaTypes;
+import net.minecraft.client.renderer.entity.layers.LayerRenderer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class LayerMoaSaddle implements LayerRenderer<EntityMoa>

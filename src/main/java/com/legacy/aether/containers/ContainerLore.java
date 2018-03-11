@@ -1,13 +1,12 @@
 package com.legacy.aether.containers;
 
+import com.legacy.aether.containers.inventory.InventoryLore;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import com.legacy.aether.containers.inventory.InventoryLore;
 
 public class ContainerLore extends Container
 {

@@ -1,16 +1,15 @@
 package com.legacy.aether.universal.jei.wrapper;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.google.common.collect.Lists;
+import com.legacy.aether.api.AetherAPI;
+import com.legacy.aether.api.freezables.AetherFreezable;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 
-import com.google.common.collect.Lists;
-import com.legacy.aether.api.AetherAPI;
-import com.legacy.aether.api.freezables.AetherFreezable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FreezerRecipeWrapper implements IRecipeWrapper
 {

@@ -1,5 +1,10 @@
 package com.legacy.aether.blocks.dungeon;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.util.EnumStoneType;
+import com.legacy.aether.entities.bosses.EntityFireMinion;
+import com.legacy.aether.entities.bosses.EntityValkyrie;
+import com.legacy.aether.entities.hostile.EntitySentry;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -8,12 +13,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.util.EnumStoneType;
-import com.legacy.aether.entities.bosses.EntityFireMinion;
-import com.legacy.aether.entities.bosses.EntityValkyrie;
-import com.legacy.aether.entities.hostile.EntitySentry;
 
 public class BlockDungeonTrap extends BlockDungeonBase
 {

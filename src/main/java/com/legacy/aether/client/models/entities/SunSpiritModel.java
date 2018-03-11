@@ -1,12 +1,11 @@
 package com.legacy.aether.client.models.entities;
 
+import com.legacy.aether.entities.bosses.sun_spirit.EntitySunSpirit;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
-
-import com.legacy.aether.entities.bosses.sun_spirit.EntitySunSpirit;
 
 public class SunSpiritModel extends ModelBiped
 {

@@ -1,10 +1,9 @@
 package com.legacy.aether.items.tools;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-
 import com.legacy.aether.blocks.BlocksAether;
 import com.legacy.aether.items.util.EnumAetherToolType;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class ItemSkyrootTool extends ItemAetherTool
 {

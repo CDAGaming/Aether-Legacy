@@ -1,15 +1,14 @@
 package com.legacy.aether.containers;
 
+import com.legacy.aether.api.AetherAPI;
+import com.legacy.aether.containers.slots.SlotEnchanter;
+import com.legacy.aether.tile_entities.TileEntityEnchanter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import com.legacy.aether.api.AetherAPI;
-import com.legacy.aether.containers.slots.SlotEnchanter;
-import com.legacy.aether.tile_entities.TileEntityEnchanter;
 
 public class ContainerEnchanter extends Container
 {

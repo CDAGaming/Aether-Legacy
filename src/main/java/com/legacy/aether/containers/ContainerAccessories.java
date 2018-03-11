@@ -1,19 +1,18 @@
 package com.legacy.aether.containers;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.legacy.aether.api.AetherAPI;
+import com.legacy.aether.api.accessories.AccessoryType;
+import com.legacy.aether.containers.inventory.InventoryAccessories;
+import com.legacy.aether.containers.slots.SlotAccessory;
+import com.legacy.aether.player.PlayerAether;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 
-import com.legacy.aether.api.AetherAPI;
-import com.legacy.aether.api.accessories.AccessoryType;
-import com.legacy.aether.containers.inventory.InventoryAccessories;
-import com.legacy.aether.containers.slots.SlotAccessory;
-import com.legacy.aether.player.PlayerAether;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContainerAccessories extends ContainerPlayer
 {

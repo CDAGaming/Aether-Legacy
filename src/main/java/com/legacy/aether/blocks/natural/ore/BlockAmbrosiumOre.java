@@ -1,7 +1,9 @@
 package com.legacy.aether.blocks.natural.ore;
 
-import java.util.Random;
-
+import com.legacy.aether.Aether;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.items.util.DoubleDropHelper;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -18,10 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import com.legacy.aether.Aether;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.util.DoubleDropHelper;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import java.util.Random;
 
 public class BlockAmbrosiumOre extends Block
 {

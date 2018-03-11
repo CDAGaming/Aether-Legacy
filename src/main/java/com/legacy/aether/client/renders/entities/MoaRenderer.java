@@ -1,18 +1,16 @@
 package com.legacy.aether.client.renders.entities;
 
-import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-
-import org.lwjgl.opengl.GL11;
-
 import com.legacy.aether.client.models.entities.MoaModel;
 import com.legacy.aether.client.renders.entities.layer.LayerMoaSaddle;
 import com.legacy.aether.client.renders.entities.layer.MoaDonatorLayer;
 import com.legacy.aether.entities.passive.mountable.EntityMoa;
 import com.legacy.aether.player.PlayerAether;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
+import org.lwjgl.opengl.GL11;
 
 public class MoaRenderer extends RenderLiving<EntityMoa>
 {

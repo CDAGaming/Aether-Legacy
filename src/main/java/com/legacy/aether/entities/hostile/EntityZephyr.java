@@ -1,5 +1,10 @@
 package com.legacy.aether.entities.hostile;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.entities.ai.EntityAIUpdateState;
+import com.legacy.aether.entities.ai.zephyr.ZephyrAIShootTarget;
+import com.legacy.aether.entities.ai.zephyr.ZephyrAITravelCourse;
+import com.legacy.aether.registry.sounds.SoundsAether;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -13,12 +18,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.entities.ai.EntityAIUpdateState;
-import com.legacy.aether.entities.ai.zephyr.ZephyrAIShootTarget;
-import com.legacy.aether.entities.ai.zephyr.ZephyrAITravelCourse;
-import com.legacy.aether.registry.sounds.SoundsAether;
 
 public class EntityZephyr extends EntityFlying implements IMob
 {

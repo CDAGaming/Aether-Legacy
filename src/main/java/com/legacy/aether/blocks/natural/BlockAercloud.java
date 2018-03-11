@@ -1,5 +1,8 @@
 package com.legacy.aether.blocks.natural;
 
+import com.legacy.aether.blocks.util.EnumCloudType;
+import com.legacy.aether.blocks.util.IAetherMeta;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -22,10 +25,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.blocks.util.EnumCloudType;
-import com.legacy.aether.blocks.util.IAetherMeta;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class BlockAercloud extends Block implements IAetherMeta
 {

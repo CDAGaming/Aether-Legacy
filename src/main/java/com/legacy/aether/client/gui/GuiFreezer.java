@@ -1,17 +1,15 @@
 package com.legacy.aether.client.gui;
 
+import com.legacy.aether.Aether;
+import com.legacy.aether.containers.ContainerFreezer;
+import com.legacy.aether.tile_entities.TileEntityFreezer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
 import org.lwjgl.opengl.GL11;
-
-import com.legacy.aether.Aether;
-import com.legacy.aether.containers.ContainerFreezer;
-import com.legacy.aether.tile_entities.TileEntityFreezer;
 
 @SideOnly(Side.CLIENT)
 public class GuiFreezer extends GuiContainer

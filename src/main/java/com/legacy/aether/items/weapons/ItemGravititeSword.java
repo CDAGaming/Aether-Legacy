@@ -1,5 +1,7 @@
 package com.legacy.aether.items.weapons;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -8,9 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.util.NonNullList;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 
 public class ItemGravititeSword extends ItemSword
 {

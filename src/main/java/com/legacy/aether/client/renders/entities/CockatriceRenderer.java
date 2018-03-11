@@ -1,14 +1,12 @@
 package com.legacy.aether.client.renders.entities;
 
+import com.legacy.aether.client.models.entities.CockatriceModel;
+import com.legacy.aether.entities.hostile.EntityCockatrice;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-
 import org.lwjgl.opengl.GL11;
-
-import com.legacy.aether.client.models.entities.CockatriceModel;
-import com.legacy.aether.entities.hostile.EntityCockatrice;
 
 public class CockatriceRenderer extends RenderLiving<EntityCockatrice>
 {

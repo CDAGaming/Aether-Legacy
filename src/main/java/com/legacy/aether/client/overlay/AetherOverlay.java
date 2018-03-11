@@ -1,5 +1,12 @@
 package com.legacy.aether.client.overlay;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.entities.bosses.slider.EntitySlider;
+import com.legacy.aether.entities.bosses.sun_spirit.EntitySunSpirit;
+import com.legacy.aether.entities.bosses.valkyrie_queen.EntityValkyrieQueen;
+import com.legacy.aether.entities.passive.mountable.EntityMoa;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.player.PlayerAether;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -17,14 +24,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.entities.bosses.slider.EntitySlider;
-import com.legacy.aether.entities.bosses.sun_spirit.EntitySunSpirit;
-import com.legacy.aether.entities.bosses.valkyrie_queen.EntityValkyrieQueen;
-import com.legacy.aether.entities.passive.mountable.EntityMoa;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.player.PlayerAether;
 
 @SideOnly(Side.CLIENT)
 public class AetherOverlay

@@ -1,9 +1,6 @@
 package com.legacy.aether.client.gui.toast;
 
-import java.util.List;
-
 import com.legacy.aether.client.audio.AetherMusicHandler;
-
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.advancements.FrameType;
@@ -17,6 +14,8 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.math.MathHelper;
+
+import java.util.List;
 
 public class AetherAdvancementToast extends AdvancementToast
 {

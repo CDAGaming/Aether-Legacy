@@ -1,7 +1,9 @@
 package com.legacy.aether.blocks.natural;
 
-import java.util.Random;
-
+import com.legacy.aether.Aether;
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.items.util.DoubleDropHelper;
+import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -20,10 +22,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
-import com.legacy.aether.Aether;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.items.util.DoubleDropHelper;
-import com.legacy.aether.registry.creative_tabs.AetherCreativeTabs;
+import java.util.Random;
 
 public class BlockAetherGrass extends Block
 {

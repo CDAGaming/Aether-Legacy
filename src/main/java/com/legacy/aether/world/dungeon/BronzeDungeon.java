@@ -1,7 +1,12 @@
 package com.legacy.aether.world.dungeon;
 
-import java.util.Random;
-
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.blocks.dungeon.BlockDungeonBase;
+import com.legacy.aether.blocks.util.EnumStoneType;
+import com.legacy.aether.entities.bosses.slider.EntitySlider;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.world.dungeon.util.AetherDungeon;
+import com.legacy.aether.world.dungeon.util.PositionData;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -10,13 +15,7 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.dungeon.BlockDungeonBase;
-import com.legacy.aether.blocks.util.EnumStoneType;
-import com.legacy.aether.entities.bosses.slider.EntitySlider;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.world.dungeon.util.AetherDungeon;
-import com.legacy.aether.world.dungeon.util.PositionData;
+import java.util.Random;
 
 public class BronzeDungeon extends AetherDungeon
 {

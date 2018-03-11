@@ -1,7 +1,14 @@
 package com.legacy.aether.client;
 
-import java.util.List;
-
+import com.legacy.aether.AetherConfig;
+import com.legacy.aether.client.gui.AetherLoadingScreen;
+import com.legacy.aether.client.gui.button.GuiAccessoryButton;
+import com.legacy.aether.containers.inventory.InventoryAccessories;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.networking.AetherGuiHandler;
+import com.legacy.aether.networking.AetherNetworkingManager;
+import com.legacy.aether.networking.packets.PacketOpenContainer;
+import com.legacy.aether.player.PlayerAether;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -12,25 +19,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.FOVUpdateEvent;
-import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.event.GuiScreenEvent.MouseInputEvent;
-import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.client.event.RenderSpecificHandEvent;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import com.legacy.aether.AetherConfig;
-import com.legacy.aether.client.gui.AetherLoadingScreen;
-import com.legacy.aether.client.gui.button.GuiAccessoryButton;
-import com.legacy.aether.containers.inventory.InventoryAccessories;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.networking.AetherGuiHandler;
-import com.legacy.aether.networking.AetherNetworkingManager;
-import com.legacy.aether.networking.packets.PacketOpenContainer;
-import com.legacy.aether.player.PlayerAether;
+import java.util.List;
 
 public class AetherClientEvents 
 {

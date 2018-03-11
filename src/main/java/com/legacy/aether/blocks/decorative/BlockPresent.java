@@ -1,7 +1,7 @@
 package com.legacy.aether.blocks.decorative;
 
-import javax.annotation.Nullable;
-
+import com.legacy.aether.entities.block.EntityTNTPresent;
+import com.legacy.aether.items.ItemsAether;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -15,8 +15,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.legacy.aether.entities.block.EntityTNTPresent;
-import com.legacy.aether.items.ItemsAether;
+import javax.annotation.Nullable;
 
 public class BlockPresent extends Block 
 {

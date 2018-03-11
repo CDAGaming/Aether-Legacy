@@ -1,5 +1,10 @@
 package com.legacy.aether.entities.hostile;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.entities.ai.aechorplant.AechorPlantAIShootPlayer;
+import com.legacy.aether.entities.passive.EntityAetherAnimal;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.items.util.EnumSkyrootBucketType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -12,12 +17,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.entities.ai.aechorplant.AechorPlantAIShootPlayer;
-import com.legacy.aether.entities.passive.EntityAetherAnimal;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.util.EnumSkyrootBucketType;
 
 public class EntityAechorPlant extends EntityAetherAnimal 
 {

@@ -1,5 +1,9 @@
 package com.legacy.aether.containers;
 
+import com.legacy.aether.blocks.BlocksAether;
+import com.legacy.aether.containers.slots.SlotIncubator;
+import com.legacy.aether.items.ItemsAether;
+import com.legacy.aether.tile_entities.TileEntityIncubator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -7,11 +11,6 @@ import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.containers.slots.SlotIncubator;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.tile_entities.TileEntityIncubator;
 
 public class ContainerIncubator extends Container
 {
