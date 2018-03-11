@@ -1,33 +1,29 @@
 package com.legacy.aether.items.util;
 
 
-public enum EnumGummySwetType
-{
+public enum EnumGummySwetType {
 
-	Blue(0, "blue"), Golden(1, "golden");
+    Blue(0, "blue"), Golden(1, "golden");
 
-	private int meta;
+    private int meta;
 
-	private String name;
+    private String name;
 
-	EnumGummySwetType(int meta, String name)
-	{
-		this.meta = meta;;
-		this.name = name;
-	}
+    EnumGummySwetType(int meta, String name) {
+        this.meta = meta;
+        ;
+        this.name = name;
+    }
 
-	public static EnumGummySwetType getType(int meta)
-	{
-		return meta == 1 ? Golden : Blue;
-	}
+    public static EnumGummySwetType getType(int meta) {
+        return meta == 1 ? Golden : Blue;
+    }
 
-	public int getMeta()
-	{
-		return this.meta;
-	}
+    public int getMeta() {
+        return this.meta;
+    }
 
-    public String toString()
-    {
+    public String toString() {
         return this.name;
     }
 

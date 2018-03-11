@@ -1,11 +1,10 @@
 {
-    
-	"variants": 
-	{
-        
-		"half=bottom": { "model": "aether_legacy:aerogel" },
-        			"half=top": { "model": "aether_legacy:aerogel" }
-    
-	}
-
+  "variants": {
+    "half=bottom": {
+      "model": "aether_legacy:aerogel"
+    },
+    "half=top": {
+      "model": "aether_legacy:aerogel"
+    }
+  }
 }

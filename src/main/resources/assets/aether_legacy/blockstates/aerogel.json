@@ -1,7 +1,7 @@
 {
-	"variants": {
-		"normal": {
-			"model": "aether_legacy:aerogel"
-		}
-	}
+  "variants": {
+    "normal": {
+      "model": "aether_legacy:aerogel"
+    }
+  }
 }

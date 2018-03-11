@@ -2,40 +2,32 @@ package com.legacy.aether.blocks.util;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum EnumCloudType implements IStringSerializable
-{
+public enum EnumCloudType implements IStringSerializable {
 
-	Cold(0, "cold_aercloud"), Blue(1, "blue_aercloud"), Golden(2, "golden_aercloud"), Pink(3, "pink_aercloud");
-
-	private int meta;
-
-	private String unlocalizedName;
+    Cold(0, "cold_aercloud"), Blue(1, "blue_aercloud"), Golden(2, "golden_aercloud"), Pink(3, "pink_aercloud");
 
     public static final EnumCloudType[] lookup = new EnumCloudType[values().length];
+    private int meta;
+    private String unlocalizedName;
 
-	EnumCloudType(int meta, String unlocalizedName)
-	{
-		this.meta = meta;
-		this.unlocalizedName = unlocalizedName;
-	}
+    EnumCloudType(int meta, String unlocalizedName) {
+        this.meta = meta;
+        this.unlocalizedName = unlocalizedName;
+    }
 
-	public static EnumCloudType getType(int meta)
-	{
-		return meta == 1 ? Blue : meta == 2 ? Golden : meta == 3 ? Pink : Cold;
-	}
+    public static EnumCloudType getType(int meta) {
+        return meta == 1 ? Blue : meta == 2 ? Golden : meta == 3 ? Pink : Cold;
+    }
 
-	public int getMeta()
-	{
-		return this.meta;
-	}
+    public int getMeta() {
+        return this.meta;
+    }
 
-    public String toString()
-    {
+    public String toString() {
         return this.unlocalizedName;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return this.unlocalizedName;
     }
 

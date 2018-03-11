@@ -9,32 +9,24 @@ import net.minecraft.item.ItemSword;
 
 import java.util.Random;
 
-public class ItemCandyCaneSword extends ItemSword
-{
+public class ItemCandyCaneSword extends ItemSword {
 
-    public ItemCandyCaneSword()
-    {
+    public ItemCandyCaneSword() {
         super(ToolMaterial.GOLD);
         this.setCreativeTab(AetherCreativeTabs.weapons);
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack material)
-    {
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack material) {
         return material.getItem() == ItemsAether.candy_cane;
     }
 
     @Override
-    public boolean hitEntity(ItemStack itemstack, EntityLivingBase entityliving, EntityLivingBase entityliving1)
-    {
-        if (entityliving.deathTime > 0)
-        {
+    public boolean hitEntity(ItemStack itemstack, EntityLivingBase entityliving, EntityLivingBase entityliving1) {
+        if (entityliving.deathTime > 0) {
             return true;
-        }
-        else
-        {
-            if ((new Random()).nextBoolean() && entityliving1 != null && entityliving1 instanceof EntityPlayer && !entityliving1.world.isRemote && entityliving.hurtTime > 0)
-            {
+        } else {
+            if ((new Random()).nextBoolean() && entityliving1 != null && entityliving1 instanceof EntityPlayer && !entityliving1.world.isRemote && entityliving.hurtTime > 0) {
                 entityliving.dropItem(ItemsAether.candy_cane, 1);
             }
 

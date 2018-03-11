@@ -9,27 +9,23 @@ import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nullable;
 
-public class InventoryLore extends InventoryBasic
-{
+public class InventoryLore extends InventoryBasic {
 
-	private EntityPlayer player;
+    private EntityPlayer player;
 
-	public InventoryLore(EntityPlayer player) 
-	{
-		super("Lore Item", false, 1);
+    public InventoryLore(EntityPlayer player) {
+        super("Lore Item", false, 1);
 
-		this.player = player;
-	}
+        this.player = player;
+    }
 
-	@Override
-    public void setInventorySlotContents(int index, @Nullable ItemStack stack)
-    {
-    	if (this.player instanceof EntityPlayerMP && stack.getItem() == ItemsAether.lore_book)
-    	{
-    		AetherAdvancements.LORE_ITEM_TRIGGER.trigger((EntityPlayerMP) this.player, stack);
-    	}
+    @Override
+    public void setInventorySlotContents(int index, @Nullable ItemStack stack) {
+        if (this.player instanceof EntityPlayerMP && stack.getItem() == ItemsAether.lore_book) {
+            AetherAdvancements.LORE_ITEM_TRIGGER.trigger((EntityPlayerMP) this.player, stack);
+        }
 
-    	super.setInventorySlotContents(index, stack);
+        super.setInventorySlotContents(index, stack);
     }
 
 }

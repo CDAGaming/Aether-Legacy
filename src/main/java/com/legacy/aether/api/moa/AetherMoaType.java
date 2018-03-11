@@ -3,53 +3,43 @@ package com.legacy.aether.api.moa;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
 
-public class AetherMoaType extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<AetherMoaType>
-{
+public class AetherMoaType extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<AetherMoaType> {
 
-	private MoaProperties properties;
+    public int hexColor;
+    public CreativeTabs creativeTab;
+    private MoaProperties properties;
 
-	public int hexColor;
+    public AetherMoaType(int hexColor, MoaProperties properties) {
+        this.hexColor = hexColor;
+        this.properties = properties;
 
-	public CreativeTabs creativeTab;
+        this.creativeTab = CreativeTabs.MISC;
+    }
 
-	public AetherMoaType(int hexColor, MoaProperties properties)
-	{
-		this.hexColor = hexColor;
-		this.properties = properties;
+    public AetherMoaType(int hexColor, MoaProperties properties, CreativeTabs creativeTab) {
+        this(hexColor, properties);
 
-		this.creativeTab = CreativeTabs.MISC;
-	}
+        this.creativeTab = creativeTab;
+    }
 
-	public AetherMoaType(int hexColor, MoaProperties properties, CreativeTabs creativeTab)
-	{
-		this(hexColor, properties);
+    public ResourceLocation getTexture(boolean saddled) {
+        if (this.properties.hasCustomTexture()) {
+            return this.properties.getCustomTexture(saddled);
+        }
 
-		this.creativeTab = creativeTab;
-	}
+        return new ResourceLocation("aether_legacy", "textures/entities/moa/" + ("moa_") + this.getRegistryName().getResourcePath().toLowerCase() + ".png");
+    }
 
-	public ResourceLocation getTexture(boolean saddled)
-	{
-		if (this.properties.hasCustomTexture())
-		{
-			return this.properties.getCustomTexture(saddled);
-		}
+    public MoaProperties getMoaProperties() {
+        return this.properties;
+    }
 
-		return new ResourceLocation("aether_legacy", "textures/entities/moa/" + ("moa_") + this.getRegistryName().getResourcePath().toLowerCase() + ".png");
-	}
+    public CreativeTabs getCreativeTab() {
+        return this.creativeTab;
+    }
 
-	public MoaProperties getMoaProperties()
-	{
-		return this.properties;
-	}
-
-	public CreativeTabs getCreativeTab()
-	{
-		return this.creativeTab;
-	}
-
-	public int getMoaEggColor()
-	{
-		return this.hexColor;
-	}
+    public int getMoaEggColor() {
+        return this.hexColor;
+    }
 
 }

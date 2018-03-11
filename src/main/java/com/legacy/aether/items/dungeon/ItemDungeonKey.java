@@ -9,43 +9,36 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
-public class ItemDungeonKey extends Item
-{
+public class ItemDungeonKey extends Item {
 
-	public ItemDungeonKey()
-	{
-		super();
-		this.setHasSubtypes(true);
-		this.setMaxStackSize(1);
-		this.setCreativeTab(AetherCreativeTabs.misc);
-	}
-
-	@Override
-    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems)
-    {
-		if (tab != this.getCreativeTab() || tab == CreativeTabs.SEARCH)
-		{
-			return;
-		}
-
-    	for (int meta = 0; meta < EnumDungeonKeyType.values().length; ++meta)
-    	{
-    		subItems.add(new ItemStack(this, 1, meta));
-    	}
+    public ItemDungeonKey() {
+        super();
+        this.setHasSubtypes(true);
+        this.setMaxStackSize(1);
+        this.setCreativeTab(AetherCreativeTabs.misc);
     }
 
-	@Override
-    public EnumRarity getRarity(ItemStack stack)
-    {
-    	return ItemsAether.aether_loot;
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
+        if (tab != this.getCreativeTab() || tab == CreativeTabs.SEARCH) {
+            return;
+        }
+
+        for (int meta = 0; meta < EnumDungeonKeyType.values().length; ++meta) {
+            subItems.add(new ItemStack(this, 1, meta));
+        }
     }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemstack)
-	{
-		int meta = itemstack.getItemDamage();
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return ItemsAether.aether_loot;
+    }
 
-		return this.getUnlocalizedName() + "_" + EnumDungeonKeyType.getType(meta).toString();
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemstack) {
+        int meta = itemstack.getItemDamage();
+
+        return this.getUnlocalizedName() + "_" + EnumDungeonKeyType.getType(meta).toString();
+    }
 
 }

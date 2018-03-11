@@ -19,8 +19,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class EntityIceyBall extends EntityFlying
-{
+public class EntityIceyBall extends EntityFlying {
 
     public float[] sinage;
 
@@ -35,8 +34,7 @@ public class EntityIceyBall extends EntityFlying
 
     public boolean fromCloud;
 
-    public EntityIceyBall(World var1)
-    {
+    public EntityIceyBall(World var1) {
         super(var1);
         this.lifeSpan = 300;
         this.life = this.lifeSpan;
@@ -45,21 +43,19 @@ public class EntityIceyBall extends EntityFlying
         this.isImmuneToFire = true;
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
 
-        for (int var2 = 0; var2 < 3; ++var2)
-        {
+        for (int var2 = 0; var2 < 3; ++var2) {
             this.sinage[var2] = this.rand.nextFloat() * 6.0F;
         }
     }
 
-    public EntityIceyBall(World var1, double x, double y, double z, boolean fromCloud)
-    {
+    public EntityIceyBall(World var1, double x, double y, double z, boolean fromCloud) {
         this(var1);
 
         this.setPositionAndRotation(x, y, z, this.rotationYaw, this.rotationPitch);
 
-        this.smotionX = (0.2D + (double)this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
-        this.smotionY = (0.2D + (double)this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
-        this.smotionZ = (0.2D + (double)this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
+        this.smotionX = (0.2D + (double) this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
+        this.smotionY = (0.2D + (double) this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
+        this.smotionZ = (0.2D + (double) this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
         this.smotionX /= 3.0D;
         this.smotionY = 0.0D;
         this.smotionZ /= 3.0D;
@@ -67,14 +63,12 @@ public class EntityIceyBall extends EntityFlying
         this.fromCloud = fromCloud;
     }
 
-    public void onUpdate()
-    {
+    public void onUpdate() {
         super.onUpdate();
 
         --this.life;
 
-        if (this.life <= 0)
-        {
+        if (this.life <= 0) {
             this.splode();
             this.isDead = true;
         }
@@ -82,15 +76,13 @@ public class EntityIceyBall extends EntityFlying
         this.updateAnims();
     }
 
-    public void splode()
-    {
-    	this.world.playSound(null, this.posX, this.posY, this.posZ, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.HOSTILE, 2.0F, this.rand.nextFloat() - this.rand.nextFloat() * 0.2F + 1.2F);
+    public void splode() {
+        this.world.playSound(null, this.posX, this.posY, this.posZ, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.HOSTILE, 2.0F, this.rand.nextFloat() - this.rand.nextFloat() * 0.2F + 1.2F);
 
-        for (int var1 = 0; var1 < 40; ++var1)
-        {
-            double var2 = (double)((this.rand.nextFloat() - 0.5F) * 0.5F);
-            double var4 = (double)((this.rand.nextFloat() - 0.5F) * 0.5F);
-            double var6 = (double)((this.rand.nextFloat() - 0.5F) * 0.5F);
+        for (int var1 = 0; var1 < 40; ++var1) {
+            double var2 = (double) ((this.rand.nextFloat() - 0.5F) * 0.5F);
+            double var4 = (double) ((this.rand.nextFloat() - 0.5F) * 0.5F);
+            double var6 = (double) ((this.rand.nextFloat() - 0.5F) * 0.5F);
 
             var2 *= 0.5D;
             var4 *= 0.5D;
@@ -100,80 +92,61 @@ public class EntityIceyBall extends EntityFlying
         }
     }
 
-    public void updateAnims()
-    {
-        for (int var1 = 0; var1 < 3; ++var1)
-        {
-            this.sinage[var1] += 0.3F + (float)var1 * 0.13F;
+    public void updateAnims() {
+        for (int var1 = 0; var1 < 3; ++var1) {
+            this.sinage[var1] += 0.3F + (float) var1 * 0.13F;
 
-            if (this.sinage[var1] > ((float)Math.PI * 2F))
-            {
-                this.sinage[var1] -= ((float)Math.PI * 2F);
+            if (this.sinage[var1] > ((float) Math.PI * 2F)) {
+                this.sinage[var1] -= ((float) Math.PI * 2F);
             }
         }
     }
 
-    public void updateAITasks()
-    {
-    	super.updateAITasks();
+    public void updateAITasks() {
+        super.updateAITasks();
         this.motionX = this.smotionX;
         this.motionY = this.smotionY;
         this.motionZ = this.smotionZ;
 
-        if (this.collided)
-        {
-            if (this.smacked)
-            {
+        if (this.collided) {
+            if (this.smacked) {
                 this.splode();
                 this.setDead();
-            }
-            else
-            {
+            } else {
                 int var1 = MathHelper.floor(this.posX);
                 int var2 = MathHelper.floor(this.getEntityBoundingBox().minY);
                 int var3 = MathHelper.floor(this.posZ);
 
-                if (this.smotionX > 0.0D && this.world.getBlockState(new BlockPos(var1 + 1, var2, var3)).getBlock() != Blocks.AIR)
-                {
+                if (this.smotionX > 0.0D && this.world.getBlockState(new BlockPos(var1 + 1, var2, var3)).getBlock() != Blocks.AIR) {
                     this.motionX = this.smotionX = -this.smotionX;
-                }
-                else if (this.smotionX < 0.0D && this.world.getBlockState(new BlockPos(var1 - 1, var2, var3)).getBlock() != Blocks.AIR)
-                {
+                } else if (this.smotionX < 0.0D && this.world.getBlockState(new BlockPos(var1 - 1, var2, var3)).getBlock() != Blocks.AIR) {
                     this.motionX = this.smotionX = -this.smotionX;
                 }
 
-                if (this.smotionY > 0.0D && this.world.getBlockState(new BlockPos(var1, var2 + 1, var3)).getBlock() != Blocks.AIR)
-                {
+                if (this.smotionY > 0.0D && this.world.getBlockState(new BlockPos(var1, var2 + 1, var3)).getBlock() != Blocks.AIR) {
                     this.motionY = this.smotionY = -this.smotionY;
-                }
-                else if (this.smotionY < 0.0D && this.world.getBlockState(new BlockPos(var1, var2 - 1, var3)).getBlock() != Blocks.AIR)
-                {
+                } else if (this.smotionY < 0.0D && this.world.getBlockState(new BlockPos(var1, var2 - 1, var3)).getBlock() != Blocks.AIR) {
                     this.motionY = this.smotionY = -this.smotionY;
                 }
 
-                if (this.smotionZ > 0.0D && this.world.getBlockState(new BlockPos(var1, var2, var3 + 1)).getBlock() != Blocks.AIR)
-                {
+                if (this.smotionZ > 0.0D && this.world.getBlockState(new BlockPos(var1, var2, var3 + 1)).getBlock() != Blocks.AIR) {
                     this.motionZ = this.smotionZ = -this.smotionZ;
-                }
-                else if (this.smotionZ < 0.0D && this.world.getBlockState(new BlockPos(var1, var2, var3 - 1)).getBlock() != Blocks.AIR)
-                {
+                } else if (this.smotionZ < 0.0D && this.world.getBlockState(new BlockPos(var1, var2, var3 - 1)).getBlock() != Blocks.AIR) {
                     this.motionZ = this.smotionZ = -this.smotionZ;
                 }
             }
         }
     }
 
-    public void writeEntityToNBT(NBTTagCompound var1)
-    {
+    public void writeEntityToNBT(NBTTagCompound var1) {
         super.writeEntityToNBT(var1);
-        var1.setShort("life", (short)this.life);
-        var1.setTag("selfMotion", this.newDoubleNBTList(new double[] {this.smotionX, this.smotionY, this.smotionZ}));
+        var1.setShort("life", (short) this.life);
+        var1.setTag("selfMotion", this.newDoubleNBTList(new double[]{this.smotionX, this.smotionY, this.smotionZ}));
         var1.setBoolean("fromCloud", this.fromCloud);
         var1.setBoolean("smacked", this.smacked);
     }
 
-    public void readEntityFromNBT(NBTTagCompound var1)
-    {
+    public void readEntityFromNBT(NBTTagCompound var1) {
         super.readEntityFromNBT(var1);
         this.life = var1.getShort("life");
         this.fromCloud = var1.getBoolean("fromCloud");
@@ -184,34 +157,27 @@ public class EntityIceyBall extends EntityFlying
         this.smotionZ = var2.getDoubleAt(2);
     }
 
-    public void applyEntityCollision(Entity var1)
-    {
+    public void applyEntityCollision(Entity var1) {
         super.applyEntityCollision(var1);
         boolean var2 = false;
 
-        if (var1 != null && var1 instanceof EntityLivingBase && !(var1 instanceof EntityIceyBall) && !(var1 instanceof EntityFireBall))
-        {
-            if ((!(var1 instanceof EntitySunSpirit) || this.smacked && !this.fromCloud) && !(var1 instanceof EntityFireMinion) && !(var1 instanceof EntityFireBall))
-            {
+        if (var1 != null && var1 instanceof EntityLivingBase && !(var1 instanceof EntityIceyBall) && !(var1 instanceof EntityFireBall)) {
+            if ((!(var1 instanceof EntitySunSpirit) || this.smacked && !this.fromCloud) && !(var1 instanceof EntityFireMinion) && !(var1 instanceof EntityFireBall)) {
                 var2 = var1.attackEntityFrom(DamageSource.causeMobDamage(this), 5);
             }
         }
 
-        if (var2)
-        {
+        if (var2) {
             this.splode();
             this.isDead = true;
         }
     }
 
-    public boolean attackEntityFrom(DamageSource var1, float var2)
-    {
-        if (var1.getImmediateSource() != null && var1.getImmediateSource() instanceof EntityPlayer)
-        {
+    public boolean attackEntityFrom(DamageSource var1, float var2) {
+        if (var1.getImmediateSource() != null && var1.getImmediateSource() instanceof EntityPlayer) {
             Vec3d var3 = var1.getImmediateSource().getLookVec();
 
-            if (var3 != null)
-            {
+            if (var3 != null) {
                 this.smotionX = var3.x;
                 this.smotionY = var3.y;
                 this.smotionZ = var3.z;
@@ -219,9 +185,7 @@ public class EntityIceyBall extends EntityFlying
 
             this.smacked = true;
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }

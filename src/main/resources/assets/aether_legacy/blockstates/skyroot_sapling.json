@@ -1,7 +1,7 @@
 {
-	"variants": {
-		"normal": {
-			"model": "aether_legacy:skyroot_sapling"
-		}
-	}
+  "variants": {
+    "normal": {
+      "model": "aether_legacy:skyroot_sapling"
+    }
+  }
 }

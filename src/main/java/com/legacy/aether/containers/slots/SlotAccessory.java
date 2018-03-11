@@ -12,47 +12,40 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SlotAccessory extends Slot
-{
+public class SlotAccessory extends Slot {
 
-	private EntityPlayer instance;
+    private EntityPlayer instance;
 
-	private AccessoryType accessoryType;
+    private AccessoryType accessoryType;
 
-	public SlotAccessory(IInventory inventory, int slotID, AccessoryType accessoryType, int x, int y, EntityPlayer instance)
-	{
-		super(inventory, slotID, x, y);
-		
-		this.instance = instance;
-		this.accessoryType = accessoryType;
-	}
+    public SlotAccessory(IInventory inventory, int slotID, AccessoryType accessoryType, int x, int y, EntityPlayer instance) {
+        super(inventory, slotID, x, y);
 
-	@Override
-	public boolean isItemValid(ItemStack stack)
-	{
-		if (AetherAPI.getInstance().isAccessory(stack))
-		{
-			AetherAccessory accessory = AetherAPI.getInstance().getAccessory(stack);
+        this.instance = instance;
+        this.accessoryType = accessoryType;
+    }
 
-			if (accessory.getAccessoryType() == this.getAccessoryType())
-			{
-				return AetherHooks.isValidAccessory(this.instance, accessory);
-			}
-		}
+    @Override
+    public boolean isItemValid(ItemStack stack) {
+        if (AetherAPI.getInstance().isAccessory(stack)) {
+            AetherAccessory accessory = AetherAPI.getInstance().getAccessory(stack);
 
-		return false;
-	}
+            if (accessory.getAccessoryType() == this.getAccessoryType()) {
+                return AetherHooks.isValidAccessory(this.instance, accessory);
+            }
+        }
 
-	@Override
+        return false;
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
-    public String getSlotTexture()
-    {
+    public String getSlotTexture() {
         return "aether_legacy:items/slots/" + InventoryAccessories.EMPTY_SLOT_NAMES[this.getSlotIndex()];
     }
 
-	public AccessoryType getAccessoryType()
-	{
-		return this.accessoryType;
-	}
+    public AccessoryType getAccessoryType() {
+        return this.accessoryType;
+    }
 
 }

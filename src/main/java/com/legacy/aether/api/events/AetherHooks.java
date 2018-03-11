@@ -12,54 +12,47 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 
-public class AetherHooks
-{
+public class AetherHooks {
 
-	public static boolean isValidAccessory(EntityPlayer player, AetherAccessory accessory)
-	{
-		ValidAccessoryEvent event = new ValidAccessoryEvent(player, accessory);
+    public static boolean isValidAccessory(EntityPlayer player, AetherAccessory accessory) {
+        ValidAccessoryEvent event = new ValidAccessoryEvent(player, accessory);
 
         if (MinecraftForge.EVENT_BUS.post(event)) return false;
 
-		return !event.isCanceled();
-	}
+        return !event.isCanceled();
+    }
 
-	public static void onMoaHatched(AetherMoaType type, TileEntity incubator)
-	{
-		MoaHatchEvent event = new MoaHatchEvent(type, incubator);
+    public static void onMoaHatched(AetherMoaType type, TileEntity incubator) {
+        MoaHatchEvent event = new MoaHatchEvent(type, incubator);
 
-		MinecraftForge.EVENT_BUS.post(event);
-	}
+        MinecraftForge.EVENT_BUS.post(event);
+    }
 
-	public static void onItemEnchant(TileEntity enchanter, AetherEnchantment enchantment)
-	{
-		AetherEnchantmentEvent.EnchantEvent event = new AetherEnchantmentEvent.EnchantEvent(enchanter, enchantment);
+    public static void onItemEnchant(TileEntity enchanter, AetherEnchantment enchantment) {
+        AetherEnchantmentEvent.EnchantEvent event = new AetherEnchantmentEvent.EnchantEvent(enchanter, enchantment);
 
-		MinecraftForge.EVENT_BUS.post(event);
-	}
+        MinecraftForge.EVENT_BUS.post(event);
+    }
 
-	public static void onItemFreeze(TileEntity freezer, AetherFreezable freezable)
-	{
-		AetherFreezableEvent.FreezeEvent event = new AetherFreezableEvent.FreezeEvent(freezer, freezable);
+    public static void onItemFreeze(TileEntity freezer, AetherFreezable freezable) {
+        AetherFreezableEvent.FreezeEvent event = new AetherFreezableEvent.FreezeEvent(freezer, freezable);
 
-		MinecraftForge.EVENT_BUS.post(event);
-	}
+        MinecraftForge.EVENT_BUS.post(event);
+    }
 
-	public static int onSetEnchantmentTime(TileEntity enchanter, AetherEnchantment enchantment, int original)
-	{
-		AetherEnchantmentEvent.SetTimeEvent event = new AetherEnchantmentEvent.SetTimeEvent(enchanter, enchantment, original);
+    public static int onSetEnchantmentTime(TileEntity enchanter, AetherEnchantment enchantment, int original) {
+        AetherEnchantmentEvent.SetTimeEvent event = new AetherEnchantmentEvent.SetTimeEvent(enchanter, enchantment, original);
 
-		if (MinecraftForge.EVENT_BUS.post(event)) return original;
+        if (MinecraftForge.EVENT_BUS.post(event)) return original;
 
-		return event.getNewTime();
-	}
+        return event.getNewTime();
+    }
 
-	public static int onSetFreezableTime(TileEntity freezer, AetherFreezable freezable, int original)
-	{
-		AetherFreezableEvent.SetTimeEvent event = new AetherFreezableEvent.SetTimeEvent(freezer, freezable, original);
+    public static int onSetFreezableTime(TileEntity freezer, AetherFreezable freezable, int original) {
+        AetherFreezableEvent.SetTimeEvent event = new AetherFreezableEvent.SetTimeEvent(freezer, freezable, original);
 
-		if (MinecraftForge.EVENT_BUS.post(event)) return original;
+        if (MinecraftForge.EVENT_BUS.post(event)) return original;
 
-		return event.getNewTime();
-	}
+        return event.getNewTime();
+    }
 }

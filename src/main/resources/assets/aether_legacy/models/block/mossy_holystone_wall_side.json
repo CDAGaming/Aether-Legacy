@@ -1,11 +1,6 @@
 {
-   
- 	"parent": "block/wall_side",
-    
-	"textures": {
-        
-		"wall": "aether_legacy:blocks/mossy_holystone"
-    
-	}
-
+  "parent": "block/wall_side",
+  "textures": {
+    "wall": "aether_legacy:blocks/mossy_holystone"
+  }
 }

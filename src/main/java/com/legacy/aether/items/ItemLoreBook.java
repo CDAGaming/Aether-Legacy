@@ -12,27 +12,23 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemLoreBook extends Item 
-{
+public class ItemLoreBook extends Item {
 
-	public ItemLoreBook()
-	{
-		this.setMaxStackSize(1);
-		this.setCreativeTab(AetherCreativeTabs.misc);
-	}
-
-	@Override
-    public EnumRarity getRarity(ItemStack stack)
-    {
-    	return ItemsAether.aether_loot;
+    public ItemLoreBook() {
+        this.setMaxStackSize(1);
+        this.setCreativeTab(AetherCreativeTabs.misc);
     }
 
-	@Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-    	playerIn.openGui(Aether.instance, AetherGuiHandler.lore, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return ItemsAether.aether_loot;
+    }
 
-    	return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+        playerIn.openGui(Aether.instance, AetherGuiHandler.lore, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
+
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
     }
 
 }

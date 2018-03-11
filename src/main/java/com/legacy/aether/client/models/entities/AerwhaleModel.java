@@ -4,8 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class AerwhaleModel extends ModelBase
-{
+public class AerwhaleModel extends ModelBase {
 
     public ModelRenderer FrontBody;
     public ModelRenderer RightFin;
@@ -19,8 +18,7 @@ public class AerwhaleModel extends ModelBase
     public ModelRenderer BackfinLeft;
     public ModelRenderer Middlebody;
 
-    public AerwhaleModel()
-    {
+    public AerwhaleModel() {
         this.textureWidth = 512;
         this.textureHeight = 64;
 
@@ -30,7 +28,7 @@ public class AerwhaleModel extends ModelBase
         this.FrontBody.setTextureSize(512, 64);
         this.FrontBody.mirror = true;
         this.setRotation(this.FrontBody, -0.1047198F, 0.0F, 0.0F);
-  
+
         this.RightFin = new ModelRenderer(this, 446, 1);
         this.RightFin.addBox(-20.0F, -2.0F, -6.0F, 19, 3, 14);
         this.RightFin.setRotationPoint(-10.0F, 4.0F, 10.0F);
@@ -105,8 +103,7 @@ public class AerwhaleModel extends ModelBase
     }
 
     @Override
-    public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
-    {
+    public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
         this.FrontBody.render(scale);
         this.RightFin.render(scale);
         this.BottomPartHead.render(scale);
@@ -120,8 +117,7 @@ public class AerwhaleModel extends ModelBase
         this.Middlebody.render(scale);
     }
 
-    private void setRotation(ModelRenderer model, float x, float y, float z)
-    {
+    private void setRotation(ModelRenderer model, float x, float y, float z) {
         model.rotateAngleX = x;
         model.rotateAngleY = y;
         model.rotateAngleZ = z;

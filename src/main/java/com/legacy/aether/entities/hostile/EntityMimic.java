@@ -12,111 +12,90 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class EntityMimic extends EntityMob
-{
+public class EntityMimic extends EntityMob {
 
-	public float mouth, legs;
+    public float mouth, legs;
 
-	private float legsDirection = 1;
+    private float legsDirection = 1;
 
-    public EntityMimic(World world)
-    {
+    public EntityMimic(World world) {
         super(world);
         this.setSize(1.0F, 2.0F);
         this.applyEntityAI();
     }
 
-    protected void applyEntityAI()
-    {
+    protected void applyEntityAI() {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, true));
     }
-   
-    protected void applyEntityAttributes()
-    {
+
+    protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(8.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.28000000417232513D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);   
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
     }
 
-    public void onUpdate()
-    {
-		super.onUpdate();
+    public void onUpdate() {
+        super.onUpdate();
 
-		this.mouth = (float)((Math.cos((float)ticksExisted / 10F * 3.14159265F)) + 1F) * 0.6F;
-		this.legs *= 0.9F;
+        this.mouth = (float) ((Math.cos((float) ticksExisted / 10F * 3.14159265F)) + 1F) * 0.6F;
+        this.legs *= 0.9F;
 
-		if (this.prevPosX - this.posX != 0 || this.prevPosZ - this.posZ != 0)
-		{
-			this.legs += legsDirection * 0.2F;
+        if (this.prevPosX - this.posX != 0 || this.prevPosZ - this.posZ != 0) {
+            this.legs += legsDirection * 0.2F;
 
-			if(this.legs > 1.0F)
-			{
-				this.legsDirection = -1;
-			}
+            if (this.legs > 1.0F) {
+                this.legsDirection = -1;
+            }
 
-			if(this.legs < -1.0F)
-			{
-				this.legsDirection = 1;
-			}
-		}
-		else
-		{
-			this.legs = 0.0F;
-		}
+            if (this.legs < -1.0F) {
+                this.legsDirection = 1;
+            }
+        } else {
+            this.legs = 0.0F;
+        }
     }
 
-    protected SoundEvent getHurtSound(DamageSource source)
-    {
+    protected SoundEvent getHurtSound(DamageSource source) {
         return SoundEvents.BLOCK_WOOD_HIT;
     }
 
-    protected SoundEvent getDeathSound()
-    {
+    protected SoundEvent getDeathSound() {
         return SoundEvents.BLOCK_CHEST_CLOSE;
     }
 
-    protected float getSoundVolume()
-    {
+    protected float getSoundVolume() {
         return 0.6F;
     }
 
-	@Override
-	protected void dropFewItems(boolean var1, int var2) 
-	{
-		dropItem(Item.getItemFromBlock(Blocks.CHEST), 1);
-	}
+    @Override
+    protected void dropFewItems(boolean var1, int var2) {
+        dropItem(Item.getItemFromBlock(Blocks.CHEST), 1);
+    }
 
-	@Override
-	public boolean attackEntityFrom(DamageSource ds, float var2)
-	{
-		if (ds.getImmediateSource() instanceof EntityMimic)
-		{
-			return false;
-		}
+    @Override
+    public boolean attackEntityFrom(DamageSource ds, float var2) {
+        if (ds.getImmediateSource() instanceof EntityMimic) {
+            return false;
+        }
 
-		if (ds.getImmediateSource() instanceof EntityLivingBase)
-		{
-			EntityLivingBase attacker = (EntityLivingBase) ds.getImmediateSource();
-			if (attacker instanceof EntityPlayer)
-			{
-				EntityPlayer player = (EntityPlayer) attacker;
-				if(!player.capabilities.isCreativeMode)
-				{
-					this.setAttackTarget(attacker);
-				}
-			}
-			else
-			{
-				this.setAttackTarget(attacker);
-			}
-		}
-		return super.attackEntityFrom(ds, var2);
-	}
+        if (ds.getImmediateSource() instanceof EntityLivingBase) {
+            EntityLivingBase attacker = (EntityLivingBase) ds.getImmediateSource();
+            if (attacker instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer) attacker;
+                if (!player.capabilities.isCreativeMode) {
+                    this.setAttackTarget(attacker);
+                }
+            } else {
+                this.setAttackTarget(attacker);
+            }
+        }
+        return super.attackEntityFrom(ds, var2);
+    }
 
 }

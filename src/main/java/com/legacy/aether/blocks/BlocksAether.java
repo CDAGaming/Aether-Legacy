@@ -30,193 +30,185 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class BlocksAether
-{
+public class BlocksAether {
 
-	public static Block aether_grass, enchanted_aether_grass, aether_dirt;
+    public static Block aether_grass, enchanted_aether_grass, aether_dirt;
 
-	public static Block holystone, mossy_holystone, holystone_brick;
+    public static Block holystone, mossy_holystone, holystone_brick;
 
-	public static Block aercloud, quicksoil, icestone;
+    public static Block aercloud, quicksoil, icestone;
 
-	public static Block ambrosium_ore, zanite_ore, gravitite_ore;
+    public static Block ambrosium_ore, zanite_ore, gravitite_ore;
 
-	public static Block aether_leaves, aether_log, skyroot_plank;
+    public static Block aether_leaves, aether_log, skyroot_plank;
 
-	public static Block quicksoil_glass, aerogel;
+    public static Block quicksoil_glass, aerogel;
 
-	public static Block enchanted_gravitite, zanite_block;
+    public static Block enchanted_gravitite, zanite_block;
 
-	public static Block berry_bush, berry_bush_stem;
+    public static Block berry_bush, berry_bush_stem;
 
-	public static Block enchanter, freezer, incubator;
+    public static Block enchanter, freezer, incubator;
 
-	public static Block ambrosium_torch;
+    public static Block ambrosium_torch;
 
-	public static Block aether_portal;
+    public static Block aether_portal;
 
-	public static Block chest_mimic, treasure_chest;
+    public static Block chest_mimic, treasure_chest;
 
-	public static Block dungeon_trap, dungeon_block, locked_dungeon_block;
+    public static Block dungeon_trap, dungeon_block, locked_dungeon_block;
 
-	public static Block purple_flower, white_flower;
+    public static Block purple_flower, white_flower;
 
-	public static Block skyroot_sapling, golden_oak_sapling;
+    public static Block skyroot_sapling, golden_oak_sapling;
 
-	public static Block crystal_leaves;
+    public static Block crystal_leaves;
 
-	public static Block pillar, pillar_top;
+    public static Block pillar, pillar_top;
 
-	public static Block skyroot_fence, skyroot_fence_gate;
+    public static Block skyroot_fence, skyroot_fence_gate;
 
-	public static Block carved_stairs, angelic_stairs, hellfire_stairs, skyroot_stairs, mossy_holystone_stairs, holystone_stairs, holystone_brick_stairs, aerogel_stairs;
+    public static Block carved_stairs, angelic_stairs, hellfire_stairs, skyroot_stairs, mossy_holystone_stairs, holystone_stairs, holystone_brick_stairs, aerogel_stairs;
 
-	public static Block carved_slab, angelic_slab, hellfire_slab, skyroot_slab, holystone_slab, holystone_brick_slab, mossy_holystone_slab, aerogel_slab;
+    public static Block carved_slab, angelic_slab, hellfire_slab, skyroot_slab, holystone_slab, holystone_brick_slab, mossy_holystone_slab, aerogel_slab;
 
-	public static Block carved_double_slab, angelic_double_slab, hellfire_double_slab, skyroot_double_slab, holystone_double_slab, holystone_brick_double_slab, mossy_holystone_double_slab, aerogel_double_slab;
+    public static Block carved_double_slab, angelic_double_slab, hellfire_double_slab, skyroot_double_slab, holystone_double_slab, holystone_brick_double_slab, mossy_holystone_double_slab, aerogel_double_slab;
 
-	public static Block holystone_wall, mossy_holystone_wall, holystone_brick_wall, carved_wall, angelic_wall, hellfire_wall, aerogel_wall;
+    public static Block holystone_wall, mossy_holystone_wall, holystone_brick_wall, carved_wall, angelic_wall, hellfire_wall, aerogel_wall;
 
-	public static Block holiday_leaves, present;
+    public static Block holiday_leaves, present;
 
-	public static Block sun_altar;
-	
-	public static Block skyroot_bookshelf;
+    public static Block sun_altar;
 
-	public static IForgeRegistry<Block> blockRegistry;
+    public static Block skyroot_bookshelf;
 
-	public static IForgeRegistry<Item> itemRegistry;
+    public static IForgeRegistry<Block> blockRegistry;
 
-	public static boolean canInitialize()
-	{
-		return blockRegistry != null && itemRegistry != null;
-	}
+    public static IForgeRegistry<Item> itemRegistry;
 
-	public static void initialization()
-	{
-		aether_grass = register("aether_grass", new BlockAetherGrass());
-		enchanted_aether_grass = register("enchanted_aether_grass", new BlockEnchantedAetherGrass());
-		aether_dirt = register("aether_dirt", new BlockAetherDirt());
-		holystone = register("holystone", new BlockHolystone());
-		mossy_holystone = register("mossy_holystone", new BlockHolystone());
-		holystone_brick = register("holystone_brick", new Block(Material.ROCK).setHardness(0.5F).setResistance(10.0F));
-		aercloud = registerMeta("aercloud", new BlockAercloud());
-		quicksoil = register("quicksoil", new BlockQuicksoil());
-		icestone = register("icestone", new BlockIcestone());
-		ambrosium_ore = register("ambrosium_ore", new BlockAmbrosiumOre());
-		zanite_ore = register("zanite_ore", new BlockZaniteOre());
-		gravitite_ore = register("gravitite_ore", new BlockGravititeOre());
-		aether_leaves = registerMeta("aether_leaves", new BlockAetherLeaves());
-		aether_log = registerMeta("aether_log", new BlockAetherLog());
-		skyroot_plank = register("skyroot_plank", new BlockSkyrootPlank());
-		quicksoil_glass = register("quicksoil_glass", new BlockQuicksoilGlass());
-		aerogel = register("aerogel", new BlockAerogel());
-		enchanted_gravitite = register("enchanted_gravitite", new BlockEnchantedGravitite());
-		zanite_block = register("zanite_block", new BlockZanite());
-		berry_bush = register("berry_bush", new BlockBerryBush());
-		berry_bush_stem = register("berry_bush_stem", new BlockBerryBushStem());
-		enchanter = register("enchanter", new BlockEnchanter());
-		freezer = register("freezer", new BlockFreezer());
-		incubator = register("incubator", new BlockIncubator());
-		dungeon_block = registerMeta("dungeon_block", new BlockDungeonBase(false));
-		locked_dungeon_block = registerMeta("locked_dungeon_block", new BlockDungeonBase(true).setResistance(2500F));
-		dungeon_trap = registerMeta("dungeon_trap", new BlockDungeonTrap());
-		aether_portal = register("aether_portal", new BlockAetherPortal()).setCreativeTab(null);
-		ambrosium_torch = register("ambrosium_torch", new BlockAmbrosiumTorch());
-		chest_mimic = register("chest_mimic", new BlockMimicChest());
-		treasure_chest = register("treasure_chest", new BlockTreasureChest());
-		purple_flower = register("purple_flower", new BlockAetherFlower());
-		white_flower = register("white_flower", new BlockAetherFlower());
-		skyroot_sapling = register("skyroot_sapling", new BlockAetherSapling(new AetherGenSkyrootTree(true)));
-		golden_oak_sapling = register("golden_oak_sapling", new BlockAetherSapling(new AetherGenOakTree()));
-		crystal_leaves = registerMeta("crystal_leaves", new BlockCrystalLeaves());
-		holiday_leaves = registerMeta("holiday_leaves", new BlockHolidayLeaves());
-		present = register("present", new BlockPresent());
-		pillar = register("pillar", new BlockPillar());
-		pillar_top = register("pillar_top", new BlockPillar());
+    public static boolean canInitialize() {
+        return blockRegistry != null && itemRegistry != null;
+    }
 
-		skyroot_fence = register("skyroot_fence", new BlockAetherFence());
+    public static void initialization() {
+        aether_grass = register("aether_grass", new BlockAetherGrass());
+        enchanted_aether_grass = register("enchanted_aether_grass", new BlockEnchantedAetherGrass());
+        aether_dirt = register("aether_dirt", new BlockAetherDirt());
+        holystone = register("holystone", new BlockHolystone());
+        mossy_holystone = register("mossy_holystone", new BlockHolystone());
+        holystone_brick = register("holystone_brick", new Block(Material.ROCK).setHardness(0.5F).setResistance(10.0F));
+        aercloud = registerMeta("aercloud", new BlockAercloud());
+        quicksoil = register("quicksoil", new BlockQuicksoil());
+        icestone = register("icestone", new BlockIcestone());
+        ambrosium_ore = register("ambrosium_ore", new BlockAmbrosiumOre());
+        zanite_ore = register("zanite_ore", new BlockZaniteOre());
+        gravitite_ore = register("gravitite_ore", new BlockGravititeOre());
+        aether_leaves = registerMeta("aether_leaves", new BlockAetherLeaves());
+        aether_log = registerMeta("aether_log", new BlockAetherLog());
+        skyroot_plank = register("skyroot_plank", new BlockSkyrootPlank());
+        quicksoil_glass = register("quicksoil_glass", new BlockQuicksoilGlass());
+        aerogel = register("aerogel", new BlockAerogel());
+        enchanted_gravitite = register("enchanted_gravitite", new BlockEnchantedGravitite());
+        zanite_block = register("zanite_block", new BlockZanite());
+        berry_bush = register("berry_bush", new BlockBerryBush());
+        berry_bush_stem = register("berry_bush_stem", new BlockBerryBushStem());
+        enchanter = register("enchanter", new BlockEnchanter());
+        freezer = register("freezer", new BlockFreezer());
+        incubator = register("incubator", new BlockIncubator());
+        dungeon_block = registerMeta("dungeon_block", new BlockDungeonBase(false));
+        locked_dungeon_block = registerMeta("locked_dungeon_block", new BlockDungeonBase(true).setResistance(2500F));
+        dungeon_trap = registerMeta("dungeon_trap", new BlockDungeonTrap());
+        aether_portal = register("aether_portal", new BlockAetherPortal()).setCreativeTab(null);
+        ambrosium_torch = register("ambrosium_torch", new BlockAmbrosiumTorch());
+        chest_mimic = register("chest_mimic", new BlockMimicChest());
+        treasure_chest = register("treasure_chest", new BlockTreasureChest());
+        purple_flower = register("purple_flower", new BlockAetherFlower());
+        white_flower = register("white_flower", new BlockAetherFlower());
+        skyroot_sapling = register("skyroot_sapling", new BlockAetherSapling(new AetherGenSkyrootTree(true)));
+        golden_oak_sapling = register("golden_oak_sapling", new BlockAetherSapling(new AetherGenOakTree()));
+        crystal_leaves = registerMeta("crystal_leaves", new BlockCrystalLeaves());
+        holiday_leaves = registerMeta("holiday_leaves", new BlockHolidayLeaves());
+        present = register("present", new BlockPresent());
+        pillar = register("pillar", new BlockPillar());
+        pillar_top = register("pillar_top", new BlockPillar());
 
-		skyroot_fence_gate = register("skyroot_fence_gate", new BlockAetherFenceGate());
+        skyroot_fence = register("skyroot_fence", new BlockAetherFence());
 
-		carved_wall = register("carved_wall", new BlockAetherWall(dungeon_block.getDefaultState()));
-		angelic_wall = register("angelic_wall", new BlockAetherWall(dungeon_block.getDefaultState()));
-		hellfire_wall = register("hellfire_wall", new BlockAetherWall(dungeon_block.getDefaultState()));
-		holystone_wall = register("holystone_wall", new BlockAetherWall(holystone.getDefaultState()));
-		holystone_brick_wall = register("holystone_brick_wall", new BlockAetherWall(holystone_brick.getDefaultState()));
-		mossy_holystone_wall = register("mossy_holystone_wall", new BlockAetherWall(mossy_holystone.getDefaultState()));
-		aerogel_wall = register("aerogel_wall", new BlockAerogelWall(aerogel.getDefaultState()));
+        skyroot_fence_gate = register("skyroot_fence_gate", new BlockAetherFenceGate());
 
-		carved_stairs = register("carved_stairs", new BlockAetherStairs(dungeon_block.getDefaultState()));
-		angelic_stairs = register("angelic_stairs", new BlockAetherStairs(dungeon_block.getDefaultState()));
-		hellfire_stairs = register("hellfire_stairs", new BlockAetherStairs(dungeon_block.getDefaultState()));
-		skyroot_stairs = register("skyroot_stairs", new BlockAetherStairs(skyroot_plank.getDefaultState()));
-		mossy_holystone_stairs = register("mossy_holystone_stairs", new BlockAetherStairs(mossy_holystone.getDefaultState()));
-		holystone_stairs = register("holystone_stairs", new BlockAetherStairs(holystone.getDefaultState()));
-		holystone_brick_stairs = register("holystone_brick_stairs", new BlockAetherStairs(holystone_brick.getDefaultState()));
-		aerogel_stairs = register("aerogel_stairs", new BlockAerogelStairs(aerogel.getDefaultState()));
+        carved_wall = register("carved_wall", new BlockAetherWall(dungeon_block.getDefaultState()));
+        angelic_wall = register("angelic_wall", new BlockAetherWall(dungeon_block.getDefaultState()));
+        hellfire_wall = register("hellfire_wall", new BlockAetherWall(dungeon_block.getDefaultState()));
+        holystone_wall = register("holystone_wall", new BlockAetherWall(holystone.getDefaultState()));
+        holystone_brick_wall = register("holystone_brick_wall", new BlockAetherWall(holystone_brick.getDefaultState()));
+        mossy_holystone_wall = register("mossy_holystone_wall", new BlockAetherWall(mossy_holystone.getDefaultState()));
+        aerogel_wall = register("aerogel_wall", new BlockAerogelWall(aerogel.getDefaultState()));
 
-		skyroot_double_slab = register("skyroot_double_slab", new BlockAetherSlab("skyroot_double_slab", true, Material.WOOD).setHardness(2.0F).setResistance(5.0F)).setCreativeTab(null);
-		carved_double_slab = register("carved_double_slab", new BlockAetherSlab("carved_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
-		angelic_double_slab = register("angelic_double_slab", new BlockAetherSlab("angelic_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
-		hellfire_double_slab = register("hellfire_double_slab", new BlockAetherSlab("hellfire_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
-		holystone_double_slab = register("holystone_double_slab", new BlockAetherSlab("holystone_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
-		mossy_holystone_double_slab = register("mossy_holystone_double_slab", new BlockAetherSlab("mossy_holystone_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
-		holystone_brick_double_slab = register("holystone_brick_double_slab", new BlockAetherSlab("holystone_brick_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
-		aerogel_double_slab = register("aerogel_double_slab", new BlockAerogelSlab("aerogel_double_slab", true, Material.IRON).setHardness(2.0F).setResistance(999F)).setCreativeTab(null);
+        carved_stairs = register("carved_stairs", new BlockAetherStairs(dungeon_block.getDefaultState()));
+        angelic_stairs = register("angelic_stairs", new BlockAetherStairs(dungeon_block.getDefaultState()));
+        hellfire_stairs = register("hellfire_stairs", new BlockAetherStairs(dungeon_block.getDefaultState()));
+        skyroot_stairs = register("skyroot_stairs", new BlockAetherStairs(skyroot_plank.getDefaultState()));
+        mossy_holystone_stairs = register("mossy_holystone_stairs", new BlockAetherStairs(mossy_holystone.getDefaultState()));
+        holystone_stairs = register("holystone_stairs", new BlockAetherStairs(holystone.getDefaultState()));
+        holystone_brick_stairs = register("holystone_brick_stairs", new BlockAetherStairs(holystone_brick.getDefaultState()));
+        aerogel_stairs = register("aerogel_stairs", new BlockAerogelStairs(aerogel.getDefaultState()));
 
-		skyroot_slab = registerSlab("skyroot_slab", new BlockAetherSlab("skyroot_slab", false, Material.WOOD).setHardness(2.0F).setResistance(5.0F), skyroot_double_slab);
-		carved_slab = registerSlab("carved_slab", new BlockAetherSlab("carved_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), carved_double_slab);
-		angelic_slab = registerSlab("angelic_slab", new BlockAetherSlab("angelic_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), angelic_double_slab);
-		hellfire_slab = registerSlab("hellfire_slab", new BlockAetherSlab("hellfire_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), hellfire_double_slab);
-		holystone_slab = registerSlab("holystone_slab", new BlockAetherSlab("holystone_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), holystone_double_slab);
-		mossy_holystone_slab = registerSlab("mossy_holystone_slab", new BlockAetherSlab("mossy_holystone_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), mossy_holystone_double_slab);
-		holystone_brick_slab = registerSlab("holystone_brick_slab", new BlockAetherSlab("holystone_brick_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), holystone_brick_double_slab);
-		aerogel_slab = registerSlab("aerogel_slab", new BlockAerogelSlab("aerogel_slab", false, Material.IRON).setHardness(0.5F).setResistance(999F), aerogel_double_slab);
-		sun_altar = register("sun_altar", new BlockSunAltar());
-		skyroot_bookshelf = register("skyroot_bookshelf", new BlockSkyrootBookshelf());
+        skyroot_double_slab = register("skyroot_double_slab", new BlockAetherSlab("skyroot_double_slab", true, Material.WOOD).setHardness(2.0F).setResistance(5.0F)).setCreativeTab(null);
+        carved_double_slab = register("carved_double_slab", new BlockAetherSlab("carved_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
+        angelic_double_slab = register("angelic_double_slab", new BlockAetherSlab("angelic_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
+        hellfire_double_slab = register("hellfire_double_slab", new BlockAetherSlab("hellfire_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
+        holystone_double_slab = register("holystone_double_slab", new BlockAetherSlab("holystone_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
+        mossy_holystone_double_slab = register("mossy_holystone_double_slab", new BlockAetherSlab("mossy_holystone_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
+        holystone_brick_double_slab = register("holystone_brick_double_slab", new BlockAetherSlab("holystone_brick_double_slab", true, Material.ROCK).setHardness(2.0F).setResistance(10.0F)).setCreativeTab(null);
+        aerogel_double_slab = register("aerogel_double_slab", new BlockAerogelSlab("aerogel_double_slab", true, Material.IRON).setHardness(2.0F).setResistance(999F)).setCreativeTab(null);
 
-		FurnaceRecipes.instance().addSmeltingRecipeForBlock(BlocksAether.aether_log, new ItemStack(Items.COAL, 1, 1), 0.15F);
-	}
+        skyroot_slab = registerSlab("skyroot_slab", new BlockAetherSlab("skyroot_slab", false, Material.WOOD).setHardness(2.0F).setResistance(5.0F), skyroot_double_slab);
+        carved_slab = registerSlab("carved_slab", new BlockAetherSlab("carved_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), carved_double_slab);
+        angelic_slab = registerSlab("angelic_slab", new BlockAetherSlab("angelic_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), angelic_double_slab);
+        hellfire_slab = registerSlab("hellfire_slab", new BlockAetherSlab("hellfire_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), hellfire_double_slab);
+        holystone_slab = registerSlab("holystone_slab", new BlockAetherSlab("holystone_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), holystone_double_slab);
+        mossy_holystone_slab = registerSlab("mossy_holystone_slab", new BlockAetherSlab("mossy_holystone_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), mossy_holystone_double_slab);
+        holystone_brick_slab = registerSlab("holystone_brick_slab", new BlockAetherSlab("holystone_brick_slab", false, Material.ROCK).setHardness(0.5F).setResistance(10.0F), holystone_brick_double_slab);
+        aerogel_slab = registerSlab("aerogel_slab", new BlockAerogelSlab("aerogel_slab", false, Material.IRON).setHardness(0.5F).setResistance(999F), aerogel_double_slab);
+        sun_altar = register("sun_altar", new BlockSunAltar());
+        skyroot_bookshelf = register("skyroot_bookshelf", new BlockSkyrootBookshelf());
 
-	public static Block registerSlab(String name, Block slab1, Block slab2)
-	{
-		slab1.setCreativeTab(AetherCreativeTabs.blocks);
+        FurnaceRecipes.instance().addSmeltingRecipeForBlock(BlocksAether.aether_log, new ItemStack(Items.COAL, 1, 1), 0.15F);
+    }
 
-		blockRegistry.register(slab1.setRegistryName(Aether.locate(name)));
-		itemRegistry.register(new ItemAetherSlab(slab1, (BlockSlab) slab1, (BlockSlab) slab2).setRegistryName(Aether.locate(name)));
+    public static Block registerSlab(String name, Block slab1, Block slab2) {
+        slab1.setCreativeTab(AetherCreativeTabs.blocks);
 
-		return slab1;
-	}
+        blockRegistry.register(slab1.setRegistryName(Aether.locate(name)));
+        itemRegistry.register(new ItemAetherSlab(slab1, (BlockSlab) slab1, (BlockSlab) slab2).setRegistryName(Aether.locate(name)));
 
-	public static Block register(String name, Block block)
-	{
-		block.setUnlocalizedName(name);
-		block.setCreativeTab(AetherCreativeTabs.blocks);
+        return slab1;
+    }
 
-		blockRegistry.register(block.setRegistryName(Aether.locate(name)));
-		itemRegistry.register(new ItemBlock(block).setRegistryName(Aether.locate(name)));
+    public static Block register(String name, Block block) {
+        block.setUnlocalizedName(name);
+        block.setCreativeTab(AetherCreativeTabs.blocks);
 
-		return block;
-	}
+        blockRegistry.register(block.setRegistryName(Aether.locate(name)));
+        itemRegistry.register(new ItemBlock(block).setRegistryName(Aether.locate(name)));
 
-	public static Block registerMeta(String name, Block block)
-	{
-		blockRegistry.register(block.setRegistryName(Aether.locate(name)));
-		itemRegistry.register(new ItemSubtype(block).setRegistryName(Aether.locate(name)));
+        return block;
+    }
 
-		return block;
-	}
+    public static Block registerMeta(String name, Block block) {
+        blockRegistry.register(block.setRegistryName(Aether.locate(name)));
+        itemRegistry.register(new ItemSubtype(block).setRegistryName(Aether.locate(name)));
 
-	public static boolean isGood(IBlockState state)
-	{
-		Block block = state.getBlock();
+        return block;
+    }
+
+    public static boolean isGood(IBlockState state) {
+        Block block = state.getBlock();
         return block == Blocks.AIR || block == aercloud;
     }
 
-	public static boolean isEarth(IBlockState state)
-	{
-		Block block = state.getBlock();
+    public static boolean isEarth(IBlockState state) {
+        Block block = state.getBlock();
         return block == aether_dirt || block == aether_grass || block == holystone || block == mossy_holystone;
     }
 

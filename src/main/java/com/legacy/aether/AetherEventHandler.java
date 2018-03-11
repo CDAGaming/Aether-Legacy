@@ -33,166 +33,132 @@ import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
-public class AetherEventHandler 
-{
+public class AetherEventHandler {
 
-	@SubscribeEvent
-	public void checkBlockBannedEvent(RightClickBlock event)
-	{
-		EntityPlayer player = event.getEntityPlayer();
-		ItemStack currentStack = event.getItemStack();
+    @SubscribeEvent
+    public void checkBlockBannedEvent(RightClickBlock event) {
+        EntityPlayer player = event.getEntityPlayer();
+        ItemStack currentStack = event.getItemStack();
 
-		if (player.dimension == AetherConfig.getAetherDimensionID())
-		{
-			if (currentStack.getItem() == Items.FLINT_AND_STEEL || currentStack.getItem() == Item.getItemFromBlock(Blocks.TORCH) || currentStack.getItem() == Items.FIRE_CHARGE)
-			{
-				for (int i = 0; i < 10; ++i)
-				{
-					event.getWorld().spawnParticle(EnumParticleTypes.SMOKE_LARGE, event.getHitVec().x, event.getHitVec().y, event.getHitVec().z, 0.0D, 0.0D, 0.0D, new int [] {});
-				}
+        if (player.dimension == AetherConfig.getAetherDimensionID()) {
+            if (currentStack.getItem() == Items.FLINT_AND_STEEL || currentStack.getItem() == Item.getItemFromBlock(Blocks.TORCH) || currentStack.getItem() == Items.FIRE_CHARGE) {
+                for (int i = 0; i < 10; ++i) {
+                    event.getWorld().spawnParticle(EnumParticleTypes.SMOKE_LARGE, event.getHitVec().x, event.getHitVec().y, event.getHitVec().z, 0.0D, 0.0D, 0.0D, new int[]{});
+                }
 
-				event.setCanceled(true);
+                event.setCanceled(true);
 
-			}
-			else if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.BED)
-			{
-				event.setCanceled(true);
-			}
-		}
-	}
+            } else if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.BED) {
+                event.setCanceled(true);
+            }
+        }
+    }
 
-	@SubscribeEvent
-	public void onMilkedCow(EntityInteractSpecific event)
-	{
-		if (event.getTarget() instanceof EntityCow || event.getTarget() instanceof EntityFlyingCow)
-		{
-			EntityPlayer player = event.getEntityPlayer();
-			ItemStack heldItem = player.getHeldItem(event.getHand());
+    @SubscribeEvent
+    public void onMilkedCow(EntityInteractSpecific event) {
+        if (event.getTarget() instanceof EntityCow || event.getTarget() instanceof EntityFlyingCow) {
+            EntityPlayer player = event.getEntityPlayer();
+            ItemStack heldItem = player.getHeldItem(event.getHand());
 
-			if (heldItem.getItem() == ItemsAether.skyroot_bucket && EnumSkyrootBucketType.getType(heldItem.getMetadata()) == EnumSkyrootBucketType.Empty)
-			{
-				heldItem.shrink(1);
+            if (heldItem.getItem() == ItemsAether.skyroot_bucket && EnumSkyrootBucketType.getType(heldItem.getMetadata()) == EnumSkyrootBucketType.Empty) {
+                heldItem.shrink(1);
 
-	            if (heldItem.isEmpty())
-	            {
-	                player.setHeldItem(event.getHand(), new ItemStack(ItemsAether.skyroot_bucket, 1, EnumSkyrootBucketType.Milk.meta));
-	            }
-	            else if (!player.inventory.addItemStackToInventory(new ItemStack(ItemsAether.skyroot_bucket, 1, EnumSkyrootBucketType.Milk.meta)))
-	            {
-	                player.dropItem(new ItemStack(ItemsAether.skyroot_bucket, 1, EnumSkyrootBucketType.Milk.meta), false);
-	            }
-			}
-		}
-	}
+                if (heldItem.isEmpty()) {
+                    player.setHeldItem(event.getHand(), new ItemStack(ItemsAether.skyroot_bucket, 1, EnumSkyrootBucketType.Milk.meta));
+                } else if (!player.inventory.addItemStackToInventory(new ItemStack(ItemsAether.skyroot_bucket, 1, EnumSkyrootBucketType.Milk.meta))) {
+                    player.dropItem(new ItemStack(ItemsAether.skyroot_bucket, 1, EnumSkyrootBucketType.Milk.meta), false);
+                }
+            }
+        }
+    }
 
-	@SubscribeEvent
-	public void onFillBucket(FillBucketEvent event)
-	{
-		World worldObj = event.getWorld();
-		RayTraceResult target = event.getTarget();
-		ItemStack stack = event.getEmptyBucket();
-		EntityPlayer player = event.getEntityPlayer();
+    @SubscribeEvent
+    public void onFillBucket(FillBucketEvent event) {
+        World worldObj = event.getWorld();
+        RayTraceResult target = event.getTarget();
+        ItemStack stack = event.getEmptyBucket();
+        EntityPlayer player = event.getEntityPlayer();
 
-		boolean isWater = (!AetherConfig.activateOnlyWithSkyroot() && stack.getItem() == Items.WATER_BUCKET) || stack.getItem() == ItemsAether.skyroot_bucket && stack.getMetadata() == 1;
-		boolean isLava = stack.getItem() == Items.LAVA_BUCKET;
+        boolean isWater = (!AetherConfig.activateOnlyWithSkyroot() && stack.getItem() == Items.WATER_BUCKET) || stack.getItem() == ItemsAether.skyroot_bucket && stack.getMetadata() == 1;
+        boolean isLava = stack.getItem() == Items.LAVA_BUCKET;
 
-		boolean validDimension = (player.dimension == 0 || player.dimension == AetherConfig.getAetherDimensionID());
+        boolean validDimension = (player.dimension == 0 || player.dimension == AetherConfig.getAetherDimensionID());
 
-		if (target != null && target.typeOfHit == Type.BLOCK && validDimension)
-		{
-			BlockPos hitPos = target.getBlockPos().offset(target.sideHit);
+        if (target != null && target.typeOfHit == Type.BLOCK && validDimension) {
+            BlockPos hitPos = target.getBlockPos().offset(target.sideHit);
 
-			if (isWater)
-			{
-				if (((BlockAetherPortal) BlocksAether.aether_portal).trySpawnPortal(worldObj, hitPos))
-				{
-					if (!player.capabilities.isCreativeMode)
-					{
-						if (stack.getItem() == ItemsAether.skyroot_bucket || stack.getItemDamage() == 1)
-						{
-							event.setFilledBucket(new ItemStack(ItemsAether.skyroot_bucket));
-						}
+            if (isWater) {
+                if (((BlockAetherPortal) BlocksAether.aether_portal).trySpawnPortal(worldObj, hitPos)) {
+                    if (!player.capabilities.isCreativeMode) {
+                        if (stack.getItem() == ItemsAether.skyroot_bucket || stack.getItemDamage() == 1) {
+                            event.setFilledBucket(new ItemStack(ItemsAether.skyroot_bucket));
+                        }
 
-						if (stack.getItem() == Items.WATER_BUCKET)
-						{
-							event.setFilledBucket(new ItemStack(Items.BUCKET));
-						}
-					}
+                        if (stack.getItem() == Items.WATER_BUCKET) {
+                            event.setFilledBucket(new ItemStack(Items.BUCKET));
+                        }
+                    }
 
-					event.setResult(Result.ALLOW);
-				}
-			}
+                    event.setResult(Result.ALLOW);
+                }
+            }
 
-			if (isLava && player.dimension == AetherConfig.getAetherDimensionID())
-			{
-				if (player.capabilities.isCreativeMode && player.isSneaking())
-				{
-					return;
-				}
+            if (isLava && player.dimension == AetherConfig.getAetherDimensionID()) {
+                if (player.capabilities.isCreativeMode && player.isSneaking()) {
+                    return;
+                }
 
-				if (worldObj.isAirBlock(hitPos))
-				{
-					worldObj.setBlockState(hitPos, BlocksAether.aerogel.getDefaultState());
+                if (worldObj.isAirBlock(hitPos)) {
+                    worldObj.setBlockState(hitPos, BlocksAether.aerogel.getDefaultState());
 
-					if (!player.capabilities.isCreativeMode)
-					{
-						event.setFilledBucket(new ItemStack(Items.BUCKET));
-					}
-				}
+                    if (!player.capabilities.isCreativeMode) {
+                        event.setFilledBucket(new ItemStack(Items.BUCKET));
+                    }
+                }
 
-				event.setResult(Result.ALLOW);
-			}
-		}
-	}
+                event.setResult(Result.ALLOW);
+            }
+        }
+    }
 
-	@SubscribeEvent
-	public void onCrafting(ItemCraftedEvent event)
-	{
-		if (event.player instanceof EntityPlayerMP)
-		{
-			if (this.isGravititeTool(event.crafting.getItem()))
-			{
-				AetherAdvancements.GRAV_TOOLSET_TRIGGER.trigger((EntityPlayerMP) event.player);
-			}
+    @SubscribeEvent
+    public void onCrafting(ItemCraftedEvent event) {
+        if (event.player instanceof EntityPlayerMP) {
+            if (this.isGravititeTool(event.crafting.getItem())) {
+                AetherAdvancements.GRAV_TOOLSET_TRIGGER.trigger((EntityPlayerMP) event.player);
+            }
 
-			AetherAdvancements.CRAFT_ITEM_TRIGGER.trigger((EntityPlayerMP) event.player, event.crafting);
-		}
-	}
+            AetherAdvancements.CRAFT_ITEM_TRIGGER.trigger((EntityPlayerMP) event.player, event.crafting);
+        }
+    }
 
-	@SubscribeEvent
-	public void onEntityDropLoot(LivingDropsEvent event)
-	{
-		if (event.getSource() instanceof EntityDamageSource)
-		{
-			EntityLivingBase entity = event.getEntityLiving();
-			EntityDamageSource source = (EntityDamageSource) event.getSource();
+    @SubscribeEvent
+    public void onEntityDropLoot(LivingDropsEvent event) {
+        if (event.getSource() instanceof EntityDamageSource) {
+            EntityLivingBase entity = event.getEntityLiving();
+            EntityDamageSource source = (EntityDamageSource) event.getSource();
 
-			if (source.getImmediateSource() instanceof EntityPlayer)
-			{
-				EntityPlayer player = (EntityPlayer) source.getImmediateSource();
-				ItemStack currentItem = player.inventory.getCurrentItem();
+            if (source.getImmediateSource() instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer) source.getImmediateSource();
+                ItemStack currentItem = player.inventory.getCurrentItem();
 
-				if (currentItem.getItem() instanceof ItemSkyrootSword && !(entity instanceof EntityPlayer) && !(entity instanceof EntityWither) && !(entity instanceof EntityValkyrie))
-				{
-					for (EntityItem items : event.getDrops())
-					{
-						ItemStack stack = items.getItem();
+                if (currentItem.getItem() instanceof ItemSkyrootSword && !(entity instanceof EntityPlayer) && !(entity instanceof EntityWither) && !(entity instanceof EntityValkyrie)) {
+                    for (EntityItem items : event.getDrops()) {
+                        ItemStack stack = items.getItem();
 
-						if (!(stack.getItem() instanceof ItemDungeonKey) && stack.getItem() != ItemsAether.victory_medal && stack.getItem() != Items.SKULL)
-						{
-							EntityItem item = new EntityItem(entity.world, entity.posX, entity.posY, entity.posZ, items.getItem());
+                        if (!(stack.getItem() instanceof ItemDungeonKey) && stack.getItem() != ItemsAether.victory_medal && stack.getItem() != Items.SKULL) {
+                            EntityItem item = new EntityItem(entity.world, entity.posX, entity.posY, entity.posZ, items.getItem());
 
-							entity.world.spawnEntity(item);
-						}
-					}
-				}
-			}
-		}
-	}
+                            entity.world.spawnEntity(item);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-	public boolean isGravititeTool(Item stackID)
-	{
-		return stackID == ItemsAether.gravitite_shovel || stackID == ItemsAether.gravitite_axe || stackID == ItemsAether.gravitite_pickaxe;
-	}
+    public boolean isGravititeTool(Item stackID) {
+        return stackID == ItemsAether.gravitite_shovel || stackID == ItemsAether.gravitite_axe || stackID == ItemsAether.gravitite_pickaxe;
+    }
 
 }

@@ -7,29 +7,36 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
-public class CommonProxy 
-{
+public class CommonProxy {
 
-	public void preInitialization() { }
+    @SuppressWarnings("deprecation")
+    public static void registerEvent(Object event) {
+        FMLCommonHandler.instance().bus().register(event);
+        MinecraftForge.EVENT_BUS.register(event);
+    }
 
-	public void initialization() { }
+    public void preInitialization() {
+    }
 
-	public void postInitialization() { }
+    public void initialization() {
+    }
 
-	public EntityPlayer getThePlayer() { return null; }
+    public void postInitialization() {
+    }
 
-	public void sendMessage(EntityPlayer player, String message) { }
+    public EntityPlayer getThePlayer() {
+        return null;
+    }
 
-	public void spawnBlockBrokenFX(IBlockState state, BlockPos pos) { }
+    public void sendMessage(EntityPlayer player, String message) {
+    }
 
-	public void spawnSmoke(World world, BlockPos pos) {}
+    public void spawnBlockBrokenFX(IBlockState state, BlockPos pos) {
+    }
 
-	public void openSunAltar() { }
+    public void spawnSmoke(World world, BlockPos pos) {
+    }
 
-	@SuppressWarnings("deprecation")
-	public static void registerEvent(Object event)
-	{
-		FMLCommonHandler.instance().bus().register(event);
-		MinecraftForge.EVENT_BUS.register(event);
-	}
+    public void openSunAltar() {
+    }
 }

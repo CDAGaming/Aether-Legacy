@@ -12,36 +12,27 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemSwettyBall extends Item
-{
+public class ItemSwettyBall extends Item {
 
-	public ItemSwettyBall(CreativeTabs tab)
-	{
-		this.setCreativeTab(tab);
-	}
-	
-	@Override
-    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-		ItemStack heldItem = playerIn.getHeldItem(hand);
+    public ItemSwettyBall(CreativeTabs tab) {
+        this.setCreativeTab(tab);
+    }
 
-    	if (worldIn.getBlockState(pos).getBlock() == BlocksAether.aether_dirt)
-    	{
-    		worldIn.setBlockState(pos, BlocksAether.aether_grass.getDefaultState());
-    	}
-    	else if (worldIn.getBlockState(pos).getBlock() == Blocks.DIRT)
-    	{
-    		worldIn.setBlockState(pos, Blocks.GRASS.getDefaultState());
-    	}
-    	else
-    	{
-    		return EnumActionResult.FAIL;
-    	}
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        ItemStack heldItem = playerIn.getHeldItem(hand);
 
-    	if (!playerIn.capabilities.isCreativeMode)
-    	{
-    		heldItem.shrink(1);
-    	}
+        if (worldIn.getBlockState(pos).getBlock() == BlocksAether.aether_dirt) {
+            worldIn.setBlockState(pos, BlocksAether.aether_grass.getDefaultState());
+        } else if (worldIn.getBlockState(pos).getBlock() == Blocks.DIRT) {
+            worldIn.setBlockState(pos, Blocks.GRASS.getDefaultState());
+        } else {
+            return EnumActionResult.FAIL;
+        }
+
+        if (!playerIn.capabilities.isCreativeMode) {
+            heldItem.shrink(1);
+        }
 
         return EnumActionResult.SUCCESS;
     }

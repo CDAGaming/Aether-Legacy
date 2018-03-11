@@ -20,88 +20,73 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockBerryBush extends BlockAetherFlower
-{
+public class BlockBerryBush extends BlockAetherFlower {
 
-	public BlockBerryBush()
-	{
-		this.FLOWER_AABB = new AxisAlignedBB(0F, 0F, 0F, 1.0F, 1.0F, 1.0F);
-		this.setHardness(0.2F);
-		this.setSoundType(SoundType.PLANT);
-	}
+    public BlockBerryBush() {
+        this.FLOWER_AABB = new AxisAlignedBB(0F, 0F, 0F, 1.0F, 1.0F, 1.0F);
+        this.setHardness(0.2F);
+        this.setSoundType(SoundType.PLANT);
+    }
 
     @SideOnly(Side.CLIENT)
-    public Block.EnumOffsetType getOffsetType()
-    {
+    public Block.EnumOffsetType getOffsetType() {
         return Block.EnumOffsetType.NONE;
     }
 
-	@Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(BlocksAether.berry_bush_stem);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+        return Item.getItemFromBlock(BlocksAether.berry_bush_stem);
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
-	{
-		return this.FLOWER_AABB;
-	}
-
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-    {
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
         return this.FLOWER_AABB;
     }
 
-	@Override
-	public boolean isOpaqueCube(IBlockState state)
-	{
-		return false;
-	}
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        return this.FLOWER_AABB;
+    }
 
-	@Override
-    public void harvestBlock(World world, EntityPlayer entityplayer, BlockPos pos, IBlockState state, TileEntity te, ItemStack stackIn)
-	{
-		int min, max;
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
 
-		if (world.getBlockState(pos.down()).getBlock() == BlocksAether.enchanted_aether_grass)
-		{
-			min = 1;
-			max = 4;
-		}
-		else
-		{
-			min = 1;
-			max = 3;
-		}
+    @Override
+    public void harvestBlock(World world, EntityPlayer entityplayer, BlockPos pos, IBlockState state, TileEntity te, ItemStack stackIn) {
+        int min, max;
 
-		int randomNum = world.rand.nextInt(max - min + 1) + min;
-		entityplayer.addStat(StatList.getBlockStats(this), 1);
-		entityplayer.addExhaustion(0.025F);
+        if (world.getBlockState(pos.down()).getBlock() == BlocksAether.enchanted_aether_grass) {
+            min = 1;
+            max = 4;
+        } else {
+            min = 1;
+            max = 3;
+        }
 
-		world.setBlockState(pos, BlocksAether.berry_bush_stem.getDefaultState());
+        int randomNum = world.rand.nextInt(max - min + 1) + min;
+        entityplayer.addStat(StatList.getBlockStats(this), 1);
+        entityplayer.addExhaustion(0.025F);
 
-		if (randomNum != 0)
-		{
-			spawnAsEntity(world, pos, new ItemStack(ItemsAether.blue_berry, randomNum, 0));
-		}
-	}
+        world.setBlockState(pos, BlocksAether.berry_bush_stem.getDefaultState());
 
-	@Override
-    protected void checkAndDropBlock(World world, BlockPos pos, IBlockState state)
-    {
-    	if(!this.canBlockStay(world, pos, state))
-    	{
-			spawnAsEntity(world, pos, new ItemStack(ItemsAether.blue_berry, 1, 0));
-    		super.checkAndDropBlock(world, pos, state);
-    	}
+        if (randomNum != 0) {
+            spawnAsEntity(world, pos, new ItemStack(ItemsAether.blue_berry, randomNum, 0));
+        }
+    }
+
+    @Override
+    protected void checkAndDropBlock(World world, BlockPos pos, IBlockState state) {
+        if (!this.canBlockStay(world, pos, state)) {
+            spawnAsEntity(world, pos, new ItemStack(ItemsAether.blue_berry, 1, 0));
+            super.checkAndDropBlock(world, pos, state);
+        }
     }
 
     @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side)
-    {
-    	return true;
+    public boolean shouldSideBeRendered(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return true;
     }
 
 }

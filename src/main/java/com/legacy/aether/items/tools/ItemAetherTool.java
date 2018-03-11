@@ -13,92 +13,73 @@ import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.Set;
 
-public abstract class ItemAetherTool extends ItemTool
-{
+public abstract class ItemAetherTool extends ItemTool {
 
-    private static final float[] ATTACK_DAMAGES = new float[] {6.0F, 8.0F, 8.0F, 8.0F, 6.0F};
+    private static final float[] ATTACK_DAMAGES = new float[]{6.0F, 8.0F, 8.0F, 8.0F, 6.0F};
 
-    private static final float[] ATTACK_SPEEDS = new float[] { -3.2F, -3.2F, -3.1F, -3.0F, -3.0F};
+    private static final float[] ATTACK_SPEEDS = new float[]{-3.2F, -3.2F, -3.1F, -3.0F, -3.0F};
+    public Random random = new Random();
+    public EnumAetherToolType toolType;
+    private String toolClass;
 
-	private String toolClass;
+    public ItemAetherTool(ToolMaterial toolMaterial, EnumAetherToolType toolType) {
+        super(1.0F, 2.0F, toolMaterial, toolType.getToolBlockSet());
 
-	public Random random = new Random();
+        this.toolType = toolType;
 
-	public EnumAetherToolType toolType;
-
-	public ItemAetherTool(ToolMaterial toolMaterial, EnumAetherToolType toolType)
-	{
-		super(1.0F, 2.0F, toolMaterial, toolType.getToolBlockSet());
-
-		this.toolType = toolType;
-		
-        if (toolType == EnumAetherToolType.PICKAXE)
-        {
-        	this.toolClass = "pickaxe";
-        	this.attackDamage = 1.0F + toolMaterial.getAttackDamage();
-        	this.attackSpeed = -2.8F;
-        }
-        else if (toolType == EnumAetherToolType.AXE)
-        {
-        	this.toolClass = "axe";
+        if (toolType == EnumAetherToolType.PICKAXE) {
+            this.toolClass = "pickaxe";
+            this.attackDamage = 1.0F + toolMaterial.getAttackDamage();
+            this.attackSpeed = -2.8F;
+        } else if (toolType == EnumAetherToolType.AXE) {
+            this.toolClass = "axe";
             this.attackDamage = ATTACK_DAMAGES[toolMaterial.ordinal()] + toolMaterial.getAttackDamage();
             this.attackSpeed = ATTACK_SPEEDS[toolMaterial.ordinal()];
+        } else if (toolType == EnumAetherToolType.SHOVEL) {
+            this.toolClass = "shovel";
+            this.attackDamage = 1.5F + toolMaterial.getAttackDamage();
+            this.attackSpeed = -3.0F;
         }
-        else if (toolType == EnumAetherToolType.SHOVEL)
-        {
-        	this.toolClass = "shovel";
-        	this.attackDamage = 1.5F + toolMaterial.getAttackDamage();
-        	this.attackSpeed = -3.0F;
-        }
-	}
+    }
 
-	@Override
-    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
-    {
-    	if (tab == AetherCreativeTabs.tools || tab == CreativeTabs.SEARCH)
-    	{
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (tab == AetherCreativeTabs.tools || tab == CreativeTabs.SEARCH) {
             items.add(new ItemStack(this));
-    	}
+        }
     }
 
-	@Override
-    public int getHarvestLevel(ItemStack stack, String toolClass, @Nullable EntityPlayer player, @Nullable IBlockState blockState)
-    {
-		if (blockState != null && blockState.getBlock().isToolEffective(this.toolClass, blockState))
-		{
+    @Override
+    public int getHarvestLevel(ItemStack stack, String toolClass, @Nullable EntityPlayer player, @Nullable IBlockState blockState) {
+        if (blockState != null && blockState.getBlock().isToolEffective(this.toolClass, blockState)) {
             return this.toolMaterial.getHarvestLevel();
-		}
+        }
 
-		return super.getHarvestLevel(stack, toolClass, player, blockState);
+        return super.getHarvestLevel(stack, toolClass, player, blockState);
     }
 
-	@Override
-	public boolean canHarvestBlock(IBlockState block)
-	{
-		return this.toolType.canHarvestBlock(this.toolMaterial, block);
-	}
+    @Override
+    public boolean canHarvestBlock(IBlockState block) {
+        return this.toolType.canHarvestBlock(this.toolMaterial, block);
+    }
 
-	@Override
-    public float getDestroySpeed(ItemStack stack, IBlockState block)
-    {
-        for (String type : getToolClasses(stack))
-        {
+    @Override
+    public float getDestroySpeed(ItemStack stack, IBlockState block) {
+        for (String type : getToolClasses(stack)) {
             if (block.getBlock().isToolEffective(type, block))
                 return efficiency;
         }
 
-		return this.toolType.getStrVsBlock(stack, block) == 4.0F ? this.efficiency : 1.0F;
-	}
+        return this.toolType.getStrVsBlock(stack, block) == 4.0F ? this.efficiency : 1.0F;
+    }
 
     @Override
-    public Set<String> getToolClasses(ItemStack stack)
-    {
+    public Set<String> getToolClasses(ItemStack stack) {
         return toolClass != null ? com.google.common.collect.ImmutableSet.of(toolClass) : super.getToolClasses(stack);
     }
 
-    public float getEffectiveSpeed()
-    {
-    	return this.efficiency;
+    public float getEffectiveSpeed() {
+        return this.efficiency;
     }
 
 }

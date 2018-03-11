@@ -1,7 +1,7 @@
 {
-	"variants": {
-		"normal": {
-			"model": "aether_legacy:icestone"
-		}
-	}
+  "variants": {
+    "normal": {
+      "model": "aether_legacy:icestone"
+    }
+  }
 }

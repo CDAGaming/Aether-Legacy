@@ -12,89 +12,76 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.List;
 
-public class ItemValkyrieTool extends ItemAetherTool 
-{
+public class ItemValkyrieTool extends ItemAetherTool {
 
-	public ItemValkyrieTool(EnumAetherToolType toolType) 
-	{
-		super(ToolMaterial.DIAMOND, toolType);
-	}
-
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
-		return false;
-	}
-
-	@Override
-    public EnumRarity getRarity(ItemStack stack)
-    {
-    	return ItemsAether.aether_loot;
+    public ItemValkyrieTool(EnumAetherToolType toolType) {
+        super(ToolMaterial.DIAMOND, toolType);
     }
 
-	@Override
-	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack)
-	{
-		if (!(entityLiving instanceof EntityPlayer))
-		{
-			return false;
-		}
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return false;
+    }
 
-		EntityPlayer player = (EntityPlayer) entityLiving;
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return ItemsAether.aether_loot;
+    }
 
-		Vec3d playerVision = player.getLookVec();
-		AxisAlignedBB reachDistance = player.getEntityBoundingBox().grow(10.0D);
+    @Override
+    public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+        if (!(entityLiving instanceof EntityPlayer)) {
+            return false;
+        }
 
-		List<Entity> locatedEntities = player.world.getEntitiesWithinAABB(Entity.class, reachDistance);
+        EntityPlayer player = (EntityPlayer) entityLiving;
 
-		Entity found = null;
-		double foundLen = 0.0D;
+        Vec3d playerVision = player.getLookVec();
+        AxisAlignedBB reachDistance = player.getEntityBoundingBox().grow(10.0D);
 
-		for (Object o : locatedEntities)
-		{
-			if (o == player)
-			{
-				continue;
-			}
+        List<Entity> locatedEntities = player.world.getEntitiesWithinAABB(Entity.class, reachDistance);
 
-			Entity ent = (Entity) o;
+        Entity found = null;
+        double foundLen = 0.0D;
 
-			if (!ent.canBeCollidedWith())
-			{
-				continue;
-			}
+        for (Object o : locatedEntities) {
+            if (o == player) {
+                continue;
+            }
 
-			Vec3d vec = new Vec3d(ent.posX - player.posX, ent.getEntityBoundingBox().minY + ent.height / 2f - player.posY - player.getEyeHeight(), ent.posZ - player.posZ);
-			double len = vec.lengthVector();
+            Entity ent = (Entity) o;
 
-			if (len > 10.0F)
-			{
-				continue;
-			}
+            if (!ent.canBeCollidedWith()) {
+                continue;
+            }
 
-			vec = vec.normalize();
-			double dot = playerVision.dotProduct(vec);
+            Vec3d vec = new Vec3d(ent.posX - player.posX, ent.getEntityBoundingBox().minY + ent.height / 2f - player.posY - player.getEyeHeight(), ent.posZ - player.posZ);
+            double len = vec.lengthVector();
 
-			if (dot < 1.0 - 0.125 / len || !player.canEntityBeSeen(ent))
-			{
-				continue;
-			}
+            if (len > 10.0F) {
+                continue;
+            }
 
-			if (foundLen == 0.0 || len < foundLen)
-			{
-				found = ent;
-				foundLen = len;
-			}
-		}
+            vec = vec.normalize();
+            double dot = playerVision.dotProduct(vec);
 
-		if (found != null && player.getRidingEntity() != found)
-		{
-			stack.damageItem(1, player);
+            if (dot < 1.0 - 0.125 / len || !player.canEntityBeSeen(ent)) {
+                continue;
+            }
 
-			player.attackTargetEntityWithCurrentItem(found);
-		}
+            if (foundLen == 0.0 || len < foundLen) {
+                found = ent;
+                foundLen = len;
+            }
+        }
 
-		return false;
-	}
+        if (found != null && player.getRidingEntity() != found) {
+            stack.damageItem(1, player);
+
+            player.attackTargetEntityWithCurrentItem(found);
+        }
+
+        return false;
+    }
 
 }

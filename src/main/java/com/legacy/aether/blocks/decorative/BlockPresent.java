@@ -17,58 +17,43 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BlockPresent extends Block 
-{
+public class BlockPresent extends Block {
 
-	public BlockPresent() 
-	{
-		super(Material.GRASS);
+    public BlockPresent() {
+        super(Material.GRASS);
 
-		this.setHardness(0.6F);
-		this.setSoundType(SoundType.PLANT);
-	}
+        this.setHardness(0.6F);
+        this.setSoundType(SoundType.PLANT);
+    }
 
-	@Override
-    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, @Nullable ItemStack stack)
-    {
-		int randomNumber = (int) (((9 - 6 + 1) * RANDOM.nextDouble()) + 6);
-		int crateType = RANDOM.nextInt(4);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, @Nullable ItemStack stack) {
+        int randomNumber = (int) (((9 - 6 + 1) * RANDOM.nextDouble()) + 6);
+        int crateType = RANDOM.nextInt(4);
 
-		if (crateType == 0)
-		{
-			for (int size = 1; size <= randomNumber; ++size)
-			{
-				if (!world.isRemote)
-				{
-					world.spawnEntity(new EntityXPOrb(world, pos.getX(), pos.getY(), pos.getZ(), size));
-				}
-			}
-		}
-		else if (crateType == 1)
-		{
-			if (RANDOM.nextInt(9) == 0)
-			{
-				spawnAsEntity(world, pos, new ItemStack(ItemsAether.candy_cane_sword));
-			}
-			else
-			{
-				for (int size = 1; size <= randomNumber; ++size)
-				{
-					spawnAsEntity(world, pos, new ItemStack(ItemsAether.ginger_bread_man));
-				}
-			}
-		}
-		else
-		{
-			EntityTNTPresent present = new EntityTNTPresent(world, pos.getX(), pos.getY(), pos.getZ());
-			
-			if (!world.isRemote)
-			{
-				world.spawnEntity(present);
-			}
+        if (crateType == 0) {
+            for (int size = 1; size <= randomNumber; ++size) {
+                if (!world.isRemote) {
+                    world.spawnEntity(new EntityXPOrb(world, pos.getX(), pos.getY(), pos.getZ(), size));
+                }
+            }
+        } else if (crateType == 1) {
+            if (RANDOM.nextInt(9) == 0) {
+                spawnAsEntity(world, pos, new ItemStack(ItemsAether.candy_cane_sword));
+            } else {
+                for (int size = 1; size <= randomNumber; ++size) {
+                    spawnAsEntity(world, pos, new ItemStack(ItemsAether.ginger_bread_man));
+                }
+            }
+        } else {
+            EntityTNTPresent present = new EntityTNTPresent(world, pos.getX(), pos.getY(), pos.getZ());
 
-			world.playSound(null, pos, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
-		}
+            if (!world.isRemote) {
+                world.spawnEntity(present);
+            }
+
+            world.playSound(null, pos, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        }
     }
 
 }

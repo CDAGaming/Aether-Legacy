@@ -1,7 +1,7 @@
 {
-	"variants": {
-		"normal": {
-			"model": "aether_legacy:pillar"
-		}
-	}
+  "variants": {
+    "normal": {
+      "model": "aether_legacy:pillar"
+    }
+  }
 }

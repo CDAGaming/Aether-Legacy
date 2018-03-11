@@ -8,37 +8,31 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 
-public class ItemVampireBlade extends ItemSword
-{
+public class ItemVampireBlade extends ItemSword {
 
-    public ItemVampireBlade()
-    {
-    	super(ToolMaterial.DIAMOND);
+    public ItemVampireBlade() {
+        super(ToolMaterial.DIAMOND);
 
         this.setCreativeTab(AetherCreativeTabs.weapons);
     }
 
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
-		return false;
-	}
-
-	@Override
-    public EnumRarity getRarity(ItemStack stack)
-    {
-    	return ItemsAether.aether_loot;
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return false;
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)
-    {
-		EntityPlayer player = (EntityPlayer)attacker;
+    public EnumRarity getRarity(ItemStack stack) {
+        return ItemsAether.aether_loot;
+    }
 
-		if(player.getHealth() < player.getMaxHealth())
-		{
-			player.heal(1.0F);
-		}
+    @Override
+    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+        EntityPlayer player = (EntityPlayer) attacker;
+
+        if (player.getHealth() < player.getMaxHealth()) {
+            player.heal(1.0F);
+        }
 
         return super.hitEntity(stack, target, attacker);
     }

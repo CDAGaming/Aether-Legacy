@@ -13,155 +13,127 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public abstract class EntitySaddleMount extends EntityMountable
-{
+public abstract class EntitySaddleMount extends EntityMountable {
 
-	public static final DataParameter<Boolean> SADDLED = EntityDataManager.<Boolean>createKey(EntityMountable.class, DataSerializers.BOOLEAN);
+    public static final DataParameter<Boolean> SADDLED = EntityDataManager.<Boolean>createKey(EntityMountable.class, DataSerializers.BOOLEAN);
 
-	public EntitySaddleMount(World world)
-	{
-		super(world);
-	}
+    public EntitySaddleMount(World world) {
+        super(world);
+    }
 
-	@Override
-	public boolean attackEntityFrom(DamageSource damagesource, float i)
-	{
-		if ((damagesource.getImmediateSource() instanceof EntityPlayer) && (!this.getPassengers().isEmpty()  && this.getPassengers().get(0) == damagesource.getImmediateSource()))
-		{
-			return false;
-		}
+    @Override
+    public boolean attackEntityFrom(DamageSource damagesource, float i) {
+        if ((damagesource.getImmediateSource() instanceof EntityPlayer) && (!this.getPassengers().isEmpty() && this.getPassengers().get(0) == damagesource.getImmediateSource())) {
+            return false;
+        }
 
-		return super.attackEntityFrom(damagesource, i);
-	}
+        return super.attackEntityFrom(damagesource, i);
+    }
 
-	@Override
-	public boolean canBeSteered()
-	{
-		return true;
-	}
+    @Override
+    public boolean canBeSteered() {
+        return true;
+    }
 
-	@Override
-	protected boolean canTriggerWalking()
-	{
-		return this.onGround;
-	}
+    @Override
+    protected boolean canTriggerWalking() {
+        return this.onGround;
+    }
 
-	@Override
-	protected void dropFewItems(boolean var1, int var2)
-	{
-		super.dropFewItems(var1, var2);
-		
-		this.dropSaddle();
-	}
+    @Override
+    protected void dropFewItems(boolean var1, int var2) {
+        super.dropFewItems(var1, var2);
 
-	protected void dropSaddle()
-	{
-		if (this.getSaddled())
-		{
-			this.dropItem(Items.SADDLE, 1);
-		}
-	}
+        this.dropSaddle();
+    }
 
-	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		
-		this.dataManager.register(SADDLED, false);
-	}
+    protected void dropSaddle() {
+        if (this.getSaddled()) {
+            this.dropItem(Items.SADDLE, 1);
+        }
+    }
 
-	public boolean getSaddled()
-	{
-		return this.dataManager.get(SADDLED);
-	}
-	
-	public boolean canSaddle()
-	{
-		return true;
-	}
+    @Override
+    protected void entityInit() {
+        super.entityInit();
 
-	@Override
-    public boolean processInteract(EntityPlayer entityplayer, EnumHand hand)
-	{
-		ItemStack heldItem = entityplayer.getHeldItem(hand);
+        this.dataManager.register(SADDLED, false);
+    }
 
-		if (!this.canSaddle())
-		{
-			return super.processInteract(entityplayer, hand);
-		}
-		
-		if (!this.getSaddled())
-		{
-			if (heldItem.getItem() == Items.SADDLE && !this.isChild())
-			{
-				if (!entityplayer.capabilities.isCreativeMode)
-				{
-					entityplayer.setHeldItem(hand, ItemStack.EMPTY);
-				}
-				
-				if (entityplayer.world.isRemote)
-				{
-					entityplayer.world.playSound(entityplayer, entityplayer.getPosition(), SoundEvents.ENTITY_PIG_SADDLE, SoundCategory.AMBIENT, 1.0F, 1.0F);
-				}
+    public boolean getSaddled() {
+        return this.dataManager.get(SADDLED);
+    }
 
-				this.setSaddled(true);
+    public void setSaddled(boolean saddled) {
+        this.dataManager.set(SADDLED, saddled);
+    }
 
-				return true;
-			}
-		}
-		else
-		{
-			if (!this.isBeingRidden() && !this.isRiding())
-			{
-				if (!entityplayer.world.isRemote)
-				{
-					entityplayer.startRiding(this);
-					entityplayer.prevRotationYaw = entityplayer.rotationYaw = this.rotationYaw;
-				}
+    public boolean canSaddle() {
+        return true;
+    }
 
-				return true;
-			}
-		}
-		
-		return super.processInteract(entityplayer, hand);
-	}
+    @Override
+    public boolean processInteract(EntityPlayer entityplayer, EnumHand hand) {
+        ItemStack heldItem = entityplayer.getHeldItem(hand);
 
-	@Override
-	public boolean isEntityInsideOpaqueBlock()
-	{
-		if (!this.getPassengers().isEmpty())
-		{
-			return false;
-		}
+        if (!this.canSaddle()) {
+            return super.processInteract(entityplayer, hand);
+        }
 
-		return super.isEntityInsideOpaqueBlock();
-	}
+        if (!this.getSaddled()) {
+            if (heldItem.getItem() == Items.SADDLE && !this.isChild()) {
+                if (!entityplayer.capabilities.isCreativeMode) {
+                    entityplayer.setHeldItem(hand, ItemStack.EMPTY);
+                }
 
-	@Override
-	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
-	{
-		super.readEntityFromNBT(nbttagcompound);
+                if (entityplayer.world.isRemote) {
+                    entityplayer.world.playSound(entityplayer, entityplayer.getPosition(), SoundEvents.ENTITY_PIG_SADDLE, SoundCategory.AMBIENT, 1.0F, 1.0F);
+                }
 
-		this.setSaddled(nbttagcompound.getBoolean("getSaddled"));
-	}
+                this.setSaddled(true);
 
-	public void setSaddled(boolean saddled)
-	{
-		this.dataManager.set(SADDLED, saddled);
-	}
-	
-	@Override
-	public boolean shouldRiderFaceForward(EntityPlayer player)
-	{
-		return false;
-	}
+                return true;
+            }
+        } else {
+            if (!this.isBeingRidden() && !this.isRiding()) {
+                if (!entityplayer.world.isRemote) {
+                    entityplayer.startRiding(this);
+                    entityplayer.prevRotationYaw = entityplayer.rotationYaw = this.rotationYaw;
+                }
 
-	@Override
-	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
-	{
-		super.writeEntityToNBT(nbttagcompound);
+                return true;
+            }
+        }
 
-		nbttagcompound.setBoolean("getSaddled", this.getSaddled());
-	}
+        return super.processInteract(entityplayer, hand);
+    }
+
+    @Override
+    public boolean isEntityInsideOpaqueBlock() {
+        if (!this.getPassengers().isEmpty()) {
+            return false;
+        }
+
+        return super.isEntityInsideOpaqueBlock();
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound nbttagcompound) {
+        super.readEntityFromNBT(nbttagcompound);
+
+        this.setSaddled(nbttagcompound.getBoolean("getSaddled"));
+    }
+
+    @Override
+    public boolean shouldRiderFaceForward(EntityPlayer player) {
+        return false;
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
+        super.writeEntityToNBT(nbttagcompound);
+
+        nbttagcompound.setBoolean("getSaddled", this.getSaddled());
+    }
 
 }

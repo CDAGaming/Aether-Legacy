@@ -12,42 +12,36 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class EntityFloatingBlock extends Entity
-{
+public class EntityFloatingBlock extends Entity {
 
-	private IBlockState state;
+    private IBlockState state;
 
-	private int timeFloated = 0;
+    private int timeFloated = 0;
 
-	public EntityFloatingBlock(World worldIn)
-	{
-		super(worldIn);
+    public EntityFloatingBlock(World worldIn) {
+        super(worldIn);
 
-		this.setSize(1.0F, 1.0F);
-	}
+        this.setSize(1.0F, 1.0F);
+    }
 
-	public EntityFloatingBlock(World world, BlockPos pos, IBlockState state)
-	{
-		this(world);
+    public EntityFloatingBlock(World world, BlockPos pos, IBlockState state) {
+        this(world);
 
         this.preventEntitySpawning = true;
-		this.motionX = this.motionY = this.motionZ = 0;
+        this.motionX = this.motionY = this.motionZ = 0;
 
         this.setState(state);
-		this.setPosition(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D);
-	}
+        this.setPosition(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D);
+    }
 
-	@Override
-	protected void entityInit()
-	{
+    @Override
+    protected void entityInit() {
 
     }
 
-	@Override
-	public void onUpdate()
-	{
-        if (this.getBlockState() == null)
-        {
+    @Override
+    public void onUpdate() {
+        if (this.getBlockState() == null) {
             this.setDead();
             return;
         }
@@ -66,67 +60,55 @@ public class EntityFloatingBlock extends Entity
 
         List<?> list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(0.0D, 1.0D, 0.0D));
 
-        for (int stack = 0; stack < list.size(); ++stack)
-        {
-            if (list.get(stack) instanceof EntityFallingBlock && block.canPlaceBlockAt(this.world, pos))
-            {
+        for (int stack = 0; stack < list.size(); ++stack) {
+            if (list.get(stack) instanceof EntityFallingBlock && block.canPlaceBlockAt(this.world, pos)) {
                 this.world.setBlockState(pos.up(), this.getBlockState(), 2);
                 this.setDead();
             }
         }
 
-        if (this.collidedVertically && !this.onGround)
-        {
+        if (this.collidedVertically && !this.onGround) {
             this.motionX *= 0.699999988079071D;
             this.motionZ *= 0.699999988079071D;
             this.motionY *= -0.5D;
             this.setDead();
 
-            if (!block.canPlaceBlockAt(this.world, pos) || BlockFloating.canContinue(this.world, pos.up()) || !this.world.setBlockState(pos, this.getBlockState(), 2))
-            {
-            	block.dropBlockAsItem(this.world, pos, this.getBlockState(), 0);
+            if (!block.canPlaceBlockAt(this.world, pos) || BlockFloating.canContinue(this.world, pos.up()) || !this.world.setBlockState(pos, this.getBlockState(), 2)) {
+                block.dropBlockAsItem(this.world, pos, this.getBlockState(), 0);
             }
-        }
-        else if (this.timeFloated > 100)
-        {
-        	block.dropBlockAsItem(this.world, pos, this.getBlockState(), 0);
+        } else if (this.timeFloated > 100) {
+            block.dropBlockAsItem(this.world, pos, this.getBlockState(), 0);
 
             this.setDead();
         }
-	}
+    }
 
-	public void setState(IBlockState state)
-	{
-		this.state = state;
-	}
+    public void setState(IBlockState state) {
+        this.state = state;
+    }
 
-	public IBlockState getBlockState()
-	{
-		return this.state;
-	}
+    public IBlockState getBlockState() {
+        return this.state;
+    }
 
-	@Override
-    protected boolean canTriggerWalking()
-    {
+    @Override
+    protected boolean canTriggerWalking() {
         return false;
     }
 
     @Override
-    public boolean canBeCollidedWith()
-    {
+    public boolean canBeCollidedWith() {
         return !this.isDead;
     }
 
-	@Override
-	protected void readEntityFromNBT(NBTTagCompound tagCompound)
-	{
-		this.state = Block.getStateById(tagCompound.getInteger("blockstateId"));
-	}
+    @Override
+    protected void readEntityFromNBT(NBTTagCompound tagCompound) {
+        this.state = Block.getStateById(tagCompound.getInteger("blockstateId"));
+    }
 
-	@Override
-	protected void writeEntityToNBT(NBTTagCompound tagCompound) 
-	{
-		tagCompound.setInteger("blockstateId", Block.getStateId(this.state));
-	}
+    @Override
+    protected void writeEntityToNBT(NBTTagCompound tagCompound) {
+        tagCompound.setInteger("blockstateId", Block.getStateId(this.state));
+    }
 
 }

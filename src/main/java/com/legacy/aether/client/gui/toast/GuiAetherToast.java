@@ -8,82 +8,68 @@ import net.minecraft.client.gui.toasts.GuiToast;
 import net.minecraft.client.gui.toasts.IToast;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-public class GuiAetherToast extends GuiToast
-{
+public class GuiAetherToast extends GuiToast {
 
-	private final GuiToast original;
+    private final GuiToast original;
 
-	public GuiAetherToast(Minecraft mcIn, GuiToast originalIn)
-	{
-		super(mcIn);
+    public GuiAetherToast(Minecraft mcIn, GuiToast originalIn) {
+        super(mcIn);
 
-		this.original = originalIn;
-	}
-
-	@Override
-    public void drawToast(ScaledResolution resolution)
-    {
-    	this.original.drawToast(resolution);
+        this.original = originalIn;
     }
 
-	@Override
-    public <T extends IToast> T getToast(Class <? extends T > p_192990_1_, Object p_192990_2_)
-    {
-    	return this.original.getToast(p_192990_1_, p_192990_2_);
+    private static Advancement getToastAdvancement(AdvancementToast toast) {
+        Advancement advancement = ReflectionHelper.getPrivateValue(AdvancementToast.class, toast, "advancement", "field_193679_c");
+
+        return advancement;
     }
 
-	@Override
-    public void clear()
-    {
-    	this.original.clear();
+    public static final void overrideToastGui() {
+        Minecraft mc = Minecraft.getMinecraft();
+        GuiAetherToast toast = new GuiAetherToast(mc, mc.getToastGui());
+
+        try {
+            ReflectionHelper.setPrivateValue(Minecraft.class, mc, toast, "toastGui", "field_193034_aS");
+        } catch (Exception e) {
+            System.out.println("Aether Legacy failed to add toast override. Will ignore.");
+        }
     }
 
-	@Override
-    public void add(IToast toastIn)
-    {
-		if (toastIn instanceof AdvancementToast)
-		{
-			Advancement advancement = getToastAdvancement((AdvancementToast)toastIn);
-
-			if (advancement.getId() != null && advancement.getId().getResourceDomain().equals("aether_legacy"))
-			{
-				String achievementName = advancement.getId().getResourcePath();
-
-				int achievementType = (achievementName.contains("bronze_dungeon") ? 1 : achievementName.contains("silver_dungeon") ? 2 : 0);
-
-				toastIn = new AetherAdvancementToast(advancement, achievementType);
-			}
-		}
-
-    	this.original.add(toastIn);
+    @Override
+    public void drawToast(ScaledResolution resolution) {
+        this.original.drawToast(resolution);
     }
 
-	@Override
-	public Minecraft getMinecraft()
-	{
-		return this.original.getMinecraft();
-	}
+    @Override
+    public <T extends IToast> T getToast(Class<? extends T> p_192990_1_, Object p_192990_2_) {
+        return this.original.getToast(p_192990_1_, p_192990_2_);
+    }
 
-	private static Advancement getToastAdvancement(AdvancementToast toast)
-	{
-		Advancement advancement = ReflectionHelper.getPrivateValue(AdvancementToast.class, toast, "advancement", "field_193679_c");
+    @Override
+    public void clear() {
+        this.original.clear();
+    }
 
-		return advancement;
-	}
+    @Override
+    public void add(IToast toastIn) {
+        if (toastIn instanceof AdvancementToast) {
+            Advancement advancement = getToastAdvancement((AdvancementToast) toastIn);
 
-	public static final void overrideToastGui()
-	{
-		Minecraft mc = Minecraft.getMinecraft();
-		GuiAetherToast toast = new GuiAetherToast(mc, mc.getToastGui());
+            if (advancement.getId() != null && advancement.getId().getResourceDomain().equals("aether_legacy")) {
+                String achievementName = advancement.getId().getResourcePath();
 
-		try
-		{
-			ReflectionHelper.setPrivateValue(Minecraft.class, mc, toast, "toastGui", "field_193034_aS");
-		}
-		catch (Exception e)
-		{
-			System.out.println("Aether Legacy failed to add toast override. Will ignore.");
-		}
-	}
+                int achievementType = (achievementName.contains("bronze_dungeon") ? 1 : achievementName.contains("silver_dungeon") ? 2 : 0);
+
+                toastIn = new AetherAdvancementToast(advancement, achievementType);
+            }
+        }
+
+        this.original.add(toastIn);
+    }
+
+    @Override
+    public Minecraft getMinecraft() {
+        return this.original.getMinecraft();
+    }
 
 }

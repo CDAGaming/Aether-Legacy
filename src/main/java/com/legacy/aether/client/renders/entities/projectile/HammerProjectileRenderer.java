@@ -9,19 +9,16 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 
-public class HammerProjectileRenderer extends Render<EntityHammerProjectile>
-{
+public class HammerProjectileRenderer extends Render<EntityHammerProjectile> {
 
-	public HammerProjectileRenderer(RenderManager renderManager) 
-	{
-		super(renderManager);
+    public HammerProjectileRenderer(RenderManager renderManager) {
+        super(renderManager);
 
-		this.shadowSize = 0.0F;
-	}
+        this.shadowSize = 0.0F;
+    }
 
-	public void doRenderNotchWave(EntityHammerProjectile notchwave, double par2, double par4, double par6, float par8, float par9)
-	{
-		GlStateManager.pushMatrix();
+    public void doRenderNotchWave(EntityHammerProjectile notchwave, double par2, double par4, double par6, float par8, float par9) {
+        GlStateManager.pushMatrix();
         GlStateManager.enableRescaleNormal();
         GlStateManager.translate(par2, par4, par6);
 
@@ -42,18 +39,16 @@ public class HammerProjectileRenderer extends Render<EntityHammerProjectile>
 
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();
-	}
+    }
 
-	@Override
-	public void doRender(EntityHammerProjectile par1Entity, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.doRenderNotchWave(par1Entity, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityHammerProjectile par1Entity, double par2, double par4, double par6, float par8, float par9) {
+        this.doRenderNotchWave(par1Entity, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(EntityHammerProjectile entity)
-	{
-		return new ResourceLocation("aether_legacy", "textures/entities/projectile/notch_wave.png");
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(EntityHammerProjectile entity) {
+        return new ResourceLocation("aether_legacy", "textures/entities/projectile/notch_wave.png");
+    }
 
 }

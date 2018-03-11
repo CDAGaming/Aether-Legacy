@@ -17,117 +17,108 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockAetherSlab extends BlockSlab 
-{
+public class BlockAetherSlab extends BlockSlab {
 
-	private String name;
+    private String name;
 
-	private boolean double_slab;
+    private boolean double_slab;
 
-	public BlockAetherSlab(String name, boolean double_slab, Material materialIn) 
-	{
-		super(materialIn);
-		this.name = name;
-		this.double_slab = double_slab;
+    public BlockAetherSlab(String name, boolean double_slab, Material materialIn) {
+        super(materialIn);
+        this.name = name;
+        this.double_slab = double_slab;
 
-		this.setDefaultState(double_slab ? this.getDefaultState() : this.getDefaultState().withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM));
-		this.setSoundType(materialIn == Material.WOOD ? SoundType.WOOD : SoundType.STONE);
-	}
-
-	@Override
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
-    {
-    	return new ItemStack(this.getDroppedSlab(), 1, 0);
+        this.setDefaultState(double_slab ? this.getDefaultState() : this.getDefaultState().withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM));
+        this.setSoundType(materialIn == Material.WOOD ? SoundType.WOOD : SoundType.STONE);
     }
 
-    public Block getDroppedSlab()
-    {
-    	if (this == BlocksAether.skyroot_double_slab) { return BlocksAether.skyroot_slab; }
-    	else if (this == BlocksAether.carved_double_slab) { return BlocksAether.carved_slab; }
-    	else if (this == BlocksAether.angelic_double_slab) { return BlocksAether.angelic_slab; }
-    	else if (this == BlocksAether.hellfire_double_slab) { return BlocksAether.hellfire_slab; }
-    	else if (this == BlocksAether.holystone_brick_double_slab) { return BlocksAether.holystone_brick_slab; }
-    	else if (this == BlocksAether.holystone_double_slab) { return BlocksAether.holystone_slab; }
-    	else if (this == BlocksAether.mossy_holystone_double_slab) { return BlocksAether.mossy_holystone_slab; }
-    	else if (this == BlocksAether.aerogel_double_slab) { return BlocksAether.aerogel_slab; }
-    	else { return this; }
+    @Override
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+        return new ItemStack(this.getDroppedSlab(), 1, 0);
     }
 
-	@Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-    {
+    public Block getDroppedSlab() {
+        if (this == BlocksAether.skyroot_double_slab) {
+            return BlocksAether.skyroot_slab;
+        } else if (this == BlocksAether.carved_double_slab) {
+            return BlocksAether.carved_slab;
+        } else if (this == BlocksAether.angelic_double_slab) {
+            return BlocksAether.angelic_slab;
+        } else if (this == BlocksAether.hellfire_double_slab) {
+            return BlocksAether.hellfire_slab;
+        } else if (this == BlocksAether.holystone_brick_double_slab) {
+            return BlocksAether.holystone_brick_slab;
+        } else if (this == BlocksAether.holystone_double_slab) {
+            return BlocksAether.holystone_slab;
+        } else if (this == BlocksAether.mossy_holystone_double_slab) {
+            return BlocksAether.mossy_holystone_slab;
+        } else if (this == BlocksAether.aerogel_double_slab) {
+            return BlocksAether.aerogel_slab;
+        } else {
+            return this;
+        }
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(this.getDroppedSlab());
     }
 
-	@Override
-    public int damageDropped(IBlockState state)
-    {
+    @Override
+    public int damageDropped(IBlockState state) {
         return 0;
     }
 
-	@Override
-	public boolean isDouble() 
-	{
-		return this.double_slab && this.name.contains("double");
-	}
+    @Override
+    public boolean isDouble() {
+        return this.double_slab && this.name.contains("double");
+    }
 
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-    {
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         IBlockState iblockstate = super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
-        return this.isDouble() ? iblockstate : (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || (double)hitY <= 0.5D) ? iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM) : iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.TOP));
+        return this.isDouble() ? iblockstate : (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || (double) hitY <= 0.5D) ? iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM) : iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.TOP));
     }
 
-	@Override
-    public IBlockState getStateFromMeta(int meta)
-    {
-    	if (!this.isDouble())
-    	{
-    		return this.getDefaultState().withProperty(HALF, meta == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
-    	}
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        if (!this.isDouble()) {
+            return this.getDefaultState().withProperty(HALF, meta == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
+        }
 
-    	return this.getDefaultState();
+        return this.getDefaultState();
     }
 
-	@Override
-    public int getMetaFromState(IBlockState state)
-    {
-		if (!this.isDouble())
-		{
-			if (state.getValue(HALF) == BlockSlab.EnumBlockHalf.BOTTOM)
-			{
-				return 0;
-			}
-			else if (state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP)
-			{
-				return 1;
-			}
-		}
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        if (!this.isDouble()) {
+            if (state.getValue(HALF) == BlockSlab.EnumBlockHalf.BOTTOM) {
+                return 0;
+            } else if (state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP) {
+                return 1;
+            }
+        }
 
-		return 0;
+        return 0;
     }
 
-	@Override
-    protected BlockStateContainer createBlockState()
-    {
-    	return this.isDouble() ? new BlockStateContainer(this, new IProperty[0]): new BlockStateContainer(this, new IProperty[] {HALF});
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return this.isDouble() ? new BlockStateContainer(this, new IProperty[0]) : new BlockStateContainer(this, new IProperty[]{HALF});
     }
 
-	@Override
-	public String getUnlocalizedName(int meta) 
-	{
-		return this.name;
-	}
+    @Override
+    public String getUnlocalizedName(int meta) {
+        return this.name;
+    }
 
-	@Override
-	public IProperty<?> getVariantProperty()
-	{
-		return null;
-	}
+    @Override
+    public IProperty<?> getVariantProperty() {
+        return null;
+    }
 
-	@Override
-	public Comparable<?> getTypeForItem(ItemStack stack)
-	{
-		return null;
-	}
+    @Override
+    public Comparable<?> getTypeForItem(ItemStack stack) {
+        return null;
+    }
 
 }

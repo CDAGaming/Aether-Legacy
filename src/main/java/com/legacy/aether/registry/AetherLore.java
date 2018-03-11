@@ -12,46 +12,36 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-public class AetherLore 
-{
+public class AetherLore {
 
-	public static String getLoreEntry(ItemStack stack)
-	{
-		ResourceLocation location = new ResourceLocation(stack.getItem().getRegistryName().getResourceDomain(), "lore/" + stack.getUnlocalizedName().replace("item.", "").replace("tile.", "").replace(".", "_") + ".txt");
+    public static String getLoreEntry(ItemStack stack) {
+        ResourceLocation location = new ResourceLocation(stack.getItem().getRegistryName().getResourceDomain(), "lore/" + stack.getUnlocalizedName().replace("item.", "").replace("tile.", "").replace(".", "_") + ".txt");
         IResource iresource = null;
 
-        try
-        {
-           	StringBuilder stringBuilder = new StringBuilder();
+        try {
+            StringBuilder stringBuilder = new StringBuilder();
             iresource = Minecraft.getMinecraft().getResourceManager().getResource(location);
             BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(iresource.getInputStream(), StandardCharsets.UTF_8));
             String s;
 
-            while ((s = bufferedreader.readLine()) != null)
-            {
+            while ((s = bufferedreader.readLine()) != null) {
                 s = " " + s.trim();
 
-                if (!s.isEmpty())
-                {
-                	stringBuilder.append(s);
+                if (!s.isEmpty()) {
+                    stringBuilder.append(s);
                 }
             }
 
-            if (stringBuilder.length() != 0)
-            {
-            	return stringBuilder.toString();
+            if (stringBuilder.length() != 0) {
+                return stringBuilder.toString();
             }
-        }
-        catch (IOException var8)
-        {
+        } catch (IOException var8) {
             System.out.println("Cannot find lore entry for " + location.toString());
-        }
-        finally
-        {
-            IOUtils.closeQuietly((Closeable)iresource);
+        } finally {
+            IOUtils.closeQuietly((Closeable) iresource);
         }
 
         return "missingno";
-	}
+    }
 
 }

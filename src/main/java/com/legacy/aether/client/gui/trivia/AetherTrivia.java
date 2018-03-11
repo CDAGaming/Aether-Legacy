@@ -14,49 +14,38 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Random;
 
-public class AetherTrivia
-{
+public class AetherTrivia {
 
     private static Random random = new Random();
 
-    public AetherTrivia()
-    {
-    	
+    public AetherTrivia() {
+
     }
 
-    public static String getNewTrivia() 
-    {
+    public static String getNewTrivia() {
         IResource iresource = null;
 
-        try
-        {
+        try {
             List<String> list = Lists.<String>newArrayList();
             iresource = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("aether_legacy", "texts/trivia.txt"));
             BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(iresource.getInputStream(), StandardCharsets.UTF_8));
             String s;
 
-            while ((s = bufferedreader.readLine()) != null)
-            {
+            while ((s = bufferedreader.readLine()) != null) {
                 s = s.trim();
 
-                if (!s.isEmpty())
-                {
+                if (!s.isEmpty()) {
                     list.add(s);
                 }
             }
 
-            if (!list.isEmpty())
-            {
-            	return "Pro Tip: " + (String)list.get(random.nextInt(list.size()));
+            if (!list.isEmpty()) {
+                return "Pro Tip: " + (String) list.get(random.nextInt(list.size()));
             }
-        }
-        catch (IOException var8)
-        {
+        } catch (IOException var8) {
             ;
-        }
-        finally
-        {
-            IOUtils.closeQuietly((Closeable)iresource);
+        } finally {
+            IOUtils.closeQuietly((Closeable) iresource);
         }
 
         return "missingno";

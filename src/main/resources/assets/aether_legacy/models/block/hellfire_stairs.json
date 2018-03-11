@@ -1,16 +1,8 @@
 {
-    
-	"parent": "block/stairs",
-    
-	"textures": 
-	{
-        
-		"bottom": "aether_legacy:blocks/hellfire_stone",
-        
-		"top": "aether_legacy:blocks/hellfire_stone",
-        
-		"side": "aether_legacy:blocks/hellfire_stone"
-    
-	}
-
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "aether_legacy:blocks/hellfire_stone",
+    "top": "aether_legacy:blocks/hellfire_stone",
+    "side": "aether_legacy:blocks/hellfire_stone"
+  }
 }

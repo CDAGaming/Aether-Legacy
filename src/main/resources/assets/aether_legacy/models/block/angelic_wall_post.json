@@ -1,11 +1,6 @@
 {
-    
-	"parent": "block/wall_post",
-    
-	"textures": {
-        
-		"wall": "aether_legacy:blocks/angelic_stone"
-    
-	}
-
+  "parent": "block/wall_post",
+  "textures": {
+    "wall": "aether_legacy:blocks/angelic_stone"
+  }
 }

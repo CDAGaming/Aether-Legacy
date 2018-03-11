@@ -16,52 +16,44 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class EntityHammerProjectile extends EntityThrowable
-{
+public class EntityHammerProjectile extends EntityThrowable {
 
-	private int ticksInAir;
+    private int ticksInAir;
 
     private int ignoreTime;
 
-    public EntityHammerProjectile(World worldIn)
-    {
-    	super(worldIn);
+    public EntityHammerProjectile(World worldIn) {
+        super(worldIn);
 
-    	this.setSize(0.25F, 0.25F);
+        this.setSize(0.25F, 0.25F);
     }
 
-	public EntityHammerProjectile(World worldIn, double x, double y, double z)
-	{
-		super(worldIn, x, y, z);
-	}
+    public EntityHammerProjectile(World worldIn, double x, double y, double z) {
+        super(worldIn, x, y, z);
+    }
 
-    public EntityHammerProjectile(World worldIn, EntityLivingBase throwerIn)
-    {
-    	super(worldIn, throwerIn);
+    public EntityHammerProjectile(World worldIn, EntityLivingBase throwerIn) {
+        super(worldIn, throwerIn);
     }
 
     @Override
-    protected void entityInit()
-    {
-    	this.setNoGravity(true);
+    protected void entityInit() {
+        this.setNoGravity(true);
     }
 
     @Override
-    public void onUpdate()
-    {
-		this.world.spawnParticle(EnumParticleTypes.REDSTONE, this.posX, this.posY + 0.2f, this.posZ, 1.0D, 1.0D, 1.0D);
+    public void onUpdate() {
+        this.world.spawnParticle(EnumParticleTypes.REDSTONE, this.posX, this.posY + 0.2f, this.posZ, 1.0D, 1.0D, 1.0D);
 
-    	super.onUpdate();
+        super.onUpdate();
 
-    	if (!this.onGround)
-    	{
-    		++this.ticksInAir;
-    	}
+        if (!this.onGround) {
+            ++this.ticksInAir;
+        }
 
-    	if (this.ticksInAir > 600)
-    	{
-    		this.setDead();
-    	}
+        if (this.ticksInAir > 600) {
+            this.setDead();
+        }
 
         Vec3d vec3d = new Vec3d(this.posX, this.posY, this.posZ);
         Vec3d vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
@@ -74,33 +66,24 @@ public class EntityHammerProjectile extends EntityThrowable
         double d0 = 0.0D;
         boolean flag = false;
 
-        for (int i = 0; i < list.size(); ++i)
-        {
-            Entity entity1 = (Entity)list.get(i);
+        for (int i = 0; i < list.size(); ++i) {
+            Entity entity1 = (Entity) list.get(i);
 
-            if (entity1.canBeCollidedWith())
-            {
-                if (entity1 == this.ignoreEntity)
-                {
+            if (entity1.canBeCollidedWith()) {
+                if (entity1 == this.ignoreEntity) {
                     flag = true;
-                }
-                else if (this.ticksExisted < 2 && this.ignoreEntity == null)
-                {
+                } else if (this.ticksExisted < 2 && this.ignoreEntity == null) {
                     this.ignoreEntity = entity1;
                     flag = true;
-                }
-                else
-                {
+                } else {
                     flag = false;
                     AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().grow(3.0D);
                     RayTraceResult raytraceresult1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 
-                    if (raytraceresult1 != null)
-                    {
+                    if (raytraceresult1 != null) {
                         double d1 = vec3d.squareDistanceTo(raytraceresult1.hitVec);
 
-                        if (d1 < d0 || d0 == 0.0D)
-                        {
+                        if (d1 < d0 || d0 == 0.0D) {
                             entity = entity1;
                             d0 = d1;
                         }
@@ -109,78 +92,63 @@ public class EntityHammerProjectile extends EntityThrowable
             }
         }
 
-        if (this.ignoreEntity != null)
-        {
-            if (flag)
-            {
+        if (this.ignoreEntity != null) {
+            if (flag) {
                 this.ignoreTime = 2;
-            }
-            else if (this.ignoreTime-- <= 0)
-            {
+            } else if (this.ignoreTime-- <= 0) {
                 this.ignoreEntity = null;
             }
         }
 
-        if (entity != null)
-        {
+        if (entity != null) {
             raytraceresult = new RayTraceResult(entity);
         }
 
-        if (raytraceresult != null)
-        {
-            if (raytraceresult.typeOfHit == RayTraceResult.Type.ENTITY && raytraceresult.entityHit != this.getThrower())
-            {
-               if (!net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, raytraceresult))
-                this.onRangedImpact(raytraceresult);
+        if (raytraceresult != null) {
+            if (raytraceresult.typeOfHit == RayTraceResult.Type.ENTITY && raytraceresult.entityHit != this.getThrower()) {
+                if (!net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, raytraceresult))
+                    this.onRangedImpact(raytraceresult);
             }
         }
     }
 
-    protected void onRangedImpact(RayTraceResult result)
-    {
-		if (this.world.isRemote)
-		{
-			return;
-		}
+    protected void onRangedImpact(RayTraceResult result) {
+        if (this.world.isRemote) {
+            return;
+        }
 
-		result.entityHit.attackEntityFrom(DamageSource.causeIndirectDamage(this, this.getThrower()), 5);
-		result.entityHit.addVelocity(this.motionX, 0.6D, this.motionZ);
+        result.entityHit.attackEntityFrom(DamageSource.causeIndirectDamage(this, this.getThrower()), 5);
+        result.entityHit.addVelocity(this.motionX, 0.6D, this.motionZ);
 
-        if (this.getThrower() != null && result.entityHit != this.getThrower() && result.entityHit instanceof EntityPlayer && this.getThrower() instanceof EntityPlayerMP)
-        {
-            ((EntityPlayerMP)this.getThrower()).connection.sendPacket(new SPacketChangeGameState(6, 0.0F));
+        if (this.getThrower() != null && result.entityHit != this.getThrower() && result.entityHit instanceof EntityPlayer && this.getThrower() instanceof EntityPlayerMP) {
+            ((EntityPlayerMP) this.getThrower()).connection.sendPacket(new SPacketChangeGameState(6, 0.0F));
         }
     }
 
-	@Override
-	protected void onImpact(RayTraceResult result)
-	{
-		if (this.world.isRemote)
-		{
-			return;
-		}
-
-		if (result.typeOfHit == Type.ENTITY && result.entityHit != this.getThrower())
-		{
-			result.entityHit.attackEntityFrom(DamageSource.causeIndirectDamage(this, this.getThrower()), 5);
-			result.entityHit.addVelocity(this.motionX, 0.6D, this.motionZ);
-
-            if (this.getThrower() != null && result.entityHit != this.getThrower() && result.entityHit instanceof EntityPlayer && this.getThrower() instanceof EntityPlayerMP)
-            {
-                ((EntityPlayerMP)this.getThrower()).connection.sendPacket(new SPacketChangeGameState(6, 0.0F));
-            }
-		}
-
-        for(int j = 0; j < 8; j++)
-        {
-			this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
-			this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
-			this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
-			this.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
-			this.world.spawnParticle(EnumParticleTypes.FLAME, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+    @Override
+    protected void onImpact(RayTraceResult result) {
+        if (this.world.isRemote) {
+            return;
         }
 
-		this.setDead();
-	}
+        if (result.typeOfHit == Type.ENTITY && result.entityHit != this.getThrower()) {
+            result.entityHit.attackEntityFrom(DamageSource.causeIndirectDamage(this, this.getThrower()), 5);
+            result.entityHit.addVelocity(this.motionX, 0.6D, this.motionZ);
+
+            if (this.getThrower() != null && result.entityHit != this.getThrower() && result.entityHit instanceof EntityPlayer && this.getThrower() instanceof EntityPlayerMP) {
+                ((EntityPlayerMP) this.getThrower()).connection.sendPacket(new SPacketChangeGameState(6, 0.0F));
+            }
+        }
+
+        for (int j = 0; j < 8; j++) {
+            this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+            this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+            this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+            this.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+            this.world.spawnParticle(EnumParticleTypes.FLAME, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+        }
+
+        this.setDead();
+    }
 
 }

@@ -20,75 +20,65 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 
 import java.util.Random;
 
-public class ClientProxy extends CommonProxy
-{
+public class ClientProxy extends CommonProxy {
 
-	@Override
-	public void preInitialization()
-	{
-		GuiAetherToast.overrideToastGui();
+    @Override
+    public void preInitialization() {
+        GuiAetherToast.overrideToastGui();
 
-		registerEvent(new BlockRendering());
-		registerEvent(new ItemRendering());
-		AetherEntityRenderingRegistry.initialize();
+        registerEvent(new BlockRendering());
+        registerEvent(new ItemRendering());
+        AetherEntityRenderingRegistry.initialize();
 
-		MinecraftForge.EVENT_BUS.register(new AetherClientEvents());
-	}
+        MinecraftForge.EVENT_BUS.register(new AetherClientEvents());
+    }
 
-	@Override
-	public void initialization()
-	{
-		BlockRendering.registerColors();
-		ItemRendering.registerColors();
+    @Override
+    public void initialization() {
+        BlockRendering.registerColors();
+        ItemRendering.registerColors();
 
-		AetherEntityRenderingRegistry.initializePlayerLayers();
+        AetherEntityRenderingRegistry.initializePlayerLayers();
 
-		MinecraftForge.EVENT_BUS.register(new GuiAetherInGame(Minecraft.getMinecraft()));
+        MinecraftForge.EVENT_BUS.register(new GuiAetherInGame(Minecraft.getMinecraft()));
 
-		registerEvent(new AetherMusicHandler());
-	}
+        registerEvent(new AetherMusicHandler());
+    }
 
-	@Override
-	public void postInitialization() 
-	{
+    @Override
+    public void postInitialization() {
 
-	}
+    }
 
-	@Override
-	public void sendMessage(EntityPlayer reciever, String message)
-	{
-		if (this.getThePlayer() == reciever)
-		{
-			Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString(message));
-		}
-	}
+    @Override
+    public void sendMessage(EntityPlayer reciever, String message) {
+        if (this.getThePlayer() == reciever) {
+            Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString(message));
+        }
+    }
 
-	@Override
-	public EntityPlayer getThePlayer()
-	{
-		return Minecraft.getMinecraft().player;
-	}
+    @Override
+    public EntityPlayer getThePlayer() {
+        return Minecraft.getMinecraft().player;
+    }
 
-	@Override
-	public void spawnSmoke(World world, BlockPos pos)
-	{
-		Random rand = new Random();
-		double a, b, c;
-		a = pos.getX() + 0.5D + ((rand.nextFloat() - rand.nextFloat()) * 0.375D);
-		b = pos.getY() + 0.5D + ((rand.nextFloat() - rand.nextFloat()) * 0.375D);
-		c = pos.getZ() + 0.5D + ((rand.nextFloat() - rand.nextFloat()) * 0.375D);
-		world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, a, b, c, 0.0D, 0.0D, 0.0D);
-	}
+    @Override
+    public void spawnSmoke(World world, BlockPos pos) {
+        Random rand = new Random();
+        double a, b, c;
+        a = pos.getX() + 0.5D + ((rand.nextFloat() - rand.nextFloat()) * 0.375D);
+        b = pos.getY() + 0.5D + ((rand.nextFloat() - rand.nextFloat()) * 0.375D);
+        c = pos.getZ() + 0.5D + ((rand.nextFloat() - rand.nextFloat()) * 0.375D);
+        world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, a, b, c, 0.0D, 0.0D, 0.0D);
+    }
 
-	@Override
-	public void spawnBlockBrokenFX(IBlockState state, BlockPos pos)
-	{
-		FMLClientHandler.instance().getClient().effectRenderer.addBlockDestroyEffects(pos, state);
-	}
+    @Override
+    public void spawnBlockBrokenFX(IBlockState state, BlockPos pos) {
+        FMLClientHandler.instance().getClient().effectRenderer.addBlockDestroyEffects(pos, state);
+    }
 
-	@Override
-	public void openSunAltar()
-	{
-		FMLClientHandler.instance().getClient().displayGuiScreen(new GuiSunAltar());
-	}
+    @Override
+    public void openSunAltar() {
+        FMLClientHandler.instance().getClient().displayGuiScreen(new GuiSunAltar());
+    }
 }

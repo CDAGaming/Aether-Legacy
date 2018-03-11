@@ -1,11 +1,6 @@
 {
-   
- 	"parent": "block/wall_side",
-    
-	"textures": {
-        
-		"wall": "aether_legacy:blocks/aerogel"
-    
-	}
-
+  "parent": "block/wall_side",
+  "textures": {
+    "wall": "aether_legacy:blocks/aerogel"
+  }
 }

@@ -8,32 +8,28 @@ import com.legacy.aether.networking.packets.PacketDialogueClicked;
 
 import java.util.ArrayList;
 
-public class GuiServerDialogue extends GuiDialogue
-{
+public class GuiServerDialogue extends GuiDialogue {
 
-	private String dialogueName;
+    private String dialogueName;
 
-	public GuiServerDialogue(String dialogueName, String dialogue, ArrayList<String> dialogueText)
-	{
-		super(dialogue);
+    public GuiServerDialogue(String dialogueName, String dialogue, ArrayList<String> dialogueText) {
+        super(dialogue);
 
-		this.dialogueName = dialogueName;
+        this.dialogueName = dialogueName;
 
-		ArrayList<DialogueOption> dialogueOptions = Lists.newArrayList();
+        ArrayList<DialogueOption> dialogueOptions = Lists.newArrayList();
 
-		for (String dialogueForOption : dialogueText)
-		{
-			dialogueOptions.add(new DialogueOption(dialogueForOption));
-		}
+        for (String dialogueForOption : dialogueText) {
+            dialogueOptions.add(new DialogueOption(dialogueForOption));
+        }
 
-        this.addDialogueOptions(dialogueOptions.toArray(new DialogueOption[] {}));
-	}
+        this.addDialogueOptions(dialogueOptions.toArray(new DialogueOption[]{}));
+    }
 
-	@Override
-	public void dialogueClicked(DialogueOption dialogue)
-	{
-		AetherNetworkingManager.sendToServer(new PacketDialogueClicked(this.dialogueName, dialogue.getDialogueId()));
-		this.dialogueTreeCompleted();
-	}
+    @Override
+    public void dialogueClicked(DialogueOption dialogue) {
+        AetherNetworkingManager.sendToServer(new PacketDialogueClicked(this.dialogueName, dialogue.getDialogueId()));
+        this.dialogueTreeCompleted();
+    }
 
 }

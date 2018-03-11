@@ -8,54 +8,42 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class AerbunnyRenderer extends RenderLiving<EntityAerbunny> 
-{
+public class AerbunnyRenderer extends RenderLiving<EntityAerbunny> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation("aether_legacy", "textures/entities/aerbunny/aerbunny.png");
 
     public AerbunnyModel model;
 
-	public AerbunnyRenderer(RenderManager renderManager)
-	{
-		super(renderManager, new AerbunnyModel(), 0.3F);
-		this.model = (AerbunnyModel) this.getMainModel();
-	}
+    public AerbunnyRenderer(RenderManager renderManager) {
+        super(renderManager, new AerbunnyModel(), 0.3F);
+        this.model = (AerbunnyModel) this.getMainModel();
+    }
 
-    protected void rotateAerbunny(EntityAerbunny entitybunny)
-    {
-    	if (!entitybunny.isRiding())
-    	{
-    		GlStateManager.translate(0, 0.2D, 0);
-    	}
-    	
-        if (!entitybunny.onGround)
-        {
-            if (entitybunny.motionY > 0.5D)
-            {
+    protected void rotateAerbunny(EntityAerbunny entitybunny) {
+        if (!entitybunny.isRiding()) {
+            GlStateManager.translate(0, 0.2D, 0);
+        }
+
+        if (!entitybunny.onGround) {
+            if (entitybunny.motionY > 0.5D) {
                 GL11.glRotatef(15.0F, -1.0F, 0.0F, 0.0F);
-            }
-            else if (entitybunny.motionY < -0.5D)
-            {
+            } else if (entitybunny.motionY < -0.5D) {
                 GL11.glRotatef(-15.0F, -1.0F, 0.0F, 0.0F);
-            }
-            else
-            {
-                GL11.glRotatef((float)(entitybunny.motionY * 30.0D), -1.0F, 0.0F, 0.0F);
+            } else {
+                GL11.glRotatef((float) (entitybunny.motionY * 30.0D), -1.0F, 0.0F, 0.0F);
             }
         }
 
-        this.model.puffiness = (float)(entitybunny.getRidingEntity() != null ? entitybunny.getPuffinessClient() : entitybunny.getPuffiness()) / 10.0F;
+        this.model.puffiness = (float) (entitybunny.getRidingEntity() != null ? entitybunny.getPuffinessClient() : entitybunny.getPuffiness()) / 10.0F;
     }
 
-    protected void preRenderCallback(EntityAerbunny entitybunny, float f)
-    {
+    protected void preRenderCallback(EntityAerbunny entitybunny, float f) {
         this.rotateAerbunny(entitybunny);
     }
 
-	@Override
-	protected ResourceLocation getEntityTexture(EntityAerbunny entity)
-	{
-		return TEXTURE;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(EntityAerbunny entity) {
+        return TEXTURE;
+    }
 
 }

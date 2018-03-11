@@ -9,80 +9,60 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import java.util.Random;
 
-public class AetherGenLiquids extends WorldGenerator
-{
+public class AetherGenLiquids extends WorldGenerator {
 
-    public AetherGenLiquids()
-    {
-    	super();
+    public AetherGenLiquids() {
+        super();
     }
 
-    public boolean generate(World worldIn, Random rand, BlockPos position)
-    {
-        if (worldIn.getBlockState(position.up()).getBlock() != BlocksAether.holystone)
-        {
+    public boolean generate(World worldIn, Random rand, BlockPos position) {
+        if (worldIn.getBlockState(position.up()).getBlock() != BlocksAether.holystone) {
             return false;
-        }
-        else if (worldIn.getBlockState(position.down()).getBlock() != BlocksAether.holystone)
-        {
+        } else if (worldIn.getBlockState(position.down()).getBlock() != BlocksAether.holystone) {
             return false;
-        }
-        else
-        {
+        } else {
             IBlockState iblockstate = worldIn.getBlockState(position);
 
-            if (!iblockstate.getBlock().isAir(iblockstate, worldIn, position) && iblockstate.getBlock() != BlocksAether.holystone)
-            {
+            if (!iblockstate.getBlock().isAir(iblockstate, worldIn, position) && iblockstate.getBlock() != BlocksAether.holystone) {
                 return false;
-            }
-            else
-            {
+            } else {
                 int i = 0;
 
-                if (worldIn.getBlockState(position.west()).getBlock() == BlocksAether.holystone)
-                {
+                if (worldIn.getBlockState(position.west()).getBlock() == BlocksAether.holystone) {
                     ++i;
                 }
 
-                if (worldIn.getBlockState(position.east()).getBlock() == BlocksAether.holystone)
-                {
+                if (worldIn.getBlockState(position.east()).getBlock() == BlocksAether.holystone) {
                     ++i;
                 }
 
-                if (worldIn.getBlockState(position.north()).getBlock() == BlocksAether.holystone)
-                {
+                if (worldIn.getBlockState(position.north()).getBlock() == BlocksAether.holystone) {
                     ++i;
                 }
 
-                if (worldIn.getBlockState(position.south()).getBlock() == BlocksAether.holystone)
-                {
+                if (worldIn.getBlockState(position.south()).getBlock() == BlocksAether.holystone) {
                     ++i;
                 }
 
                 int j = 0;
 
-                if (worldIn.isAirBlock(position.west()))
-                {
+                if (worldIn.isAirBlock(position.west())) {
                     ++j;
                 }
 
-                if (worldIn.isAirBlock(position.east()))
-                {
+                if (worldIn.isAirBlock(position.east())) {
                     ++j;
                 }
 
-                if (worldIn.isAirBlock(position.north()))
-                {
+                if (worldIn.isAirBlock(position.north())) {
                     ++j;
                 }
 
-                if (worldIn.isAirBlock(position.south()))
-                {
+                if (worldIn.isAirBlock(position.south())) {
                     ++j;
                 }
 
-                if (i == 3 && j == 1)
-                {
+                if (i == 3 && j == 1) {
                     IBlockState iblockstate1 = Blocks.FLOWING_WATER.getDefaultState();
                     this.setBlockAndNotifyAdequately(worldIn, position, iblockstate1);
                     worldIn.immediateBlockTick(position, iblockstate1, rand);

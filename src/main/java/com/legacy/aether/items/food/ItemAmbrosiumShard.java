@@ -12,54 +12,44 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemAmbrosiumShard extends Item
-{
+public class ItemAmbrosiumShard extends Item {
 
-	public ItemAmbrosiumShard()
-	{
-		this.setCreativeTab(AetherCreativeTabs.material);
-	}
+    public ItemAmbrosiumShard() {
+        this.setCreativeTab(AetherCreativeTabs.material);
+    }
 
-	@Override
-    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-		ItemStack heldItem = playerIn.getHeldItem(hand);
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        ItemStack heldItem = playerIn.getHeldItem(hand);
 
-    	if (worldIn.getBlockState(pos).getBlock() == BlocksAether.aether_grass)
-    	{
-    		worldIn.setBlockState(pos, BlocksAether.enchanted_aether_grass.getDefaultState());
-    	}
-    	else
-    	{
-    		return EnumActionResult.FAIL;
-    	}
+        if (worldIn.getBlockState(pos).getBlock() == BlocksAether.aether_grass) {
+            worldIn.setBlockState(pos, BlocksAether.enchanted_aether_grass.getDefaultState());
+        } else {
+            return EnumActionResult.FAIL;
+        }
 
-    	if (!playerIn.capabilities.isCreativeMode)
-    	{
-    		heldItem.shrink(1);
-    	}
+        if (!playerIn.capabilities.isCreativeMode) {
+            heldItem.shrink(1);
+        }
 
         return EnumActionResult.SUCCESS;
     }
 
-	@Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-		ItemStack heldItem = playerIn.getHeldItem(hand);
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+        ItemStack heldItem = playerIn.getHeldItem(hand);
 
-    	if (playerIn.shouldHeal())
-    	{
-        	if (!playerIn.capabilities.isCreativeMode)
-        	{
-        		heldItem.shrink(1);
-        	}
-        	
-    		playerIn.heal(2F);
+        if (playerIn.shouldHeal()) {
+            if (!playerIn.capabilities.isCreativeMode) {
+                heldItem.shrink(1);
+            }
 
-    		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
-    	}
+            playerIn.heal(2F);
 
-    	return super.onItemRightClick(worldIn, playerIn, hand);
+            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
+        }
+
+        return super.onItemRightClick(worldIn, playerIn, hand);
     }
 
 }

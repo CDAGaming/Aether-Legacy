@@ -11,31 +11,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemHolystoneTool extends ItemAetherTool
-{
+public class ItemHolystoneTool extends ItemAetherTool {
 
-	public ItemHolystoneTool(EnumAetherToolType toolType)
-	{
-		super(ToolMaterial.STONE, toolType);
-	}
+    public ItemHolystoneTool(EnumAetherToolType toolType) {
+        super(ToolMaterial.STONE, toolType);
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
-		return repair.getItem() == Item.getItemFromBlock(BlocksAether.holystone);
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == Item.getItemFromBlock(BlocksAether.holystone);
+    }
 
-    public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving)
-	{
-		if (!world.isRemote && world.rand.nextInt(100) <= 5)
-		{
-			EntityItem entityItem = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ());
-			entityItem.setItem(new ItemStack(ItemsAether.ambrosium_shard, 1));
+    public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
+        if (!world.isRemote && world.rand.nextInt(100) <= 5) {
+            EntityItem entityItem = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ());
+            entityItem.setItem(new ItemStack(ItemsAether.ambrosium_shard, 1));
 
-			world.spawnEntity(entityItem);
-		}
+            world.spawnEntity(entityItem);
+        }
 
-		return super.onBlockDestroyed(stack, world, state, pos, entityLiving);
-	}
+        return super.onBlockDestroyed(stack, world, state, pos, entityLiving);
+    }
 
 }

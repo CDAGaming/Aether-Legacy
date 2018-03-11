@@ -38,92 +38,83 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
-public class AetherEntityRenderingRegistry 
-{
+public class AetherEntityRenderingRegistry {
 
-	public static void initialize()
-	{
-		/* Misc */
-		register(EntityHammerProjectile.class, HammerProjectileRenderer.class);
-		register(EntityFloatingBlock.class, FloatingBlockRenderer.class);
-		register(EntityParachute.class, ParachuteRenderer.class);
-		register(EntityZephyrSnowball.class, ZephyrSnowballRenderer.class);
-		register(EntityPhoenixArrow.class, PhoenixArrowRenderer.class);
-		register(EntityLightningKnife.class, LightningKnifeRenderer.class);
+    public static void initialize() {
+        /* Misc */
+        register(EntityHammerProjectile.class, HammerProjectileRenderer.class);
+        register(EntityFloatingBlock.class, FloatingBlockRenderer.class);
+        register(EntityParachute.class, ParachuteRenderer.class);
+        register(EntityZephyrSnowball.class, ZephyrSnowballRenderer.class);
+        register(EntityPhoenixArrow.class, PhoenixArrowRenderer.class);
+        register(EntityLightningKnife.class, LightningKnifeRenderer.class);
 
-		/* Darts */
-		register(EntityDartBase.class, DartBaseRenderer.class);
+        /* Darts */
+        register(EntityDartBase.class, DartBaseRenderer.class);
 
-		/* Crystals */
-		register(EntityFireBall.class, FireBallRenderer.class);
-		register(EntityIceyBall.class, IceyBallRenderer.class);
-		register(EntityThunderBall.class, ThunderBallRenderer.class);
+        /* Crystals */
+        register(EntityFireBall.class, FireBallRenderer.class);
+        register(EntityIceyBall.class, IceyBallRenderer.class);
+        register(EntityThunderBall.class, ThunderBallRenderer.class);
 
-		/* Bosses */
-		register(EntitySlider.class, SliderRenderer.class);
-		register(EntityValkyrieQueen.class, ValkyrieQueenRenderer.class);
-		register(EntitySunSpirit.class, SunSpiritRenderer.class);
+        /* Bosses */
+        register(EntitySlider.class, SliderRenderer.class);
+        register(EntityValkyrieQueen.class, ValkyrieQueenRenderer.class);
+        register(EntitySunSpirit.class, SunSpiritRenderer.class);
 
-		/* Hostile */
-		register(EntityMimic.class, MimicRenderer.class);
-		register(EntitySentry.class, SentryRenderer.class);
-		register(EntityAechorPlant.class, AechorPlantRenderer.class);
-		register(EntityFireMinion.class, FireMinionRenderer.class);
-		register(EntityZephyr.class, ZephyrRenderer.class);
-		register(EntityValkyrie.class, ValkyrieRenderer.class);
-		register(EntityCockatrice.class, CockatriceRenderer.class);
+        /* Hostile */
+        register(EntityMimic.class, MimicRenderer.class);
+        register(EntitySentry.class, SentryRenderer.class);
+        register(EntityAechorPlant.class, AechorPlantRenderer.class);
+        register(EntityFireMinion.class, FireMinionRenderer.class);
+        register(EntityZephyr.class, ZephyrRenderer.class);
+        register(EntityValkyrie.class, ValkyrieRenderer.class);
+        register(EntityCockatrice.class, CockatriceRenderer.class);
 
-		/* Passive */
-		register(EntityMoa.class, MoaRenderer.class);
-		register(EntityPhyg.class, PhygRenderer.class);
-		register(EntityFlyingCow.class, FlyingCowRenderer.class);
-		register(EntitySheepuff.class, SheepuffRenderer.class);
-		register(EntityAerwhale.class, AerwhaleRenderer.class);
-		register(EntityAerbunny.class, AerbunnyRenderer.class);
-		register(EntitySwet.class, SwetRenderer.class);
-		register(EntityMiniCloud.class, MiniCloudRenderer.class);
-		register(EntityTNTPresent.class, TNTPresentRenderer.class);
-		register(EntityWhirlwind.class, WhirlwindRenderer.class);
-	}
+        /* Passive */
+        register(EntityMoa.class, MoaRenderer.class);
+        register(EntityPhyg.class, PhygRenderer.class);
+        register(EntityFlyingCow.class, FlyingCowRenderer.class);
+        register(EntitySheepuff.class, SheepuffRenderer.class);
+        register(EntityAerwhale.class, AerwhaleRenderer.class);
+        register(EntityAerbunny.class, AerbunnyRenderer.class);
+        register(EntitySwet.class, SwetRenderer.class);
+        register(EntityMiniCloud.class, MiniCloudRenderer.class);
+        register(EntityTNTPresent.class, TNTPresentRenderer.class);
+        register(EntityWhirlwind.class, WhirlwindRenderer.class);
+    }
 
-	@SuppressWarnings("deprecation")
-	public static void registerTileEntities()
-	{
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTreasureChest.class, new TreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChestMimic.class, new ChestMimicRenderer());
+    @SuppressWarnings("deprecation")
+    public static void registerTileEntities() {
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTreasureChest.class, new TreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChestMimic.class, new ChestMimicRenderer());
 
-		ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(BlocksAether.treasure_chest), 0, TileEntityTreasureChest.class);
-		ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(BlocksAether.chest_mimic), 0, TileEntityChestMimic.class);
-	}
+        ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(BlocksAether.treasure_chest), 0, TileEntityTreasureChest.class);
+        ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(BlocksAether.chest_mimic), 0, TileEntityChestMimic.class);
+    }
 
-	public static void initializePlayerLayers()
-	{
-		RenderPlayer slim_render = Minecraft.getMinecraft().getRenderManager().getSkinMap().get("slim");
-		slim_render.addLayer(new AccessoriesLayer(true, (ModelPlayer) slim_render.getMainModel()));
+    public static void initializePlayerLayers() {
+        RenderPlayer slim_render = Minecraft.getMinecraft().getRenderManager().getSkinMap().get("slim");
+        slim_render.addLayer(new AccessoriesLayer(true, (ModelPlayer) slim_render.getMainModel()));
 
-		RenderPlayer default_render = Minecraft.getMinecraft().getRenderManager().getSkinMap().get("default");
-		default_render.addLayer(new AccessoriesLayer(false, (ModelPlayer) default_render.getMainModel()));
-	}
+        RenderPlayer default_render = Minecraft.getMinecraft().getRenderManager().getSkinMap().get("default");
+        default_render.addLayer(new AccessoriesLayer(false, (ModelPlayer) default_render.getMainModel()));
+    }
 
-	public static <ENTITY extends Entity> void register(Class<ENTITY> classes, final Class<? extends Render<ENTITY>> render)
-	{
-		RenderingRegistry.registerEntityRenderingHandler(classes, new IRenderFactory<ENTITY>() {
+    public static <ENTITY extends Entity> void register(Class<ENTITY> classes, final Class<? extends Render<ENTITY>> render) {
+        RenderingRegistry.registerEntityRenderingHandler(classes, new IRenderFactory<ENTITY>() {
 
-			@Override
-			public Render<ENTITY> createRenderFor(RenderManager manager) 
-			{
-				try
-				{
-					return render.getConstructor(RenderManager.class).newInstance(manager);
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-				}
+            @Override
+            public Render<ENTITY> createRenderFor(RenderManager manager) {
+                try {
+                    return render.getConstructor(RenderManager.class).newInstance(manager);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-				return null;
-			}
-		});
-	}
+                return null;
+            }
+        });
+    }
 
 }

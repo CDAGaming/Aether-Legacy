@@ -11,36 +11,31 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockSkyrootBookshelf extends Block
-{
-    public BlockSkyrootBookshelf()
-    {
+public class BlockSkyrootBookshelf extends Block {
+    public BlockSkyrootBookshelf() {
         super(Material.WOOD);
-        
+
         this.setHardness(2F);
-		this.setResistance(5F);
-		this.setSoundType(SoundType.WOOD);
+        this.setResistance(5F);
+        this.setSoundType(SoundType.WOOD);
     }
 
     /**
      * Returns the quantity of items to drop on block destruction.
      */
-    public int quantityDropped(Random random)
-    {
+    public int quantityDropped(Random random) {
         return 3;
     }
-    
+
     @Override
-	public float getEnchantPowerBonus(World world, BlockPos pos)
-	{
-		return 1;
-	}
+    public float getEnchantPowerBonus(World world, BlockPos pos) {
+        return 1;
+    }
 
     /**
      * Get the Item that this Block should drop when harvested.
      */
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-    {
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Items.BOOK;
     }
 }

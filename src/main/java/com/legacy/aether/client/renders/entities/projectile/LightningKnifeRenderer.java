@@ -11,23 +11,19 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-public class LightningKnifeRenderer extends Render<EntityLightningKnife> 
-{
+public class LightningKnifeRenderer extends Render<EntityLightningKnife> {
 
-	public LightningKnifeRenderer(RenderManager renderManager)
-	{
-		super(renderManager);
-	}
+    public LightningKnifeRenderer(RenderManager renderManager) {
+        super(renderManager);
+    }
 
-    public void doRender(EntityLightningKnife var1, double var2, double var4, double var6, float var8, float var9)
-    {
+    public void doRender(EntityLightningKnife var1, double var2, double var4, double var6, float var8, float var9) {
         this.doRenderKnife(var1, var2, var4, var6, var8, var9);
     }
 
-	public void doRenderKnife(EntityLightningKnife arr, double d, double d1, double d2, float yaw, float time)
-    {
+    public void doRenderKnife(EntityLightningKnife arr, double d, double d1, double d2, float yaw, float time) {
         GL11.glPushMatrix();
-        GL11.glTranslatef((float)d, (float)d1, (float)d2);
+        GL11.glTranslatef((float) d, (float) d1, (float) d2);
         GL11.glRotatef(yaw, 0F, 1.0F, 0F);
         GL11.glRotatef(-(arr.prevRotationPitch + (arr.rotationPitch - arr.prevRotationPitch) * time), 1F, 0F, 0F);
         GL11.glRotatef(45f, 0.0F, 1.0F, 0.0F);
@@ -62,9 +58,8 @@ public class LightningKnifeRenderer extends Render<EntityLightningKnife>
 
         vertex.begin(7, DefaultVertexFormats.POSITION_TEX_NORMAL);
 
-        for(int i = 0; i < 16; i++)
-        {
-            float f9 = (float)i / 16F;
+        for (int i = 0; i < 16; i++) {
+            float f9 = (float) i / 16F;
             float f13 = (texMaxX + (texMinX - texMaxX) * f9) - 0.001953125F;
             float f17 = f4 * f9;
             vertex.pos(f17, 0.0F - f8, 0.0D).tex(f13, texMaxY).normal(-1F, 0.0F, 0.0F).endVertex();
@@ -77,9 +72,8 @@ public class LightningKnifeRenderer extends Render<EntityLightningKnife>
 
         vertex.begin(7, DefaultVertexFormats.POSITION_TEX_NORMAL);
 
-        for(int j = 0; j < 16; j++)
-        {
-            float f10 = (float)j / 16F;
+        for (int j = 0; j < 16; j++) {
+            float f10 = (float) j / 16F;
             float f14 = (texMaxX + (texMinX - texMaxX) * f10) - 0.001953125F;
             float f18 = f4 * f10 + 0.0625F;
             vertex.pos(f18, 0.0F - f8, 1.0D).tex(f14, texMinY).normal(1.0F, 0.0F, 0.0F).endVertex();
@@ -92,9 +86,8 @@ public class LightningKnifeRenderer extends Render<EntityLightningKnife>
 
         vertex.begin(7, DefaultVertexFormats.POSITION_TEX_NORMAL);
 
-        for(int k = 0; k < 16; k++)
-        {
-            float f11 = (float)k / 16F;
+        for (int k = 0; k < 16; k++) {
+            float f11 = (float) k / 16F;
             float f15 = (texMaxY + (texMinY - texMaxY) * f11) - 0.001953125F;
             float f19 = f4 * f11 + 0.0625F;
             vertex.pos(0.0D, 0.0D, f19).tex(texMaxX, f15).normal(0.0F, 1.0F, 0.0F).endVertex();
@@ -107,9 +100,8 @@ public class LightningKnifeRenderer extends Render<EntityLightningKnife>
 
         vertex.begin(7, DefaultVertexFormats.POSITION_TEX_NORMAL);
 
-        for(int l = 0; l < 16; l++)
-        {
-            float f12 = (float)l / 16F;
+        for (int l = 0; l < 16; l++) {
+            float f12 = (float) l / 16F;
             float f16 = (texMaxY + (texMinY - texMaxY) * f12) - 0.001953125F;
             float f20 = f4 * f12;
             vertex.pos(f4, 0.0D, f20).tex(texMinX, f16).normal(0.0F, -1F, 0.0F).endVertex();
@@ -124,10 +116,9 @@ public class LightningKnifeRenderer extends Render<EntityLightningKnife>
         GL11.glPopMatrix();
     }
 
-	@Override
-	protected ResourceLocation getEntityTexture(EntityLightningKnife entity) 
-	{
-		return null;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(EntityLightningKnife entity) {
+        return null;
+    }
 
 }

@@ -13,42 +13,34 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.NonNullList;
 
-public class ItemZaniteSword extends ItemSword
-{
+public class ItemZaniteSword extends ItemSword {
 
-	public float[] level = new float[] {3.0F, 4.0F, 5.0F, 6.0F, 7.0F};
+    public float[] level = new float[]{3.0F, 4.0F, 5.0F, 6.0F, 7.0F};
 
-    public ItemZaniteSword()
-    {
+    public ItemZaniteSword() {
         super(ToolMaterial.IRON);
     }
 
-	@Override
-    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
-    {
-    	if (tab == AetherCreativeTabs.weapons || tab == CreativeTabs.SEARCH)
-    	{
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (tab == AetherCreativeTabs.weapons || tab == CreativeTabs.SEARCH) {
             items.add(new ItemStack(this));
-    	}
+        }
     }
 
     @Override
-    public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot slot)
-    {
-    	return null;
+    public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot slot) {
+        return null;
     }
 
     @Override
-    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack)
-    {
+    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
         Multimap<String, AttributeModifier> multimap = HashMultimap.<String, AttributeModifier>create();
 
-        if (slot == EntityEquipmentSlot.MAINHAND)
-        {
-        	if (stack.getItem() instanceof ItemZaniteSword)
-        	{
+        if (slot == EntityEquipmentSlot.MAINHAND) {
+            if (stack.getItem() instanceof ItemZaniteSword) {
                 multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", this.calculateIncrease(stack), 0));
-        	}
+            }
 
             multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.4000000953674316D, 0));
         }
@@ -56,47 +48,34 @@ public class ItemZaniteSword extends ItemSword
         return multimap;
     }
 
-    private float calculateIncrease(ItemStack tool)
-    {
-    	int current = tool.getItemDamage();
+    private float calculateIncrease(ItemStack tool) {
+        int current = tool.getItemDamage();
 
-		if (isBetween(tool.getMaxDamage(), current, tool.getMaxDamage() - 50))
-		{
-			return level[4];
-		}
-		else if (isBetween(tool.getMaxDamage() - 51, current, tool.getMaxDamage() - 110))
-		{
-			return level[3];
-		}
-		else if (isBetween(tool.getMaxDamage() - 111, current, tool.getMaxDamage() - 200))
-		{
-			return level[2];
-		}
-		else if (isBetween(tool.getMaxDamage() - 201, current, tool.getMaxDamage() - 239))
-		{
-			return level[1];
-		}
-		else
-		{
-			return level[0];
-		}
+        if (isBetween(tool.getMaxDamage(), current, tool.getMaxDamage() - 50)) {
+            return level[4];
+        } else if (isBetween(tool.getMaxDamage() - 51, current, tool.getMaxDamage() - 110)) {
+            return level[3];
+        } else if (isBetween(tool.getMaxDamage() - 111, current, tool.getMaxDamage() - 200)) {
+            return level[2];
+        } else if (isBetween(tool.getMaxDamage() - 201, current, tool.getMaxDamage() - 239)) {
+            return level[1];
+        } else {
+            return level[0];
+        }
     }
 
-    private boolean isBetween(int max, int origin, int min)
-    {
-    	return origin <= max && origin >= min ? true : false;
+    private boolean isBetween(int max, int origin, int min) {
+        return origin <= max && origin >= min ? true : false;
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack repairingItem, ItemStack material)
-    {
+    public boolean getIsRepairable(ItemStack repairingItem, ItemStack material) {
         return material.getItem() == ItemsAether.zanite_gemstone;
     }
 
     @Override
-    public float getDestroySpeed(ItemStack itemstack, IBlockState block)
-    {
-        return super.getDestroySpeed(itemstack, block) * (2.0F * (float)itemstack.getItemDamage() / (float)itemstack.getMaxDamage() + 0.5F);
+    public float getDestroySpeed(ItemStack itemstack, IBlockState block) {
+        return super.getDestroySpeed(itemstack, block) * (2.0F * (float) itemstack.getItemDamage() / (float) itemstack.getMaxDamage() + 0.5F);
     }
 
 }

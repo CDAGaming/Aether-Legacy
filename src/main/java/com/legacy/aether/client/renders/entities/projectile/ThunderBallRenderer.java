@@ -6,29 +6,24 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class ThunderBallRenderer extends RenderLiving<EntityThunderBall> 
-{
+public class ThunderBallRenderer extends RenderLiving<EntityThunderBall> {
 
-	private CrystalModel model;
+    private CrystalModel model;
 
-	public ThunderBallRenderer(RenderManager rendermanagerIn)
-	{
-		super(rendermanagerIn, new CrystalModel(), 0.25F);
-		this.model = (CrystalModel)this.mainModel;
-	}
-
-    public void preRenderCallback(EntityThunderBall hs, float f)
-    {
-		for(int i = 0; i < 3; i ++) 
-		{
-			model.sinage[i] = hs.sinage[i];
-		}
+    public ThunderBallRenderer(RenderManager rendermanagerIn) {
+        super(rendermanagerIn, new CrystalModel(), 0.25F);
+        this.model = (CrystalModel) this.mainModel;
     }
 
-	@Override
-	protected ResourceLocation getEntityTexture(EntityThunderBall entity) 
-	{
-    	return new ResourceLocation("aether_legacy", "textures/entities/crystals/electroball.png");
-	}
+    public void preRenderCallback(EntityThunderBall hs, float f) {
+        for (int i = 0; i < 3; i++) {
+            model.sinage[i] = hs.sinage[i];
+        }
+    }
+
+    @Override
+    protected ResourceLocation getEntityTexture(EntityThunderBall entity) {
+        return new ResourceLocation("aether_legacy", "textures/entities/crystals/electroball.png");
+    }
 
 }

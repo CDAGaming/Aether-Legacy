@@ -14,64 +14,52 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class AetherMusicHandler 
-{
+public class AetherMusicHandler {
 
-	private Minecraft mc = Minecraft.getMinecraft();
+    private Minecraft mc = Minecraft.getMinecraft();
 
-	private AetherMusicTicker musicTicker = new AetherMusicTicker(mc);
+    private AetherMusicTicker musicTicker = new AetherMusicTicker(mc);
 
-	@SubscribeEvent
-	public void onClientTick(TickEvent.ClientTickEvent event) throws Exception
-	{
-		TickEvent.Phase phase = event.phase;
-		TickEvent.Type type = event.type;
+    @SideOnly(Side.CLIENT)
+    public static ISound getAchievementSound(int number) {
+        SoundEvent sound = number == 1 ? SoundsAether.achievement_bronze : number == 2 ? SoundsAether.achievement_silver : SoundsAether.achievement_gen;
 
-		if (phase == TickEvent.Phase.END)
-		{
-			if (type.equals(TickEvent.Type.CLIENT))
-			{
-				if (!mc.isGamePaused())
-				{
-					musicTicker.update();
-				}
-			}
-		}
-	}
+        return new PositionedSoundRecord(sound.getSoundName(), SoundCategory.PLAYERS, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, 0, 0, 0);
+    }
 
-	@SubscribeEvent
-	public void onMusicControl(PlaySoundEvent event)
-	{
-		ISound sound = event.getSound();
-		SoundCategory category = sound.getCategory();
+    @SubscribeEvent
+    public void onClientTick(TickEvent.ClientTickEvent event) throws Exception {
+        TickEvent.Phase phase = event.phase;
+        TickEvent.Type type = event.type;
 
-		if (category == SoundCategory.MUSIC)
-		{
-			if (this.mc.player != null && this.mc.player.dimension == AetherConfig.getAetherDimensionID())
-			{
-				if (!sound.getSoundLocation().toString().contains("aether_legacy") && (this.musicTicker.playingMusic() || !this.musicTicker.playingMusic()))
-				{
-					event.setResultSound(null);
+        if (phase == TickEvent.Phase.END) {
+            if (type.equals(TickEvent.Type.CLIENT)) {
+                if (!mc.isGamePaused()) {
+                    musicTicker.update();
+                }
+            }
+        }
+    }
 
-					return;
-				}
-			}
-		}
-		else if (category == SoundCategory.RECORDS)
-		{
-			this.musicTicker.stopMusic();
-			this.mc.getSoundHandler().stopSounds();
+    @SubscribeEvent
+    public void onMusicControl(PlaySoundEvent event) {
+        ISound sound = event.getSound();
+        SoundCategory category = sound.getCategory();
 
-			return;
-		}
-	}
+        if (category == SoundCategory.MUSIC) {
+            if (this.mc.player != null && this.mc.player.dimension == AetherConfig.getAetherDimensionID()) {
+                if (!sound.getSoundLocation().toString().contains("aether_legacy") && (this.musicTicker.playingMusic() || !this.musicTicker.playingMusic())) {
+                    event.setResultSound(null);
 
-	@SideOnly(Side.CLIENT)
-	public static ISound getAchievementSound(int number)
-	{
-		SoundEvent sound = number == 1 ? SoundsAether.achievement_bronze : number == 2 ? SoundsAether.achievement_silver : SoundsAether.achievement_gen;
+                    return;
+                }
+            }
+        } else if (category == SoundCategory.RECORDS) {
+            this.musicTicker.stopMusic();
+            this.mc.getSoundHandler().stopSounds();
 
-		return new PositionedSoundRecord(sound.getSoundName(), SoundCategory.PLAYERS, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, 0, 0, 0);
-	}
+            return;
+        }
+    }
 
 }

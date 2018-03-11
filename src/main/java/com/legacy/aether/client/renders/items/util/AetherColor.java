@@ -13,51 +13,42 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public class AetherColor implements IItemColor, IBlockColor
-{
+public class AetherColor implements IItemColor, IBlockColor {
 
-	private Item item;
+    private Item item;
 
-	public AetherColor(Item item)
-	{
-		this.item = item;
-	}
+    public AetherColor(Item item) {
+        this.item = item;
+    }
 
-	@Override
-	public int colorMultiplier(ItemStack stack, int tintIndex)
-	{
-		if (this.item instanceof ItemAccessory)
-		{
-			return ((ItemAccessory)stack.getItem()).getColorFromItemStack(stack, 0);
-		}
+    @Override
+    public int colorMultiplier(ItemStack stack, int tintIndex) {
+        if (this.item instanceof ItemAccessory) {
+            return ((ItemAccessory) stack.getItem()).getColorFromItemStack(stack, 0);
+        }
 
-		if (this.item instanceof ItemAetherArmor)
-		{
-			return ((ItemAetherArmor)stack.getItem()).getColorization(stack);
-		}
+        if (this.item instanceof ItemAetherArmor) {
+            return ((ItemAetherArmor) stack.getItem()).getColorization(stack);
+        }
 
-		if (this.item instanceof ItemMoaEgg)
-		{
-			return ((ItemMoaEgg)stack.getItem()).getColorFromItemStack(stack);
-		}
+        if (this.item instanceof ItemMoaEgg) {
+            return ((ItemMoaEgg) stack.getItem()).getColorFromItemStack(stack);
+        }
 
-		if (this.item == Item.getItemFromBlock(BlocksAether.aercloud))
-		{
-			return BlockAercloud.getHexColor(stack);
-		}
+        if (this.item == Item.getItemFromBlock(BlocksAether.aercloud)) {
+            return BlockAercloud.getHexColor(stack);
+        }
 
-		return 0;
-	}
+        return 0;
+    }
 
-	@Override
-	public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex)
-	{
-		if (this.item == Item.getItemFromBlock(BlocksAether.aercloud))
-		{
-			return BlockAercloud.getHexColor(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state)));
-		}
+    @Override
+    public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
+        if (this.item == Item.getItemFromBlock(BlocksAether.aercloud)) {
+            return BlockAercloud.getHexColor(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state)));
+        }
 
-		return 0;
-	}
+        return 0;
+    }
 
 }

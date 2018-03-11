@@ -4,51 +4,42 @@ import com.legacy.aether.player.PlayerAether;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class PacketSendPoison extends AetherPacket<PacketSendPoison>
-{
+public class PacketSendPoison extends AetherPacket<PacketSendPoison> {
 
-	private int entityID;
+    private int entityID;
 
-	public PacketSendPoison()
-	{
-		
-	}
+    public PacketSendPoison() {
 
-	public PacketSendPoison(EntityPlayer thePlayer)
-	{
-		this.entityID = thePlayer.getEntityId();
-	}
+    }
 
-	@Override
-	public void fromBytes(ByteBuf buf) 
-	{
-		this.entityID = buf.readInt();
-	}
+    public PacketSendPoison(EntityPlayer thePlayer) {
+        this.entityID = thePlayer.getEntityId();
+    }
 
-	@Override
-	public void toBytes(ByteBuf buf) 
-	{
-		buf.writeInt(this.entityID);
-	}
+    @Override
+    public void fromBytes(ByteBuf buf) {
+        this.entityID = buf.readInt();
+    }
 
-	@Override
-	public void handleClient(PacketSendPoison message, EntityPlayer player) 
-	{
-		if (player != null && player.world != null)
-		{
-			EntityPlayer parent = (EntityPlayer) player.world.getEntityByID(message.entityID);
+    @Override
+    public void toBytes(ByteBuf buf) {
+        buf.writeInt(this.entityID);
+    }
 
-			if (parent != null)
-			{
-				PlayerAether.get(parent).afflictPoison();
-			}
-		}
-	}
+    @Override
+    public void handleClient(PacketSendPoison message, EntityPlayer player) {
+        if (player != null && player.world != null) {
+            EntityPlayer parent = (EntityPlayer) player.world.getEntityByID(message.entityID);
 
-	@Override
-	public void handleServer(PacketSendPoison message, EntityPlayer player)
-	{
+            if (parent != null) {
+                PlayerAether.get(parent).afflictPoison();
+            }
+        }
+    }
 
-	}
+    @Override
+    public void handleServer(PacketSendPoison message, EntityPlayer player) {
+
+    }
 
 }

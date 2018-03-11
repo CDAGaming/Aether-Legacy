@@ -18,153 +18,122 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-public class ItemDartShooter extends Item
-{
+public class ItemDartShooter extends Item {
 
-	public ItemDartShooter()
-	{
-		this.maxStackSize = 1;
-		this.setHasSubtypes(true);
-	}
-
-	@Override
-	public boolean isFull3D()
-	{
-		return false;
-	}
-
-	@Override
-    public EnumRarity getRarity(ItemStack stack)
-    {
-    	return stack.getMetadata() == 2 ? EnumRarity.RARE : super.getRarity(stack);
+    public ItemDartShooter() {
+        this.maxStackSize = 1;
+        this.setHasSubtypes(true);
     }
 
-	@Override
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems)
-	{
-		if (tab != AetherCreativeTabs.weapons || tab == CreativeTabs.SEARCH)
-		{
-			return;
-		}
+    @Override
+    public boolean isFull3D() {
+        return false;
+    }
 
-		for (int var4 = 0; var4 < EnumDartShooterType.values().length; ++var4)
-		{
-			subItems.add(new ItemStack(this, 1, var4));
-		}
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return stack.getMetadata() == 2 ? EnumRarity.RARE : super.getRarity(stack);
+    }
 
-	private int consumeItem(EntityPlayer player, Item itemID, int maxDamage)
-	{
-		IInventory inv = player.inventory;
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
+        if (tab != AetherCreativeTabs.weapons || tab == CreativeTabs.SEARCH) {
+            return;
+        }
 
-		for (int i = 0; i < inv.getSizeInventory(); i++)
-		{
-			ItemStack stack = inv.getStackInSlot(i);
+        for (int var4 = 0; var4 < EnumDartShooterType.values().length; ++var4) {
+            subItems.add(new ItemStack(this, 1, var4));
+        }
+    }
 
-			if (stack == ItemStack.EMPTY)
-			{
-				continue;
-			}
+    private int consumeItem(EntityPlayer player, Item itemID, int maxDamage) {
+        IInventory inv = player.inventory;
 
-			int damage = stack.getItemDamage();
+        for (int i = 0; i < inv.getSizeInventory(); i++) {
+            ItemStack stack = inv.getStackInSlot(i);
 
-			if (maxDamage != 3)
-			{
-				if (stack.getItem() == itemID && stack.getItemDamage() == maxDamage)
-				{
-					if (!player.capabilities.isCreativeMode)
-					{
-						stack.shrink(1);
-					}
+            if (stack == ItemStack.EMPTY) {
+                continue;
+            }
 
-					if (stack.getCount() == 0)
-					{
-						stack = ItemStack.EMPTY;
-					}
+            int damage = stack.getItemDamage();
 
-					inv.setInventorySlotContents(i, stack);
+            if (maxDamage != 3) {
+                if (stack.getItem() == itemID && stack.getItemDamage() == maxDamage) {
+                    if (!player.capabilities.isCreativeMode) {
+                        stack.shrink(1);
+                    }
 
-					return damage;
-				}
-			}
-			if (maxDamage == 3 && stack.getItem() == itemID)
-			{
-				if (!player.capabilities.isCreativeMode)
-				{
-					stack.shrink(1);
-				}
+                    if (stack.getCount() == 0) {
+                        stack = ItemStack.EMPTY;
+                    }
 
-				if (stack.getCount() == 0)
-				{
-					stack = ItemStack.EMPTY;
-				}
+                    inv.setInventorySlotContents(i, stack);
 
-				inv.setInventorySlotContents(i, stack);
+                    return damage;
+                }
+            }
+            if (maxDamage == 3 && stack.getItem() == itemID) {
+                if (!player.capabilities.isCreativeMode) {
+                    stack.shrink(1);
+                }
 
-				return 3;
-			}
-		}
+                if (stack.getCount() == 0) {
+                    stack = ItemStack.EMPTY;
+                }
 
-		return -1;
-	}
+                inv.setInventorySlotContents(i, stack);
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemstack)
-	{
-		return this.getUnlocalizedName() + "_" + EnumDartShooterType.getType(itemstack.getItemDamage()).toString();
-	}
+                return 3;
+            }
+        }
 
-	@Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer entityplayer, EnumHand hand)
-	{
-		ItemStack heldItem = entityplayer.getHeldItem(hand);
-		int consume;
+        return -1;
+    }
 
-		if (!(entityplayer.capabilities.isCreativeMode))
-		{
-			consume = this.consumeItem(entityplayer, ItemsAether.dart, heldItem.getItemDamage());
-		}
-		else
-		{
-			consume = heldItem.getItemDamage();
-		}
+    @Override
+    public String getUnlocalizedName(ItemStack itemstack) {
+        return this.getUnlocalizedName() + "_" + EnumDartShooterType.getType(itemstack.getItemDamage()).toString();
+    }
 
-		if (consume != -1)
-		{
-			world.playSound(entityplayer, entityplayer.getPosition(), SoundsAether.dart_shooter_shoot, SoundCategory.PLAYERS, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer entityplayer, EnumHand hand) {
+        ItemStack heldItem = entityplayer.getHeldItem(hand);
+        int consume;
 
-			EntityDartBase dart = null;
+        if (!(entityplayer.capabilities.isCreativeMode)) {
+            consume = this.consumeItem(entityplayer, ItemsAether.dart, heldItem.getItemDamage());
+        } else {
+            consume = heldItem.getItemDamage();
+        }
 
-			if (consume == 1)
-			{
-				dart = new EntityDartPoison(world, entityplayer);
-			}
-			else if (consume == 2)
-			{
-				dart = new EntityDartEnchanted(world, entityplayer);
-			}
-			else if (consume == 0)
-			{
-				dart = new EntityDartGolden(world, entityplayer);
-			}
+        if (consume != -1) {
+            world.playSound(entityplayer, entityplayer.getPosition(), SoundsAether.dart_shooter_shoot, SoundCategory.PLAYERS, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-			if (!world.isRemote)
-			{
-				dart.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, 1.0F, 1.0F);
-				world.spawnEntity(dart);
+            EntityDartBase dart = null;
 
-				if (!(entityplayer.capabilities.isCreativeMode))
-				{
-					dart.pickupStatus = EntityArrow.PickupStatus.ALLOWED;
-				}
-				if ((entityplayer.capabilities.isCreativeMode))
-				{
-					dart.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
-				}
-			}
-		}
+            if (consume == 1) {
+                dart = new EntityDartPoison(world, entityplayer);
+            } else if (consume == 2) {
+                dart = new EntityDartEnchanted(world, entityplayer);
+            } else if (consume == 0) {
+                dart = new EntityDartGolden(world, entityplayer);
+            }
 
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
-	}
+            if (!world.isRemote) {
+                dart.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, 1.0F, 1.0F);
+                world.spawnEntity(dart);
+
+                if (!(entityplayer.capabilities.isCreativeMode)) {
+                    dart.pickupStatus = EntityArrow.PickupStatus.ALLOWED;
+                }
+                if ((entityplayer.capabilities.isCreativeMode)) {
+                    dart.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
+                }
+            }
+        }
+
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
+    }
 
 }

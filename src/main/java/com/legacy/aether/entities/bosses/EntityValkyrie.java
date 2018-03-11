@@ -21,25 +21,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class EntityValkyrie extends EntityMob
-{
-
-	private int attackTime;
+public class EntityValkyrie extends EntityMob {
 
     public int angerLevel;
-
     public int timeLeft, chatTime;
-
     public double safeX, safeY, safeZ;
-
     public float sinage;
-
     public double lastMotionY;
-
     public int teleTimer;
+    private int attackTime;
 
-    public EntityValkyrie(World world)
-    {
+    public EntityValkyrie(World world) {
         super(world);
         setSize(0.8F, 1.6F);
         this.teleTimer = rand.nextInt(250);
@@ -50,105 +42,78 @@ public class EntityValkyrie extends EntityMob
     }
 
     @Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(8.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
-		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50.0D);   
-	}
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(8.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50.0D);
+    }
 
-	@Override
-    protected void initEntityAI()
-    {
+    @Override
+    protected void initEntityAI() {
         this.tasks.addTask(2, new EntityAIWander(this, 0.5D));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 0.65D, true));
     }
 
-    public void swingArm()
-    {
-        if (!this.isSwingInProgress)
-        {
-        	this.isSwingInProgress = true;
+    public void swingArm() {
+        if (!this.isSwingInProgress) {
+            this.isSwingInProgress = true;
         }
     }
 
-    private void becomeAngryAt(EntityLivingBase entity)
-    {
-    	this.setAttackTarget(entity);
-    	this.angerLevel = 200 + rand.nextInt(200);
+    private void becomeAngryAt(EntityLivingBase entity) {
+        this.setAttackTarget(entity);
+        this.angerLevel = 200 + rand.nextInt(200);
     }
 
-    private void chatItUp(EntityPlayer player, String s)
-    {
-		Side side = FMLCommonHandler.instance().getEffectiveSide();
+    private void chatItUp(EntityPlayer player, String s) {
+        Side side = FMLCommonHandler.instance().getEffectiveSide();
 
-        if (this.chatTime <= 0)
-        {
-        	if (side.isClient())
-        	{
+        if (this.chatTime <= 0) {
+            if (side.isClient()) {
                 Aether.proxy.sendMessage(player, s);
-        	}
+            }
 
             this.chatTime = 60;
         }
     }
 
     @Override
-    public boolean processInteract(EntityPlayer entityplayer, EnumHand hand)
-    {
+    public boolean processInteract(EntityPlayer entityplayer, EnumHand hand) {
 
-		ItemStack stack = entityplayer.getHeldItem(hand);
+        ItemStack stack = entityplayer.getHeldItem(hand);
 
-		if (this.getAttackTarget() == null)
-		{			
-			this.faceEntity(entityplayer, 180F, 180F);
-			
-			if(stack.getItem() == ItemsAether.victory_medal && stack.getCount() >= 0) 
-			{
-				if(stack.getCount() >= 10)
-				{
-					this.chatItUp(entityplayer, "Umm... that's a nice pile of medallions you have there...");
-				}
-				else if(stack.getCount() >= 5)
-				{
-					this.chatItUp(entityplayer, "That's pretty impressive, but you won't defeat me.");
-				}
-				else 
-				{
-					this.chatItUp(entityplayer, "You think you're a tough guy, eh? Well, bring it on!");
-				}
-			}
-		
-			else
-			{
-				int line = rand.nextInt(3);
-			
-				if(line == 2) 
-				{
-				this.chatItUp(entityplayer, "What's that? You want to fight? Aww, what a cute little human.");
-				}
-				else if(line == 1)
-				{
-				this.chatItUp(entityplayer, "You're not thinking of fighting a big, strong Valkyrie are you?");
-				}
-				else 
-				{
-					this.chatItUp(entityplayer, "I don't think you should bother me, you could get really hurt.");
-				}
-			}
-		}
-		else
-		{
-			return false;
-		}
+        if (this.getAttackTarget() == null) {
+            this.faceEntity(entityplayer, 180F, 180F);
 
-		return true;
+            if (stack.getItem() == ItemsAether.victory_medal && stack.getCount() >= 0) {
+                if (stack.getCount() >= 10) {
+                    this.chatItUp(entityplayer, "Umm... that's a nice pile of medallions you have there...");
+                } else if (stack.getCount() >= 5) {
+                    this.chatItUp(entityplayer, "That's pretty impressive, but you won't defeat me.");
+                } else {
+                    this.chatItUp(entityplayer, "You think you're a tough guy, eh? Well, bring it on!");
+                }
+            } else {
+                int line = rand.nextInt(3);
+
+                if (line == 2) {
+                    this.chatItUp(entityplayer, "What's that? You want to fight? Aww, what a cute little human.");
+                } else if (line == 1) {
+                    this.chatItUp(entityplayer, "You're not thinking of fighting a big, strong Valkyrie are you?");
+                } else {
+                    this.chatItUp(entityplayer, "I don't think you should bother me, you could get really hurt.");
+                }
+            }
+        } else {
+            return false;
+        }
+
+        return true;
     }
 
-    public void teleport(double x, double y, double z, int rad) 
-    {
+    public void teleport(double x, double y, double z, int rad) {
         int a = this.rand.nextInt(rad + 1);
         int b = this.rand.nextInt(rad / 2);
         int c = rad - a;
@@ -166,30 +131,25 @@ public class EntityValkyrie extends EntityMob
         int newZ = (int) Math.floor(z - 0.5D);
 
         boolean flag = false;
-        
-        for (int q = 0; q < 32 && !flag; q++)
-        {
-        	this.rand.nextInt(rad / 2);
-        	this.rand.nextInt(rad / 2);
+
+        for (int q = 0; q < 32 && !flag; q++) {
+            this.rand.nextInt(rad / 2);
+            this.rand.nextInt(rad / 2);
             int j = newY + (this.rand.nextInt(rad / 2) - this.rand.nextInt(rad / 2));
             this.rand.nextInt(rad / 2);
             this.rand.nextInt(rad / 2);
 
-            if (j > 124 || j < 5) 
-            {
+            if (j > 124 || j < 5) {
                 continue;
             }
         }
-        
-        if (!flag)
-        {
+
+        if (!flag) {
             teleFail();
-        }
-        else
-        {
+        } else {
             spawnExplosionParticle();
             setPosition((double) newX + 0.5D, (double) newY + 0.5D, (double) newZ + 0.5D);
-            this.motionX = this.motionY = this.motionZ = 0.0D; 
+            this.motionX = this.motionY = this.motionZ = 0.0D;
             this.moveForward = this.moveStrafing = this.rotationPitch = this.rotationYaw = 0.0F;
             this.isJumping = false;
             this.renderYawOffset = this.rand.nextFloat() * 360F;
@@ -198,167 +158,129 @@ public class EntityValkyrie extends EntityMob
         }
     }
 
-    public void teleFail()
-    {
-    	this.teleTimer -= (this.rand.nextInt(40) + 40);
-        
-        if (this.posY <= 0D)
-        {
-        	this.teleTimer = 446;
+    public void teleFail() {
+        this.teleTimer -= (this.rand.nextInt(40) + 40);
+
+        if (this.posY <= 0D) {
+            this.teleTimer = 446;
         }
     }
 
     @Override
-    public void onEntityUpdate()
-    {
+    public void onEntityUpdate() {
         super.onEntityUpdate();
         this.teleTimer++;
         --this.attackTime;
-        
-        if (this.teleTimer >= 450)
-        {
-            if (this.getAttackTarget() != null)
-            {
+
+        if (this.teleTimer >= 450) {
+            if (this.getAttackTarget() != null) {
                 teleport(this.getAttackTarget().posX, this.getAttackTarget().posY, this.getAttackTarget().posZ, 7);
-            }
-            else if (!this.onGround) 
-            {   	
+            } else if (!this.onGround) {
                 teleport(this.safeX, this.safeY, this.safeZ, 6);
             }
-        }
-        else if (this.teleTimer < 446 && (this.posY <= 0D || this.posY <= (this.safeY - 16D)))
-        {
-        	this.teleTimer = 446;
-        } 
-        else if ((this.teleTimer % 5) == 0 && this.getAttackTarget() != null && !canEntityBeSeen(this.getAttackTarget()))
-        {
-        	this.teleTimer += 100;
+        } else if (this.teleTimer < 446 && (this.posY <= 0D || this.posY <= (this.safeY - 16D))) {
+            this.teleTimer = 446;
+        } else if ((this.teleTimer % 5) == 0 && this.getAttackTarget() != null && !canEntityBeSeen(this.getAttackTarget())) {
+            this.teleTimer += 100;
         }
 
-        if (this.onGround && this.teleTimer % 10 == 0)
-        {
-        	this.safeX = this.posX;
-        	this.safeY = this.posY;
-        	this.safeZ = this.posZ;
+        if (this.onGround && this.teleTimer % 10 == 0) {
+            this.safeX = this.posX;
+            this.safeY = this.posY;
+            this.safeZ = this.posZ;
         }
 
-        if (this.getAttackTarget() != null && this.getAttackTarget().isDead) 
-        {
-        	this.setAttackTarget(null);
-        	this.angerLevel = 0;
+        if (this.getAttackTarget() != null && this.getAttackTarget().isDead) {
+            this.setAttackTarget(null);
+            this.angerLevel = 0;
         }
 
-        if (this.chatTime > 0) 
-        {
-        	this.chatTime--;
+        if (this.chatTime > 0) {
+            this.chatTime--;
         }
     }
 
     @Override
-    public void onUpdate()
-    {
-    	this.lastMotionY = motionY;
+    public void onUpdate() {
+        this.lastMotionY = motionY;
         super.onUpdate();
-        
-        if (!this.onGround && this.getAttackTarget() != null && this.lastMotionY >= 0.0D && this.motionY < 0.0D && getDistance(this.getAttackTarget()) <= 16F && canEntityBeSeen(this.getAttackTarget())) 
-        {
+
+        if (!this.onGround && this.getAttackTarget() != null && this.lastMotionY >= 0.0D && this.motionY < 0.0D && getDistance(this.getAttackTarget()) <= 16F && canEntityBeSeen(this.getAttackTarget())) {
             double a = this.getAttackTarget().posX - posX;
             double b = this.getAttackTarget().posZ - posZ;
             double angle = Math.atan2(a, b);
             this.motionX = Math.sin(angle) * 0.25D;
             this.motionZ = Math.cos(angle) * 0.25D;
         }
-        
-        if (!this.onGround && !isOnLadder() && Math.abs(this.motionY - this.lastMotionY) > 0.07D && Math.abs(this.motionY - this.lastMotionY) < 0.09D)
-        {
-        	this.motionY += 0.055F;
-            
-            if (this.motionY < -0.275F) 
-            {
-            	this.motionY = -0.275F;
+
+        if (!this.onGround && !isOnLadder() && Math.abs(this.motionY - this.lastMotionY) > 0.07D && Math.abs(this.motionY - this.lastMotionY) < 0.09D) {
+            this.motionY += 0.055F;
+
+            if (this.motionY < -0.275F) {
+                this.motionY = -0.275F;
             }
         }
 
-        if (this.world.getDifficulty() == EnumDifficulty.PEACEFUL && (this.getAttackTarget() != null || this.angerLevel > 0))
-        {
-        	this.angerLevel = 0;
+        if (this.world.getDifficulty() == EnumDifficulty.PEACEFUL && (this.getAttackTarget() != null || this.angerLevel > 0)) {
+            this.angerLevel = 0;
             this.setAttackTarget(null);
         }
 
-        if (!this.onGround) 
-        {
-        	this.sinage += 0.75F;
-        }
-        else 
-        {
-        	this.sinage += 0.15F;
+        if (!this.onGround) {
+            this.sinage += 0.75F;
+        } else {
+            this.sinage += 0.15F;
         }
 
-        if (this.sinage > 3.141593F * 2F) 
-        {
-        	this.sinage -= (3.141593F * 2F);
+        if (this.sinage > 3.141593F * 2F) {
+            this.sinage -= (3.141593F * 2F);
         }
 
-    	if (this.getAttackTarget() instanceof EntityPlayer)
-    	{
-    		EntityPlayer player = (EntityPlayer)this.getAttackTarget();
-    	
-            if (this.getHealth() <= 0)
-            {
+        if (this.getAttackTarget() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) this.getAttackTarget();
+
+            if (this.getHealth() <= 0) {
                 int pokey = rand.nextInt(3);
 
-                if (pokey == 2) 
-                {
+                if (pokey == 2) {
                     chatItUp(player, "Alright, alright! You win!");
-                } 
-                else if (pokey == 1) 
-                {
+                } else if (pokey == 1) {
                     chatItUp(player, "Okay, I give up! Geez!");
-                } 
-                else
-                {
+                } else {
                     chatItUp(player, "Oww! Fine, here's your medal...");
                 }
-                
+
                 this.setDead();
             }
 
-    		if (player.getHealth() <= 0 && player.isDead)
-    		{     
-    			int pokey = rand.nextInt(3);
+            if (player.getHealth() <= 0 && player.isDead) {
+                int pokey = rand.nextInt(3);
 
-    			if (pokey == 2) 
-    			{
-    				chatItUp(player, "You want a medallion? Try being less pathetic.");
-            	}
-    			else if (pokey == 1) 
-    			{
-    				chatItUp(player, "Maybe some day, " + player.getName() + "... maybe some day.");
-    			}
-    			else
-    			{
-    				chatItUp(player, "Humans aren't nearly as cute when they're dead.");
-    			}
+                if (pokey == 2) {
+                    chatItUp(player, "You want a medallion? Try being less pathetic.");
+                } else if (pokey == 1) {
+                    chatItUp(player, "Maybe some day, " + player.getName() + "... maybe some day.");
+                } else {
+                    chatItUp(player, "Humans aren't nearly as cute when they're dead.");
+                }
 
-    			this.setAttackTarget(null);
-    			this.angerLevel = this.chatTime = 0;
-    		}
-    	}
+                this.setAttackTarget(null);
+                this.angerLevel = this.chatTime = 0;
+            }
+        }
     }
 
     @Override
-    public void writeEntityToNBT(NBTTagCompound nbttagcompound)
-    {
+    public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
         super.writeEntityToNBT(nbttagcompound);
         nbttagcompound.setShort("Anger", (short) angerLevel);
         nbttagcompound.setShort("TeleTimer", (short) teleTimer);
         nbttagcompound.setShort("TimeLeft", (short) timeLeft);
-        nbttagcompound.setTag("SafePos", newDoubleNBTList(new double[] { safeX, safeY, safeZ }));
+        nbttagcompound.setTag("SafePos", newDoubleNBTList(new double[]{safeX, safeY, safeZ}));
     }
 
     @Override
-    public void readEntityFromNBT(NBTTagCompound nbttagcompound) 
-    {
+    public void readEntityFromNBT(NBTTagCompound nbttagcompound) {
         super.readEntityFromNBT(nbttagcompound);
         angerLevel = nbttagcompound.getShort("Anger");
         teleTimer = nbttagcompound.getShort("TeleTimer");
@@ -369,52 +291,38 @@ public class EntityValkyrie extends EntityMob
         safeZ = nbttaglist.getDoubleAt(2);
     }
 
-    public boolean attackEntityFrom(DamageSource ds, float i) 
-    {
-        if (ds.getImmediateSource() instanceof EntityPlayer && world.getDifficulty() != EnumDifficulty.PEACEFUL)
-        {
-            EntityPlayer player = (EntityPlayer)ds.getImmediateSource();
+    public boolean attackEntityFrom(DamageSource ds, float i) {
+        if (ds.getImmediateSource() instanceof EntityPlayer && world.getDifficulty() != EnumDifficulty.PEACEFUL) {
+            EntityPlayer player = (EntityPlayer) ds.getImmediateSource();
 
-            if (this.getAttackTarget() == null)
-            {
-            	this.chatTime = 0;
+            if (this.getAttackTarget() == null) {
+                this.chatTime = 0;
                 int pokey = rand.nextInt(3);
-                if (pokey == 2)
-                {
+                if (pokey == 2) {
                     chatItUp(player, "I'm not going easy on you!");
-                }
-                else if (pokey == 1) 
-                {
+                } else if (pokey == 1) {
                     chatItUp(player, "You're gonna regret that!");
-                } 
-                else 
-                {
+                } else {
                     chatItUp(player, "Now you're in for it!");
                 }
-                
+
                 this.setAttackTarget(player);
-            } 
-            else
-            {
-            	this.teleTimer -= 10;
+            } else {
+                this.teleTimer -= 10;
             }
 
-            if (ds.getImmediateSource() instanceof EntityLivingBase)
-            {
+            if (ds.getImmediateSource() instanceof EntityLivingBase) {
                 becomeAngryAt((EntityLivingBase) ds.getImmediateSource());
             }
-        } 
-        else
-        {
+        } else {
             teleport(this.posX, this.posY, this.posZ, 8);
             extinguish();
             return false;
         }
 
         boolean flag = super.attackEntityFrom(ds, i);
-        
-        if (flag && this.getHealth() <= 0) 
-        {
+
+        if (flag && this.getHealth() <= 0) {
             spawnExplosionParticle();
             this.setDead();
         }
@@ -423,69 +331,55 @@ public class EntityValkyrie extends EntityMob
     }
 
     @Override
-    public boolean attackEntityAsMob(Entity entity)
-    {
-    	boolean flag = false;
+    public boolean attackEntityAsMob(Entity entity) {
+        boolean flag = false;
 
-        if (this.attackTime <= 0 && entity.getEntityBoundingBox().maxY > getEntityBoundingBox().minY && entity.getEntityBoundingBox().minY < getEntityBoundingBox().maxY) 
-        {
-        	this.attackTime = 20;
+        if (this.attackTime <= 0 && entity.getEntityBoundingBox().maxY > getEntityBoundingBox().minY && entity.getEntityBoundingBox().minY < getEntityBoundingBox().maxY) {
+            this.attackTime = 20;
             swingArm();
             flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), 7);
-            if (entity != null && this.getAttackTarget() != null && entity == getAttackTarget() && entity instanceof EntityPlayer) 
-            {
-            	EntityPlayer player = (EntityPlayer) entity;
-                if (player.getHealth() <= 0)
-                {
+            if (entity != null && this.getAttackTarget() != null && entity == getAttackTarget() && entity instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer) entity;
+                if (player.getHealth() <= 0) {
                     int pokey = this.rand.nextInt(3);
 
-                    if (pokey == 2) 
-               	 	{
+                    if (pokey == 2) {
                         chatItUp((EntityPlayer) this.getAttackTarget(), "You want a medallion? Try being less pathetic.");
-                    } 
-                    else if (pokey == 1) 
-               	 	{
-                        chatItUp((EntityPlayer) this.getAttackTarget(),"Maybe some day, " + player.getName() + "... maybe some day.");
-                    }
-               	 	else 
-               	 	{
-                        chatItUp((EntityPlayer) this.getAttackTarget(),"Humans aren't nearly as cute when they're dead.");
+                    } else if (pokey == 1) {
+                        chatItUp((EntityPlayer) this.getAttackTarget(), "Maybe some day, " + player.getName() + "... maybe some day.");
+                    } else {
+                        chatItUp((EntityPlayer) this.getAttackTarget(), "Humans aren't nearly as cute when they're dead.");
                     }
 
                     this.setAttackTarget(null);
                     this.angerLevel = this.chatTime = 0;
-               }           
+                }
             }
         }
 
-		return flag;
+        return flag;
     }
 
     @Override
-    protected void dropFewItems(boolean var1, int var2) 
-    {
-    	dropItem(ItemsAether.victory_medal, 1);
+    protected void dropFewItems(boolean var1, int var2) {
+        dropItem(ItemsAether.victory_medal, 1);
     }
 
     @Override
-    public void fall(float distance, float damageMultiplier)
-    {
+    public void fall(float distance, float damageMultiplier) {
     }
 
     @Override
-    public boolean canDespawn() 
-    {
+    public boolean canDespawn() {
         return false;
     }
 
-    protected SoundEvent getHurtSound()
-    {
-    	return SoundEvents.ENTITY_GENERIC_HURT;
+    protected SoundEvent getHurtSound() {
+        return SoundEvents.ENTITY_GENERIC_HURT;
     }
-    
-    protected SoundEvent getDeathSound()
-    {
-       return SoundEvents.ENTITY_GENERIC_HURT;
+
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.ENTITY_GENERIC_HURT;
     }
 
 }

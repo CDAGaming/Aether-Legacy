@@ -13,62 +13,52 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class BlockAetherContainer extends BlockContainer
-{
+public abstract class BlockAetherContainer extends BlockContainer {
 
-	public static final PropertyBool powered = PropertyBool.create("powered");
+    public static final PropertyBool powered = PropertyBool.create("powered");
 
-	public BlockAetherContainer(Material materialIn) 
-	{
-		super(materialIn);
+    public BlockAetherContainer(Material materialIn) {
+        super(materialIn);
 
-		this.setDefaultState(this.getDefaultState().withProperty(powered, false));
-	}
-
-	@Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
-    {
-    	if (stack.hasDisplayName())
-        {
-            TileEntity tileentity = worldIn.getTileEntity(pos);
-
-            if (tileentity instanceof AetherTileEntity)
-            {
-                ((AetherTileEntity)tileentity).setCustomName(stack.getDisplayName());
-            }
-        }
+        this.setDefaultState(this.getDefaultState().withProperty(powered, false));
     }
 
-	public static void setState(World worldIn, BlockPos pos, boolean isActive)
-	{
+    public static void setState(World worldIn, BlockPos pos, boolean isActive) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         TileEntity tileentity = worldIn.getTileEntity(pos);
 
         worldIn.setBlockState(pos, iblockstate.withProperty(powered, isActive), 3);
 
-        if (tileentity != null)
-        {
+        if (tileentity != null) {
             tileentity.validate();
             worldIn.setTileEntity(pos, tileentity);
         }
-	}
-
-	@Override
-    public IBlockState getStateFromMeta(int meta)
-    {
-		return this.getDefaultState().withProperty(powered, meta == 1);
     }
 
-	@Override
-    public int getMetaFromState(IBlockState state)
-    {
-    	return state.getValue(powered) ? 1 : 0;
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        if (stack.hasDisplayName()) {
+            TileEntity tileentity = worldIn.getTileEntity(pos);
+
+            if (tileentity instanceof AetherTileEntity) {
+                ((AetherTileEntity) tileentity).setCustomName(stack.getDisplayName());
+            }
+        }
     }
 
-	@Override
-	protected BlockStateContainer createBlockState()
-	{
-		return new BlockStateContainer(this, new IProperty[] {powered});
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        return this.getDefaultState().withProperty(powered, meta == 1);
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return state.getValue(powered) ? 1 : 0;
+    }
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, new IProperty[]{powered});
+    }
 
 }

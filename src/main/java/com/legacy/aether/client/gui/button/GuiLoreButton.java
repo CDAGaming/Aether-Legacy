@@ -7,24 +7,20 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiLoreButton extends GuiButton
-{
+public class GuiLoreButton extends GuiButton {
 
     protected static final ResourceLocation BUTTON_TEXTURES = Aether.locate("textures/gui/lore_widgets.png");
 
-	public GuiLoreButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) 
-	{
-		super(buttonId, x, y, widthIn, heightIn, buttonText);
-	}
+    public GuiLoreButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
+        super(buttonId, x, y, widthIn, heightIn, buttonText);
+    }
 
     /**
      * Draws this button to the screen.
      */
-	@Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
-    {
-        if (this.visible)
-        {
+    @Override
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+        if (this.visible) {
             FontRenderer fontrenderer = mc.fontRenderer;
             mc.getTextureManager().bindTexture(BUTTON_TEXTURES);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -38,17 +34,11 @@ public class GuiLoreButton extends GuiButton
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 
-            if (this.packedFGColour != 0)
-            {
+            if (this.packedFGColour != 0) {
                 j = this.packedFGColour;
-            }
-            else
-            if (!this.enabled)
-            {
+            } else if (!this.enabled) {
                 j = 10526880;
-            }
-            else if (this.hovered)
-            {
+            } else if (this.hovered) {
                 j = 16777120;
             }
 

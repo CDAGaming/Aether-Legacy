@@ -21,245 +21,199 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityFlyingCow extends EntitySaddleMount
-{
+public class EntityFlyingCow extends EntitySaddleMount {
 
-	public float wingFold;
+    public float wingFold;
 
-	public float wingAngle;
+    public float wingAngle;
+    public int maxJumps;
+    public int jumpsRemaining;
+    private float aimingForFold;
+    private int ticks;
 
-	private float aimingForFold;
+    public EntityFlyingCow(World world) {
+        super(world);
 
-	public int maxJumps;
+        this.ticks = 0;
+        this.maxJumps = 1;
+        this.jumpsRemaining = 0;
+        this.stepHeight = 1.0F;
+        this.ignoreFrustumCheck = true;
+        this.canJumpMidAir = true;
 
-	public int jumpsRemaining;
-
-	private int ticks;
-
-	public EntityFlyingCow(World world)
-	{
-		super(world);
-
-		this.ticks = 0;
-		this.maxJumps = 1;
-		this.jumpsRemaining = 0;
-		this.stepHeight = 1.0F;
-		this.ignoreFrustumCheck = true;
-		this.canJumpMidAir = true;
-
-		this.setSize(0.9F, 1.3F);
-	}
-
-	@Override
-    protected void initEntityAI()
-    {
-		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
-		this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
-		this.tasks.addTask(3, new EntityAITempt(this, 1.25D, ItemsAether.blue_berry, false));
-		this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-		this.tasks.addTask(7, new EntityAILookIdle(this));
+        this.setSize(0.9F, 1.3F);
     }
 
-	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.20000000298023224D);
-		
-		if (this.getSaddled())
-		{
-			this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
-			this.setHealth(20);
-		}
-	}
+    @Override
+    protected void initEntityAI() {
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
+        this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(3, new EntityAITempt(this, 1.25D, ItemsAether.blue_berry, false));
+        this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
+        this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
+    }
 
-	@Override
-	public void onUpdate()
-	{
-		super.onUpdate();
+    @Override
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.20000000298023224D);
 
-		if (this.onGround)
-		{
-			this.wingAngle *= 0.8F;
-			this.aimingForFold = 0.1F;
-			this.jumpsRemaining = this.maxJumps;
-		}
-		else
-		{
-			this.aimingForFold = 1.0F;
-		}
+        if (this.getSaddled()) {
+            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
+            this.setHealth(20);
+        }
+    }
 
-		this.ticks++;
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
 
-		this.wingAngle = this.wingFold * (float) Math.sin(this.ticks / 31.83098862F);
-		this.wingFold += (this.aimingForFold - this.wingFold) / 5F;
-		this.fallDistance = 0;
-		this.fall();
-	}
+        if (this.onGround) {
+            this.wingAngle *= 0.8F;
+            this.aimingForFold = 0.1F;
+            this.jumpsRemaining = this.maxJumps;
+        } else {
+            this.aimingForFold = 1.0F;
+        }
 
-	@Override
-	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
-	{
-		super.writeEntityToNBT(nbttagcompound);
+        this.ticks++;
 
-		nbttagcompound.setShort("Jumps", (short) this.maxJumps);
-		nbttagcompound.setShort("Remaining", (short) this.jumpsRemaining);
-	}
+        this.wingAngle = this.wingFold * (float) Math.sin(this.ticks / 31.83098862F);
+        this.wingFold += (this.aimingForFold - this.wingFold) / 5F;
+        this.fallDistance = 0;
+        this.fall();
+    }
 
-	@Override
-	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
-	{
-		super.readEntityFromNBT(nbttagcompound);
+    @Override
+    public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
+        super.writeEntityToNBT(nbttagcompound);
 
-		this.maxJumps = nbttagcompound.getShort("Jumps");
-		this.jumpsRemaining = nbttagcompound.getShort("Remaining");
-	}
+        nbttagcompound.setShort("Jumps", (short) this.maxJumps);
+        nbttagcompound.setShort("Remaining", (short) this.jumpsRemaining);
+    }
 
-	@Override
-	public double getMountedYOffset()
-	{
-		return 1.15D;
-	}
+    @Override
+    public void readEntityFromNBT(NBTTagCompound nbttagcompound) {
+        super.readEntityFromNBT(nbttagcompound);
 
-	@Override
-	public float getMountedMoveSpeed()
-	{
-		return 0.3F;
-	}
+        this.maxJumps = nbttagcompound.getShort("Jumps");
+        this.jumpsRemaining = nbttagcompound.getShort("Remaining");
+    }
 
-	@Override
-	protected void jump()
-	{
-		if (this.getPassengers().isEmpty())
-		{
-			super.jump();
-		}
-	}
-	
-	private void fall()
-	{
-		if (!this.onGround)
-		{
-			if (this.motionY < 0.0D && !this.isRiderSneaking())
-			{
-				this.motionY *= 0.6D;
-			}
+    @Override
+    public double getMountedYOffset() {
+        return 1.15D;
+    }
 
-			if (this.onGround && !this.world.isRemote)
-			{
-				this.jumpsRemaining = this.maxJumps;
-			}
-		}
-	}
+    @Override
+    public float getMountedMoveSpeed() {
+        return 0.3F;
+    }
 
-	@Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand)
-	{
-		ItemStack currentStack = player.getHeldItem(hand);
+    @Override
+    protected void jump() {
+        if (this.getPassengers().isEmpty()) {
+            super.jump();
+        }
+    }
 
-		if (currentStack.getItem() == Items.BUCKET)
-		{
-			Item milk = Items.MILK_BUCKET;
+    private void fall() {
+        if (!this.onGround) {
+            if (this.motionY < 0.0D && !this.isRiderSneaking()) {
+                this.motionY *= 0.6D;
+            }
 
-			if (currentStack.getCount() == 1)
-			{
-				player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(milk));
-			}
-			else if (!player.inventory.addItemStackToInventory(new ItemStack(milk)))
-			{
-				if (!this.world.isRemote)
-				{
-					this.world.spawnEntity(new EntityItem(world, player.posX, player.posY, player.posZ, new ItemStack(milk)));
+            if (this.onGround && !this.world.isRemote) {
+                this.jumpsRemaining = this.maxJumps;
+            }
+        }
+    }
 
-					if (!player.capabilities.isCreativeMode)
-					{
-						currentStack.shrink(1);
-					}
-				}
-			}
-			else if (!player.capabilities.isCreativeMode)
-			{
-				currentStack.shrink(1);
-			}
-		}
+    @Override
+    public boolean processInteract(EntityPlayer player, EnumHand hand) {
+        ItemStack currentStack = player.getHeldItem(hand);
 
-		return super.processInteract(player, hand);
-	}
+        if (currentStack.getItem() == Items.BUCKET) {
+            Item milk = Items.MILK_BUCKET;
 
-	@Override
-	protected SoundEvent getAmbientSound()
-	{
-		return SoundsAether.flyingcow_say;
-	}
+            if (currentStack.getCount() == 1) {
+                player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(milk));
+            } else if (!player.inventory.addItemStackToInventory(new ItemStack(milk))) {
+                if (!this.world.isRemote) {
+                    this.world.spawnEntity(new EntityItem(world, player.posX, player.posY, player.posZ, new ItemStack(milk)));
 
-	@Override
-	protected SoundEvent getHurtSound(DamageSource source)
-	{
-		return SoundsAether.flyingcow_hurt;
-	}
+                    if (!player.capabilities.isCreativeMode) {
+                        currentStack.shrink(1);
+                    }
+                }
+            } else if (!player.capabilities.isCreativeMode) {
+                currentStack.shrink(1);
+            }
+        }
 
-	@Override
-	protected SoundEvent getDeathSound()
-	{
-		return SoundsAether.flyingcow_death;
-	}
+        return super.processInteract(player, hand);
+    }
 
-	@Override
-	protected float getSoundVolume()
-	{
-		return 0.4F;
-	}
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundsAether.flyingcow_say;
+    }
 
-	@Override
-	protected void playStepSound(BlockPos pos, Block par4)
-	{
-		this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_COW_STEP, SoundCategory.NEUTRAL, 0.15F, 1.0F);
-	}
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SoundsAether.flyingcow_hurt;
+    }
 
-	@Override
-	public EntityAgeable createChild(EntityAgeable entityageable)
-	{
-		return new EntityFlyingCow(this.world);
-	}
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundsAether.flyingcow_death;
+    }
 
-	protected void dropFewItems(boolean par1, int par2)
-	{
-		int j = this.rand.nextInt(3) + this.rand.nextInt(1 + par2);
-		int k;
+    @Override
+    protected float getSoundVolume() {
+        return 0.4F;
+    }
 
-		for (k = 0; k < j; ++k)
-		{
-			this.dropItem(Items.LEATHER, 1);
-		}
+    @Override
+    protected void playStepSound(BlockPos pos, Block par4) {
+        this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_COW_STEP, SoundCategory.NEUTRAL, 0.15F, 1.0F);
+    }
 
-		j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2);
+    @Override
+    public EntityAgeable createChild(EntityAgeable entityageable) {
+        return new EntityFlyingCow(this.world);
+    }
 
-		for (k = 0; k < j; ++k)
-		{
-			if (this.isBurning())
-			{
-				this.dropItem(Items.COOKED_BEEF, 1);
-			}
-			else
-			{
-				this.dropItem(Items.BEEF, 1);
-			}
-		}
+    protected void dropFewItems(boolean par1, int par2) {
+        int j = this.rand.nextInt(3) + this.rand.nextInt(1 + par2);
+        int k;
 
-		if (this.getSaddled())
-		{
-			this.dropItem(Items.SADDLE, 1);
-		}
-	}
+        for (k = 0; k < j; ++k) {
+            this.dropItem(Items.LEATHER, 1);
+        }
 
-	@Override
-	protected double getMountJumpStrength()
-	{
-		return 5.0D;
-	}
+        j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2);
+
+        for (k = 0; k < j; ++k) {
+            if (this.isBurning()) {
+                this.dropItem(Items.COOKED_BEEF, 1);
+            } else {
+                this.dropItem(Items.BEEF, 1);
+            }
+        }
+
+        if (this.getSaddled()) {
+            this.dropItem(Items.SADDLE, 1);
+        }
+    }
+
+    @Override
+    protected double getMountJumpStrength() {
+        return 5.0D;
+    }
 
 }

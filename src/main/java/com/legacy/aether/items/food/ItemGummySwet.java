@@ -11,53 +11,45 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
-public class ItemGummySwet extends ItemAetherFood
-{
+public class ItemGummySwet extends ItemAetherFood {
 
-	public ItemGummySwet()
-	{
-		super(20);
+    public ItemGummySwet() {
+        super(20);
 
-		this.setHasSubtypes(true);
-		this.setCreativeTab(AetherCreativeTabs.food);
-	}
+        this.setHasSubtypes(true);
+        this.setCreativeTab(AetherCreativeTabs.food);
+    }
 
-	@Override
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems)
-	{
-		if (tab != this.getCreativeTab() || tab == CreativeTabs.SEARCH)
-		{
-			return;
-		}
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
+        if (tab != this.getCreativeTab() || tab == CreativeTabs.SEARCH) {
+            return;
+        }
 
-		for (int meta = 0; meta < EnumGummySwetType.values().length ; ++meta)
-		{
-			subItems.add(new ItemStack(this, 1, meta));
-		}
-	}
+        for (int meta = 0; meta < EnumGummySwetType.values().length; ++meta) {
+            subItems.add(new ItemStack(this, 1, meta));
+        }
+    }
 
-	@Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-		ItemStack heldItem = playerIn.getHeldItem(hand);
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+        ItemStack heldItem = playerIn.getHeldItem(hand);
 
-    	playerIn.heal(playerIn.getMaxHealth());
+        playerIn.heal(playerIn.getMaxHealth());
 
-    	if (!playerIn.capabilities.isCreativeMode)
-    	{
-    		heldItem.shrink(1);
-    	}
+        if (!playerIn.capabilities.isCreativeMode) {
+            heldItem.shrink(1);
+        }
 
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
     }
 
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemstack)
-	{
-		int meta = itemstack.getItemDamage();
+    @Override
+    public String getUnlocalizedName(ItemStack itemstack) {
+        int meta = itemstack.getItemDamage();
 
-		return this.getUnlocalizedName() + "_" + EnumGummySwetType.getType(meta).toString();
-	}
+        return this.getUnlocalizedName() + "_" + EnumGummySwetType.getType(meta).toString();
+    }
 
 }

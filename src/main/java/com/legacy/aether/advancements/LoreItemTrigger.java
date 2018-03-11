@@ -17,27 +17,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class LoreItemTrigger implements ICriterionTrigger<LoreItemTrigger.Instance>
-{
+public class LoreItemTrigger implements ICriterionTrigger<LoreItemTrigger.Instance> {
     private final Map<PlayerAdvancements, LoreItemTrigger.Listeners> listeners = Maps.<PlayerAdvancements, LoreItemTrigger.Listeners>newHashMap();
     private final ResourceLocation id;
 
-    public LoreItemTrigger(ResourceLocation id)
-    {
+    public LoreItemTrigger(ResourceLocation id) {
         this.id = id;
     }
 
-    public ResourceLocation getId()
-    {
+    public ResourceLocation getId() {
         return this.id;
     }
 
-    public void addListener(PlayerAdvancements playerAdvancementsIn, ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener)
-    {
+    public void addListener(PlayerAdvancements playerAdvancementsIn, ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener) {
         LoreItemTrigger.Listeners killedtrigger$listeners = this.listeners.get(playerAdvancementsIn);
 
-        if (killedtrigger$listeners == null)
-        {
+        if (killedtrigger$listeners == null) {
             killedtrigger$listeners = new LoreItemTrigger.Listeners(playerAdvancementsIn);
             this.listeners.put(playerAdvancementsIn, killedtrigger$listeners);
         }
@@ -45,113 +40,92 @@ public class LoreItemTrigger implements ICriterionTrigger<LoreItemTrigger.Instan
         killedtrigger$listeners.add(listener);
     }
 
-    public void removeListener(PlayerAdvancements playerAdvancementsIn, ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener)
-    {
+    public void removeListener(PlayerAdvancements playerAdvancementsIn, ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener) {
         LoreItemTrigger.Listeners killedtrigger$listeners = this.listeners.get(playerAdvancementsIn);
 
-        if (killedtrigger$listeners != null)
-        {
+        if (killedtrigger$listeners != null) {
             killedtrigger$listeners.remove(listener);
 
-            if (killedtrigger$listeners.isEmpty())
-            {
+            if (killedtrigger$listeners.isEmpty()) {
                 this.listeners.remove(playerAdvancementsIn);
             }
         }
     }
 
-    public void removeAllListeners(PlayerAdvancements playerAdvancementsIn)
-    {
+    public void removeAllListeners(PlayerAdvancements playerAdvancementsIn) {
         this.listeners.remove(playerAdvancementsIn);
     }
 
     /**
      * Deserialize a ICriterionInstance of this trigger from the data in the JSON.
      */
-    public LoreItemTrigger.Instance deserializeInstance(JsonObject json, JsonDeserializationContext context)
-    {
+    public LoreItemTrigger.Instance deserializeInstance(JsonObject json, JsonDeserializationContext context) {
         ItemPredicate itempredicate = ItemPredicate.deserialize(json.get("item"));
 
         return new LoreItemTrigger.Instance(this.id, itempredicate);
     }
 
-    public void trigger(EntityPlayerMP player, ItemStack stack)
-    {
+    public void trigger(EntityPlayerMP player, ItemStack stack) {
         LoreItemTrigger.Listeners killedtrigger$listeners = this.listeners.get(player.getAdvancements());
 
-        if (killedtrigger$listeners != null)
-        {
+        if (killedtrigger$listeners != null) {
             killedtrigger$listeners.trigger(stack);
         }
     }
 
-    public static class Instance extends AbstractCriterionInstance
-        {
-            private final ItemPredicate item;
+    public static class Instance extends AbstractCriterionInstance {
+        private final ItemPredicate item;
 
-            public Instance(ResourceLocation criterionIn, ItemPredicate item)
-            {
-                super(criterionIn);
+        public Instance(ResourceLocation criterionIn, ItemPredicate item) {
+            super(criterionIn);
 
-                this.item = item;
-            }
-
-            public boolean test(ItemStack stack)
-            {
-                return this.item.test(stack);
-            }
+            this.item = item;
         }
 
-    static class Listeners
-        {
-            private final PlayerAdvancements playerAdvancements;
-            private final Set<ICriterionTrigger.Listener<LoreItemTrigger.Instance>> listeners = Sets.<ICriterionTrigger.Listener<LoreItemTrigger.Instance>>newHashSet();
+        public boolean test(ItemStack stack) {
+            return this.item.test(stack);
+        }
+    }
 
-            public Listeners(PlayerAdvancements playerAdvancementsIn)
-            {
-                this.playerAdvancements = playerAdvancementsIn;
-            }
+    static class Listeners {
+        private final PlayerAdvancements playerAdvancements;
+        private final Set<ICriterionTrigger.Listener<LoreItemTrigger.Instance>> listeners = Sets.<ICriterionTrigger.Listener<LoreItemTrigger.Instance>>newHashSet();
 
-            public boolean isEmpty()
-            {
-                return this.listeners.isEmpty();
-            }
+        public Listeners(PlayerAdvancements playerAdvancementsIn) {
+            this.playerAdvancements = playerAdvancementsIn;
+        }
 
-            public void add(ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener)
-            {
-                this.listeners.add(listener);
-            }
+        public boolean isEmpty() {
+            return this.listeners.isEmpty();
+        }
 
-            public void remove(ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener)
-            {
-                this.listeners.remove(listener);
-            }
+        public void add(ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener) {
+            this.listeners.add(listener);
+        }
 
-            public void trigger(ItemStack stack)
-            {
-                List<ICriterionTrigger.Listener<LoreItemTrigger.Instance>> list = null;
+        public void remove(ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener) {
+            this.listeners.remove(listener);
+        }
 
-                for (ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener : this.listeners)
-                {
-                    if (((LoreItemTrigger.Instance)listener.getCriterionInstance()).test(stack))
-                    {
-                        if (list == null)
-                        {
-                            list = Lists.<ICriterionTrigger.Listener<LoreItemTrigger.Instance>>newArrayList();
-                        }
+        public void trigger(ItemStack stack) {
+            List<ICriterionTrigger.Listener<LoreItemTrigger.Instance>> list = null;
 
-                        list.add(listener);
+            for (ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener : this.listeners) {
+                if (((LoreItemTrigger.Instance) listener.getCriterionInstance()).test(stack)) {
+                    if (list == null) {
+                        list = Lists.<ICriterionTrigger.Listener<LoreItemTrigger.Instance>>newArrayList();
                     }
+
+                    list.add(listener);
                 }
+            }
 
-                if (list != null)
-                {
-                    for (ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener1 : list)
-                    {
-                        listener1.grantCriterion(this.playerAdvancements);
-                    }
+            if (list != null) {
+                for (ICriterionTrigger.Listener<LoreItemTrigger.Instance> listener1 : list) {
+                    listener1.grantCriterion(this.playerAdvancements);
                 }
             }
         }
+    }
 
 }

@@ -8,38 +8,32 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import java.util.Random;
 
-public class AetherGenFoilage extends WorldGenerator
-{
+public class AetherGenFoilage extends WorldGenerator {
 
     private IBlockState plantState;
 
-    public AetherGenFoilage()
-    {
-    	super();
+    public AetherGenFoilage() {
+        super();
     }
 
-    public void setPlantBlock(IBlockState state)
-    {
-    	this.plantState = state;
+    public void setPlantBlock(IBlockState state) {
+        this.plantState = state;
     }
 
-	@Override
-	public boolean generate(World world, Random random, BlockPos pos)
-	{
-        for(int l = 0; l < 64; l++)
-        {
+    @Override
+    public boolean generate(World world, Random random, BlockPos pos) {
+        for (int l = 0; l < 64; l++) {
             int i1 = (pos.getX() + random.nextInt(8)) - random.nextInt(8);
             int j1 = (pos.getY() + random.nextInt(4)) - random.nextInt(4);
             int k1 = (pos.getZ() + random.nextInt(8)) - random.nextInt(8);
 
             BlockPos newPos = new BlockPos(i1, j1, k1);
 
-            if(world.isAirBlock(newPos) && ((BlockAetherFlower)this.plantState.getBlock()).canBlockStay(world, newPos, this.plantState))
-            {
-            	this.setBlockAndNotifyAdequately(world, newPos, this.plantState);
+            if (world.isAirBlock(newPos) && ((BlockAetherFlower) this.plantState.getBlock()).canBlockStay(world, newPos, this.plantState)) {
+                this.setBlockAndNotifyAdequately(world, newPos, this.plantState);
             }
         }
 
-		return true;
-	}
+        return true;
+    }
 }

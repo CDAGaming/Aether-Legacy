@@ -11,52 +11,45 @@ import net.minecraft.item.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FreezerRecipeWrapper implements IRecipeWrapper
-{
+public class FreezerRecipeWrapper implements IRecipeWrapper {
 
-	private final ArrayList<ItemStack> inputs;
+    private final ArrayList<ItemStack> inputs;
 
-	private final ArrayList<ItemStack> outputs;
+    private final ArrayList<ItemStack> outputs;
 
-	public AetherFreezable freezable;
+    public AetherFreezable freezable;
 
-	public FreezerRecipeWrapper(AetherFreezable recipe)
-	{
-		this.freezable = recipe;
+    public FreezerRecipeWrapper(AetherFreezable recipe) {
+        this.freezable = recipe;
 
-		this.inputs = Lists.newArrayList();
-		this.outputs = Lists.newArrayList();
+        this.inputs = Lists.newArrayList();
+        this.outputs = Lists.newArrayList();
 
-		for (AetherFreezable freezable : AetherAPI.getInstance().getFreezableValues())
-		{
-			this.inputs.add(freezable.getInput());
-			this.outputs.add(freezable.getOutput());
-		}
-	}
+        for (AetherFreezable freezable : AetherAPI.getInstance().getFreezableValues()) {
+            this.inputs.add(freezable.getInput());
+            this.outputs.add(freezable.getOutput());
+        }
+    }
 
-	@Override
-	public void getIngredients(IIngredients ingredients) 
-	{
-		ingredients.setInput(ItemStack.class, this.freezable.getInput());
-		ingredients.setOutput(ItemStack.class, this.freezable.getOutput());
-	}
+    @Override
+    public void getIngredients(IIngredients ingredients) {
+        ingredients.setInput(ItemStack.class, this.freezable.getInput());
+        ingredients.setOutput(ItemStack.class, this.freezable.getOutput());
+    }
 
-	@Override
-	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY)
-	{
+    @Override
+    public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
 
-	}
+    }
 
-	@Override
-	public List<String> getTooltipStrings(int mouseX, int mouseY)
-	{
-		return null;
-	}
+    @Override
+    public List<String> getTooltipStrings(int mouseX, int mouseY) {
+        return null;
+    }
 
-	@Override
-	public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int mouseButton) 
-	{
-		return false;
-	}
+    @Override
+    public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int mouseButton) {
+        return false;
+    }
 
 }

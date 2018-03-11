@@ -8,27 +8,23 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class SentryRenderer extends RenderLiving<EntitySentry>
-{
+public class SentryRenderer extends RenderLiving<EntitySentry> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation("aether_legacy", "textures/entities/sentry/sentry.png");
 
     private static final ResourceLocation TEXTURE_LIT = new ResourceLocation("aether_legacy", "textures/entities/sentry/sentry_lit.png");
 
-	public SentryRenderer(RenderManager renderManager)
-    {
+    public SentryRenderer(RenderManager renderManager) {
         super(renderManager, new ModelSlime(0), 0.3F);
         this.addLayer(new SentryLayer((ModelSlime) this.getMainModel()));
     }
 
-    protected void preRenderCallback(EntitySentry entityliving, float f)
-    {
+    protected void preRenderCallback(EntitySentry entityliving, float f) {
         float f1 = 1.75F;
         GL11.glScalef(f1, f1, f1);
     }
 
-    protected ResourceLocation getEntityTexture(EntitySentry entity)
-    {
+    protected ResourceLocation getEntityTexture(EntitySentry entity) {
         return !entity.isAwake() ? TEXTURE : TEXTURE_LIT;
     }
 

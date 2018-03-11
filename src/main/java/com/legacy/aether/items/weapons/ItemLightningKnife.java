@@ -14,37 +14,31 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class ItemLightningKnife extends Item
-{
-    public ItemLightningKnife()
-    {
+public class ItemLightningKnife extends Item {
+    public ItemLightningKnife() {
         this.setMaxStackSize(16);
         this.setCreativeTab(AetherCreativeTabs.weapons);
     }
 
-	@Override
-    public EnumRarity getRarity(ItemStack stack)
-    {
-    	return ItemsAether.aether_loot;
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return ItemsAether.aether_loot;
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-    	ItemStack heldItem = playerIn.getHeldItem(hand);
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+        ItemStack heldItem = playerIn.getHeldItem(hand);
 
-        if (!playerIn.capabilities.isCreativeMode)
-        {
-        	heldItem.shrink(1);
+        if (!playerIn.capabilities.isCreativeMode) {
+            heldItem.shrink(1);
         }
 
         worldIn.playSound(playerIn, playerIn.getPosition(), SoundsAether.projectile_shoot, SoundCategory.PLAYERS, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-        if (!worldIn.isRemote)
-        {
-        	EntityLightningKnife lightningKnife = new EntityLightningKnife(worldIn, playerIn);
-        	lightningKnife.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
-        	worldIn.spawnEntity(lightningKnife);
+        if (!worldIn.isRemote) {
+            EntityLightningKnife lightningKnife = new EntityLightningKnife(worldIn, playerIn);
+            lightningKnife.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            worldIn.spawnEntity(lightningKnife);
         }
 
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);

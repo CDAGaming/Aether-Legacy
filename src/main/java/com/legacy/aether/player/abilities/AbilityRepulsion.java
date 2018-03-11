@@ -20,118 +20,100 @@ import net.minecraft.util.math.BlockPos;
 import java.util.List;
 import java.util.Random;
 
-public class AbilityRepulsion extends Ability
-{
+public class AbilityRepulsion extends Ability {
 
-	private Random rand = new Random();
+    private Random rand = new Random();
 
-	public AbilityRepulsion(PlayerAether player) 
-	{
-		super(player);
-	}
+    public AbilityRepulsion(PlayerAether player) {
+        super(player);
+    }
 
-	@Override
-	public boolean isEnabled() 
-	{
-		return super.isEnabled() && this.playerAether.wearingAccessory(ItemsAether.repulsion_shield) && this.player.moveForward == 0.0F && this.player.moveStrafing == 0.0F;
-	}
+    public static boolean isProjectile(Entity entity) {
+        return entity instanceof EntityArrow || entity instanceof EntityFireball || entity instanceof EntityThrowable || entity instanceof EntityPotion || entity instanceof EntityDartBase || entity instanceof EntityZephyrSnowball;
+    }
 
-	@Override
-	public void onUpdate() 
-	{
-		List<?> entities = this.player.world.getEntitiesWithinAABBExcludingEntity(this.player, this.player.getEntityBoundingBox().expand(4.0D, 4.0D, 4.0D));
+    @Override
+    public boolean isEnabled() {
+        return super.isEnabled() && this.playerAether.wearingAccessory(ItemsAether.repulsion_shield) && this.player.moveForward == 0.0F && this.player.moveStrafing == 0.0F;
+    }
 
-		for (int size = 0; size < entities.size(); ++size)
-		{
-			Entity projectile = (Entity) entities.get(size);
-			
-			if (isProjectile(projectile) && this.getShooter(projectile) != this.player)
-			{
-				double x, y, z;
+    @Override
+    public void onUpdate() {
+        List<?> entities = this.player.world.getEntitiesWithinAABBExcludingEntity(this.player, this.player.getEntityBoundingBox().expand(4.0D, 4.0D, 4.0D));
 
-				if (this.getShooter(projectile) != null)
-				{
-					Entity shooter = this.getShooter(projectile);
-					x = player.posX - shooter.posX;
-					y = player.getEntityBoundingBox().minY - shooter.getEntityBoundingBox().minY;
-					z = player.posZ - shooter.posZ;
-				}
-				else
-				{
-					x = player.posX - projectile.posX;
-					y = player.posY - projectile.posY;
-					z = player.posZ - projectile.posZ;
-				}
+        for (int size = 0; size < entities.size(); ++size) {
+            Entity projectile = (Entity) entities.get(size);
 
-				double difference = -Math.sqrt((x * x) + (y * y) + (z * z));
+            if (isProjectile(projectile) && this.getShooter(projectile) != this.player) {
+                double x, y, z;
 
-				x /= difference; y /= difference; z /= difference;
+                if (this.getShooter(projectile) != null) {
+                    Entity shooter = this.getShooter(projectile);
+                    x = player.posX - shooter.posX;
+                    y = player.getEntityBoundingBox().minY - shooter.getEntityBoundingBox().minY;
+                    z = player.posZ - shooter.posZ;
+                } else {
+                    x = player.posX - projectile.posX;
+                    y = player.posY - projectile.posY;
+                    z = player.posZ - projectile.posZ;
+                }
 
-				projectile.motionX = x * 0.75F; projectile.motionY = y * 0.75F + 0.05D; projectile.motionZ = z * 0.75F;
+                double difference = -Math.sqrt((x * x) + (y * y) + (z * z));
 
-				this.setShooter(projectile, this.player);
-				player.world.playSound(this.player, new BlockPos(this.player), SoundEvents.BLOCK_NOTE_SNARE, SoundCategory.PLAYERS, 1.0F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.4F + 0.8F) * 1.1F);
+                x /= difference;
+                y /= difference;
+                z /= difference;
 
-				for (int pack = 0; pack < 12; ++pack)
-				{
-					double packX, packY, packZ;
-					packX = (-projectile.motionX * 0.15F) + ((this.rand.nextFloat() - 0.5F) * 0.05F);
-					packY = (-projectile.motionY * 0.15F) + ((this.rand.nextFloat() - 0.5F) * 0.05F);
-					packZ = (-projectile.motionZ * 0.15F) + ((this.rand.nextFloat() - 0.5F) * 0.05F);
-					packX *= 0.625F;
-					packY *= 0.625F;
-					packZ *= 0.625F;
+                projectile.motionX = x * 0.75F;
+                projectile.motionY = y * 0.75F + 0.05D;
+                projectile.motionZ = z * 0.75F;
 
-					player.world.spawnParticle(EnumParticleTypes.FLAME, projectile.posX, projectile.posY, projectile.posZ, packX, packY, packZ);
-				}
-				
-				this.playerAether.accessories.damageItemStackIfWearing(new ItemStack(ItemsAether.repulsion_shield));
-			}
-		}
-	}
+                this.setShooter(projectile, this.player);
+                player.world.playSound(this.player, new BlockPos(this.player), SoundEvents.BLOCK_NOTE_SNARE, SoundCategory.PLAYERS, 1.0F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.4F + 0.8F) * 1.1F);
 
-	public boolean onPlayerAttacked(DamageSource source)
-	{
-		if (isProjectile(source.getImmediateSource()))
-		{
-			return false;
-		}
+                for (int pack = 0; pack < 12; ++pack) {
+                    double packX, packY, packZ;
+                    packX = (-projectile.motionX * 0.15F) + ((this.rand.nextFloat() - 0.5F) * 0.05F);
+                    packY = (-projectile.motionY * 0.15F) + ((this.rand.nextFloat() - 0.5F) * 0.05F);
+                    packZ = (-projectile.motionZ * 0.15F) + ((this.rand.nextFloat() - 0.5F) * 0.05F);
+                    packX *= 0.625F;
+                    packY *= 0.625F;
+                    packZ *= 0.625F;
 
-		return true;
-	}
+                    player.world.spawnParticle(EnumParticleTypes.FLAME, projectile.posX, projectile.posY, projectile.posZ, packX, packY, packZ);
+                }
 
-	private Entity getShooter(Entity ent) 
-	{
-		return ent instanceof EntityArrow ? ((EntityArrow)ent).shootingEntity :
-			ent instanceof EntityThrowable ? ((EntityThrowable)ent).getThrower() :
-				ent instanceof EntityDartBase ? ((EntityDartBase)ent).shootingEntity :
-					ent instanceof EntityFireball ? ((EntityFireball)ent).shootingEntity :
-							null;
-	}
+                this.playerAether.accessories.damageItemStackIfWearing(new ItemStack(ItemsAether.repulsion_shield));
+            }
+        }
+    }
 
-	private void setShooter(Entity ent, EntityLivingBase shooter) 
-	{
-		if (ent instanceof EntityArrow)
-		{
-			((EntityArrow)ent).shootingEntity = shooter;
-		}
-		else if (ent instanceof EntityFireball)
-		{
-			((EntityFireball)ent).shootingEntity = shooter;
-		}
-		else if (ent instanceof EntityFireball)
-		{
-			((EntityFireball)ent).shootingEntity = shooter;
-		}
-		else if (ent instanceof EntityDartBase)
-		{
-			((EntityDartBase)ent).shootingEntity = shooter;
-		}
-	}
+    public boolean onPlayerAttacked(DamageSource source) {
+        if (isProjectile(source.getImmediateSource())) {
+            return false;
+        }
 
-	public static boolean isProjectile(Entity entity)
-	{
-		return entity instanceof EntityArrow || entity instanceof EntityFireball || entity instanceof EntityThrowable || entity instanceof EntityPotion || entity instanceof EntityDartBase || entity instanceof EntityZephyrSnowball;
-	}
+        return true;
+    }
+
+    private Entity getShooter(Entity ent) {
+        return ent instanceof EntityArrow ? ((EntityArrow) ent).shootingEntity :
+                ent instanceof EntityThrowable ? ((EntityThrowable) ent).getThrower() :
+                        ent instanceof EntityDartBase ? ((EntityDartBase) ent).shootingEntity :
+                                ent instanceof EntityFireball ? ((EntityFireball) ent).shootingEntity :
+                                        null;
+    }
+
+    private void setShooter(Entity ent, EntityLivingBase shooter) {
+        if (ent instanceof EntityArrow) {
+            ((EntityArrow) ent).shootingEntity = shooter;
+        } else if (ent instanceof EntityFireball) {
+            ((EntityFireball) ent).shootingEntity = shooter;
+        } else if (ent instanceof EntityFireball) {
+            ((EntityFireball) ent).shootingEntity = shooter;
+        } else if (ent instanceof EntityDartBase) {
+            ((EntityDartBase) ent).shootingEntity = shooter;
+        }
+    }
 
 }

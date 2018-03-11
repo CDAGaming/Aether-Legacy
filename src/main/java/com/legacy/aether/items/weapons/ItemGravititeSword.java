@@ -11,40 +11,32 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.util.NonNullList;
 
-public class ItemGravititeSword extends ItemSword
-{
+public class ItemGravititeSword extends ItemSword {
 
-    public ItemGravititeSword()
-    {
+    public ItemGravititeSword() {
         super(ToolMaterial.DIAMOND);
     }
 
-	@Override
-    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
-    {
-    	if (tab == AetherCreativeTabs.weapons || tab == CreativeTabs.SEARCH)
-    	{
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (tab == AetherCreativeTabs.weapons || tab == CreativeTabs.SEARCH) {
             items.add(new ItemStack(this));
-    	}
+        }
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack repairingItem, ItemStack material)
-    {
+    public boolean getIsRepairable(ItemStack repairingItem, ItemStack material) {
         return material.getItem() == Item.getItemFromBlock(BlocksAether.enchanted_gravitite);
     }
 
     @Override
-    public boolean hitEntity(ItemStack itemstack, EntityLivingBase hitentity, EntityLivingBase player)
-    {
-        if ((hitentity.hurtTime > 0 || hitentity.deathTime > 0))
-        {
+    public boolean hitEntity(ItemStack itemstack, EntityLivingBase hitentity, EntityLivingBase player) {
+        if ((hitentity.hurtTime > 0 || hitentity.deathTime > 0)) {
             hitentity.addVelocity(0.0D, 1.0D, 0.0D);
         }
 
-        if (hitentity instanceof EntityPlayerMP)
-        {
-            ((EntityPlayerMP)hitentity).connection.sendPacket(new SPacketEntityVelocity(hitentity));
+        if (hitentity instanceof EntityPlayerMP) {
+            ((EntityPlayerMP) hitentity).connection.sendPacket(new SPacketEntityVelocity(hitentity));
         }
 
         return super.hitEntity(itemstack, hitentity, player);

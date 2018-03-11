@@ -11,25 +11,21 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-public class TNTPresentRenderer extends Render<EntityTNTPresent>
-{
+public class TNTPresentRenderer extends Render<EntityTNTPresent> {
 
-    public TNTPresentRenderer(RenderManager renderManagerIn)
-    {
+    public TNTPresentRenderer(RenderManager renderManagerIn) {
         super(renderManagerIn);
         this.shadowSize = 0.5F;
     }
 
     @Override
-    public void doRender(EntityTNTPresent entity, double x, double y, double z, float entityYaw, float partialTicks)
-    {
+    public void doRender(EntityTNTPresent entity, double x, double y, double z, float entityYaw, float partialTicks) {
         BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
         GlStateManager.pushMatrix();
-        GlStateManager.translate((float)x, (float)y + 0.5F, (float)z);
+        GlStateManager.translate((float) x, (float) y + 0.5F, (float) z);
 
-        if ((float)entity.fuse - partialTicks + 1.0F < 10.0F)
-        {
-            float f = 1.0F - ((float)entity.fuse - partialTicks + 1.0F) / 10.0F;
+        if ((float) entity.fuse - partialTicks + 1.0F < 10.0F) {
+            float f = 1.0F - ((float) entity.fuse - partialTicks + 1.0F) / 10.0F;
             f = MathHelper.clamp(f, 0.0F, 1.0F);
             f = f * f;
             f = f * f;
@@ -37,23 +33,20 @@ public class TNTPresentRenderer extends Render<EntityTNTPresent>
             GlStateManager.scale(f1, f1, f1);
         }
 
-        float f2 = (1.0F - ((float)entity.fuse - partialTicks + 1.0F) / 100.0F) * 0.8F;
+        float f2 = (1.0F - ((float) entity.fuse - partialTicks + 1.0F) / 100.0F) * 0.8F;
         this.bindEntityTexture(entity);
         GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
         GlStateManager.translate(-0.5F, -0.5F, 0.5F);
         blockrendererdispatcher.renderBlockBrightness(BlocksAether.present.getDefaultState(), entity.getBrightness());
         GlStateManager.translate(0.0F, 0.0F, 1.0F);
 
-        if (this.renderOutlines)
-        {
+        if (this.renderOutlines) {
             GlStateManager.enableColorMaterial();
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
             blockrendererdispatcher.renderBlockBrightness(BlocksAether.present.getDefaultState(), 1.0F);
             GlStateManager.disableOutlineMode();
             GlStateManager.disableColorMaterial();
-        }
-        else if (entity.fuse / 5 % 2 == 0)
-        {
+        } else if (entity.fuse / 5 % 2 == 0) {
             GlStateManager.disableTexture2D();
             GlStateManager.disableLighting();
             GlStateManager.enableBlend();
@@ -74,8 +67,7 @@ public class TNTPresentRenderer extends Render<EntityTNTPresent>
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    protected ResourceLocation getEntityTexture(EntityTNTPresent entity)
-    {
+    protected ResourceLocation getEntityTexture(EntityTNTPresent entity) {
         return TextureMap.LOCATION_BLOCKS_TEXTURE;
     }
 }

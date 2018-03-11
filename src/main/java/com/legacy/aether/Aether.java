@@ -18,66 +18,59 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(name = "Aether Legacy", modid = Aether.modid, version = Aether.version, acceptedMinecraftVersions = "1.12.2")
-public class Aether 
-{
+public class Aether {
 
-	public static final String modid = "aether_legacy";
+    public static final String modid = "aether_legacy";
 
-	public static final String version = "1.12.2-v2.0";
+    public static final String version = "1.12.2-v2.0";
 
-	@Instance(Aether.modid)
-	public static Aether instance;
+    @Instance(Aether.modid)
+    public static Aether instance;
 
-	@SidedProxy(modId = Aether.modid, clientSide = "com.legacy.aether.client.ClientProxy", serverSide = "com.legacy.aether.CommonProxy")
-	public static CommonProxy proxy;
+    @SidedProxy(modId = Aether.modid, clientSide = "com.legacy.aether.client.ClientProxy", serverSide = "com.legacy.aether.CommonProxy")
+    public static CommonProxy proxy;
 
-	@EventHandler
-	public void preInitialization(FMLPreInitializationEvent event)
-	{
-		CommonProxy.registerEvent(new AetherRegistryEvent());
+    public static ResourceLocation locate(String location) {
+        return new ResourceLocation(modid, location);
+    }
 
-		AetherConfig.init(event.getModConfigurationDirectory());
-		AetherConfig.autoDeveloperMode(version);
+    public static String modAddress() {
+        return modid + ":";
+    }
 
-		SoundsAether.initialization();
-		AetherAdvancements.initialization();
-		AetherNetworkingManager.preInitialization();
+    public static String doubleDropNotifier() {
+        return modid + "_double_drops";
+    }
 
-		proxy.preInitialization();
-	}
+    @EventHandler
+    public void preInitialization(FMLPreInitializationEvent event) {
+        CommonProxy.registerEvent(new AetherRegistryEvent());
 
-	@EventHandler
-	public void initialization(FMLInitializationEvent event)
-	{
-		PlayerAetherManager.initialization();
-		AetherEntities.initialization();
-		AetherTileEntities.initialization();
-		AetherWorld.initialization();
+        AetherConfig.init(event.getModConfigurationDirectory());
+        AetherConfig.autoDeveloperMode(version);
 
-		CommonProxy.registerEvent(new AetherEventHandler());
+        SoundsAether.initialization();
+        AetherAdvancements.initialization();
+        AetherNetworkingManager.preInitialization();
 
-		proxy.initialization();
-	}
+        proxy.preInitialization();
+    }
 
-	@EventHandler
-	public void postInitialization(FMLPostInitializationEvent event)
-	{
-		proxy.postInitialization();
-	}
+    @EventHandler
+    public void initialization(FMLInitializationEvent event) {
+        PlayerAetherManager.initialization();
+        AetherEntities.initialization();
+        AetherTileEntities.initialization();
+        AetherWorld.initialization();
 
-	public static ResourceLocation locate(String location)
-	{
-		return new ResourceLocation(modid, location);
-	}
+        CommonProxy.registerEvent(new AetherEventHandler());
 
-	public static String modAddress()
-	{
-		return modid + ":";
-	}
+        proxy.initialization();
+    }
 
-	public static String doubleDropNotifier()
-	{
-		return modid + "_double_drops";
-	}
+    @EventHandler
+    public void postInitialization(FMLPostInitializationEvent event) {
+        proxy.postInitialization();
+    }
 
 }

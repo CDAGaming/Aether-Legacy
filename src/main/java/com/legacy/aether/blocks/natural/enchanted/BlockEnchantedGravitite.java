@@ -6,21 +6,18 @@ import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public class BlockEnchantedGravitite extends BlockFloating 
-{
+public class BlockEnchantedGravitite extends BlockFloating {
 
-	public BlockEnchantedGravitite()
-	{
-		super(Material.IRON, true);
+    public BlockEnchantedGravitite() {
+        super(Material.IRON, true);
 
-		this.setHardness(5F);
-		this.setSoundType(SoundType.METAL);
-	}
+        this.setHardness(5F);
+        this.setSoundType(SoundType.METAL);
+    }
 
-	@Override
-    public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon)
-    {
-    	return true;
+    @Override
+    public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
+        return true;
     }
 
 }

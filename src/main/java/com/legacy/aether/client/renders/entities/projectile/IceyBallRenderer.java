@@ -6,29 +6,24 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class IceyBallRenderer extends RenderLiving<EntityIceyBall>
-{
+public class IceyBallRenderer extends RenderLiving<EntityIceyBall> {
 
-	private CrystalModel model;
+    private CrystalModel model;
 
-    public IceyBallRenderer(RenderManager renderManager)
-    {
-		super(renderManager, new CrystalModel(), 0.25F);
-		this.model = (CrystalModel)this.mainModel;
+    public IceyBallRenderer(RenderManager renderManager) {
+        super(renderManager, new CrystalModel(), 0.25F);
+        this.model = (CrystalModel) this.mainModel;
     }
 
-    public void preRenderCallback(EntityIceyBall hs, float f)
-    {
-		for(int i = 0; i < 3; i ++) 
-		{
-			model.sinage[i] = hs.sinage[i];
-		}
+    public void preRenderCallback(EntityIceyBall hs, float f) {
+        for (int i = 0; i < 3; i++) {
+            model.sinage[i] = hs.sinage[i];
+        }
     }
 
-	@Override
-	protected ResourceLocation getEntityTexture(EntityIceyBall entity)
-	{
-    	return new ResourceLocation("aether_legacy", "textures/entities/crystals/iceyball.png");
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(EntityIceyBall entity) {
+        return new ResourceLocation("aether_legacy", "textures/entities/crystals/iceyball.png");
+    }
 
 }

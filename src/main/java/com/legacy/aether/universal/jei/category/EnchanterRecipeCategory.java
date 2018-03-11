@@ -17,78 +17,68 @@ import net.minecraft.util.ResourceLocation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnchanterRecipeCategory implements IRecipeCategory<EnchanterRecipeWrapper>
-{
+public class EnchanterRecipeCategory implements IRecipeCategory<EnchanterRecipeWrapper> {
 
-	private static final ResourceLocation altar = Aether.locate("textures/gui/altar.png");
+    private static final ResourceLocation altar = Aether.locate("textures/gui/altar.png");
 
-	private IGuiHelper guiHelper;
+    private IGuiHelper guiHelper;
 
-	private IDrawableAnimated flame, arrow;
+    private IDrawableAnimated flame, arrow;
 
-	public EnchanterRecipeCategory(IGuiHelper guiHelper)
-	{
-		this.guiHelper = guiHelper;
+    public EnchanterRecipeCategory(IGuiHelper guiHelper) {
+        this.guiHelper = guiHelper;
 
-		this.flame = guiHelper.createAnimatedDrawable(guiHelper.createDrawable(altar, 176, 0, 14, 14), 300, IDrawableAnimated.StartDirection.TOP, true);
-		this.arrow = guiHelper.createAnimatedDrawable(guiHelper.createDrawable(altar, 176, 14, 24, 17), 200, IDrawableAnimated.StartDirection.LEFT, false);
-	}
+        this.flame = guiHelper.createAnimatedDrawable(guiHelper.createDrawable(altar, 176, 0, 14, 14), 300, IDrawableAnimated.StartDirection.TOP, true);
+        this.arrow = guiHelper.createAnimatedDrawable(guiHelper.createDrawable(altar, 176, 14, 24, 17), 200, IDrawableAnimated.StartDirection.LEFT, false);
+    }
 
-	@Override
-	public String getUid() 
-	{
-		return "aether_legacy.enchantment";
-	}
+    @Override
+    public String getUid() {
+        return "aether_legacy.enchantment";
+    }
 
-	@Override
-	public String getTitle()
-	{
-		return "Aether Enchantments";
-	}
+    @Override
+    public String getTitle() {
+        return "Aether Enchantments";
+    }
 
-	@Override
-	public IDrawable getBackground() 
-	{
-		return this.guiHelper.createDrawable(altar, 25, 5, 146, 76);
-	}
+    @Override
+    public IDrawable getBackground() {
+        return this.guiHelper.createDrawable(altar, 25, 5, 146, 76);
+    }
 
-	@Override
-	public IDrawable getIcon()
-	{
-		return null;
-	}
+    @Override
+    public IDrawable getIcon() {
+        return null;
+    }
 
-	@Override
-	public void drawExtras(Minecraft minecraft)
-	{
-		this.flame.draw(minecraft, 32, 30);
-		this.arrow.draw(minecraft, 54, 30);
-	}
+    @Override
+    public void drawExtras(Minecraft minecraft) {
+        this.flame.draw(minecraft, 32, 30);
+        this.arrow.draw(minecraft, 54, 30);
+    }
 
-	@Override
-	public List<String>  getTooltipStrings(int mouseX, int mouseY)
-	{
-		return new ArrayList<String>();
-	}
+    @Override
+    public List<String> getTooltipStrings(int mouseX, int mouseY) {
+        return new ArrayList<String>();
+    }
 
-	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, EnchanterRecipeWrapper recipeWrapper, IIngredients ingredients)
-	{
-		IGuiItemStackGroup stacks = recipeLayout.getItemStacks();
+    @Override
+    public void setRecipe(IRecipeLayout recipeLayout, EnchanterRecipeWrapper recipeWrapper, IIngredients ingredients) {
+        IGuiItemStackGroup stacks = recipeLayout.getItemStacks();
 
-		stacks.init(0, false, 30, 11);
-		stacks.init(1, false, 30, 47);
-		stacks.init(2, true, 90, 29);
+        stacks.init(0, false, 30, 11);
+        stacks.init(1, false, 30, 47);
+        stacks.init(2, true, 90, 29);
 
-		stacks.set(0, recipeWrapper.enchantment.getInput());
-		stacks.set(1, new ItemStack(ItemsAether.ambrosium_shard));
-		stacks.set(2, recipeWrapper.enchantment.getOutput());
-	}
+        stacks.set(0, recipeWrapper.enchantment.getInput());
+        stacks.set(1, new ItemStack(ItemsAether.ambrosium_shard));
+        stacks.set(2, recipeWrapper.enchantment.getOutput());
+    }
 
-	@Override
-	public String getModName()
-	{
-		return "aether_legacy";
-	}
+    @Override
+    public String getModName() {
+        return "aether_legacy";
+    }
 
 }

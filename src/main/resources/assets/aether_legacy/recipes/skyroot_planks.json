@@ -5,16 +5,16 @@
     "#"
   ],
   "key": {
-
-    "#": [{
-      "item": "aether_legacy:aether_log",
-      "data": 0
-    },
-
-    {
-      "item": "aether_legacy:aether_log",
-      "data": 1
-    }]
+    "#": [
+      {
+        "item": "aether_legacy:aether_log",
+        "data": 0
+      },
+      {
+        "item": "aether_legacy:aether_log",
+        "data": 1
+      }
+    ]
   },
   "result": {
     "item": "aether_legacy:skyroot_plank",

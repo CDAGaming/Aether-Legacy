@@ -1,7 +1,7 @@
 {
-	"variants": {
-		"normal": {
-			"model": "aether_legacy:freezer"
-		}
-	}
+  "variants": {
+    "normal": {
+      "model": "aether_legacy:freezer"
+    }
+  }
 }

@@ -6,29 +6,24 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class FireBallRenderer extends RenderLiving<EntityFireBall>
-{
+public class FireBallRenderer extends RenderLiving<EntityFireBall> {
 
-	private CrystalModel model;
+    private CrystalModel model;
 
-    public FireBallRenderer(RenderManager renderManager)
-    {
-		super(renderManager, new CrystalModel(), 0.25F);
-		this.model = (CrystalModel)this.mainModel;
+    public FireBallRenderer(RenderManager renderManager) {
+        super(renderManager, new CrystalModel(), 0.25F);
+        this.model = (CrystalModel) this.mainModel;
     }
 
-    public void preRenderCallback(EntityFireBall hs, float f)
-    {
-		for(int i = 0; i < 3; i ++) 
-		{
-			model.sinage[i] = hs.sinage[i];
-		}
+    public void preRenderCallback(EntityFireBall hs, float f) {
+        for (int i = 0; i < 3; i++) {
+            model.sinage[i] = hs.sinage[i];
+        }
     }
 
-	@Override
-	protected ResourceLocation getEntityTexture(EntityFireBall entity)
-	{
-    	return new ResourceLocation("aether_legacy", "textures/entities/crystals/firoball.png");
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(EntityFireBall entity) {
+        return new ResourceLocation("aether_legacy", "textures/entities/crystals/firoball.png");
+    }
 
 }

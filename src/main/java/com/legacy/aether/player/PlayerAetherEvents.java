@@ -27,199 +27,160 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensio
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 
-public class PlayerAetherEvents
-{
+public class PlayerAetherEvents {
 
-	private static final ResourceLocation PLAYER_LOCATION = new ResourceLocation(Aether.modid, "aether_players");
+    private static final ResourceLocation PLAYER_LOCATION = new ResourceLocation(Aether.modid, "aether_players");
 
-	@SubscribeEvent
-	public void PlayerConstructingEvent(AttachCapabilitiesEvent<Entity> event)
-	{
-		if ((event.getObject() instanceof EntityPlayer))
-		{
-			EntityPlayer player = (EntityPlayer) event.getObject();
-			PlayerAetherProvider provider = new PlayerAetherProvider(new PlayerAether(player));
+    @SubscribeEvent
+    public void PlayerConstructingEvent(AttachCapabilitiesEvent<Entity> event) {
+        if ((event.getObject() instanceof EntityPlayer)) {
+            EntityPlayer player = (EntityPlayer) event.getObject();
+            PlayerAetherProvider provider = new PlayerAetherProvider(new PlayerAether(player));
 
-			if (PlayerAether.get(player) == null)
-			{
-				event.addCapability(PLAYER_LOCATION,  provider);
-			}
-		}
-	}
+            if (PlayerAether.get(player) == null) {
+                event.addCapability(PLAYER_LOCATION, provider);
+            }
+        }
+    }
 
-	@SubscribeEvent
-	public void checkPlayerVisibility(Visibility event)
-	{
-		PlayerAether capability = PlayerAether.get(event.getEntityPlayer());
+    @SubscribeEvent
+    public void checkPlayerVisibility(Visibility event) {
+        PlayerAether capability = PlayerAether.get(event.getEntityPlayer());
 
-		if (capability != null && capability.wearingAccessory(ItemsAether.invisibility_cape))
-		{
-			event.modifyVisibility(0.0D);
-		}
-	}
+        if (capability != null && capability.wearingAccessory(ItemsAether.invisibility_cape)) {
+            event.modifyVisibility(0.0D);
+        }
+    }
 
-	@SubscribeEvent
-	public void onPlayerCloned(Clone event)
-	{
-		PlayerAether original = PlayerAether.get(event.getOriginal());
+    @SubscribeEvent
+    public void onPlayerCloned(Clone event) {
+        PlayerAether original = PlayerAether.get(event.getOriginal());
 
-		PlayerAether newPlayer = PlayerAether.get(event.getEntityPlayer());
+        PlayerAether newPlayer = PlayerAether.get(event.getEntityPlayer());
 
-		NBTTagCompound data = new NBTTagCompound();
+        NBTTagCompound data = new NBTTagCompound();
 
-		if (original != null)
-		{
-			original.saveNBTData(data);
-			
-			if (newPlayer != null)
-			{
-				newPlayer.portalCooldown = original.portalCooldown;
-				newPlayer.loadNBTData(data);
-			}
-		}
-	}
+        if (original != null) {
+            original.saveNBTData(data);
 
-	@SubscribeEvent
-	public void onPlayerMount(EntityMountEvent event)
-	{
-		if (event.getEntityMounting() instanceof EntityPlayerMP)
-		{
-			AetherAdvancements.MOUNT_TRIGGER.trigger(((EntityPlayerMP)event.getEntityMounting()), event.getEntityBeingMounted());
-		}
-	}
+            if (newPlayer != null) {
+                newPlayer.portalCooldown = original.portalCooldown;
+                newPlayer.loadNBTData(data);
+            }
+        }
+    }
 
-	@SubscribeEvent
-	public void onPlayerDeath(LivingDeathEvent event)
-	{
-		if ((event.getEntity() instanceof EntityPlayer))
-		{
-			PlayerAether playerAether = PlayerAether.get((EntityPlayer) event.getEntity());
+    @SubscribeEvent
+    public void onPlayerMount(EntityMountEvent event) {
+        if (event.getEntityMounting() instanceof EntityPlayerMP) {
+            AetherAdvancements.MOUNT_TRIGGER.trigger(((EntityPlayerMP) event.getEntityMounting()), event.getEntityBeingMounted());
+        }
+    }
 
-			if (playerAether != null)
-			{
-				playerAether.onPlayerDeath();
-			}
-		}
-	}
+    @SubscribeEvent
+    public void onPlayerDeath(LivingDeathEvent event) {
+        if ((event.getEntity() instanceof EntityPlayer)) {
+            PlayerAether playerAether = PlayerAether.get((EntityPlayer) event.getEntity());
 
-	@SubscribeEvent
-	public void onPlayerRespawn(PlayerRespawnEvent event)
-	{
-		PlayerAether playerAether = PlayerAether.get(event.player);
+            if (playerAether != null) {
+                playerAether.onPlayerDeath();
+            }
+        }
+    }
 
-		if (playerAether != null)
-		{
-			playerAether.onPlayerRespawn();
-		}
-	}
+    @SubscribeEvent
+    public void onPlayerRespawn(PlayerRespawnEvent event) {
+        PlayerAether playerAether = PlayerAether.get(event.player);
 
-	@SubscribeEvent
-	public void onPlayerUpdate(LivingUpdateEvent event)
-	{
-		if ((event.getEntityLiving() instanceof EntityPlayer))
-		{
-			PlayerAether playerAether = PlayerAether.get((EntityPlayer) event.getEntityLiving());
+        if (playerAether != null) {
+            playerAether.onPlayerRespawn();
+        }
+    }
 
-			if (playerAether != null)
-			{
-				playerAether.onUpdate();
-			}
-		}
-	}
+    @SubscribeEvent
+    public void onPlayerUpdate(LivingUpdateEvent event) {
+        if ((event.getEntityLiving() instanceof EntityPlayer)) {
+            PlayerAether playerAether = PlayerAether.get((EntityPlayer) event.getEntityLiving());
 
-	@SubscribeEvent
-	public void onLivingAttack(LivingAttackEvent event)
-	{
-		if (event.getEntityLiving() instanceof EntityPlayer)
-		{
-			PlayerAether playerAether = PlayerAether.get((EntityPlayer) event.getEntityLiving());
+            if (playerAether != null) {
+                playerAether.onUpdate();
+            }
+        }
+    }
 
-			if (playerAether != null)
-			{
-				event.setCanceled(playerAether.onPlayerAttacked(event.getSource()));
-			}
-		}
-	}
+    @SubscribeEvent
+    public void onLivingAttack(LivingAttackEvent event) {
+        if (event.getEntityLiving() instanceof EntityPlayer) {
+            PlayerAether playerAether = PlayerAether.get((EntityPlayer) event.getEntityLiving());
 
-	@SubscribeEvent
-	public void onChangedDimension(PlayerChangedDimensionEvent event)
-	{
-		PlayerAether playerAether = PlayerAether.get(event.player);
-		
-		if (playerAether != null)
-		{
-			playerAether.onChangedDimension(event.toDim, event.fromDim);
-		}
-	}
+            if (playerAether != null) {
+                event.setCanceled(playerAether.onPlayerAttacked(event.getSource()));
+            }
+        }
+    }
 
-	@SubscribeEvent
-	public void onPlayerLogin(PlayerLoggedInEvent event)
-	{
-		EntityPlayer player = event.player;
-		PlayerAether playerAether = PlayerAether.get(player);
+    @SubscribeEvent
+    public void onChangedDimension(PlayerChangedDimensionEvent event) {
+        PlayerAether playerAether = PlayerAether.get(event.player);
 
-		if (playerAether != null)
-		{
-			playerAether.accessories.markDirty();
-		}
-	}
+        if (playerAether != null) {
+            playerAether.onChangedDimension(event.toDim, event.fromDim);
+        }
+    }
 
-	@SubscribeEvent
-	public void onLivingHurt(LivingHurtEvent event)
-	{
-		if (event.getEntityLiving() instanceof EntityPlayer)
-		{
-			PlayerAether playerAether = PlayerAether.get((EntityPlayer) event.getEntityLiving());
+    @SubscribeEvent
+    public void onPlayerLogin(PlayerLoggedInEvent event) {
+        EntityPlayer player = event.player;
+        PlayerAether playerAether = PlayerAether.get(player);
 
-			if (playerAether != null && playerAether.isWearingObsidianSet())
-			{
-				float original = event.getAmount();
-				event.setAmount(original / 2);
-			}
-		}
-	}
+        if (playerAether != null) {
+            playerAether.accessories.markDirty();
+        }
+    }
 
-	@SubscribeEvent
-	public void onPlayerStrVsBlock(BreakSpeed event)
-	{
-		PlayerAether playerAether = PlayerAether.get(event.getEntityPlayer());
+    @SubscribeEvent
+    public void onLivingHurt(LivingHurtEvent event) {
+        if (event.getEntityLiving() instanceof EntityPlayer) {
+            PlayerAether playerAether = PlayerAether.get((EntityPlayer) event.getEntityLiving());
 
-		if (playerAether != null)
-		{
-			event.setNewSpeed(playerAether.getCurrentPlayerStrVsBlock(event.getOriginalSpeed()));
-		}
-	}
+            if (playerAether != null && playerAether.isWearingObsidianSet()) {
+                float original = event.getAmount();
+                event.setAmount(original / 2);
+            }
+        }
+    }
 
-	@SubscribeEvent
-	public void onCommandSentEvent(CommandEvent event)
-	{
-		if (event.getCommand() instanceof CommandClearInventory)
-		{
-			if (event.getParameters().length <= 1)
-			{
-		        EntityPlayerMP entityplayermp = null;
+    @SubscribeEvent
+    public void onPlayerStrVsBlock(BreakSpeed event) {
+        PlayerAether playerAether = PlayerAether.get(event.getEntityPlayer());
 
-				try
-				{
-					entityplayermp = event.getParameters().length == 0 ? CommandBase.getCommandSenderAsPlayer(event.getSender()) : CommandBase.getPlayer(FMLCommonHandler.instance().getMinecraftServerInstance(), event.getSender(), event.getParameters()[0]);
-				} 
-		        catch (Throwable var9)
-		        {
-		            return;
-		        }
+        if (playerAether != null) {
+            event.setNewSpeed(playerAether.getCurrentPlayerStrVsBlock(event.getOriginalSpeed()));
+        }
+    }
 
-				PlayerAether playerAether = PlayerAether.get(entityplayermp);
+    @SubscribeEvent
+    public void onCommandSentEvent(CommandEvent event) {
+        if (event.getCommand() instanceof CommandClearInventory) {
+            if (event.getParameters().length <= 1) {
+                EntityPlayerMP entityplayermp = null;
 
-				if (playerAether != null)
-				{
-					if (playerAether.accessories.getFieldCount() != 0)
-					{
-						playerAether.accessories.clear();
+                try {
+                    entityplayermp = event.getParameters().length == 0 ? CommandBase.getCommandSenderAsPlayer(event.getSender()) : CommandBase.getPlayer(FMLCommonHandler.instance().getMinecraftServerInstance(), event.getSender(), event.getParameters()[0]);
+                } catch (Throwable var9) {
+                    return;
+                }
 
-						CommandBase.notifyCommandListener(entityplayermp, event.getCommand(), "Cleared the accessories of " + entityplayermp.getName(), new Object[] {});
-					}
-				}
-			}
-		}
-	}
+                PlayerAether playerAether = PlayerAether.get(entityplayermp);
+
+                if (playerAether != null) {
+                    if (playerAether.accessories.getFieldCount() != 0) {
+                        playerAether.accessories.clear();
+
+                        CommandBase.notifyCommandListener(entityplayermp, event.getCommand(), "Cleared the accessories of " + entityplayermp.getName(), new Object[]{});
+                    }
+                }
+            }
+        }
+    }
 }

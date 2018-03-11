@@ -27,164 +27,130 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.List;
 
-public class AetherClientEvents 
-{
+public class AetherClientEvents {
 
-	@SubscribeEvent
-	public void onClientTick(TickEvent.ClientTickEvent event) throws Exception
-	{
-		Minecraft mc = Minecraft.getMinecraft();
-		TickEvent.Phase phase = event.phase;
-		TickEvent.Type type = event.type;
+    private static final GuiAccessoryButton ACCESSORY_BUTTON = new GuiAccessoryButton(0, 0);
+    private static int previousSelectedTabIndex = -1;
 
-		if (phase == TickEvent.Phase.END)
-		{
-			if (type.equals(TickEvent.Type.CLIENT))
-			{
-				if (!AetherConfig.triviaDisabled())
-				{
-					if (!(mc.loadingScreen instanceof AetherLoadingScreen))
-					{
-						mc.loadingScreen = new AetherLoadingScreen(mc);
-					}
-				}
-			}
-		}
-	}
+    @SubscribeEvent
+    public void onClientTick(TickEvent.ClientTickEvent event) throws Exception {
+        Minecraft mc = Minecraft.getMinecraft();
+        TickEvent.Phase phase = event.phase;
+        TickEvent.Type type = event.type;
 
-	@SubscribeEvent
-	public void onBowPulled(FOVUpdateEvent event)
-	{
-		EntityPlayer player = Minecraft.getMinecraft().player;
+        if (phase == TickEvent.Phase.END) {
+            if (type.equals(TickEvent.Type.CLIENT)) {
+                if (!AetherConfig.triviaDisabled()) {
+                    if (!(mc.loadingScreen instanceof AetherLoadingScreen)) {
+                        mc.loadingScreen = new AetherLoadingScreen(mc);
+                    }
+                }
+            }
+        }
+    }
 
-		if (player == null || (player != null && player.getActiveItemStack() == null))
-		{
-			return;
-		}
+    @SubscribeEvent
+    public void onBowPulled(FOVUpdateEvent event) {
+        EntityPlayer player = Minecraft.getMinecraft().player;
 
-		Item item = player.getActiveItemStack().getItem();
+        if (player == null || (player != null && player.getActiveItemStack() == null)) {
+            return;
+        }
 
-		if (item == ItemsAether.phoenix_bow)
-		{
-	        int i = player.getItemInUseMaxCount();
-	        float f1 = (float)i / 20.0F;
+        Item item = player.getActiveItemStack().getItem();
 
-	        if (f1 > 1.0F)
-	        {
-	            f1 = 1.0F;
-	        }
-	        else
-	        {
-	            f1 = f1 * f1;
-	        }
+        if (item == ItemsAether.phoenix_bow) {
+            int i = player.getItemInUseMaxCount();
+            float f1 = (float) i / 20.0F;
 
-	        float original = event.getFov();
+            if (f1 > 1.0F) {
+                f1 = 1.0F;
+            } else {
+                f1 = f1 * f1;
+            }
 
-	        original *= 1.0F - f1 * 0.15F;
+            float original = event.getFov();
 
-	        event.setNewfov(original);
-		}
-	}
+            original *= 1.0F - f1 * 0.15F;
 
-	private static final GuiAccessoryButton ACCESSORY_BUTTON = new GuiAccessoryButton(0, 0);
+            event.setNewfov(original);
+        }
+    }
 
-	private static int previousSelectedTabIndex = -1;
+    @SubscribeEvent
+    public void onGuiOpened(GuiScreenEvent.InitGuiEvent.Post event) {
+        if (event.getGui() instanceof GuiContainer) {
+            EntityPlayer player = Minecraft.getMinecraft().player;
+            Class<?> clazz = event.getGui().getClass();
 
-	@SubscribeEvent
-	public void onGuiOpened(GuiScreenEvent.InitGuiEvent.Post event)
-	{
-		if (event.getGui() instanceof GuiContainer)
-		{
-			EntityPlayer player = Minecraft.getMinecraft().player;
-			Class<?> clazz = event.getGui().getClass();
+            int guiLeft = ObfuscationReflectionHelper.getPrivateValue(GuiContainer.class, (GuiContainer) event.getGui(), "guiLeft", "field_147003_i");
+            int guiTop = ObfuscationReflectionHelper.getPrivateValue(GuiContainer.class, (GuiContainer) event.getGui(), "guiTop", "field_147009_r");
 
-			int guiLeft = ObfuscationReflectionHelper.getPrivateValue(GuiContainer.class, (GuiContainer)event.getGui(), "guiLeft", "field_147003_i");
-			int guiTop = ObfuscationReflectionHelper.getPrivateValue(GuiContainer.class, (GuiContainer)event.getGui(), "guiTop", "field_147009_r");
+            if (player.capabilities.isCreativeMode) {
+                if (event.getGui() instanceof GuiContainerCreative) {
+                    if (((GuiContainerCreative) event.getGui()).getSelectedTabIndex() == CreativeTabs.INVENTORY.getTabIndex()) {
+                        event.getButtonList().add(ACCESSORY_BUTTON.setPosition(guiLeft + 73, guiTop + 38));
+                        previousSelectedTabIndex = CreativeTabs.INVENTORY.getTabIndex();
+                    }
+                }
+            } else if (clazz == GuiInventory.class) {
+                event.getButtonList().add(ACCESSORY_BUTTON.setPosition(guiLeft + 26, guiTop + 65));
+            }
+        }
+    }
 
-			if (player.capabilities.isCreativeMode)
-			{
-				if (event.getGui() instanceof GuiContainerCreative)
-				{
-					if (((GuiContainerCreative)event.getGui()).getSelectedTabIndex() == CreativeTabs.INVENTORY.getTabIndex())
-					{
-						event.getButtonList().add(ACCESSORY_BUTTON.setPosition(guiLeft + 73, guiTop + 38));
-						previousSelectedTabIndex = CreativeTabs.INVENTORY.getTabIndex();
-					}
-				}
-			}
-			else if (clazz == GuiInventory.class)
-			{
-				event.getButtonList().add(ACCESSORY_BUTTON.setPosition(guiLeft + 26, guiTop + 65));
-			}
-		}
-	}
+    @SubscribeEvent
+    public void onMouseClicked(MouseInputEvent.Post event) {
+        if (event.getGui() instanceof GuiContainerCreative) {
+            GuiContainerCreative guiScreen = (GuiContainerCreative) event.getGui();
+            List<GuiButton> buttonList = ObfuscationReflectionHelper.getPrivateValue(GuiScreen.class, (GuiScreen) guiScreen, 7);
 
-	@SubscribeEvent
-	public void onMouseClicked(MouseInputEvent.Post event)
-	{
-		if (event.getGui() instanceof GuiContainerCreative)
-		{
-			GuiContainerCreative guiScreen = (GuiContainerCreative) event.getGui();
-			List<GuiButton> buttonList = ObfuscationReflectionHelper.getPrivateValue(GuiScreen.class, (GuiScreen) guiScreen, 7);
+            if (previousSelectedTabIndex != guiScreen.getSelectedTabIndex()) {
+                if (guiScreen.getSelectedTabIndex() == CreativeTabs.INVENTORY.getTabIndex() && !buttonList.contains(ACCESSORY_BUTTON)) {
+                    int guiLeft = ObfuscationReflectionHelper.getPrivateValue(GuiContainer.class, (GuiContainer) event.getGui(), "guiLeft", "field_147003_i");
+                    int guiTop = ObfuscationReflectionHelper.getPrivateValue(GuiContainer.class, (GuiContainer) event.getGui(), "guiTop", "field_147009_r");
 
-			if (previousSelectedTabIndex != guiScreen.getSelectedTabIndex())
-			{
-				if (guiScreen.getSelectedTabIndex() == CreativeTabs.INVENTORY.getTabIndex() && !buttonList.contains(ACCESSORY_BUTTON))
-				{
-					int guiLeft = ObfuscationReflectionHelper.getPrivateValue(GuiContainer.class, (GuiContainer)event.getGui(), "guiLeft", "field_147003_i");
-					int guiTop = ObfuscationReflectionHelper.getPrivateValue(GuiContainer.class, (GuiContainer)event.getGui(), "guiTop", "field_147009_r");
+                    buttonList.add(ACCESSORY_BUTTON.setPosition(guiLeft + 73, guiTop + 38));
+                } else if (previousSelectedTabIndex == CreativeTabs.INVENTORY.getTabIndex()) {
+                    buttonList.remove(ACCESSORY_BUTTON);
+                }
 
-					buttonList.add(ACCESSORY_BUTTON.setPosition(guiLeft + 73, guiTop + 38));
-				}
-				else if (previousSelectedTabIndex == CreativeTabs.INVENTORY.getTabIndex())
-				{
-					buttonList.remove(ACCESSORY_BUTTON);
-				}
+                previousSelectedTabIndex = guiScreen.getSelectedTabIndex();
+            }
+        }
+    }
 
-				previousSelectedTabIndex = guiScreen.getSelectedTabIndex();
-			}
-		}
-	}
+    @SubscribeEvent
+    public void onButtonPressed(GuiScreenEvent.ActionPerformedEvent.Pre event) {
+        Class<?> clazz = event.getGui().getClass();
 
-	@SubscribeEvent
-	public void onButtonPressed(GuiScreenEvent.ActionPerformedEvent.Pre event)
-	{
-		Class<?> clazz = event.getGui().getClass();
+        if ((clazz == GuiInventory.class || clazz == GuiContainerCreative.class) && event.getButton().id == 18067) {
+            AetherNetworkingManager.sendToServer(new PacketOpenContainer(AetherGuiHandler.accessories));
+        }
+    }
 
-		if ((clazz == GuiInventory.class || clazz == GuiContainerCreative.class) && event.getButton().id == 18067)
-		{
-			AetherNetworkingManager.sendToServer(new PacketOpenContainer(AetherGuiHandler.accessories));
-		}
-	}
+    @SubscribeEvent
+    public void onRenderHand(RenderSpecificHandEvent event) {
+        PlayerGloveRenderer.renderItemFirstPerson(Minecraft.getMinecraft().player, event.getPartialTicks(), event.getInterpolatedPitch(), event.getHand(), event.getSwingProgress(), event.getItemStack(), event.getEquipProgress());
+    }
 
-	@SubscribeEvent
-	public void onRenderHand(RenderSpecificHandEvent event)
-	{
-		PlayerGloveRenderer.renderItemFirstPerson(Minecraft.getMinecraft().player, event.getPartialTicks(), event.getInterpolatedPitch(), event.getHand(), event.getSwingProgress(), event.getItemStack(), event.getEquipProgress());
-	}
+    @SubscribeEvent
+    public void onInvisibilityPlayerUpdate(RenderPlayerEvent.Pre event) {
+        EntityPlayer player = event.getEntityPlayer();
+        PlayerAether playerAether = PlayerAether.get(player);
 
-	@SubscribeEvent
-	public void onInvisibilityPlayerUpdate(RenderPlayerEvent.Pre event)
-	{
-		EntityPlayer player = event.getEntityPlayer();
-		PlayerAether playerAether = PlayerAether.get(player);
+        if (playerAether != null) {
+            if (playerAether.wearingAccessory(ItemsAether.invisibility_cape)) {
+                event.setCanceled(true);
+            }
+        }
+    }
 
-		if (playerAether != null)
-		{
-			if (playerAether.wearingAccessory(ItemsAether.invisibility_cape))
-			{
-				event.setCanceled(true);
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public void onTextureStichedEvent(TextureStitchEvent.Pre event)
-	{
-		for (int i = 0; i < InventoryAccessories.EMPTY_SLOT_NAMES.length; ++i)
-		{
-			event.getMap().registerSprite(new ResourceLocation("aether_legacy", "items/slots/" + InventoryAccessories.EMPTY_SLOT_NAMES[i]));
-		}
-	}
+    @SubscribeEvent
+    public void onTextureStichedEvent(TextureStitchEvent.Pre event) {
+        for (int i = 0; i < InventoryAccessories.EMPTY_SLOT_NAMES.length; ++i) {
+            event.getMap().registerSprite(new ResourceLocation("aether_legacy", "items/slots/" + InventoryAccessories.EMPTY_SLOT_NAMES[i]));
+        }
+    }
 
 }

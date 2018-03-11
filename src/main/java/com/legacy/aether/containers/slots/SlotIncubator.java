@@ -7,36 +7,31 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class SlotIncubator extends Slot
-{
+public class SlotIncubator extends Slot {
 
-	private TileEntityIncubator incubator;
+    private TileEntityIncubator incubator;
 
-	private EntityPlayer player;
+    private EntityPlayer player;
 
-    public SlotIncubator(TileEntityIncubator inv, int slot, int x, int y, EntityPlayer player)
-    {
+    public SlotIncubator(TileEntityIncubator inv, int slot, int x, int y, EntityPlayer player) {
         super((IInventory) inv, slot, x, y);
         this.incubator = (TileEntityIncubator) inv;
         this.player = player;
     }
 
-    public boolean isItemValid(ItemStack stack)
-    {
+    public boolean isItemValid(ItemStack stack) {
         return stack.getItem() == ItemsAether.moa_egg;
     }
 
-    public int getSlotStackLimit()
-    {
+    public int getSlotStackLimit() {
         return 1;
     }
 
     @Override
-    public void putStack(ItemStack stack)
-    {
-    	super.putStack(stack);
+    public void putStack(ItemStack stack) {
+        super.putStack(stack);
 
-    	this.incubator.owner = player;
+        this.incubator.owner = player;
     }
 
 }

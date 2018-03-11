@@ -12,19 +12,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamespaced<ResourceLocation, V> implements ILockableRegistry
-{
+class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamespaced<ResourceLocation, V> implements ILockableRegistry {
     private boolean locked = false;
     private ForgeRegistry<V> delegate;
 
-    public NamespacedWrapper(ForgeRegistry<V> owner)
-    {
+    public NamespacedWrapper(ForgeRegistry<V> owner) {
         this.delegate = owner;
     }
 
     @Override
-    public void register(int id, ResourceLocation key, V value)
-    {
+    public void register(int id, ResourceLocation key, V value) {
         if (locked)
             throw new IllegalStateException("Can not register to a locked registry. Modder should use Forge Register methods.");
 
@@ -44,8 +41,7 @@ class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamesp
      * Register an object on this registry.
      */
     @Override
-    public void putObject(ResourceLocation key, V value)
-    {
+    public void putObject(ResourceLocation key, V value) {
         register(-1, key, value);
     }
 
@@ -53,8 +49,7 @@ class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamesp
     // Reading Functions
     @Override
     @Nullable
-    public V getObject(@Nullable ResourceLocation name)
-    {
+    public V getObject(@Nullable ResourceLocation name) {
         return this.delegate.getValue(name);
     }
 
@@ -63,8 +58,7 @@ class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamesp
      */
     @Override
     @Nullable
-    public ResourceLocation getNameForObject(V value)
-    {
+    public ResourceLocation getNameForObject(V value) {
         return this.delegate.getKey(value);
     }
 
@@ -72,8 +66,7 @@ class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamesp
      * Does this registry contain an entry for the given key?
      */
     @Override
-    public boolean containsKey(ResourceLocation key)
-    {
+    public boolean containsKey(ResourceLocation key) {
         return this.delegate.containsKey(key);
     }
 
@@ -81,8 +74,7 @@ class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamesp
      * Gets the integer ID we use to identify the given object.
      */
     @Override
-    public int getIDForObject(@Nullable V value)
-    {
+    public int getIDForObject(@Nullable V value) {
         return this.delegate.getID(value);
     }
 
@@ -91,14 +83,12 @@ class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamesp
      */
     @Override
     @Nullable
-    public V getObjectById(int id)
-    {
+    public V getObjectById(int id) {
         return this.delegate.getValue(id);
     }
 
     @Override
-    public Iterator<V> iterator()
-    {
+    public Iterator<V> iterator() {
         return this.delegate.iterator();
     }
 
@@ -106,15 +96,13 @@ class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamesp
      * Gets all the keys recognized by this registry.
      */
     @Override
-    public Set<ResourceLocation> getKeys()
-    {
+    public Set<ResourceLocation> getKeys() {
         return this.delegate.getKeys();
     }
 
     @Override
     @Nullable
-    public V getRandomObject(Random random)
-    {
+    public V getRandomObject(Random random) {
         List<V> lst = this.delegate.getValues();
         if (lst.isEmpty())
             return null;
@@ -123,15 +111,16 @@ class NamespacedWrapper<V extends IForgeRegistryEntry<V>> extends RegistryNamesp
 
     //internal
     @Override
-    public void lock(){ this.locked = true; }
+    public void lock() {
+        this.locked = true;
+    }
 
-    public static class Factory<V extends IForgeRegistryEntry<V>> implements IForgeRegistry.CreateCallback<V>
-    {
+    public static class Factory<V extends IForgeRegistryEntry<V>> implements IForgeRegistry.CreateCallback<V> {
         public static final ResourceLocation ID = new ResourceLocation("forge", "registry_defaulted_wrapper");
+
         @Override
-        public void onCreate(IForgeRegistryInternal<V> owner, RegistryManager stage)
-        {
-            owner.setSlaveMap(ID, new NamespacedWrapper<V>((ForgeRegistry<V>)owner));
+        public void onCreate(IForgeRegistryInternal<V> owner, RegistryManager stage) {
+            owner.setSlaveMap(ID, new NamespacedWrapper<V>((ForgeRegistry<V>) owner));
         }
     }
 }

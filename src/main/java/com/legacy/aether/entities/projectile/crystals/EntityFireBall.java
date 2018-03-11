@@ -18,8 +18,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class EntityFireBall extends EntityFlying
-{
+public class EntityFireBall extends EntityFlying {
 
     public float[] sinage;
 
@@ -32,8 +31,7 @@ public class EntityFireBall extends EntityFlying
 
     public boolean smacked;
 
-    public EntityFireBall(World var1)
-    {
+    public EntityFireBall(World var1) {
         super(var1);
         this.lifeSpan = 300;
         this.life = this.lifeSpan;
@@ -42,31 +40,27 @@ public class EntityFireBall extends EntityFlying
         this.isImmuneToFire = true;
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
 
-        for (int var2 = 0; var2 < 3; ++var2)
-        {
+        for (int var2 = 0; var2 < 3; ++var2) {
             this.sinage[var2] = this.rand.nextFloat() * 6.0F;
         }
     }
 
-    public EntityFireBall(World var1, double x, double y, double z)
-    {
+    public EntityFireBall(World var1, double x, double y, double z) {
         this(var1);
 
         this.setPositionAndRotation(x, y, z, this.rotationYaw, this.rotationPitch);
 
-        this.smotionX = (0.2D + (double)this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
-        this.smotionY = (0.2D + (double)this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
-        this.smotionZ = (0.2D + (double)this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
+        this.smotionX = (0.2D + (double) this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
+        this.smotionY = (0.2D + (double) this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
+        this.smotionZ = (0.2D + (double) this.rand.nextFloat() * 0.15D) * (this.rand.nextInt(2) == 0 ? 1.0D : -1.0D);
     }
 
-    public void onUpdate()
-    {
+    public void onUpdate() {
         super.onUpdate();
 
         --this.life;
 
-        if (this.life <= 0)
-        {
+        if (this.life <= 0) {
             this.splode();
             this.isDead = true;
         }
@@ -74,87 +68,69 @@ public class EntityFireBall extends EntityFlying
         this.updateAnims();
     }
 
-    public void splode()
-    {
-    	this.world.playSound(null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 2.0F, this.rand.nextFloat() - this.rand.nextFloat() * 0.2F + 1.2F);
+    public void splode() {
+        this.world.playSound(null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 2.0F, this.rand.nextFloat() - this.rand.nextFloat() * 0.2F + 1.2F);
 
-        for (int var1 = 0; var1 < 40; ++var1)
-        {
-            double var2 = (double)((this.rand.nextFloat() - 0.5F) * 0.5F);
-            double var4 = (double)((this.rand.nextFloat() - 0.5F) * 0.5F);
-            double var6 = (double)((this.rand.nextFloat() - 0.5F) * 0.5F);
+        for (int var1 = 0; var1 < 40; ++var1) {
+            double var2 = (double) ((this.rand.nextFloat() - 0.5F) * 0.5F);
+            double var4 = (double) ((this.rand.nextFloat() - 0.5F) * 0.5F);
+            double var6 = (double) ((this.rand.nextFloat() - 0.5F) * 0.5F);
 
             this.world.spawnParticle(EnumParticleTypes.FLAME, this.posX, this.posY, this.posZ, var2, var4, var6);
         }
     }
 
-    public void updateAnims()
-    {
-        for (int var1 = 0; var1 < 3; ++var1)
-        {
-            this.sinage[var1] += 0.3F + (float)var1 * 0.13F;
+    public void updateAnims() {
+        for (int var1 = 0; var1 < 3; ++var1) {
+            this.sinage[var1] += 0.3F + (float) var1 * 0.13F;
 
-            if (this.sinage[var1] > ((float)Math.PI * 2F))
-            {
-                this.sinage[var1] -= ((float)Math.PI * 2F);
+            if (this.sinage[var1] > ((float) Math.PI * 2F)) {
+                this.sinage[var1] -= ((float) Math.PI * 2F);
             }
         }
     }
 
-    public void updateAITasks()
-    {
-    	super.updateAITasks();
+    public void updateAITasks() {
+        super.updateAITasks();
         this.motionX = this.smotionX;
         this.motionY = this.smotionY;
         this.motionZ = this.smotionZ;
 
-        if (this.collided)
-        {
+        if (this.collided) {
             int var1 = MathHelper.floor(this.posX);
             int var2 = MathHelper.floor(this.getEntityBoundingBox().minY);
             int var3 = MathHelper.floor(this.posZ);
 
-            if (this.smotionX > 0.0D && this.world.getBlockState(new BlockPos(var1 + 1, var2, var3)).getBlock() != Blocks.AIR)
-            {
+            if (this.smotionX > 0.0D && this.world.getBlockState(new BlockPos(var1 + 1, var2, var3)).getBlock() != Blocks.AIR) {
                 this.motionX = this.smotionX = -this.smotionX;
-            }
-            else if (this.smotionX < 0.0D && this.world.getBlockState(new BlockPos(var1 - 1, var2, var3)).getBlock() != Blocks.AIR)
-            {
+            } else if (this.smotionX < 0.0D && this.world.getBlockState(new BlockPos(var1 - 1, var2, var3)).getBlock() != Blocks.AIR) {
                 this.motionX = this.smotionX = -this.smotionX;
             }
 
-            if (this.smotionY > 0.0D && this.world.getBlockState(new BlockPos(var1, var2 + 1, var3)).getBlock() != Blocks.AIR)
-            {
+            if (this.smotionY > 0.0D && this.world.getBlockState(new BlockPos(var1, var2 + 1, var3)).getBlock() != Blocks.AIR) {
                 this.motionY = this.smotionY = -this.smotionY;
-            }
-            else if (this.smotionY < 0.0D && this.world.getBlockState(new BlockPos(var1, var2 - 1, var3)).getBlock() != Blocks.AIR)
-            {
+            } else if (this.smotionY < 0.0D && this.world.getBlockState(new BlockPos(var1, var2 - 1, var3)).getBlock() != Blocks.AIR) {
                 this.motionY = this.smotionY = -this.smotionY;
             }
 
-            if (this.smotionZ > 0.0D && this.world.getBlockState(new BlockPos(var1, var2, var3 + 1)).getBlock() != Blocks.AIR)
-            {
+            if (this.smotionZ > 0.0D && this.world.getBlockState(new BlockPos(var1, var2, var3 + 1)).getBlock() != Blocks.AIR) {
                 this.motionZ = this.smotionZ = -this.smotionZ;
-            }
-            else if (this.smotionZ < 0.0D && this.world.getBlockState(new BlockPos(var1, var2, var3 - 1)).getBlock() != Blocks.AIR)
-            {
+            } else if (this.smotionZ < 0.0D && this.world.getBlockState(new BlockPos(var1, var2, var3 - 1)).getBlock() != Blocks.AIR) {
                 this.motionZ = this.smotionZ = -this.smotionZ;
             }
         }
     }
 
     @Override
-    public void writeEntityToNBT(NBTTagCompound var1)
-    {
+    public void writeEntityToNBT(NBTTagCompound var1) {
         super.writeEntityToNBT(var1);
-        var1.setShort("life", (short)this.life);
-        var1.setTag("selfMotion", this.newDoubleNBTList(new double[] {this.smotionX, this.smotionY, this.smotionZ}));
+        var1.setShort("life", (short) this.life);
+        var1.setTag("selfMotion", this.newDoubleNBTList(new double[]{this.smotionX, this.smotionY, this.smotionZ}));
         var1.setBoolean("smacked", this.smacked);
     }
 
     @Override
-    public void readEntityFromNBT(NBTTagCompound var1)
-    {
+    public void readEntityFromNBT(NBTTagCompound var1) {
         super.readEntityFromNBT(var1);
         this.life = var1.getShort("life");
         this.smacked = var1.getBoolean("smacked");
@@ -165,40 +141,32 @@ public class EntityFireBall extends EntityFlying
     }
 
     @Override
-    public void applyEntityCollision(Entity var1)
-    {
+    public void applyEntityCollision(Entity var1) {
         super.applyEntityCollision(var1);
         boolean var2 = false;
 
-        if (var1 != null && var1 instanceof EntityLivingBase && !(var1 instanceof EntityFireBall))
-        {
-            if (!(var1 instanceof EntitySunSpirit) && !(var1 instanceof EntityFireMinion))
-            {
+        if (var1 != null && var1 instanceof EntityLivingBase && !(var1 instanceof EntityFireBall)) {
+            if (!(var1 instanceof EntitySunSpirit) && !(var1 instanceof EntityFireMinion)) {
                 var2 = var1.attackEntityFrom(DamageSource.causeMobDamage(this), 5);
 
-                if (var2)
-                {
+                if (var2) {
                     this.setFire(100);
                 }
             }
         }
 
-        if (var2)
-        {
+        if (var2) {
             this.splode();
             this.isDead = true;
         }
     }
 
     @Override
-    public boolean attackEntityFrom(DamageSource var1, float var2)
-    {
-        if (var1.getImmediateSource() != null)
-        {
+    public boolean attackEntityFrom(DamageSource var1, float var2) {
+        if (var1.getImmediateSource() != null) {
             Vec3d var3 = var1.getImmediateSource().getLookVec();
 
-            if (var3 != null)
-            {
+            if (var3 != null) {
                 this.smotionX = var3.x;
                 this.smotionY = var3.y;
                 this.smotionZ = var3.z;
@@ -206,9 +174,7 @@ public class EntityFireBall extends EntityFlying
 
             this.smacked = true;
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }

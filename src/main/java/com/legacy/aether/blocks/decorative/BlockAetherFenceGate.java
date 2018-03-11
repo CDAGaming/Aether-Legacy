@@ -8,21 +8,18 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public class BlockAetherFenceGate extends BlockFenceGate
-{
+public class BlockAetherFenceGate extends BlockFenceGate {
 
-	public BlockAetherFenceGate() 
-	{
-		super(EnumType.OAK);
-		this.setHardness(2.0F);
-		this.setResistance(5.0F);
-		this.setSoundType(SoundType.WOOD);
-	}
+    public BlockAetherFenceGate() {
+        super(EnumType.OAK);
+        this.setHardness(2.0F);
+        this.setResistance(5.0F);
+        this.setSoundType(SoundType.WOOD);
+    }
 
-	@Override
-    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos)
-    {
-    	return MapColor.WOOD;
+    @Override
+    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        return MapColor.WOOD;
     }
 
 }

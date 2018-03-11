@@ -2,11 +2,9 @@ package com.legacy.aether.entities.particles;
 
 import net.minecraft.world.World;
 
-public class ParticlePassiveWhirly extends AetherParticle
-{
+public class ParticlePassiveWhirly extends AetherParticle {
 
-    public ParticlePassiveWhirly(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn)
-    {
+    public ParticlePassiveWhirly(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {
         super(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 
         this.motionX = xSpeedIn + (Math.random() * 2.0D - 1.0D) * 0.05000000074505806D;
@@ -17,17 +15,15 @@ public class ParticlePassiveWhirly extends AetherParticle
         this.particleGreen = f;
         this.particleBlue = f;
         this.particleScale = this.rand.nextFloat() * this.rand.nextFloat() * 6.0F + 1.0F;
-        this.particleMaxAge = (int)(16.0D / ((double)this.rand.nextFloat() * 0.8D + 0.2D)) + 2;
+        this.particleMaxAge = (int) (16.0D / ((double) this.rand.nextFloat() * 0.8D + 0.2D)) + 2;
     }
 
-    public void onUpdate()
-    {
+    public void onUpdate() {
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
 
-        if (this.particleAge++ >= this.particleMaxAge)
-        {
+        if (this.particleAge++ >= this.particleMaxAge) {
             this.setExpired();
         }
 
@@ -38,8 +34,7 @@ public class ParticlePassiveWhirly extends AetherParticle
         this.motionY *= 0.8999999761581421D;
         this.motionZ *= 0.8999999761581421D;
 
-        if (this.onGround)
-        {
+        if (this.onGround) {
             this.motionX *= 0.699999988079071D;
             this.motionZ *= 0.699999988079071D;
         }

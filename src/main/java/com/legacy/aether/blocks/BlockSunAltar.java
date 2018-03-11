@@ -14,35 +14,28 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
-public class BlockSunAltar extends Block
-{
+public class BlockSunAltar extends Block {
 
-	public BlockSunAltar()
-	{
-		super(Material.ROCK);
+    public BlockSunAltar() {
+        super(Material.ROCK);
 
-		this.setHardness(2.5F);
-		this.setSoundType(SoundType.METAL);
-	}
+        this.setHardness(2.5F);
+        this.setSoundType(SoundType.METAL);
+    }
 
-	@Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-		MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+        MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
 
-		if (server != null && ((server.isDedicatedServer() && server.getPlayerList().canSendCommands(player.getGameProfile()) && player.capabilities.isCreativeMode) || !server.isDedicatedServer()))
-		{
-			Aether.proxy.openSunAltar();
-		}
-		else if (world.isRemote)
-		{
-			if (player instanceof EntityPlayerSP && ((EntityPlayerSP)player).getPermissionLevel() > 0 && player.capabilities.isCreativeMode)
-			{
-				Aether.proxy.openSunAltar();
-			}
-		}
+        if (server != null && ((server.isDedicatedServer() && server.getPlayerList().canSendCommands(player.getGameProfile()) && player.capabilities.isCreativeMode) || !server.isDedicatedServer())) {
+            Aether.proxy.openSunAltar();
+        } else if (world.isRemote) {
+            if (player instanceof EntityPlayerSP && ((EntityPlayerSP) player).getPermissionLevel() > 0 && player.capabilities.isCreativeMode) {
+                Aether.proxy.openSunAltar();
+            }
+        }
 
-		return true;
+        return true;
     }
 
 }

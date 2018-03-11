@@ -8,19 +8,17 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 
-public class PlayerAetherManager
-{
+public class PlayerAetherManager {
 
-	@CapabilityInject(PlayerAether.class)
-	public static Capability<PlayerAether> AETHER_PLAYER = null;
+    @CapabilityInject(PlayerAether.class)
+    public static Capability<PlayerAether> AETHER_PLAYER = null;
 
-	public static void initialization()
-	{
-		CapabilityManager.INSTANCE.register(PlayerAether.class, new PlayerAetherStorage(), PlayerAether.class);
+    public static void initialization() {
+        CapabilityManager.INSTANCE.register(PlayerAether.class, new PlayerAetherStorage(), PlayerAether.class);
 
-		AetherRankings.initialization();
+        AetherRankings.initialization();
 
-		CommonProxy.registerEvent(new PlayerAetherEvents());
-	}
+        CommonProxy.registerEvent(new PlayerAetherEvents());
+    }
 
 }

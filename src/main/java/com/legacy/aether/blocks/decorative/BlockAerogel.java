@@ -7,23 +7,20 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockAerogel extends BlockBreakable
-{
+public class BlockAerogel extends BlockBreakable {
 
-	public BlockAerogel() 
-	{
-		super(Material.ROCK, false);
+    public BlockAerogel() {
+        super(Material.ROCK, false);
 
-		this.setHardness(1.0F);
-		this.setResistance(2000F);
-		this.setLightOpacity(3);
-		this.setSoundType(SoundType.METAL);
-	}
+        this.setHardness(1.0F);
+        this.setResistance(2000F);
+        this.setLightOpacity(3);
+        this.setSoundType(SoundType.METAL);
+    }
 
-	@Override
+    @Override
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer()
-    {
+    public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
 

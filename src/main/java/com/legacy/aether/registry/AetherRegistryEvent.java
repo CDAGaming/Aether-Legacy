@@ -22,95 +22,81 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class AetherRegistryEvent 
-{
+public class AetherRegistryEvent {
 
-	@SubscribeEvent
-	public void onRegisterBlockEvent(RegistryEvent.Register<Block> event)
-	{
-		BlocksAether.blockRegistry = event.getRegistry();
-		
-		if (BlocksAether.canInitialize())
-		{
-			BlocksAether.initialization();
-		}
-	}
+    @SubscribeEvent
+    public void onRegisterBlockEvent(RegistryEvent.Register<Block> event) {
+        BlocksAether.blockRegistry = event.getRegistry();
 
-	@SubscribeEvent
-	public void onRegisterItemEvent(RegistryEvent.Register<Item> event)
-	{
-		BlocksAether.itemRegistry = event.getRegistry();
-		ItemsAether.itemRegistry = event.getRegistry();
+        if (BlocksAether.canInitialize()) {
+            BlocksAether.initialization();
+        }
+    }
 
-		if (BlocksAether.canInitialize())
-		{
-			BlocksAether.initialization();
-		}
+    @SubscribeEvent
+    public void onRegisterItemEvent(RegistryEvent.Register<Item> event) {
+        BlocksAether.itemRegistry = event.getRegistry();
+        ItemsAether.itemRegistry = event.getRegistry();
 
-		ItemsAether.initialization();
-		AetherCreativeTabs.initialization();
-	}
+        if (BlocksAether.canInitialize()) {
+            BlocksAether.initialization();
+        }
 
-	@SubscribeEvent
-	public void onRegisterBiomeEvent(RegistryEvent.Register<Biome> event)
-	{
-		event.getRegistry().register(AetherWorld.aether_biome.setRegistryName(Aether.locate("aether_highlands")));
-	}
+        ItemsAether.initialization();
+        AetherCreativeTabs.initialization();
+    }
 
-	@SubscribeEvent
-	public void onRegisterSoundEvent(RegistryEvent.Register<SoundEvent> event)
-	{
-		SoundsAether.soundRegistry = event.getRegistry();
+    @SubscribeEvent
+    public void onRegisterBiomeEvent(RegistryEvent.Register<Biome> event) {
+        event.getRegistry().register(AetherWorld.aether_biome.setRegistryName(Aether.locate("aether_highlands")));
+    }
 
-		SoundsAether.initialization();
-	}
+    @SubscribeEvent
+    public void onRegisterSoundEvent(RegistryEvent.Register<SoundEvent> event) {
+        SoundsAether.soundRegistry = event.getRegistry();
 
-	@SubscribeEvent
-	public void onRegisterCraftingEvent(RegistryEvent.Register<IRecipe> event)
-	{
-		AetherRegistries.craftingRegistry = event.getRegistry();
+        SoundsAether.initialization();
+    }
 
-		AetherDictionary.initialization();
-		AetherRegistries.registerRecipes();
-	}
+    @SubscribeEvent
+    public void onRegisterCraftingEvent(RegistryEvent.Register<IRecipe> event) {
+        AetherRegistries.craftingRegistry = event.getRegistry();
 
-	@SubscribeEvent
-	public void onRegisterMoaTypeEvent(RegistryEvent.Register<AetherMoaType> event)
-	{
-		AetherMoaTypes.moaRegistry = event.getRegistry();
+        AetherDictionary.initialization();
+        AetherRegistries.registerRecipes();
+    }
 
-		AetherMoaTypes.initialization();
-	}
+    @SubscribeEvent
+    public void onRegisterMoaTypeEvent(RegistryEvent.Register<AetherMoaType> event) {
+        AetherMoaTypes.moaRegistry = event.getRegistry();
 
-	@SubscribeEvent
-	public void onRegisterAccessoryEvent(RegistryEvent.Register<AetherAccessory> event)
-	{
-		AetherRegistries.initializeAccessories(event.getRegistry());
-	}
+        AetherMoaTypes.initialization();
+    }
+
+    @SubscribeEvent
+    public void onRegisterAccessoryEvent(RegistryEvent.Register<AetherAccessory> event) {
+        AetherRegistries.initializeAccessories(event.getRegistry());
+    }
 
 
-	@SubscribeEvent
-	public void onRegisterEnchantmentEvent(RegistryEvent.Register<AetherEnchantment> event)
-	{
-		AetherRegistries.initializeEnchantments(event.getRegistry());
-	}
+    @SubscribeEvent
+    public void onRegisterEnchantmentEvent(RegistryEvent.Register<AetherEnchantment> event) {
+        AetherRegistries.initializeEnchantments(event.getRegistry());
+    }
 
-	@SubscribeEvent
-	public void onRegisterEnchantmentFuelEvent(RegistryEvent.Register<AetherEnchantmentFuel> event)
-	{
-		AetherRegistries.initializeEnchantmentFuel(event.getRegistry());
-	}
+    @SubscribeEvent
+    public void onRegisterEnchantmentFuelEvent(RegistryEvent.Register<AetherEnchantmentFuel> event) {
+        AetherRegistries.initializeEnchantmentFuel(event.getRegistry());
+    }
 
-	@SubscribeEvent
-	public void onRegisterFreezableEvent(RegistryEvent.Register<AetherFreezable> event)
-	{
-		AetherRegistries.initializeFreezables(event.getRegistry());
-	}
+    @SubscribeEvent
+    public void onRegisterFreezableEvent(RegistryEvent.Register<AetherFreezable> event) {
+        AetherRegistries.initializeFreezables(event.getRegistry());
+    }
 
-	@SubscribeEvent
-	public void onRegisterFreezableFuelEvent(RegistryEvent.Register<AetherFreezableFuel> event)
-	{
-		AetherRegistries.initializeFreezableFuel(event.getRegistry());
-	}
+    @SubscribeEvent
+    public void onRegisterFreezableFuelEvent(RegistryEvent.Register<AetherFreezableFuel> event) {
+        AetherRegistries.initializeFreezableFuel(event.getRegistry());
+    }
 
 }

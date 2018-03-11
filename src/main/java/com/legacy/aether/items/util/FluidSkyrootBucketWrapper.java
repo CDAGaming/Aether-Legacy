@@ -10,48 +10,36 @@ import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
 
 import javax.annotation.Nullable;
 
-public class FluidSkyrootBucketWrapper extends FluidBucketWrapper
-{
+public class FluidSkyrootBucketWrapper extends FluidBucketWrapper {
 
-	public FluidSkyrootBucketWrapper(ItemStack container)
-	{
-		super(container);
-	}
+    public FluidSkyrootBucketWrapper(ItemStack container) {
+        super(container);
+    }
 
-    public boolean canFillFluidType(FluidStack fluid)
-    {
-        if (fluid.getFluid() == FluidRegistry.WATER)
-        {
+    public boolean canFillFluidType(FluidStack fluid) {
+        if (fluid.getFluid() == FluidRegistry.WATER) {
             return true;
         }
- 
+
         return false;
     }
 
     @Nullable
-    public FluidStack getFluid()
-    {
+    public FluidStack getFluid() {
         Item item = container.getItem();
         int meta = container.getItemDamage();
 
-        if (item == ItemsAether.skyroot_bucket && meta == 1)
-        {
+        if (item == ItemsAether.skyroot_bucket && meta == 1) {
             return new FluidStack(FluidRegistry.WATER, Fluid.BUCKET_VOLUME);
-        }
-        else
-        {
+        } else {
             return null;
         }
     }
 
-    protected void setFluid(Fluid fluid) 
-    {
-        if (fluid == null)
-        {
+    protected void setFluid(Fluid fluid) {
+        if (fluid == null) {
             container.deserializeNBT(new ItemStack(ItemsAether.skyroot_bucket).serializeNBT());
-        }
-        else if (fluid == FluidRegistry.WATER)
-        {
+        } else if (fluid == FluidRegistry.WATER) {
             container.deserializeNBT(new ItemStack(ItemsAether.skyroot_bucket, 1, 1).serializeNBT());
         }
     }

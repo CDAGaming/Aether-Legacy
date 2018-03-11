@@ -17,75 +17,60 @@ import net.minecraft.util.math.MathHelper;
 
 import java.util.List;
 
-public class AetherAdvancementToast extends AdvancementToast
-{
+public class AetherAdvancementToast extends AdvancementToast {
 
-	private final Advancement advancement;
+    private final Advancement advancement;
     private boolean hasPlayedSound = false;
     private int advancementType;
 
-	public AetherAdvancementToast(Advancement advancementIn, int advancementTypeIn) 
-	{
-		super(advancementIn);
+    public AetherAdvancementToast(Advancement advancementIn, int advancementTypeIn) {
+        super(advancementIn);
 
-		this.advancement = advancementIn;
-		this.advancementType = advancementTypeIn;
-	}
+        this.advancement = advancementIn;
+        this.advancementType = advancementTypeIn;
+    }
 
-	@Override
-    public IToast.Visibility draw(GuiToast toastGui, long delta)
-    {
+    @Override
+    public IToast.Visibility draw(GuiToast toastGui, long delta) {
         toastGui.getMinecraft().getTextureManager().bindTexture(TEXTURE_TOASTS);
         GlStateManager.color(1.0F, 1.0F, 1.0F);
         DisplayInfo displayinfo = this.advancement.getDisplay();
         toastGui.drawTexturedModalRect(0, 0, 0, 0, 160, 32);
 
-        if (displayinfo != null)
-        {
+        if (displayinfo != null) {
             List<String> list = toastGui.getMinecraft().fontRenderer.listFormattedStringToWidth(displayinfo.getTitle().getFormattedText(), 125);
             int i = displayinfo.getFrame() == FrameType.CHALLENGE ? 16746751 : 16776960;
 
-            if (list.size() == 1)
-            {
+            if (list.size() == 1) {
                 toastGui.getMinecraft().fontRenderer.drawString(I18n.format("advancements.toast." + displayinfo.getFrame().getName()), 30, 7, i | -16777216);
                 toastGui.getMinecraft().fontRenderer.drawString(displayinfo.getTitle().getFormattedText(), 30, 18, -1);
-            }
-            else
-            {
-                if (delta < 1500L)
-                {
-                    int k = MathHelper.floor(MathHelper.clamp((float)(1500L - delta) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+            } else {
+                if (delta < 1500L) {
+                    int k = MathHelper.floor(MathHelper.clamp((float) (1500L - delta) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
                     toastGui.getMinecraft().fontRenderer.drawString(I18n.format("advancements.toast." + displayinfo.getFrame().getName()), 30, 11, i | k);
-                }
-                else
-                {
-                    int i1 = MathHelper.floor(MathHelper.clamp((float)(delta - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+                } else {
+                    int i1 = MathHelper.floor(MathHelper.clamp((float) (delta - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
                     int l = 16 - list.size() * toastGui.getMinecraft().fontRenderer.FONT_HEIGHT / 2;
 
-                    for (String s : list)
-                    {
+                    for (String s : list) {
                         toastGui.getMinecraft().fontRenderer.drawString(s, 30, l, 16777215 | i1);
                         l += toastGui.getMinecraft().fontRenderer.FONT_HEIGHT;
                     }
                 }
             }
 
-            if (!this.hasPlayedSound && delta > 0L)
-            {
+            if (!this.hasPlayedSound && delta > 0L) {
                 this.hasPlayedSound = true;
 
-                if (displayinfo.getFrame() == FrameType.CHALLENGE)
-                {
+                if (displayinfo.getFrame() == FrameType.CHALLENGE) {
                     toastGui.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getRecord(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F));
-                }
-                else
-                {
-                	toastGui.getMinecraft().getSoundHandler().playSound(AetherMusicHandler.getAchievementSound(this.advancementType));
+                } else {
+                    toastGui.getMinecraft().getSoundHandler().playSound(AetherMusicHandler.getAchievementSound(this.advancementType));
                 }
             }
 
             RenderHelper.enableGUIStandardItemLighting();
-            toastGui.getMinecraft().getRenderItem().renderItemAndEffectIntoGUI((EntityLivingBase)null, displayinfo.getIcon(), 8, 8);
+            toastGui.getMinecraft().getRenderItem().renderItemAndEffectIntoGUI((EntityLivingBase) null, displayinfo.getIcon(), 8, 8);
 
             return delta >= 5000L ? IToast.Visibility.HIDE : IToast.Visibility.SHOW;
         }

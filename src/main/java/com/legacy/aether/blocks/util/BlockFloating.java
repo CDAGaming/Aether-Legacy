@@ -10,72 +10,60 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockFloating extends Block
-{
+public class BlockFloating extends Block {
 
-	private boolean leveled;
+    private boolean leveled;
 
-	public BlockFloating(Material material, boolean leveled)
-	{
-		super(material);
+    public BlockFloating(Material material, boolean leveled) {
+        super(material);
 
-		this.leveled = leveled;
+        this.leveled = leveled;
 
-		this.setTickRandomly(true);
-	}
-
-	@Override
-	public void onBlockAdded(World world,  BlockPos pos, IBlockState state)
-	{
-		world.scheduleUpdate(pos, this, 3);
-	}
-
-	@Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
-    {
-		worldIn.scheduleUpdate(pos, this, 3);
+        this.setTickRandomly(true);
     }
 
-	@Override
-    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (!this.leveled || this.leveled && world.isBlockIndirectlyGettingPowered(pos) != 0)
-		{
-			this.floatBlock(world, pos);
-		}
-	}
+    public static boolean canContinue(World world, BlockPos pos) {
+        Block block = world.getBlockState(pos).getBlock();
+        Material material = world.getBlockState(pos).getMaterial();
 
-	private void floatBlock(World world, BlockPos pos)
-	{
-		if (canContinue(world, pos.up()) && pos.getY() < world.getHeight())
-		{
-			EntityFloatingBlock floating = new EntityFloatingBlock(world, pos, world.getBlockState(pos));
+        if (block == Blocks.AIR || block == Blocks.FIRE) {
+            return true;
+        }
 
-			if (!world.isRemote)
-			{
-				world.spawnEntity(floating);
-			}
+        if (material == Material.WATER || material == Material.LAVA) {
+            return true;
+        }
 
-			world.setBlockToAir(pos);
-		}
-	}
+        return false;
+    }
 
-	public static boolean canContinue(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos).getBlock();
-		Material material = world.getBlockState(pos).getMaterial();
+    @Override
+    public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+        world.scheduleUpdate(pos, this, 3);
+    }
 
-		if (block == Blocks.AIR || block == Blocks.FIRE)
-		{
-			return true;
-		}
+    @Override
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+        worldIn.scheduleUpdate(pos, this, 3);
+    }
 
-		if (material == Material.WATER || material == Material.LAVA)
-		{
-			return true;
-		}
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+        if (!this.leveled || this.leveled && world.isBlockIndirectlyGettingPowered(pos) != 0) {
+            this.floatBlock(world, pos);
+        }
+    }
 
-		return false;		
-	}
+    private void floatBlock(World world, BlockPos pos) {
+        if (canContinue(world, pos.up()) && pos.getY() < world.getHeight()) {
+            EntityFloatingBlock floating = new EntityFloatingBlock(world, pos, world.getBlockState(pos));
+
+            if (!world.isRemote) {
+                world.spawnEntity(floating);
+            }
+
+            world.setBlockToAir(pos);
+        }
+    }
 
 }
